@@ -1,0 +1,20 @@
+[
+    {
+        "id": "012",
+        "name": "GlobalVirtumon1",
+        "type": "Grass",
+        "attack": 60,
+        "defense": 40,
+        "health": 90,
+        "virtudex_entry": "A grass Virtumon."
+    },
+    {
+        "id": "015",
+        "name": "GlobalVirtumon2",
+        "type": "Electric",
+        "attack": 70,
+        "defense": 50,
+        "health": 110,
+        "virtudex_entry": "An electric Virtumon."
+    }
+]

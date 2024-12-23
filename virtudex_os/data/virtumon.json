@@ -1,0 +1,20 @@
+[
+    {
+        "id": "001",
+        "name": "Virtumon1",
+        "type": "Fire",
+        "attack": 50,
+        "defense": 30,
+        "health": 100,
+        "virtudex_entry": "A fiery Virtumon."
+    },
+    {
+        "id": "007",
+        "name": "Virtumon2",
+        "type": "Water",
+        "attack": 40,
+        "defense": 50,
+        "health": 120,
+        "virtudex_entry": "A water Virtumon."
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "id": "potion",
+        "name": "Potion"
+    },
+    {
+        "id": "super_potion",
+        "name": "Super Potion"
+    },
+    {
+        "id": "revive",
+        "name": "Revive"
+    }
+]
