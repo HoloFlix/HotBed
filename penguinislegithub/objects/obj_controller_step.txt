@@ -1,0 +1,31 @@
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Smooth camera movement
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp camera within room bounds
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Set the camera position
+    camera_set_view_pos(global.camera, follow_x, follow_y);
+} else {
+    // Debugging message for missing player instance
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+
+// Example Interaction: Check for pressing 'E' to interact
+if (keyboard_check_pressed(ord("E"))) {
+    var interact_obj = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+    if (interact_obj != noone && global.current_skin == "player") {
+        // Interact with obj_icetruck and switch skin
+        instance_destroy(interact_obj);
+        global.current_skin = "icetruck";
+        global.player_instance = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to player
+        global.current_skin = "player";
+        global.player_instance = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_player);
+    }
+}

@@ -1,0 +1,3471 @@
+Ive using gamemaker to create a retro rpg type game. Ive already created a player with working controls, animated sprites for the 8 directional movement. Ive created mulitple rooms and the ability to warp between them using a obj_warp_block's collison to send the player to the approprate room. Ive also began implementing a player skin/sprite switcher utilising an obj_controller as the parent to an obj_player and obj_player_icetruck objects. when the game starts the obj_controller sets the default player skin as obj_player and when the player is clicked on an obj_skinpicker menu opens and calls an obj_button object aswell. The skin picker menu is dynamic with buttons for the available skins the player and also has an exit button to close the menu. Im currently running into an bug were when I exit the menu the buttons and text remain. Attached to this skin changing system is an obj_icetruck object ive placed into a room and set it up so when approached an interactive message appears above the ice truck telling the player to "Press "E" to enter" and the idea is for the players skin to change to the obj_player_icetruck and the obj_icetruck would be removed from the room, when the player exits the icetruck the players skin should then change back to the obj_player and the obj_icetruck should be added to the room the player exited in. However currently nothing happens when I press E in the current build of my project. Im happy to share code and answer any questions you have to help you better understand how to help me and fix my problems. How should we begin?
+
+
+Thank you for the detailed explanation of your setup! Let’s address the two issues systematically:
+
+Menu Buttons and Text Remaining After Closing the Menu
+This could happen if the objects responsible for drawing the buttons and text are not properly destroyed or deactivated when the menu closes. To ensure proper cleanup:
+
+Confirm that the objects (or instances) for the buttons and text are destroyed when exiting the menu.
+If you are using layers to manage UI elements, you can hide or clear the specific layer containing the menu items.
+Please share the relevant code or events from the skin picker menu for opening and closing the menu. This will help diagnose the root cause.
+
+Ice Truck Interaction Not Triggering the Desired Behavior
+When interacting with the obj_icetruck, pressing "E" should:
+
+Change the player's skin to obj_player_icetruck.
+Remove the obj_icetruck instance from the room.
+Add the obj_icetruck back to the room upon exiting.
+Key points to verify:
+
+Ensure the collision event or key-press ("E") event for obj_icetruck is being detected.
+Check the logic inside the event where the skin switching and object removal are handled.
+Confirm the room is being updated correctly to add the ice truck back.
+Please provide the code you use for the interaction with obj_icetruck and the event where "E" is pressed. That will help refine the solution.
+
+Where would you like to start? Sharing some code snippets will allow me to offer precise fixes.
+
+
+
+
+
+You said:
+this is the create event code : // Create Event for obj_skinpicker
+depth = -100; // Ensuring the skin picker is in front of everything
+
+// Set the desired menu size
+menu_width = 75;
+menu_height = 100;
+
+// Get the currently controlled player object
+var player_instance = instance_find(obj_player, 0);
+if (player_instance != noone) {
+    // Center the skin picker menu around the player
+    x = player_instance.x - menu_width / 2;
+    y = player_instance.y - menu_height / 2;
+} else {
+    // If no player instance is found, center on the view
+    x = view_xview[0] + (view_wview[0] - menu_width) / 2;
+    y = view_yview[0] + (view_hview[0] - menu_height) / 2;
+}
+
+var button_width = 37.5; // Desired button width
+var button_height = 10; // Desired button height
+var button_padding = 2.5; // Padding between buttons
+
+var button_x = x + (menu_width - button_width) / 2; // Center buttons horizontally within the menu width
+var button_y = y + button_padding; // Start button positioning from the top with padding
+
+// Dynamically create buttons for each available skin
+for (var i = 0; i < array_length(global.skins); i++) {
+    var skin = global.skins[i];
+    var btn_skin = instance_create_layer(button_x, button_y, "Instances", obj_button);
+    btn_skin.skin_object = skin.object; // Set the object to switch to
+    btn_skin.skin_name = skin.name; // Set the name for the button text
+    btn_skin.sprite_index = spr_skinpicker_button; // Ensure the correct sprite is assigned
+    
+    // Scale buttons to the specified width and height
+    btn_skin.image_xscale = button_width / sprite_get_width(spr_skinpicker_button);
+    btn_skin.image_yscale = button_height / sprite_get_height(spr_skinpicker_button);
+
+    button_y += button_height + button_padding; // Adjust spacing for the next button
+}
+
+// Create a button to close the skin picker menu
+var btn_close = instance_create_layer(button_x, button_y, "Instances", obj_button);
+btn_close.skin_object = noone; // No skin to switch to, just close the menu
+btn_close.skin_name = "Close"; // Set the name for the button text
+btn_close.sprite_index = spr_skinpicker_button; // Ensure the correct sprite is assigned
+
+// Scale close button to fit the specified width and height
+btn_close.image_xscale = button_width / sprite_get_width(spr_skinpicker_button);
+btn_close.image_yscale = button_height / sprite_get_height(spr_skinpicker_button); | this is the draw event code : // Draw Event for obj_skinpicker
+if (shader_is_compiled(shd_blur)) {
+    // Apply blur shader
+    var tex = surface_get_texture(application_surface);
+    shader_set(shd_blur);
+    shader_set_uniform_i(shader_get_uniform(shd_blur, "texture"), tex);
+    draw_surface(application_surface, 0, 0);
+    shader_reset();
+}
+
+// Draw the skin picker menu
+draw_self();  | and finally this is the code im using for the destroy event : // Destroy Event for obj_skinpicker
+// Destroy all button instances when the skin picker menu is destroyed
+with (instance_find(obj_button, 0)) {
+    instance_destroy();
+}
+shader_reset(); // Reset the shader to remove the blur effect | Ill also show you the create code for the obj_button : depth = -101; // Ensure buttons are in front of the skin picker
+
+// Initialize button properties if needed
+skin_object = noone;
+skin_name = spr_skinpicker_button;
+//fnt_small = temp_font | and this is the code for the draw event : // Draw Event for obj_button
+draw_self(); // Draw the button sprite
+
+// Draw the button text
+draw_set_color(c_black); // Set text color to black
+draw_set_halign(fa_center); // Center text horizontally
+draw_set_valign(fa_middle); // Center text vertically
+
+var button_width = sprite_width * image_xscale;
+var button_height = sprite_height * image_yscale;
+
+var text_x = x + button_width / 2;
+var text_y = y + button_height / 2;
+
+draw_text(text_x, text_y, skin_name); // Center the text | and finally this is the code for the left pressed event : // Mouse Left Pressed Event for obj_button
+if (skin_object != noone) {
+    // Change the player's skin
+    var player_instance = instance_find(obj_player, 0);
+    if (player_instance != noone) {
+        player_instance.skin_index = skin_object;
+    }
+}
+
+// Destroy the skin picker menu and remove all buttons
+with (instance_find(obj_skinpicker, 0)) {
+    instance_destroy();
+}
+shader_reset(); // Reset the shader to remove the blur effect | Can you have a look and tell me if you see the issue?
+ChatGPT said:
+
+Based on the provided code, the issue of the buttons and text remaining after the menu closes might stem from how you handle the obj_skinpicker and obj_button instances during destruction. Let’s analyze and pinpoint the potential problems:
+
+Issues Identified
+Destroy Event for obj_skinpicker:
+
+gml
+Copy code
+with (instance_find(obj_button, 0)) {
+    instance_destroy();
+}
+Problem: instance_find(obj_button, 0) only finds and destroys the first instance of obj_button. If there are multiple buttons, the others will remain.
+Solution: Use with (obj_button) instead, as it iterates through and destroys all instances of obj_button.
+Fix:
+
+gml
+Copy code
+with (obj_button) {
+    instance_destroy();
+}
+Left Pressed Event for obj_button:
+
+gml
+Copy code
+with (instance_find(obj_skinpicker, 0)) {
+    instance_destroy();
+}
+Problem: Similar to the first issue, this only destroys the first instance of obj_skinpicker. If multiple obj_skinpicker instances exist for any reason, others might remain.
+Solution: Use with (obj_skinpicker) to destroy all instances of obj_skinpicker.
+Fix:
+
+gml
+Copy code
+with (obj_skinpicker) {
+    instance_destroy();
+}
+Shader Reset:
+
+The shader_reset() call in the Destroy Event of obj_skinpicker ensures the shader effect is removed. However, if any button remains undestroyed, the visual artifacts might persist.
+This should automatically be resolved once all instances are correctly destroyed.
+Potential Additional Improvements
+Proper Cleanup Upon Player Destruction: If the player object is destroyed while the skin picker is open, buttons and menus might persist. Consider linking the cleanup to the player's existence or a global state.
+
+Use Layers for UI Separation:
+
+Since you're already using layers (e.g., "Instances"), consider organizing all obj_button and obj_skinpicker instances into a dedicated UI layer. You can then clear the entire layer if needed:
+gml
+Copy code
+layer_destroy("UI_Layer");
+This approach ensures no leftover UI elements remain.
+Debugging Leftovers: If artifacts still remain after these changes, it could be a rendering issue rather than a leftover instance. Consider enabling debugging code to check active instances:
+
+gml
+Copy code
+show_debug_message("Buttons left: " + string(instance_number(obj_button)));
+Summary of Changes
+Update Destroy Event for obj_skinpicker:
+
+gml
+Copy code
+with (obj_button) {
+    instance_destroy();
+}
+shader_reset();
+Update Left Pressed Event for obj_button:
+
+gml
+Copy code
+with (obj_skinpicker) {
+    instance_destroy();
+}
+shader_reset();
+Optional: Debug for leftover buttons using:
+
+gml
+Copy code
+show_debug_message("Buttons left: " + string(instance_number(obj_button)));
+After implementing these changes, test if the buttons and text are properly removed when the skin picker menu closes. Let me know how it goes or if further debugging is required!
+
+
+
+
+
+You said:
+Can you provide comprehensive step by step easy to understand instructions for copy the code into my project?
+ChatGPT said:
+
+Certainly! Here's a step-by-step guide to implementing the necessary changes in your project, tailored for ease of use:
+
+Step 1: Open the obj_skinpicker Object
+In GameMaker, locate the obj_skinpicker object in your Asset Browser.
+Double-click obj_skinpicker to open its properties.
+Step 2: Update the Destroy Event
+In the Events section of obj_skinpicker, select the Destroy Event.
+Replace the existing code with the following:
+gml
+Copy code
+// Destroy all button instances when the skin picker menu is destroyed
+with (obj_button) {
+    instance_destroy(); // Destroy all buttons linked to this menu
+}
+shader_reset(); // Reset the shader to remove the blur effect
+Save the changes.
+Step 3: Open the obj_button Object
+Locate the obj_button object in your Asset Browser and open it.
+Step 4: Update the Mouse Left Pressed Event
+In the Events section of obj_button, select the Mouse Left Pressed Event.
+Replace the existing code with:
+gml
+Copy code
+if (skin_object != noone) {
+    // Change the player's skin
+    var player_instance = instance_find(obj_player, 0);
+    if (player_instance != noone) {
+        player_instance.skin_index = skin_object;
+    }
+}
+
+// Destroy the skin picker menu and remove all buttons
+with (obj_skinpicker) {
+    instance_destroy(); // Ensure all instances of obj_skinpicker are destroyed
+}
+shader_reset(); // Reset the shader to remove the blur effect
+Save the changes.
+Step 5: Debugging (Optional)
+To ensure no obj_button or obj_skinpicker instances are leftover:
+
+Add a Key Press Event (e.g., "P") to either obj_skinpicker or a debug object in your project.
+Insert the following code to display the number of remaining instances in the Debug Console:
+gml
+Copy code
+show_debug_message("Buttons left: " + string(instance_number(obj_button)));
+show_debug_message("Skinpickers left: " + string(instance_number(obj_skinpicker)));
+When you press "P" during gameplay, the Debug Console will show the count of remaining obj_button and obj_skinpicker instances.
+
+Step 6: Test Your Game
+Run your project.
+Open the skin picker menu and then close it.
+Confirm that all buttons and text disappear as expected.
+If artifacts persist, use the Debug Console to verify the number of active instances (see Step 5).
+Optional: Use a Layer-Based Approach for UI Cleanup
+If you want to group all UI elements into a specific layer for easier management:
+
+Assign the obj_skinpicker and obj_button instances to a UI layer during their creation. For example:
+gml
+Copy code
+instance_create_layer(button_x, button_y, "UI_Layer", obj_button);
+When destroying the menu, destroy the entire UI layer:
+gml
+Copy code
+layer_destroy("UI_Layer");
+To implement this, you may need to update the creation code for your obj_button and obj_skinpicker.
+
+By following these steps, your issue with lingering buttons and text should be resolved. Let me know how it works or if additional guidance is needed!
+
+
+
+
+
+You said:
+that worked perfectly thank you. Can we now work on the skin switching system? Ill first show you the create code for the obj_controller // Create Event for obj_controller
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Create Event for obj_controller
+if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)) {
+    global.current_skin = "player"; // Starting skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
+} else {
+    // Find the existing player or ice truck instance
+    if (instance_exists(obj_player)) {
+        global.current_skin = "player";
+        global.player_instance = instance_find(obj_player, 0);
+    } else if (instance_exists(obj_player_icetruck)) {
+        global.current_skin = "icetruck";
+        global.player_instance = instance_find(obj_player_icetruck, 0);
+    }
+} | this is the code for the step event : // Step Event for obj_controller
+if (keyboard_check_pressed(ord("E"))) {
+    // Check for interaction with the ice truck
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Switch to ice truck player
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck); // Create the ice truck player instance
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player); // Create the player instance
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+
+// End Step Event for obj_controller
+if (instance_exists(global.player_instance)) {
+    // Update the viewport to follow the player instance
+    var view_x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    var view_y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+    view_xview[0] = view_x;
+    view_yview[0] = view_y;
+} | this is the key press left event : // Mouse Left Pressed Event for obj_controller
+if (mouse_check_button_pressed(mb_left) && !instance_exists(obj_skinpicker)) {
+    // Get the player's position
+    var player_instance = instance_find(obj_player, 0);
+    if (player_instance != noone) {
+        // Create the skin picker menu centered around the player
+        instance_create_layer(player_instance.x, player_instance.y, "Instances", obj_skinpicker);
+    } else {
+        // Center on the view if no player instance is found
+        instance_create_layer(view_xview[0] + view_wview[0] / 2, view_yview[0] + view_hview[0] / 2, "Instances", obj_skinpicker);
+    }
+    // Apply the blur effect
+    shader_set(shd_blur);
+} | this is this code for the room start event : // Room Start Event for obj_controller
+if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+} | Now ill show you the create event code for the obj_icetruck : // Step Event for obj_icetruck
+if (distance_to_object(global.player_instance) < 32) { // Adjust the distance as needed
+    draw_text(x, y - 20, "Press 'E' to enter");
+}  | this is the draw event : // Draw Event for obj_icetruck
+draw_self(); // Draw the sprite
+
+// Display the interaction message if the player is close
+if (distance_to_object(global.player_instance) < 32) { // Adjust the distance as needed
+    var text = "Press 'E' to enter";
+    var text_width = string_width(text);
+    draw_set_color(c_black); // Set text color to black
+    draw_text(x + (sprite_width / 2) - (text_width / 2), y - 20, text); // Center the text
+    draw_set_font(-1); // Reset to default font
+} | this is the create event : sprite[RIGHT] = spr_icetruck_faceright;
+sprite[UP] = spr_icetruck_faceup;
+sprite[LEFT] = spr_icetruck_faceleft;
+sprite[DOWN] = spr_icetruck_facedown; | this is the destroy event : with (instance_find(obj_icetruck, 0)) {
+    instance_destroy();
+} | and now finally ill show you the create code for the obj_player_icetruck : skin = "icetruck"; // For obj_player_icetruck
+
+xspd = 0;
+yspd = 0;
+
+move_spd =4;
+
+
+sprite[RIGHT] = spr_icetruck_right;
+sprite[UP] = spr_icetruck_up;
+sprite[LEFT] = spr_icetruck_left;
+sprite[DOWN] = spr_icetruck_down;
+
+sprite[UP_RIGHT] = spr_icetruck_up_right;
+sprite[UP_LEFT] = spr_icetruck_up_left;
+sprite[DOWN_RIGHT] = spr_icetruck_down_right;
+sprite[DOWN_LEFT] = spr_icetruck_down_left;
+
+face = DOWN;
+
+// Create Event for obj_player_icetruck
+persistent = true;  | and this is the step event code : // Step Event for obj_icetruck_player
+right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+// Get xspd & yspd
+xspd = (right_key - left_key) * move_spd;
+yspd = (down_key - up_key) * move_spd;
+
+// Pause
+if instance_exists(obj_pauser) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Set sprite
+mask_index = sprite[DOWN];
+if (yspd < 0) {
+    if (xspd < 0) { face = UP_LEFT; }
+    if (xspd > 0) { face = UP_RIGHT; }
+}
+
+if (yspd > 0) {
+    if (xspd < 0) { face = DOWN_LEFT; }
+    if (xspd > 0) { face = DOWN_RIGHT; }
+}
+
+if (yspd == 0) {
+    if (xspd > 0) { face = RIGHT; }
+    if (xspd < 0) { face = LEFT; }
+}
+
+if (xspd == 0) {
+    if (yspd > 0) { face = DOWN; }
+    if (yspd < 0) { face = UP; }
+}
+sprite_index = sprite[face];
+
+// Collisions
+if (place_meeting(x + xspd, y, obj_wall)) {
+    xspd = 0;
+}
+if (place_meeting(x, y + yspd, obj_wall)) { // changed second argument to y
+    yspd = 0;
+}
+
+// Move the player
+x += xspd;
+y += yspd;
+
+// Animate
+if (xspd == 0 && yspd == 0) {
+    image_index = 0;
+}
+
+// Depth
+depth = -bbox_bottom; | can you take a look and get interaction working so the players skin changes and the icetruck disappears?
+ChatGPT said:
+
+Let’s refine your code and address the issue with player interaction and skin switching so that the player's skin changes and the ice truck disappears as intended.
+
+Analysis of Current Code
+The provided code has most of the logic in place, but a few issues might be causing problems:
+
+Ice Truck Interaction Logic:
+
+The distance_to_object check is correctly implemented to detect proximity.
+The "E" keypress logic in obj_controller needs minor adjustments to ensure interaction works smoothly.
+Skin Switching:
+
+Switching the global.current_skin and updating global.player_instance is handled, but the ice truck’s instance management could cause issues if not handled consistently.
+Destroy Event in obj_icetruck:
+
+This code:
+gml
+Copy code
+with (instance_find(obj_icetruck, 0)) {
+    instance_destroy();
+}
+destroys only the first obj_icetruck instance. This could result in unexpected behavior if multiple trucks are present in the room.
+Step-by-Step Solution
+1. Adjust Step Event in obj_controller
+Modify the ice truck interaction logic to ensure it works consistently.
+
+Updated Code:
+
+gml
+Copy code
+if (keyboard_check_pressed(ord("E"))) {
+    // Check for interaction with the ice truck
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+        
+        // Create the ice truck player instance
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        
+        // Add the ice truck back to the room
+        var new_ice_truck = instance_create_layer(player_x, player_y, "Instances", obj_icetruck);
+        
+        // Create the player instance
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+2. Improve Destroy Event in obj_icetruck
+Ensure the ice truck correctly manages its own destruction without interference.
+
+Updated Code:
+
+gml
+Copy code
+instance_destroy(); // Destroy the current ice truck instance
+3. Debug and Validate Depth Logic
+Ensure the ice truck and player objects have consistent depth handling.
+
+Add the following line to the Step Event of obj_player and obj_player_icetruck:
+gml
+Copy code
+depth = -bbox_bottom; // Adjust depth dynamically based on position
+4. Adjust Proximity Detection in obj_icetruck
+Update the text display to ensure the "Press 'E' to enter" message only appears under specific conditions.
+
+Updated Draw Event:
+
+gml
+Copy code
+draw_self(); // Draw the sprite
+
+if (distance_to_object(global.player_instance) < 32 && global.current_skin == "player") {
+    var text = "Press 'E' to enter";
+    var text_width = string_width(text);
+    draw_set_color(c_black); // Set text color to black
+    draw_text(x + (sprite_width / 2) - (text_width / 2), y - 20, text); // Center the text
+}
+Testing and Debugging
+Run the Game:
+
+Place an obj_icetruck in the room.
+Approach it with the player character.
+Press "E" to enter the ice truck.
+Confirm the player switches to the ice truck skin and the ice truck disappears.
+Exit the Ice Truck:
+
+Press "E" again to exit the ice truck.
+Confirm the player switches back to the regular skin and the ice truck reappears.
+Edge Cases:
+
+Test with multiple obj_icetruck instances in the room.
+Confirm interactions only occur with the nearest truck.
+Summary of Changes
+Refined the interaction logic in the Step Event of obj_controller.
+Improved the Destroy Event of obj_icetruck.
+Updated the text display logic in obj_icetruck to ensure clarity.
+Ensured depth consistency across objects.
+Try these changes, and let me know if anything needs further refinement!
+
+
+
+
+
+You said:
+Im not sure why but the players skin doesnt change and the icetruck object stays in place, it doesnt seem like pressing E does anything. Is there anything else you need to know about my project to better implement the skin switching system as described?
+ChatGPT said:
+
+Thank you for clarifying! If pressing "E" doesn't trigger the interaction, we need to systematically verify and refine the system. Here’s how we can proceed:
+
+Key Areas to Verify
+Proximity Check Logic
+
+Ensure distance_to_object(global.player_instance) correctly evaluates the proximity.
+Confirm global.player_instance references the correct object (obj_player or obj_player_icetruck).
+Keypress Detection
+
+Ensure keyboard_check_pressed(ord("E")) is correctly mapped to the "E" key and not conflicting with other key events.
+Instance Reference Integrity
+
+Verify that obj_icetruck, obj_player, and obj_player_icetruck instances exist and are managed correctly in the room.
+Collision Mask and Placement
+
+Confirm that the ice truck and player have appropriate collision masks that allow instance_place() to detect proximity.
+Steps to Debug and Refine
+Let's add some debugging to help identify the issue.
+
+1. Add Debug Messages in the Step Event of obj_controller
+Insert show_debug_message() at key points to trace logic execution:
+
+gml
+Copy code
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed"); // Debugging keypress
+
+    // Check for interaction with the ice truck
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+    if (ice_truck != noone && global.current_skin == "player") {
+        show_debug_message("Ice truck found and switching to icetruck skin");
+
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching back to player skin");
+
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck); // Add the ice truck back to the room
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+Run the game and observe the debug output in the Output Console:
+
+If "E key pressed" doesn't appear, the problem is with keyboard_check_pressed().
+If "Ice truck found..." doesn't appear, the proximity check is failing.
+2. Verify instance_place() Functionality
+Replace instance_place() with an alternative proximity check to ensure reliable detection:
+
+gml
+Copy code
+var ice_truck = noone;
+with (obj_icetruck) {
+    if (point_distance(x, y, global.player_instance.x, global.player_instance.y) < 32) {
+        ice_truck = id; // Assign the ID of the nearby ice truck
+        break; // Exit the loop as soon as a valid instance is found
+    }
+}
+Replace this line in your Step Event logic:
+
+gml
+Copy code
+var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+3. Check Object Properties
+Ensure the following for obj_icetruck, obj_player, and obj_player_icetruck:
+
+Collision Masks:
+Confirm they are properly configured and non-zero in size.
+Ensure obj_icetruck has a collision mask that aligns with its visual sprite.
+Global Variables:
+Confirm global.player_instance is correctly set in all cases (e.g., when switching skins or restarting the room).
+Persistence:
+Avoid unnecessary persistence flags that might carry unexpected states between rooms.
+4. Test with a Simplified Example
+To ensure the basics are functioning, temporarily simplify the switching logic. Replace the entire Step Event in obj_controller with:
+
+gml
+Copy code
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed");
+
+    if (global.current_skin == "player") {
+        show_debug_message("Switching to icetruck");
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching to player");
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+    }
+}
+This eliminates the proximity check and focuses solely on skin switching.
+
+5. Review Room Setup
+Ensure your room contains:
+
+A properly placed obj_controller instance.
+An obj_player or obj_icetruck instance (depending on the starting skin).
+An obj_icetruck placed within reachable proximity.
+Expected Debugging Outcomes
+Debug messages will pinpoint where the logic breaks.
+The fallback simplified example will ensure skin switching works independently of other logic.
+Adjustments to proximity checking or collision masks should resolve interaction issues.
+Once you've tested these steps, let me know the results so we can refine further if needed!
+
+
+
+
+
+You said:
+ok that work with out the proximity check, maybe we need to increase the icetrucks collison detection. I think the player isnt touching when all the codes together
+ChatGPT said:
+
+If the simplified switching works without proximity checks, the issue likely lies with the collision detection or the proximity check logic for the ice truck. Let’s address this:
+
+Fixing the Collision Detection for Proximity
+1. Increase the Collision Mask Size for obj_icetruck
+The distance_to_object() and instance_place() functions rely on the collision mask of obj_icetruck. If the collision mask is too small or misaligned, it might fail to detect the player's presence.
+
+Steps to Adjust the Collision Mask:
+
+Open the obj_icetruck object in GameMaker.
+Select its sprite (e.g., spr_icetruck) and click Modify Mask in the Sprite Editor.
+Ensure the Bounding Box covers the entire visible sprite.
+If needed, manually adjust the mask to be larger than the sprite (e.g., increase padding around the sprite).
+Test again to see if proximity detection improves.
+2. Use an Expanded Proximity Check
+If adjusting the collision mask doesn’t fully resolve the issue, extend the effective proximity range programmatically.
+
+Replace distance_to_object() with point_distance()
+
+Use a fixed distance instead of relying solely on the collision mask.
+Updated Code for Step Event in obj_controller:
+
+gml
+Copy code
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed");
+
+    var ice_truck = noone;
+    with (obj_icetruck) {
+        if (point_distance(x, y, global.player_instance.x, global.player_instance.y) < 48) { // Expanded distance
+            ice_truck = id; // Assign the ID of the nearby ice truck
+            break; // Exit the loop once a valid truck is found
+        }
+    }
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        show_debug_message("Ice truck found and switching to icetruck skin");
+
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching back to player skin");
+
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck); // Add the ice truck back to the room
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+3. Debug the Player’s Position Relative to the Ice Truck
+If issues persist, log the player’s position and distance to the ice truck.
+
+Add Debug Messages:
+
+gml
+Copy code
+if (ice_truck != noone) {
+    var dist = point_distance(global.player_instance.x, global.player_instance.y, ice_truck.x, ice_truck.y);
+    show_debug_message("Distance to ice truck: " + string(dist));
+}
+4. Optional: Use an Invisible "Trigger Zone"
+Instead of relying solely on collision masks, create a new invisible object, obj_icetruck_trigger, as a "proximity trigger zone."
+
+Steps:
+
+Create a new object: obj_icetruck_trigger.
+
+Assign a larger collision mask to it.
+
+Place it around the obj_icetruck in the room.
+
+Update the proximity logic to check for obj_icetruck_trigger instead:
+
+gml
+Copy code
+var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck_trigger);
+Link the obj_icetruck_trigger to its corresponding obj_icetruck instance using a variable (trigger_parent):
+
+gml
+Copy code
+trigger_parent = other.id; // Set the parent ice truck in the Create Event of the trigger
+Next Steps
+Test after adjusting the collision mask.
+Use expanded proximity checks (point_distance) if needed.
+Add debug messages to verify the proximity detection.
+If necessary, implement an invisible trigger zone for enhanced precision.
+Let me know how these adjustments work!
+
+
+
+
+
+You said:
+ok cool thank works without adding the obj_icetruck_trigger however when the player switches into the icetruck the camera view stays still, I currently have all the rooms viewport 0 turned on and visible with object following set to the obj_player as thats what I first created for the player to control. Now that I want the player to change into different skins I think thats why the viewport behaves that way, how should I adjust and fix that
+ChatGPT said:
+
+The issue is that the viewport is set to follow obj_player, but when the player switches skins, the object being controlled changes to obj_player_icetruck, which is not linked to the viewport. To fix this, you need to dynamically update the viewport's object following setting based on the active player instance (global.player_instance).
+
+Here’s how to fix it:
+
+Solution: Dynamically Update Viewport Following
+1. Update the Room Viewport Following in obj_controller
+Since global.player_instance is used to track the current player object, you can dynamically update the viewport to follow the correct instance.
+
+Modify the Step Event of obj_controller:
+
+gml
+Copy code
+// Ensure the viewport follows the current player instance
+if (instance_exists(global.player_instance)) {
+    // Dynamically set the viewport to follow the correct player instance
+    var view_x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    var view_y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+    view_xview[0] = view_x;
+    view_yview[0] = view_y;
+    
+    // Dynamically set the following object in the room's viewport
+    view_object[0] = global.player_instance;
+}
+2. Debug the Viewport Behavior
+To ensure the viewport is correctly following the active instance:
+
+Add a debug message to verify which object the viewport is following:
+gml
+Copy code
+show_debug_message("Viewport following: " + string(global.player_instance));
+3. Alternative: Remove Viewport Object Following
+If dynamically setting view_object doesn’t work as expected, you can completely disable view_object and manually update the viewport using view_xview and view_yview like this:
+
+Open the room in the Room Editor.
+Turn off Object Following for Viewport 0.
+Use the same dynamic code from obj_controller to manually position the camera in the Step Event:
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    var view_x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    var view_y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+    view_xview[0] = view_x;
+    view_yview[0] = view_y;
+}
+4. Test the Solution
+Run your game and switch to the ice truck.
+Confirm that the camera view moves correctly to follow the ice truck.
+Test switching back to the original player skin and ensure the viewport follows the new instance.
+Additional Tips
+If you add more player skins or transformations in the future, this dynamic setup will ensure the viewport always follows the correct player instance.
+Ensure global.player_instance is always correctly set when switching skins.
+Let me know how this adjustment works for you!
+
+
+
+
+
+You said:
+I followed both instructions and neither worked, is there anything else you need to know about my project setup to fix the issue with the viewport not following the player?
+ChatGPT said:
+
+If neither solution worked, we might be missing some context about your project’s setup. Here are additional things to verify and steps to debug:
+
+Key Information to Confirm
+Viewport Configuration:
+
+Are you using Room Editor Viewport Settings to manage the viewport?
+If yes, confirm Viewport 0 is enabled and active.
+Verify the size of the viewport and the camera.
+Object Following:
+
+Is view_object[0] enabled and assigned to obj_player?
+If yes, switching to a new instance like obj_player_icetruck will require updating view_object[0] dynamically.
+Player Switching Logic:
+
+Is global.player_instance correctly referencing the new player object (obj_player_icetruck) after the switch?
+Room Size:
+
+Is the room size large enough for the camera to move? If the room size matches or is smaller than the viewport, the camera won't visibly follow.
+Enhanced Debugging
+To debug the viewport behavior, insert the following debug messages in the Step Event of obj_controller:
+
+gml
+Copy code
+show_debug_message("Player instance: " + string(global.player_instance));
+show_debug_message("Viewport object: " + string(view_object[0]));
+show_debug_message("Viewport position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+Run your game, switch to the ice truck, and check the Debug Console. This will reveal:
+
+If global.player_instance is correctly set to the new instance.
+If view_object[0] is correctly updated to follow global.player_instance.
+The current position of the camera.
+Alternative Fix: Force Camera to Follow Without Object Following
+Instead of relying on view_object[0], manually update the viewport’s position based on global.player_instance.
+
+Replace Object Following Logic with Manual Camera Updates
+Disable Object Following in the Room Editor for Viewport 0.
+Update the Step Event of obj_controller:
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    var view_x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    var view_y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+    view_xview[0] = view_x;
+    view_yview[0] = view_y;
+
+    // Debug message to ensure camera is moving
+    show_debug_message("Camera at: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+Additional Verification
+Check Room Start Logic in obj_controller:
+
+Ensure global.player_instance is properly initialized and not overwritten incorrectly.
+Example:
+gml
+Copy code
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_create_layer(100, 100, "Instances", obj_player);
+}
+Persistent Objects:
+
+If obj_controller or any related object is marked as persistent, confirm that the correct global.player_instance is retained when switching rooms.
+Room Properties:
+
+Confirm that the Viewport Camera Properties in the Room Editor are set to cover the entire room, and the camera moves as expected when following an object.
+Fallback Approach: Use a Custom Camera Object
+If none of the above works, create a separate camera object (obj_camera) that explicitly tracks global.player_instance.
+
+Steps to Create obj_camera:
+Create obj_camera:
+
+Add this code to its Step Event:
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+}
+view_xview[0] = x;
+view_yview[0] = y;
+Place obj_camera in the Room:
+
+Ensure the camera is always present in the room.
+Disable Object Following in Viewport:
+
+Use the Room Editor to turn off Object Following for Viewport 0.
+Next Steps
+Apply the debug messages and observe the output in the Debug Console.
+Try the manual camera logic or the custom camera object approach.
+Let me know the debug results, and we can refine the solution further!
+
+
+
+
+You said:
+Ok so heres some info all my rooms are width = 500 and height = 400. My viewport camera properties width and height are 288 x 216 and the veiwport properties width and height is 864 x 648. This the debug log : **********************************.
+Entering main loop.
+**********************************.
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+Viewport object: 100392
+Viewport position: (0, 52)
+Player instance: ref instance 100392
+
+ChatGPT said:
+
+Thank you for sharing the debug log and additional details about your setup. From the debug output, it seems the following is happening:
+
+global.player_instance Is Set Correctly:
+The Player instance is referencing the correct object (ref instance 100392), which is good.
+
+Viewport Is Following the Correct Object:
+The Viewport object is also correctly set to 100392, matching the Player instance.
+
+Viewport Position Is Static ((0, 52)):
+Despite correctly identifying the Player instance, the viewport position (view_xview[0], view_yview[0]) is not updating dynamically, which suggests an issue with how the viewport position is calculated or updated.
+
+Root Cause
+The issue is likely with how view_xview[0] and view_yview[0] are being calculated. Your rooms are 500x400, and the viewport camera properties are 288x216. Given these dimensions:
+
+The camera should move dynamically based on the global.player_instance position.
+The static position (0, 52) suggests either:
+The clamp() function is restricting movement unnecessarily.
+The player’s position is not propagating correctly to the viewport calculation.
+Steps to Fix
+We will refine the camera-following logic and debug further.
+
+1. Simplify and Test Camera Calculation
+Replace the viewport calculation in the Step Event of obj_controller with a direct assignment for testing:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    // Center the camera on the player
+    view_xview[0] = global.player_instance.x - (view_wview[0] / 2);
+    view_yview[0] = global.player_instance.y - (view_hview[0] / 2);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+Run the game and observe the camera behavior and debug output:
+
+Confirm the Player position matches the player's actual location.
+Ensure the Camera position updates dynamically as the player moves.
+2. Refine Clamping Logic
+If the above works, reintroduce clamping to ensure the camera stays within the room bounds:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    // Calculate unclamped position
+    var unclamped_x = global.player_instance.x - (view_wview[0] / 2);
+    var unclamped_y = global.player_instance.y - (view_hview[0] / 2);
+
+    // Clamp the camera to the room bounds
+    view_xview[0] = clamp(unclamped_x, 0, room_width - view_wview[0]);
+    view_yview[0] = clamp(unclamped_y, 0, room_height - view_hview[0]);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+Test again and verify the following:
+
+The camera stays centered on the player.
+The camera does not move outside the room boundaries.
+3. Confirm Player Movement Logic
+If the camera still does not move:
+
+Verify that global.player_instance.x and global.player_instance.y are updating as the player moves.
+Insert this debug message inside the player's Step Event:
+gml
+Copy code
+show_debug_message("Player actual position: (" + string(x) + ", " + string(y) + ")");
+If the position doesn’t change, the issue lies in the player movement logic.
+
+4. Ensure Viewport Configuration
+Double-check your room’s viewport settings:
+
+Open the Room Editor.
+Ensure Viewport 0 is enabled.
+Confirm the Camera Width/Height (288x216) matches your expectations.
+Ensure Object Following is disabled if using manual camera updates.
+Expected Outcome
+After applying these changes:
+
+The camera should follow global.player_instance dynamically.
+The camera position should reflect the player's position within the room boundaries.
+Debug messages will confirm whether the player's position is propagating correctly to the camera.
+Let me know the results of these steps or if further adjustments are needed!
+
+
+
+
+
+You said:
+This is the debug log from the first test of the code with out clamping logic or confirming the player movement logic : **********************************. 
+Entering main loop.
+**********************************.
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+Player position: (144, 160)
+Camera position: (0, 52)
+ChatGPT said:
+
+The debug log indicates that the player's position is updating correctly (Player position: (144, 160)), but the camera position remains static at (0, 52). This strongly suggests that the view_xview[0] and view_yview[0] values are not being updated dynamically in the Step Event of obj_controller.
+
+Root Cause
+The issue lies in the view_xview and view_yview assignment logic. Despite setting the viewport position in the code, the camera remains fixed at (0, 52). This could happen for several reasons:
+
+Manual Updates Overwritten: Something else in your game is resetting view_xview[0] and view_yview[0] after you assign them.
+Room Viewport Settings Conflict: If Object Following is enabled in the Room Editor, it might override manual viewport updates.
+Steps to Fix
+1. Disable Object Following
+Ensure no other system is interfering with manual updates to the camera.
+
+Open the Room Editor for the active room.
+Navigate to Viewport Properties.
+Disable the Object Following setting for Viewport 0.
+2. Force Manual Camera Updates
+Update the Step Event of obj_controller to ensure view_xview[0] and view_yview[0] are updated dynamically:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    // Directly set the camera position
+    view_xview[0] = global.player_instance.x - (view_wview[0] / 2);
+    view_yview[0] = global.player_instance.y - (view_hview[0] / 2);
+
+    // Debug messages
+    show_debug_message("Setting camera manually");
+    show_debug_message("Camera position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+3. Debug Camera Movement
+Use additional debug messages to track any interference:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    var current_xview = view_xview[0];
+    var current_yview = view_yview[0];
+
+    // Set camera position
+    view_xview[0] = global.player_instance.x - (view_wview[0] / 2);
+    view_yview[0] = global.player_instance.y - (view_hview[0] / 2);
+
+    // Check if the camera position is overwritten
+    if (view_xview[0] != current_xview || view_yview[0] != current_yview) {
+        show_debug_message("Camera updated to: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+    } else {
+        show_debug_message("Camera position not changing. Current: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+    }
+}
+4. Test Again
+Disable Object Following in the Room Editor (Step 1).
+Apply the manual camera update code (Step 2).
+Run the game and observe the Debug Console:
+If you see Setting camera manually, the manual update code is executing.
+If Camera position not changing appears, some other system is resetting the viewport values.
+5. Resolve Conflicts
+If the camera still doesn’t move, investigate:
+
+Room Event Interference:
+
+Check for any code in the room’s Creation Event or Step Event that might overwrite view_xview[0] and view_yview[0].
+Persistent Objects:
+
+If obj_controller is persistent, ensure it doesn’t carry over conflicting settings from previous rooms.
+Let me know the results of these tests, and we can refine the solution further!
+
+[I then gave the above conversation to another chatgpt ai and had the below conversation]
+
+This is a text file containing a previous conversation I was having, can you take a read ( Ill let you know now that the debug log said that the camera position not changing) you'll get that once the files been read
+
+ChatGPT said:
+ChatGPT
+Thanks for providing the full context and debug logs. Based on the information provided, the root cause of the issue seems to be interference or mismanagement of the viewport settings. Here's an adjusted plan to fix the viewport not following your dynamically changing player instance.
+
+Steps to Address the Issue
+1. Ensure Room Setup
+Open your room settings.
+Under Viewport 0 Properties:
+Disable Object Following.
+Keep Viewport Enabled and ensure the camera properties match your expectations (288x216 camera dimensions and 864x648 viewport dimensions).
+2. Update obj_controller Step Event
+Since view_xview[0] and view_yview[0] are not updating correctly, directly assign their values and confirm with debug logs.
+
+Replace your current Step Event with this updated code:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    // Calculate new camera position centered on the player
+    var new_xview = global.player_instance.x - (view_wview[0] / 2);
+    var new_yview = global.player_instance.y - (view_hview[0] / 2);
+
+    // Clamp values to ensure the camera doesn't move out of bounds
+    new_xview = clamp(new_xview, 0, room_width - view_wview[0]);
+    new_yview = clamp(new_yview, 0, room_height - view_hview[0]);
+
+    // Assign to viewport
+    view_xview[0] = new_xview;
+    view_yview[0] = new_yview;
+
+    // Debugging logs
+    show_debug_message("Player Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera Position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+3. Confirm No Other Interference
+Use debugging to confirm if anything else in your project is interfering with the viewport logic.
+
+Add this check to ensure the camera remains under your control:
+gml
+Copy code
+if (view_xview[0] != new_xview || view_yview[0] != new_yview) {
+    show_debug_message("Camera position overwritten! Current: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
+If you see this message in the logs, investigate for other objects, room events, or persistent settings that may overwrite the viewport values.
+
+4. Fallback to Custom Camera Object
+If you continue to experience issues, use a dedicated camera object (obj_camera) to manage the viewport.
+
+Steps:
+
+Create obj_camera:
+
+Add the following code to its Step Event:
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+}
+
+view_xview[0] = x;
+view_yview[0] = y;
+Place obj_camera in Your Room:
+
+Ensure it's present and active in all rooms.
+Remove Manual Updates:
+
+Remove any viewport management code from obj_controller to avoid conflicts.
+Debug Expected Outcomes
+If the fix works: The debug log will show a dynamically changing camera position that tracks the player’s movement.
+If not: The debug message Camera position overwritten! will indicate interference, prompting further investigation.
+Let me know how this works, and we can iterate as needed!
+
+
+
+
+
+
+You said:
+can you provide the code to Remove any viewport management code from obj_controller to avoid conflicts.
+ChatGPT said:
+ChatGPT
+To remove any viewport management code from obj_controller and ensure no conflicts, follow these steps:
+
+Steps to Remove Viewport Management Code
+Locate the Step Event in obj_controller
+
+Open obj_controller in the Asset Browser.
+Find the Step Event where the viewport logic is implemented.
+Remove Viewport-Related Code
+
+Look for any code that manipulates view_xview, view_yview, or view_object.
+Replace the Step Event with this cleaned version, retaining other necessary logic:
+gml
+Copy code
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Debugging to confirm the player instance
+    show_debug_message("Player Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+}
+Double-Check Other Events
+
+Search through other events in obj_controller (e.g., Room Start Event or any custom scripts).
+Remove or comment out any code that modifies:
+view_xview
+view_yview
+view_object
+Verify Changes
+
+Run the game and ensure no viewport-related operations are being handled by obj_controller.
+Debugging Tips
+If you suspect lingering viewport interference:
+
+Add a debug statement to confirm no viewport updates are being made from obj_controller:
+gml
+Copy code
+show_debug_message("Viewport updates removed from obj_controller.");
+This ensures that the viewport is now solely managed by obj_camera or other dedicated mechanisms. Let me know if you encounter anything unexpected!
+
+[I then gave the file to another chatgpt ai and had the following conversation]
+
+This is a previous conversation regarding a game ive developing. You've helped greatly as you will read im having difficulty getting the viewport to follow the player, give me some easy to follow concise step by step instructions on how to utilise the obj_camera to control the viewport and follow the player. Let me know if theres any information you need to better understand the layout of the project and how things work.
+
+To implement an obj_camera object that controls the viewport to follow the player in your GameMaker project, follow these concise, step-by-step instructions:
+
+1. Create the obj_camera Object
+Open the Asset Browser in GameMaker.
+Create a new object and name it obj_camera.
+2. Setup the Create Event
+In the Create Event of obj_camera, initialize variables for the target (player) and smoothing:
+
+gml
+Copy code
+// Create Event
+target = noone; // Will be assigned to the player later
+smoothness = 0.1; // Adjust for smoother or snappier movement
+3. Assign the Target in Room Start
+Make sure obj_camera knows which object to follow. Add the following to the Room Start event:
+
+gml
+Copy code
+// Room Start Event
+if (instance_exists(obj_player)) {
+    target = obj_player;
+} else if (instance_exists(global.player_instance)) {
+    target = global.player_instance;
+}
+4. Handle Camera Movement in the Step Event
+Update the viewport position to follow the target smoothly:
+
+gml
+Copy code
+// Step Event
+if (instance_exists(target)) {
+    var view_target_x = target.x - view_wview[0] / 2;
+    var view_target_y = target.y - view_hview[0] / 2;
+
+    // Clamp to prevent the camera from showing out-of-bounds areas
+    view_xview[0] = lerp(view_xview[0], clamp(view_target_x, 0, room_width - view_wview[0]), smoothness);
+    view_yview[0] = lerp(view_yview[0], clamp(view_target_y, 0, room_height - view_hview[0]), smoothness);
+}
+5. Place obj_camera in the Room
+Open the room where your game starts.
+Add an instance of obj_camera.
+Ensure only one instance of obj_camera exists in the room.
+6. Adjust Viewport Settings
+Open the Room Properties.
+Under the "Viewports and Cameras" tab:
+Enable "Enable Viewports."
+Check "Visible" for Viewport 0.
+Set Viewport 0 dimensions (e.g., Width: 640, Height: 360).
+Adjust the camera's width and height to match your desired resolution.
+Verify the "Object Following" is disabled (the camera object itself handles this logic).
+7. Test Your Game
+Run your game to ensure the viewport follows the player smoothly.
+Adjust smoothness in obj_camera for a different camera feel.
+Let me know if you encounter any issues, or if you'd like to refine or enhance this system further!
+
+
+
+
+
+You said:
+Did you take a read of the text file?
+ChatGPT said:
+
+Yes, I reviewed the uploaded text files. Based on their content, I've noted your existing setup and how your project operates:
+
+You have a player switching system controlled via obj_controller, with skins for obj_player and obj_player_icetruck.
+The interaction mechanics with obj_icetruck switch player skins and remove/re-add the obj_icetruck instance.
+There's room switching and a skinpicker menu for player customization.
+Viewport following logic for the player is partially handled in obj_controller via Step Event, which uses clamp to adjust view_xview and view_yview.
+I crafted the instructions to integrate an obj_camera to centralize viewport control, separate from obj_controller. This approach simplifies maintenance and expands flexibility in managing the camera independently of player logic.
+
+If there's any specific element in the text file you'd like me to factor into the camera system or further refine, let me know!
+
+
+
+
+
+You said:
+ok just checking. The viewport isnt following the player, its just stationary. I kept my viewport camera properties diemensions at 288 x 216 and the viewport properties at 864 and 648. Just checking is setting the object following to no object the same as turning it off like youve suggested? This is the debug log : **********************************.
+Entering main loop.
+**********************************.
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+Player Position: (144, 160)
+ChatGPT said:
+
+It’s great that you’re providing the debug log and dimensions! Let’s troubleshoot the stationary viewport issue and clarify the setup:
+
+Debugging the Viewport
+Viewport Dimensions and Settings
+You set the camera dimensions at 288x216 and the viewport dimensions at 864x648.
+This should result in a zoomed-in effect, as the camera covers a smaller area (288x216) but scales to a larger viewport (864x648).
+
+Ensure these settings in the "Viewports and Cameras" tab:
+
+Enable Viewports is checked.
+Viewport 0 is enabled, and:
+Camera width: 288, height: 216.
+Viewport width: 864, height: 648.
+Object Following in Room Settings
+
+Setting the "Object Following" field to No Object is the same as "turning it off." This means the camera will not automatically follow an object, allowing obj_camera to handle movement.
+Camera Movement Code
+Verify the Step Event in obj_camera includes this code:
+
+gml
+Copy code
+if (instance_exists(target)) {
+    var view_target_x = target.x - view_wview[0] / 2;
+    var view_target_y = target.y - view_hview[0] / 2;
+
+    view_xview[0] = lerp(view_xview[0], clamp(view_target_x, 0, room_width - view_wview[0]), smoothness);
+    view_yview[0] = lerp(view_yview[0], clamp(view_target_y, 0, room_height - view_hview[0]), smoothness);
+}
+Replace target with global.player_instance if you directly reference the player globally.
+
+Testing the Camera's Target
+The debug log shows the player position remains constant at (144, 160). Verify that the player position (x, y) changes when moving the player.
+You can add a debug log for view_xview[0] and view_yview[0] in the obj_camera to check if it updates:
+
+gml
+Copy code
+// Debugging camera position
+show_debug_message("Camera Position: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+If the camera position does not change:
+
+Check that target is correctly set in obj_camera's Room Start Event.
+Confirm view_wview[0] and view_hview[0] match the camera dimensions (288x216).
+Steps to Fix and Verify
+Open the room settings and confirm the viewport properties are configured as described.
+Confirm that the obj_camera is placed in the room and has the correct logic to follow the player.
+Run the game and observe:
+Does the view_xview[0] or view_yview[0] update in the debug log?
+Does the player move in the game world? If not, review player movement logic.
+Let me know the results of these checks so we can pinpoint the issue!
+
+
+
+
+
+You said:
+This is the debug log : **********************************.
+Entering main loop.
+**********************************.
+Camera Position: (0, 5.20)
+Player Position: (144, 160)
+Camera Position: (0, 9.88)
+Player Position: (144, 160)
+Camera Position: (0, 14.09)
+Player Position: (144, 160)
+Camera Position: (0, 17.88)
+Player Position: (144, 160)
+Camera Position: (0, 21.29)
+Player Position: (144, 160)
+Camera Position: (0, 24.37)
+Player Position: (144, 160)
+Camera Position: (0, 27.13)
+Player Position: (144, 160)
+Camera Position: (0, 29.62)
+Player Position: (144, 160)
+Camera Position: (0, 31.85)
+Player Position: (144, 160)
+Camera Position: (0, 33.87)
+Player Position: (144, 160)
+Camera Position: (0, 35.68) | I also have an initialisation room with the creation code : room_goto_next(); | and a obj_musicmanager in it to manage my music, should I include this room to set the camera up to set the viewport properly?
+ChatGPT said:
+
+Your debug log confirms that the Camera Position is changing, but the player position remains static at (144, 160). This means the camera is working as expected to update its position, but the player isn't moving, or the camera isn't centered around the player correctly.
+
+Key Observations
+Camera Movement: The camera's view_xview[0] and view_yview[0] are adjusting gradually, suggesting the lerp smoothing logic is functioning.
+
+Player Position: The player position is constant, meaning:
+
+Either the player is not moving in-game.
+Or the obj_camera is not targeting the player properly.
+Initial Room Setup: Including the initialization room (room_goto_next()) to set up the camera and viewport properly can be a good idea. It ensures the camera configuration happens before entering gameplay.
+
+Steps to Fix and Verify
+1. Verify Player Movement
+Ensure the player (obj_player or global.player_instance) moves when controls are used:
+
+Check the player movement code.
+Verify the player is responding to inputs correctly.
+If movement logic is missing or broken, the player will remain stationary, causing the camera to appear static.
+
+2. Confirm Camera's Target
+In obj_camera:
+
+Add debug logs for target.x and target.y:
+gml
+Copy code
+if (instance_exists(target)) {
+    show_debug_message("Camera Target: (" + string(target.x) + ", " + string(target.y) + ")");
+}
+This ensures the camera is referencing the player correctly.
+
+3. Setup in Initialization Room
+Use the initialization room to set the viewport properties explicitly before gameplay. Modify the obj_musicmanager or create a new object for this purpose.
+
+Initialization Object Code: Add the following to an object in the initialization room:
+
+gml
+Copy code
+// Ensure the viewport and camera are set properly
+view_enabled = true;
+view_set_visible(0, true);
+
+// Set camera dimensions
+view_set_wview(0, 288);
+view_set_hview(0, 216);
+
+// Set viewport dimensions (scaling to 864x648)
+view_set_wport(0, 864);
+view_set_hport(0, 648);
+
+// Move to the next room after setup
+room_goto_next();
+4. Verify Final Behavior
+Start the game and check if:
+The player can move.
+The camera correctly follows the player.
+Debug log for camera and target positions confirms correct behavior.
+Summary
+Ensure the player can move.
+Confirm the camera targets the player.
+Use the initialization room to set up the viewport and camera before gameplay starts.
+If issues persist, let me know what behavior you observe after implementing these changes!
+
+
+
+
+
+You said:
+I think ive found a possible issue. This is the step event code for the obj_player : // Step Event for obj_player 
+
+// Handle entering and exiting the ice truck
+if (keyboard_check_pressed(ord("E"))) {
+    if (!driving && place_meeting(x, y, obj_icetruck)) {
+        // Enter the ice truck
+        driving = true;
+        sprite_index = ice_truck_sprite;
+        var icetruck = instance_place(x, y, obj_icetruck);
+        if (icetruck != noone) {
+            icetruck.instance_destroy(); // Destroy the ice truck instance
+        }
+    } else if (driving) {
+        // Exit the ice truck
+        driving = false;
+        sprite_index = original_sprite;
+        var exit_x = x + lengthdir_x(32, face); // Adjust the distance as needed
+        var exit_y = y + lengthdir_y(32, face); // Adjust the distance as needed
+        instance_create_layer(exit_x, exit_y, "Instances", obj_icetruck);
+    }
+}
+
+// Handle movement
+right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+// Get xspd & yspd
+if (!sliding) {
+    xspd = (right_key - left_key) * move_spd;
+    yspd = (down_key - up_key) * move_spd;
+} else {
+    // Continue sliding
+    xspd = slide_dir_x * slide_speed;
+    yspd = slide_dir_y * slide_speed;
+
+    // Decelerate slide over time
+    slide_speed *= 0.98; // Adjust this value to control sliding deceleration
+
+    // Stop sliding if speed is low enough
+    if (abs(slide_speed) < 0.1) {
+        sliding = false;
+        xspd = 0;
+        yspd = 0;
+    }
+}
+
+// Pause
+if instance_exists(obj_pauser) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Set sprite
+mask_index = sprite[DOWN];
+if (yspd < 0) {
+    if (xspd < 0) { face = UP_LEFT; }
+    if (xspd > 0) { face = UP_RIGHT; }
+}
+
+if (yspd > 0) {
+    if (xspd < 0) { face = DOWN_LEFT; }
+    if (xspd > 0) { face = DOWN_RIGHT; }
+}
+
+if (yspd == 0) {
+    if (xspd > 0) { face = RIGHT; }
+    if (xspd < 0) { face = LEFT; }
+}
+
+if (xspd == 0) {
+    if (yspd > 0) { face = DOWN; }
+    if (yspd < 0) { face = UP; }
+}
+sprite_index = sprite[face];
+
+// Collisions
+if (place_meeting(x + xspd, y, obj_wall)) {
+    xspd = 0;
+}
+if (place_meeting(x, y + yspd, obj_wall)) { // changed second argument to y
+    yspd = 0;
+}
+
+// Collisions for obj_icetruck
+if (place_meeting(x + xspd, y, obj_wall) || place_meeting(x + xspd, y, obj_icetruck)) {
+    xspd = 0;
+}
+if (place_meeting(x, y + yspd, obj_wall) || place_meeting(x, y + yspd, obj_icetruck)) { 
+    yspd = 0;
+}
+
+// Move the player
+x += xspd;
+y += yspd;
+
+// Animate
+if (xspd == 0 && yspd == 0) {
+    image_index = 0;
+}
+
+// Depth
+depth = -bbox_bottom; | and this is the create event code : skin = "player"; // For obj_player
+
+xspd = 0;
+yspd = 0;
+move_spd =2;
+
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+sprite[RIGHT] = spr_player_right;
+sprite[UP] = spr_player_up;
+sprite[LEFT] = spr_player_left;
+sprite[DOWN] = spr_player_down;
+
+sprite[UP_RIGHT] = spr_player_up_right;
+sprite[UP_LEFT] = spr_player_up_left;
+sprite[DOWN_RIGHT] = spr_player_down_right;
+sprite[DOWN_LEFT] = spr_player_down_left;
+
+face = DOWN;
+
+// Variables for driving the ice truck
+driving = false;
+ice_truck_sprite = spr_icetruck_facedown;
+original_sprite = sprite_index; | I think the issue is with the (// Handle movement
+right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);) instance variables being declared outsite of a create event
+ChatGPT said:
+
+Yes, you've identified a key issue! Declaring the right_key, left_key, up_key, and down_key variables outside of a Create Event as local (or temporary) variables in the Step Event can cause problems. These variables only exist during the frame in which they are evaluated and do not persist across frames, which is fine for logic evaluation but should not be confused with persistent instance variables.
+
+Here’s why this matters and how to fix it:
+
+Key Points
+Local Variables in Step Event: Variables like right_key, left_key, up_key, and down_key are used to detect input. Since they are only calculated in the Step Event, they don’t persist as instance variables. This is not an issue as long as they are recalculated each frame. However:
+
+Ensure that they are properly used and do not conflict with instance variables.
+Instance Variables: Persistent variables (declared in the Create Event or as instance variables) retain values across all frames and are specific to the object instance. If you were trying to store movement states, you'd need to declare them in the Create Event.
+
+Player Movement Logic: The movement code you provided appears functional if the variables are recalculated each frame. However, ensure that the player's speed (move_spd) is set correctly (it’s 2 in the Create Event), and collision handling is not overly restrictive.
+
+Steps to Debug and Fix
+1. Confirm Variable Scope
+The right_key, left_key, up_key, and down_key variables should remain in the Step Event as temporary variables since they only check the current input state.
+
+Example of correct usage in the Step Event:
+
+gml
+Copy code
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+Adding var ensures they are temporary and do not interfere with other variables of the same name.
+
+2. Debug Movement Calculation
+Add a debug message to confirm the calculated speeds:
+
+gml
+Copy code
+show_debug_message("xspd: " + string(xspd) + ", yspd: " + string(yspd));
+This ensures xspd and yspd are being calculated and updated correctly.
+
+3. Adjust Collision Handling
+Collision logic might be overly restrictive. Currently, you're checking collisions with both obj_wall and obj_icetruck in separate blocks:
+
+gml
+Copy code
+if (place_meeting(x + xspd, y, obj_wall) || place_meeting(x + xspd, y, obj_icetruck)) {
+    xspd = 0;
+}
+if (place_meeting(x, y + yspd, obj_wall) || place_meeting(x, y + yspd, obj_icetruck)) {
+    yspd = 0;
+}
+Ensure:
+
+obj_icetruck collision is necessary when not driving but ignored while driving.
+4. Verify Driving Logic
+When entering the ice truck (driving = true), make sure movement and collisions behave appropriately:
+
+Movement: Driving the ice truck should use xspd and yspd calculated for the truck.
+Collisions: Collisions with obj_icetruck should be ignored while driving.
+Update logic to separate conditions for driving and walking:
+
+gml
+Copy code
+if (!driving) {
+    // Normal player movement logic
+} else {
+    // Logic specific to driving the ice truck
+}
+5. Test with Debug Outputs
+Add debug messages to confirm behavior during gameplay:
+
+Movement speeds (xspd, yspd).
+Collision checks.
+Driving state (driving).
+Player position.
+Updated Movement Logic Example
+Here’s a cleaned-up version of the movement section in the Step Event:
+
+gml
+Copy code
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+if (!sliding) {
+    xspd = (right_key - left_key) * move_spd;
+    yspd = (down_key - up_key) * move_spd;
+} else {
+    // Sliding logic remains unchanged
+}
+
+// Debugging speeds
+show_debug_message("xspd: " + string(xspd) + ", yspd: " + string(yspd));
+
+// Collisions
+if (!driving) {
+    if (place_meeting(x + xspd, y, obj_wall)) {
+        xspd = 0;
+    }
+    if (place_meeting(x, y + yspd, obj_wall)) {
+        yspd = 0;
+    }
+}
+
+// Apply movement
+x += xspd;
+y += yspd;
+
+// Debugging position
+show_debug_message("Player Position: (" + string(x) + ", " + string(y) + ")");
+Verify Results
+Test if the player moves properly and the camera follows.
+If movement or collisions still fail, focus on:
+Collision logic.
+Camera target assignment (target in obj_camera).
+Let me know how this works or if other issues arise!
+
+
+
+
+
+You said:
+I added the code and this was the debug log : **********************************.
+Entering main loop.
+**********************************.
+Camera Position: (0, 5.20)
+Player Position: (144, 160)
+Camera Position: (0, 9.88)
+Player Position: (144, 160)
+Camera Position: (0, 14.09)
+Player Position: (144, 160)
+Camera Position: (0, 17.88)
+Player Position: (144, 160)
+Camera Position: (0, 21.29)
+Player Position: (144, 160)
+Camera Position: (0, 24.37)
+Player Position: (144, 160)
+Camera Position: (0, 27.13)
+Player Position: (144, 160)
+Camera Position: (0, 29.62)
+Player Position: (144, 160)
+Camera Position: (0, 31.85)
+Player Position: (144, 160)
+Camera Position: (0, 33.87)
+Player Position: (144, 160)
+Camera Position: (0, 35.68)
+Player Position: (144, 160)
+Camera Position: (0, 37.31)
+Player Position: (144, 160)
+Camera Position: (0, 38.78)
+Player Position: (144, 160)
+Camera Position: (0, 40.10)
+Player Position: (144, 160)
+Camera Position: (0, 41.29)
+Player Position: (144, 160)
+Camera Position: (0, 42.36)
+Player Position: (144, 160)
+Camera Position: (0, 43.33)
+Player Position: (144, 160)
+Camera Position: (0, 44.20)
+Player Position: (144, 160)
+Camera Position: (0, 44.98)
+Player Position: (144, 160)
+Camera Position: (0, 45.68)
+Player Position: (144, 160)
+Camera Position: (0, 46.31)
+Player Position: (144, 160)
+Camera Position: (0, 46.88)
+Player Position: (144, 160)
+Camera Position: (0, 47.39)
+Player Position: (144, 160)
+Camera Position: (0, 47.85)
+Player Position: (144, 160)
+Camera Position: (0, 48.27)
+Player Position: (144, 160)
+Camera Position: (0, 48.64)
+Player Position: (144, 160)
+Camera Position: (0, 48.98)
+Player Position: (144, 160)
+Camera Position: (0, 49.28)
+Player Position: (144, 160)
+Camera Position: (0, 49.55)
+Player Position: (144, 160)
+Camera Position: (0, 49.80)
+Player Position: (144, 160)
+Camera Position: (0, 50.02)
+Player Position: (144, 160)
+Camera Position: (0, 50.21)
+Player Position: (144, 160)
+Camera Position: (0, 50.39)
+Player Position: (144, 160)
+Camera Position: (0, 50.55)
+Player Position: (144, 160)
+Camera Position: (0, 50.70)
+Player Position: (144, 160)
+Camera Position: (0, 50.83)
+Player Position: (144, 160)
+Camera Position: (0, 50.95)
+Player Position: (144, 160)
+Camera Position: (0, 51.05)
+Player Position: (144, 160)
+Camera Position: (0, 51.15)
+Player Position: (144, 160)
+Camera Position: (0, 51.23)
+Player Position: (144, 160)
+Camera Position: (0, 51.31)
+Player Position: (144, 160)
+Camera Position: (0, 51.38)
+Player Position: (144, 160)
+Camera Position: (0, 51.44)
+Player Position: (144, 160)
+Camera Position: (0, 51.50)
+Player Position: (144, 160)
+Camera Position: (0, 51.55)
+Player Position: (144, 160)
+Camera Position: (0, 51.59)
+Player Position: (144, 160)
+Camera Position: (0, 51.63)
+Player Position: (144, 160)
+Camera Position: (0, 51.67)
+Player Position: (144, 160)
+Camera Position: (0, 51.70)
+Player Position: (144, 160)
+Camera Position: (0, 51.73)
+Player Position: (144, 160)
+Camera Position: (0, 51.76)
+Player Position: (144, 160)
+Camera Position: (0, 51.78)
+Player Position: (144, 160)
+Camera Position: (0, 51.80)
+Player Position: (144, 160)
+Camera Position: (0, 51.82)
+Player Position: (144, 160)
+Camera Position: (0, 51.84)
+Player Position: (144, 160)
+Camera Position: (0, 51.86)
+Player Position: (144, 160)
+Camera Position: (0, 51.87)
+Player Position: (144, 160)
+Camera Position: (0, 51.88)
+Player Position: (144, 160)
+Camera Position: (0, 51.90)
+Player Position: (144, 160)
+Camera Position: (0, 51.91)
+Player Position: (144, 160)
+Camera Position: (0, 51.92)
+Player Position: (144, 160)
+Camera Position: (0, 51.92)
+Player Position: (144, 160)
+Camera Position: (0, 51.93)
+Player Position: (144, 160)
+Camera Position: (0, 51.94)
+Player Position: (144, 160)
+Camera Position: (0, 51.94)
+Player Position: (144, 160)
+Camera Position: (0, 51.95)
+Player Position: (144, 160)
+Camera Position: (0, 51.96)
+Player Position: (144, 160)
+Camera Position: (0, 51.96)
+Player Position: (144, 160)
+Camera Position: (0, 51.96)
+Player Position: (144, 160)
+Camera Position: (0, 51.97)
+Player Position: (144, 160)
+Camera Position: (0, 51.97)
+Player Position: (144, 160)
+Camera Position: (0, 51.97)
+Player Position: (144, 160)
+Camera Position: (0, 51.98)
+Player Position: (144, 160)
+Camera Position: (0, 51.98)
+Player Position: (144, 160)
+Camera Position: (0, 51.98)
+Player Position: (144, 160)
+Camera Position: (0, 51.98)
+Player Position: (144, 160)
+Camera Position: (0, 51.98)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 51.99)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.00)
+Player Position: (144, 160)
+Camera Position: (0, 52.20)
+Player Position: (144, 162)
+Camera Position: (0, 52.58)
+Player Position: (144, 164)
+Camera Position: (0, 53.12)
+Player Position: (144, 166)
+Camera Position: (0, 53.81)
+Player Position: (144, 168)
+Camera Position: (0, 54.63)
+Player Position: (144, 170)
+Camera Position: (0, 55.57)
+Player Position: (144, 172)
+Camera Position: (0, 56.61)
+Player Position: (144, 174)
+Camera Position: (0, 57.75)
+Player Position: (144, 176)
+Camera Position: (0, 58.97)
+Player Position: (144, 178)
+Camera Position: (0, 60.28)
+Player Position: (144, 180)
+Camera Position: (0, 61.65)
+Player Position: (144, 182)
+Camera Position: (0, 63.08)
+Player Position: (144, 184)
+Camera Position: (0, 64.58)
+Player Position: (144, 186)
+Camera Position: (0, 66.12)
+Player Position: (144, 188)
+Camera Position: (0, 67.71)
+Player Position: (144, 190)
+Camera Position: (0, 69.34)
+Player Position: (144, 192)
+Camera Position: (0, 71.00)
+Player Position: (144, 194)
+Camera Position: (0, 72.70)
+Player Position: (144, 196)
+Camera Position: (0, 74.43)
+Player Position: (144, 198)
+Camera Position: (0, 76.19)
+Player Position: (144, 200)
+Camera Position: (0, 77.97)
+Player Position: (144, 202)
+Camera Position: (0, 79.77)
+Player Position: (144, 204)
+Camera Position: (0, 81.60)
+ChatGPT said:
+
+From your debug log, it seems that the player wasn't moving initially but started moving after a while, and the camera began to follow correctly after detecting movement. This indicates the camera logic is functioning, but the player movement initialization might have been delayed or restricted.
+
+Analysis of the Debug Log
+Player Movement Delay:
+
+Initially, the player position remains constant at (144, 160). This suggests either:
+Movement keys weren't pressed, or
+Some code in the player's logic prevented movement (e.g., a collision check or uninitialized variables).
+Camera Behavior:
+
+The camera smoothly adjusts its position (view_yview[0]) once the player starts moving.
+It works as intended, following the player's y coordinate changes.
+Player Movement Begins:
+
+The player starts moving (y increments from 160 to higher values).
+The camera reacts appropriately, keeping the player centered within the viewport.
+Steps to Investigate and Fix
+1. Check Player Initialization
+Ensure the Create Event for the player initializes all necessary movement variables correctly:
+
+gml
+Copy code
+xspd = 0; 
+yspd = 0;
+move_spd = 2; // Ensure this matches your desired speed
+driving = false; // Initialize as not driving
+2. Debug Movement Input
+Add debug output to check whether input is being registered. Place this in the Step Event:
+
+gml
+Copy code
+show_debug_message("Input: Right=" + string(keyboard_check(ord("D"))) +
+                   ", Left=" + string(keyboard_check(ord("A"))) +
+                   ", Up=" + string(keyboard_check(ord("W"))) +
+                   ", Down=" + string(keyboard_check(ord("S"))));
+This will confirm if movement keys are being detected.
+
+3. Check Collisions
+Review collision checks for obj_wall and obj_icetruck. Ensure they don’t block movement unnecessarily:
+
+gml
+Copy code
+if (place_meeting(x + xspd, y, obj_wall) || (driving == false && place_meeting(x + xspd, y, obj_icetruck))) {
+    xspd = 0;
+}
+if (place_meeting(x, y + yspd, obj_wall) || (driving == false && place_meeting(x, y + yspd, obj_icetruck))) {
+    yspd = 0;
+}
+The extra driving == false condition ensures the ice truck does not block movement while the player is driving it.
+4. Test Driving and Exiting
+Ensure entering and exiting the ice truck does not disrupt movement. Add debug messages to confirm the driving state transitions:
+
+gml
+Copy code
+show_debug_message("Driving State: " + string(driving));
+5. Verify Player Movement Responsiveness
+Ensure no external logic (like pausing or sliding mechanics) affects the player at game start:
+
+gml
+Copy code
+if instance_exists(obj_pauser) {
+    xspd = 0;
+    yspd = 0; // Pause logic might interfere
+}
+Comment out or debug any interfering logic.
+
+Expected Behavior
+At game start, pressing movement keys should move the player immediately.
+The debug log should show consistent camera movement corresponding to player position updates.
+The camera should center the player smoothly at all times.
+If the issue persists after these checks, let me know what happens in the debug log and how the player behaves in-game!
+
+ the program started correctly how ever the viewport stays stationary : **********************************.
+Entering main loop.
+**********************************.
+Camera Position: (0, 5.20)
+Player Position: (144, 160)
+Camera Position: (0, 9.88)
+Player Position: (144, 160)
+Camera Position: (0, 14.09)
+Player Position: (144, 160)
+Camera Position: (0, 17.88)
+Player Position: (144, 160)
+Camera Position: (0, 21.29)
+Player Position: (144, 160)
+Camera Position: (0, 24.37)
+Player Position: (144, 160)
+Camera Position: (0, 27.13)
+Player Position: (144, 160)
+Camera Position: (0, 29.62)
+Player Position: (144, 160)
+Camera Position: (0, 31.85)
+Player Position: (144, 160)
+Camera Position: (0, 33.87)
+Player Position: (144, 160)
+Camera Position: (0, 35.68)
+Player Position: (144, 160)
+Camera Position: (0, 37.31)
+Player Position: (144, 160)
+Camera Position: (0, 38.78)
+Player Position: (144, 160)
+Camera Position: (0, 40.10)
+Player Position: (144, 160)
+Camera Position: (0, 41.29)
+Player Position: (144, 160)
+Camera Position: (0, 42.36)
+Player Position: (144, 160)
+Camera Position: (0, 43.33)
+Player Position: (144, 160)
+Camera Position: (0, 44.20)
+Player Position: (144, 160)
+Camera Position: (0, 44.98)
+Player Position: (144, 160)
+Camera Position: (0, 45.68)
+Player Position: (144, 160)
+Camera Position: (0, 46.31)
+Player Position: (144, 160)
+Camera Position: (0, 46.88)
+Player Position: (144, 160)
+Camera Position: (0, 47.39)
+Player Position: (144, 160)
+Camera Position: (0, 47.85)
+Player Position: (144, 160)
+Camera Position: (0, 48.27)
+Player Position: (144, 160)
+Camera Position: (0, 48.64)
+Player Position: (144, 160)
+Camera Position: (0, 48.98)
+Player Position: (144, 160)
+Camera Position: (0, 49.28)
+Player Position: (144, 160)
+Camera Position: (0, 49.55)
+Player Position: (144, 160)
+Camera Position: (0, 49.80)
+Player Position: (144, 160)
+Camera Position: (0, 50.02)
+Player Position: (144, 160)
+Camera Position: (0, 50.21)
+Player Position: (144, 160)
+Camera Position: (0, 50.39)
+Player Position: (144, 160)
+Camera Position: (0, 50.55)
+Player Position: (144, 160)
+Camera Position: (0, 50.70)
+Player Position: (144, 160)
+Camera Position: (0, 50.83)
+Player Position: (144, 160)
+Camera Position: (0, 51.15)
+Player Position: (144, 162)
+Camera Position: (0, 51.63)
+Player Position: (144, 164)
+Camera Position: (0, 52.27)
+Player Position: (144, 166)
+Camera Position: (0, 53.04)
+Player Position: (144, 168)
+Camera Position: (0, 53.94)
+Player Position: (144, 170)
+Camera Position: (0, 54.94)
+Player Position: (144, 172)
+Camera Position: (0, 56.05)
+Player Position: (144, 174)
+Camera Position: (0, 57.24)
+Player Position: (144, 176)
+Camera Position: (0, 58.52)
+Player Position: (144, 178)
+Camera Position: (0, 59.87)
+Player Position: (144, 180)
+Camera Position: (0, 61.28)
+Player Position: (144, 182)
+Camera Position: (0, 62.75)
+Player Position: (144, 184)
+Camera Position: (0, 64.28)
+Player Position: (144, 186)
+Camera Position: (0, 65.85)
+Player Position: (144, 188)
+Camera Position: (0, 67.46)
+Player Position: (144, 190)
+Camera Position: (0, 69.12)
+Player Position: (144, 192)
+Camera Position: (0, 70.81)
+Player Position: (144, 194)
+Camera Position: (0, 72.53)
+Player Position: (144, 196)
+Camera Position: (0, 74.27)
+Player Position: (144, 198)
+Camera Position: (0, 76.05)
+Player Position: (144, 200)
+Camera Position: (0, 77.84)
+Player Position: (144, 202)
+Camera Position: (0, 79.66)
+Player Position: (144, 204)
+Camera Position: (0, 81.49)
+Player Position: (144, 206)
+Camera Position: (0, 83.34)
+Player Position: (144, 208)
+Camera Position: (0, 85.21)
+Player Position: (144, 210)
+Camera Position: (0, 87.09)
+Player Position: (144, 212)
+Camera Position: (0, 88.78)
+Player Position: (144, 212)
+Camera Position: (0, 90.30)
+ChatGPT said:
+ChatGPT
+Based on the truncated portion of the step event code for obj_player, it seems the issue might be connected to how you're handling the "E" keypress for entering and exiting the ice truck, combined with the player's movement logic. Since your player position remains static (144, 160) in the debug logs, the player's movement system might not be functioning correctly or is being overridden.
+
+Let’s break this down and ensure everything works correctly:
+
+1. Check Movement Logic in obj_player
+Ensure the Step Event for obj_player includes proper movement handling using keyboard inputs like this:
+
+gml
+Copy code
+// Basic movement logic
+var right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+var left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+var up = keyboard_check(vk_up) || keyboard_check(ord("W"));
+var down = keyboard_check(vk_down) || keyboard_check(ord("S"));
+
+// Update player's speed
+x += (right - left) * move_speed;
+y += (down - up) * move_speed;
+
+// Optional: Add collision checking to prevent movement through walls
+if (place_meeting(x, y, obj_wall)) {
+    x -= (right - left) * move_speed;
+    y -= (down - up) * move_speed;
+}
+Verify that the player's x and y positions change when pressing the arrow or WASD keys. If they don't, confirm:
+
+move_speed is defined in the Create Event for obj_player.
+The Step Event isn’t being overridden by other code.
+2. Fix the Enter/Exit Ice Truck Logic
+From the truncated code, the logic for entering/exiting the ice truck might interfere with player movement. Here's a corrected and improved version:
+
+gml
+Copy code
+if (keyboard_check_pressed(ord("E"))) {
+    if (!driving && place_meeting(x, y, obj_icetruck)) {
+        // Enter the ice truck
+        driving = true;
+        sprite_index = ice_truck_sprite; // Use the ice truck's sprite
+        var icetruck = instance_place(x, y, obj_icetruck);
+        if (icetruck != noone) {
+            icetruck.instance_destroy(); // Destroy the ice truck instance
+        }
+    } else if (driving) {
+        // Exit the ice truck
+        driving = false;
+        sprite_index = original_sprite; // Revert to original player sprite
+
+        // Optional: Adjust exit position
+        x += 32; // Move the player slightly to avoid overlapping
+    }
+}
+
+// Prevent movement when driving (if required)
+if (!driving) {
+    // Insert movement logic here
+}
+3. Verify Interaction with the Camera
+Ensure the obj_camera is properly targeting the player. In the Room Start Event of obj_camera, set:
+
+gml
+Copy code
+if (instance_exists(obj_player)) {
+    target = obj_player; // Ensure target is the player
+} else if (instance_exists(global.player_instance)) {
+    target = global.player_instance;
+}
+4. Debugging the Player’s Movement
+Add debug messages to verify the player's position in the Step Event of obj_player:
+
+gml
+Copy code
+show_debug_message("Player Position: (" + string(x) + ", " + string(y) + ")");
+If the position does not change while moving the player, there’s an issue with the movement logic.
+
+5. Test and Verify
+After making these changes:
+
+Test if the player moves correctly.
+Confirm that the camera follows the player.
+Check that entering/exiting the ice truck works without breaking player movement or camera logic.
+Let me know how these adjustments work or if more troubleshooting is needed!
+
+[I then sent the below conversations to another chatgpt ai and had this conversation]
+
+This txt file is a previous conversation ive had, please read to catch up. This viewport situation is frustrating. Im wondering if theres another way to change to viewport to either the obj_player or obj_player_icetruck depending on wether or not the player has interacted with the obj_icetruck?
+
+
+From the context of the conversation and your current code setup, the issue of switching the viewport between obj_player and obj_player_icetruck based on interaction with obj_icetruck can be streamlined. Instead of manually managing the view in the Step event, a more efficient and modular approach can be implemented using GameMaker's camera and view systems.
+
+Here’s how you can address this step-by-step:
+
+Step 1: Centralize Viewport Management
+Instead of setting the view_xview and view_yview manually, use GameMaker’s camera system. This allows for smoother transitions and modular code.
+
+Create a new camera for the game:
+
+Open your room and ensure you have a camera/view enabled.
+Use camera_create() to create a custom camera in your code.
+Example:
+
+gml
+Copy code
+// Create Event of obj_controller
+camera = camera_create();
+view_set_camera(0, camera);
+camera_set_view_size(camera, view_wview[0], view_hview[0]);
+Step 2: Dynamically Follow the Player or Ice Truck
+Modify your Step event in obj_controller to follow either obj_player or obj_player_icetruck dynamically.
+
+Replace the viewport code in your Step event with:
+
+gml
+Copy code
+// Step Event of obj_controller
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+    // Clamp the camera within room boundaries
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(camera));
+
+    // Set the camera position
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+This ensures the camera always follows the currently active player instance, whether it’s obj_player or obj_player_icetruck.
+
+Step 3: Update Interaction Logic
+When interacting with the obj_icetruck, ensure the camera seamlessly transitions to follow the new active object.
+
+In your Step event logic for switching skins:
+
+gml
+Copy code
+// Check for interaction with obj_icetruck
+if (keyboard_check_pressed(ord("E"))) {
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Remove the ice truck and switch to obj_player_icetruck
+        instance_destroy(ice_truck);
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to obj_player and re-add obj_icetruck
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck);
+    }
+}
+Step 4: Debug and Test
+Test the interaction to ensure the camera follows the correct object.
+Ensure smooth transitions when switching between obj_player and obj_player_icetruck.
+Verify that the camera stays within the bounds of the room.
+Step 5: Optional Enhancements
+Smooth Camera Movement: Use a lerp function to interpolate the camera’s position smoothly between frames:
+gml
+Copy code
+var target_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+var target_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+// Clamp within room bounds
+target_x = clamp(target_x, 0, room_width - camera_get_view_width(camera));
+target_y = clamp(target_y, 0, room_height - camera_get_view_height(camera));
+
+// Smooth movement
+var current_x = camera_get_view_x(camera);
+var current_y = camera_get_view_y(camera);
+
+var smooth_x = lerp(current_x, target_x, 0.1);
+var smooth_y = lerp(current_y, target_y, 0.1);
+
+camera_set_view_pos(camera, smooth_x, smooth_y);
+Let me know how it works for you or if you need further clarification!
+
+
+
+
+
+You said:
+I get this error when running the program : ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_controller:
+Variable <unknown_object>.camera(100032, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Step_0 (line 47) -     var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+############################################################################################
+gml_Object_obj_controller_Step_0 (line 47)
+ChatGPT said:
+
+This error occurs because the variable camera was not initialized before being used in the Step event of obj_controller. Let's make sure the camera is properly set up in the Create Event of obj_controller.
+
+Fix the Error
+Add the following code to the Create Event of obj_controller:
+
+gml
+Copy code
+// Create Event for obj_controller
+if (!camera_exists(camera)) { // Ensure the camera is created only once
+    camera = camera_create();
+    view_set_camera(0, camera);
+    camera_set_view_size(camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(camera, 0, 0); // Set an initial position for the camera
+}
+This code ensures:
+
+The camera variable is initialized when obj_controller is created.
+The camera is properly associated with the view (index 0).
+A default position (0, 0) is set for the camera to prevent any uninitialized behavior.
+Update the Step Event
+Ensure camera exists before using it:
+
+gml
+Copy code
+// Step Event for obj_controller
+if (camera_exists(camera) && instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+    // Clamp the camera within room boundaries
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(camera));
+
+    // Set the camera position
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+This check ensures:
+
+The camera exists before attempting to use it.
+If the camera is destroyed for any reason, it won't cause errors during the Step event.
+Test the Fix
+Run the game and verify that the camera now follows the global.player_instance without errors.
+Confirm that the transitions between obj_player and obj_player_icetruck are smooth and error-free.
+Let me know if this resolves the issue!
+
+
+
+
+
+You said:
+Could you breifly expand on what the global.player.instance is? is is something I need to add and have code for? Program wouldnt start and I got this error : ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_controller:
+Variable <unknown_object>.camera(100028, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Create_0 (line 8) - if (!camera_exists(camera)) { // Ensure the camera is created only once
+############################################################################################
+gml_Object_obj_controller_Create_0 (line 8)
+ChatGPT said:
+
+Let’s break this down and clarify everything!
+
+1. What is global.player_instance?
+global.player_instance is a variable that stores a reference to the current player object (obj_player or obj_player_icetruck). This reference allows the camera to follow whichever player object is currently active. If this variable is not set correctly, the program won't know which object to follow.
+
+In your code:
+
+When the game starts, the player instance is created, and global.player_instance is set to point to it.
+Whenever the skin switches (from obj_player to obj_player_icetruck or vice versa), global.player_instance is updated to the newly created instance.
+You already have this logic in your obj_controller's Create Event and Step Event.
+
+Here’s an example of how it's used:
+
+gml
+Copy code
+if (instance_exists(global.player_instance)) {
+    // Follow the player's position with the camera
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+2. Fixing the camera Error in Create Event
+The error you’re seeing means the camera variable is being accessed before it’s initialized. Let’s fix this by properly initializing camera as an instance variable:
+
+Updated Create Event for obj_controller:
+gml
+Copy code
+// Create Event for obj_controller
+
+// Initialize the global player_instance (if not already set)
+if (!instance_exists(global.player_instance)) {
+    global.current_skin = "player"; // Default skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
+}
+
+// Create the camera and attach it to the view
+camera = camera_create(); // Create the camera
+view_set_camera(0, camera); // Assign it to view[0]
+camera_set_view_size(camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(camera, 0, 0); // Set the initial position of the camera
+Key Fixes:
+
+camera = camera_create(); ensures the camera is initialized before it’s used.
+Removed the if (!camera_exists(camera)) check, as camera doesn’t exist when this event first runs.
+The camera is assigned to view[0] right after being created.
+3. Checking global.player_instance
+If your game uses obj_controller to manage the player, you don't need to add extra code for global.player_instance since it’s already being set when the player instance is created. Here's how it works in your code:
+
+In Create Event:
+When the game starts, the player object is created (obj_player or obj_player_icetruck), and global.player_instance points to it:
+
+gml
+Copy code
+global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+In Step Event:
+The camera follows the object stored in global.player_instance.
+
+When Switching Skins:
+global.player_instance is updated when you switch between obj_player and obj_player_icetruck.
+
+If this variable is not working as expected, you may need to ensure it is always set properly. For example:
+
+gml
+Copy code
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_find(obj_player, 0);
+}
+4. Final Step Event for the Camera
+Here’s how the Step Event should look after all the fixes:
+
+gml
+Copy code
+// Step Event for obj_controller
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+    // Clamp camera within room bounds
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(camera));
+
+    // Set the camera position
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+5. What to Check if Issues Persist
+Ensure obj_player or obj_player_icetruck is created at the start of the game.
+Add debug messages to verify global.player_instance is being set:
+gml
+Copy code
+show_debug_message("Player instance: " + string(global.player_instance));
+Ensure the camera is properly created before accessing it.
+Let me know if this resolves your issue or if additional clarification is needed!
+
+
+
+
+
+You said:
+I added the code and got this error : ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_player:
+global variable name 'player_instance' index (100013) not set before reading it.
+ at gml_Object_obj_player_Create_0 (line 46) - show_debug_message("Player instance: " + string(global.player_instance));
+############################################################################################
+gml_Object_obj_player_Create_0 (line 46)
+gml_Object_obj_controller_Create_0 (line 10)
+ChatGPT said:
+
+This error indicates that global.player_instance is being accessed in obj_player before it is initialized by obj_controller. This happens because obj_player's Create Event is running before obj_controller has a chance to set the global variable player_instance.
+
+Let's resolve this issue by ensuring global.player_instance is always initialized before any other object tries to access it.
+
+1. Initialize global.player_instance Early
+To prevent this error, you need to ensure global.player_instance is set before the Create Event of obj_player runs. This can be done by controlling the object creation order.
+
+Fix the Object Creation Order:
+Open Room Editor.
+Go to the Instances Layer where both obj_controller and obj_player are created.
+Ensure obj_controller is created before obj_player.
+You can do this by reordering their instances in the Room Editor or dragging obj_controller to the top of the list.
+Why This Works:
+GameMaker processes objects in the order they are created in the room. By creating obj_controller first, it ensures global.player_instance is initialized before obj_player's Create Event is triggered.
+
+2. Add a Safeguard for global.player_instance
+To avoid future errors, add a safety check in the Create Event of obj_player:
+
+Updated obj_player Create Event:
+gml
+Copy code
+// Create Event for obj_player
+if (!variable_global_exists("player_instance") || global.player_instance == noone) {
+    show_debug_message("Warning: global.player_instance not initialized! Using current instance.");
+    global.player_instance = id; // Fallback to ensure no crash occurs
+}
+What This Does:
+
+Checks if global.player_instance exists and is valid.
+If not, it assigns the current instance (id) as a temporary fallback and logs a warning.
+3. Verify global.player_instance in obj_controller
+Double-check the Create Event of obj_controller to ensure global.player_instance is always initialized correctly:
+
+Updated Create Event for obj_controller:
+gml
+Copy code
+// Create Event for obj_controller
+
+// Initialize the global player_instance (if not already set)
+if (!variable_global_exists("player_instance") || !instance_exists(global.player_instance)) {
+    global.current_skin = "player"; // Default skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
+}
+
+// Create the camera and attach it to the view
+camera = camera_create(); // Create the camera
+view_set_camera(0, camera); // Assign it to view[0]
+camera_set_view_size(camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(camera, 0, 0); // Set the initial position of the camera
+4. Debugging global.player_instance
+To help identify the source of issues, add debug messages in both obj_controller and obj_player:
+
+Example Debugging Messages:
+In obj_controller's Create Event:
+
+gml
+Copy code
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+In obj_player's Create Event:
+
+gml
+Copy code
+show_debug_message("obj_player: global.player_instance value: " + string(global.player_instance));
+5. Test the Fix
+Run the game.
+Check the Debug Console (F2 or Output Window) to ensure the debug messages show the proper initialization order:
+obj_controller should initialize global.player_instance before obj_player accesses it.
+Verify that the error no longer occurs.
+If the issue persists, let me know what the debug messages display or where the error shifts to, and I’ll guide you further!
+
+
+
+
+
+You said:
+this is the code I currently have for the obj_controller : // Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Debugging to confirm the player instance
+    show_debug_message("Player Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+}
+
+
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed");
+
+    var ice_truck = noone;
+    with (obj_icetruck) {
+        if (point_distance(x, y, global.player_instance.x, global.player_instance.y) < 48) { // Expanded distance
+            ice_truck = id; // Assign the ID of the nearby ice truck
+            break; // Exit the loop once a valid truck is found
+        }
+    }
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        show_debug_message("Ice truck found and switching to icetruck skin");
+
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching back to player skin");
+
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck); // Add the ice truck back to the room
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+
+// Step Event for obj_controller
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+    // Clamp camera within room bounds
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(camera));
+
+    // Set the camera position
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));  |  I added your code and got this error when starting up the program : ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_controller:
+global variable name 'player_instance' index (100013) not set before reading it.
+ at gml_Object_obj_controller_Create_0 (line 4) - if (!instance_exists(global.player_instance)) {
+############################################################################################
+gml_Object_obj_controller_Create_0 (line 4) | and this is the creave event code for the obj_controller : // Create Event for obj_controller
+
+// Initialize the global player_instance (if not already set)
+if (!instance_exists(global.player_instance)) {
+    global.current_skin = "player"; // Default skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
+}
+
+// Create the camera and attach it to the view
+camera = camera_create(); // Create the camera
+view_set_camera(0, camera); // Assign it to view[0]
+camera_set_view_size(camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(camera, 0, 0); // Set the initial position of the camera
+
+
+// Create Event for obj_controller
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Create Event for obj_controller
+if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)) {
+    global.current_skin = "player"; // Starting skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
+} else {
+    // Find the existing player or ice truck instance
+    if (instance_exists(obj_player)) {
+        global.current_skin = "player";
+        global.player_instance = instance_find(obj_player, 0);
+    } else if (instance_exists(obj_player_icetruck)) {
+        global.current_skin = "icetruck";
+        global.player_instance = instance_find(obj_player_icetruck, 0);
+    }
+}
+ChatGPT said:
+
+The error occurs because global.player_instance is being accessed in the Create Event before it is initialized. Specifically, the if (!instance_exists(global.player_instance)) check fails because global.player_instance doesn't exist yet. GameMaker throws an error when trying to check the existence of an uninitialized global variable.
+
+To fix this, we need to ensure global.player_instance is explicitly initialized before any logic that relies on it.
+
+Updated Code for Create Event in obj_controller
+Here’s the corrected and streamlined version of your Create Event:
+
+gml
+Copy code
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+
+// Create the player instance if not already set
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Create the camera and attach it to the view
+camera = camera_create(); // Create the camera
+view_set_camera(0, camera); // Assign it to view[0]
+camera_set_view_size(camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+Key Fixes
+variable_global_exists() Safeguard:
+
+Before accessing or checking global.player_instance, ensure it is defined using variable_global_exists().
+This prevents GameMaker from throwing an error when the variable is accessed for the first time.
+Initialize global.player_instance:
+
+Set it to noone initially so it can safely be checked with instance_exists() later.
+Streamlined Player Creation Logic:
+
+Instead of redundant if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)), we only check and create the player_instance when it doesn’t already exist.
+Debugging Tips
+Add debug messages throughout the Create Event to confirm the initialization order:
+
+gml
+Copy code
+show_debug_message("Create Event: global.current_skin = " + string(global.current_skin));
+show_debug_message("Create Event: global.player_instance = " + string(global.player_instance));
+Next Steps
+Test the game:
+
+Ensure the game initializes properly without errors.
+Check the debug messages to confirm global.player_instance is being initialized correctly.
+Adjust Object Creation Order:
+
+In the Room Editor, ensure obj_controller is created before obj_player or any other object that depends on global.player_instance.
+If you still encounter issues, let me know where the errors shift to, and I’ll help you troubleshoot further!
+
+
+
+
+
+You said:
+This is the error I got when running the program : ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_icetruck:
+Variable <unknown_object>.camera(100029, -2147483648) not set before reading it.
+ at gml_Object_obj_icetruck_Step_0 (line 25) - var target_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+############################################################################################
+gml_Object_obj_icetruck_Step_0 (line 25)  |  this is the step event code im using fro the obj_icetruck : // Check for interaction with obj_icetruck
+if (keyboard_check_pressed(ord("E"))) {
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Remove the ice truck and switch to obj_player_icetruck
+        instance_destroy(ice_truck);
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to obj_player and re-add obj_icetruck
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck);
+    }
+}
+
+var target_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+var target_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+// Clamp within room bounds
+target_x = clamp(target_x, 0, room_width - camera_get_view_width(camera));
+target_y = clamp(target_y, 0, room_height - camera_get_view_height(camera));
+
+// Smooth movement
+var current_x = camera_get_view_x(camera);
+var current_y = camera_get_view_y(camera);
+
+var smooth_x = lerp(current_x, target_x, 0.1);
+var smooth_y = lerp(current_y, target_y, 0.1);
+
+camera_set_view_pos(camera, smooth_x, smooth_y);
+
+
+// Step Event for obj_icetruck
+if (distance_to_object(global.player_instance) < 32) { // Adjust the distance as needed
+    draw_text(x, y - 20, "Press 'E' to enter");
+}
+
+depth = -bbox_bottom;
+ChatGPT said:
+
+The issue here is that camera is being used in the Step Event of obj_icetruck, but the variable camera does not exist in obj_icetruck. The camera variable was created and initialized in obj_controller, so it is not directly accessible by obj_icetruck.
+
+How to Fix the Error
+We need to either:
+
+Use obj_controller's camera variable globally, or
+Ensure camera is initialized within obj_icetruck if it requires its own camera.
+Since the camera management is handled by obj_controller, we can make camera a global variable so that all objects (including obj_icetruck) can access it.
+
+Updated Code for obj_controller (Create Event)
+Make the camera variable global in the Create Event of obj_controller:
+
+gml
+Copy code
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Create the player instance if not already set
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+Now global.camera is accessible in all objects, including obj_icetruck.
+
+Updated Code for obj_icetruck (Step Event)
+Update the Step Event of obj_icetruck to use global.camera instead of camera:
+
+gml
+Copy code
+// Check for interaction with obj_icetruck
+if (keyboard_check_pressed(ord("E"))) {
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Remove the ice truck and switch to obj_player_icetruck
+        instance_destroy(ice_truck);
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+
+    } else if (global.current_skin == "icetruck") {
+        // Switch back to obj_player and re-add obj_icetruck
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck);
+    }
+}
+
+// Smooth camera movement using global.camera
+var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+// Clamp within room bounds
+target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+// Smooth movement
+var current_x = camera_get_view_x(global.camera);
+var current_y = camera_get_view_y(global.camera);
+
+var smooth_x = lerp(current_x, target_x, 0.1);
+var smooth_y = lerp(current_y, target_y, 0.1);
+
+camera_set_view_pos(global.camera, smooth_x, smooth_y);
+
+// Display interaction message if the player is close
+if (distance_to_object(global.player_instance) < 32) { // Adjust the distance as needed
+    draw_text(x, y - 20, "Press 'E' to enter");
+}
+
+// Ensure proper depth sorting
+depth = -bbox_bottom;
+Why This Works
+global.camera:
+
+Declaring the camera as global.camera allows it to be accessed by all objects in the game.
+Shared Camera Management:
+
+All objects reference the same global.camera, ensuring consistent behavior without needing to initialize separate cameras for each object.
+Testing Steps
+Run the game and confirm that the error is resolved.
+Test both interactions:
+Switching to obj_player_icetruck using the ice truck.
+Switching back to obj_player and ensuring the camera works as expected.
+Verify that the camera smoothly follows the player or ice truck.
+Let me know how it goes! 😊
+
+
+
+
+
+You said:
+This is the new error im getting : ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_controller:
+Variable <unknown_object>.camera(100024, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Step_0 (line 47) -     var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+############################################################################################
+gml_Object_obj_controller_Step_0 (line 47) | this is the step event code for the obj_controller : // Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Debugging to confirm the player instance
+    show_debug_message("Player Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+}
+
+
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed");
+
+    var ice_truck = noone;
+    with (obj_icetruck) {
+        if (point_distance(x, y, global.player_instance.x, global.player_instance.y) < 48) { // Expanded distance
+            ice_truck = id; // Assign the ID of the nearby ice truck
+            break; // Exit the loop once a valid truck is found
+        }
+    }
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        show_debug_message("Ice truck found and switching to icetruck skin");
+
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching back to player skin");
+
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_create_layer(player_x, player_y, "Instances", obj_icetruck); // Add the ice truck back to the room
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+    }
+}
+
+// Step Event for obj_controller
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(camera) / 2);
+
+    // Clamp camera within room bounds
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(camera));
+
+    // Set the camera position
+    camera_set_view_pos(camera, follow_x, follow_y);
+}
+
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+ChatGPT said:
+
+The issue here is that the camera variable is not defined within obj_controller's Step Event, leading to the error when it's being used. Based on the changes we've made, the camera should now be stored as global.camera rather than camera. However, the code in your Step Event is still referencing camera directly instead of global.camera.
+
+Fix the Step Event Code in obj_controller
+Update the Step Event of obj_controller to use global.camera:
+
+gml
+Copy code
+// Step Event for obj_controller
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Debugging to confirm the player instance
+    show_debug_message("Player Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+
+    // Smooth camera movement using global.camera
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp camera within room bounds
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Set the camera position
+    camera_set_view_pos(global.camera, follow_x, follow_y);
+} else {
+    // Debugging message for missing player instance
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+Why This Fix Works
+In the Create Event, we switched from a local camera variable to a global global.camera.
+In the Step Event, you need to refer to this global.camera variable everywhere the camera is used.
+Debugging the Camera Initialization
+To ensure global.camera is initialized properly, verify the Create Event of obj_controller includes:
+
+gml
+Copy code
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create();
+}
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+camera_set_view_pos(global.camera, 0, 0);
+Additionally, add a debug message to confirm that the camera is being created successfully:
+
+gml
+Copy code
+show_debug_message("Camera initialized: " + string(global.camera));
+Testing the Fix
+Ensure the obj_controller's Create Event initializes global.camera.
+Ensure obj_controller is created first in the room (so the camera is initialized before being referenced elsewhere).
+Run the game and check the debug messages to confirm:
+global.camera is initialized.
+global.player_instance exists and is being followed properly.
+Let me know how this works out for you! 😊
+
+
+
+
+
+You said:
+ok that fixed the viewport tracking however when I use move into different rooms the viewport in those rooms stays still and doesnt track the player
+ChatGPT said:
+
+The issue occurs because the camera needs to be re-initialized or properly updated when the room changes. GameMaker resets many systems, including views and cameras, when transitioning between rooms, unless those components are specifically handled.
+
+Here’s how you can ensure the viewport correctly tracks the player when transitioning between rooms.
+
+Solution: Re-initialize the Camera in the Room Start Event
+The Room Start Event is triggered every time the game enters a new room. You can use this event in obj_controller to reassign the camera to the view and ensure it tracks the player.
+
+Add a Room Start Event in obj_controller:
+gml
+Copy code
+// Room Start Event for obj_controller
+
+// Ensure the camera exists (recreate if necessary)
+if (!camera_exists(global.camera)) {
+    global.camera = camera_create();
+}
+
+// Attach the camera to the view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+
+// Recenter the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+    camera_set_view_pos(global.camera, follow_x, follow_y);
+} else {
+    show_debug_message("Error: global.player_instance not found in Room Start Event.");
+}
+How It Works
+Check if the Camera Exists:
+If the global.camera doesn't exist (or is cleared during a room transition), the code recreates it using camera_create().
+
+Reattach the Camera to the View:
+Reassign the camera to view[0] and adjust its size to match the room's view size.
+
+Recenter the Camera on the Player:
+Ensure the camera follows the player (global.player_instance) immediately after entering the new room.
+
+Optional: Use Persistent Objects
+If obj_controller is marked as persistent, it will remain active between room transitions, retaining the camera's state. To do this:
+
+Open the Properties of obj_controller.
+Check the box for Persistent.
+When obj_controller is persistent:
+
+You don't need to reinitialize the camera every time, as global.camera and its settings will carry over between rooms.
+You only need to update the camera position for the new room in the Room Start Event.
+Final Testing Checklist
+Add the Room Start Event to obj_controller.
+Mark obj_controller as persistent (optional but recommended).
+Run the game and transition between rooms.
+Verify that the camera tracks the player in each new room.
+Check the debug messages for any issues.
+Let me know how this works for your project! 😊
+
+
+
+
+
+You said:
+I currently have this code in the obj_controller room start event : // Room Start Event for obj_controller
+if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+} | when I added your code to the room event I got this error : ############################################################################################
+ERROR in action number 1
+of Other Event: Room Start for object obj_controller:
+Variable <unknown_object>.camera_exists(100035, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Other_4 (line 4) - if (!camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_controller_Other_4 (line 4)
+ChatGPT said:
+
+The error indicates that the function camera_exists(global.camera) is being called, but global.camera hasn't been initialized before this check. This happens because global.camera doesn't yet exist when the Room Start event runs.
+
+To fix this, we need to explicitly ensure that global.camera is initialized before checking or using it.
+
+Updated Code for the Room Start Event
+Here’s the corrected Room Start Event code, with a safeguard for global.camera:
+
+gml
+Copy code
+// Room Start Event for obj_controller
+
+// Ensure global.player_instance exists
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Ensure global.camera is initialized
+if (!variable_global_exists("camera") || !camera_exists(global.camera)) {
+    global.camera = camera_create(); // Create the camera
+}
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign the camera to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set the camera position
+} else {
+    show_debug_message("Warning: global.player_instance not found in Room Start Event.");
+}
+Key Fixes:
+variable_global_exists for global.camera:
+
+Ensures global.camera is explicitly checked before using camera_exists().
+This prevents errors when global.camera is undefined.
+Fallback for global.player_instance:
+
+If the player instance doesn't exist, it is recreated based on global.current_skin.
+Reinitialize the Camera on Room Start:
+
+The camera is recreated and reattached to the view if it doesn't exist or was reset during the room transition.
+Why This Works
+Global Camera Safeguard:
+The variable_global_exists check ensures that global.camera exists before calling camera_exists().
+
+Player Instance Handling:
+Ensures the player instance (global.player_instance) is always present when entering a new room, even if it was accidentally destroyed or lost during the transition.
+
+Additional Tip: Persistent obj_controller
+If obj_controller is persistent, you won't need to recreate global.camera after each room transition. To make obj_controller persistent:
+
+Open obj_controller in the Asset Browser.
+Check the Persistent box in the object's properties.
+If you mark obj_controller as persistent, modify the Room Start Event to avoid unnecessary camera creation:
+
+gml
+Copy code
+// Only reset the camera position on room start if it's already initialized
+if (camera_exists(global.camera)) {
+    if (instance_exists(global.player_instance)) {
+        var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+        var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+        follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+        follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+        camera_set_view_pos(global.camera, follow_x, follow_y);
+    }
+}
+Testing the Fix
+Add the updated Room Start Event to obj_controller.
+Test room transitions to ensure:
+The player instance is present and functional.
+The camera properly tracks the player in the new room.
+Let me know how it works! 😊

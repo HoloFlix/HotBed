@@ -1,0 +1,17 @@
+// Check and initialize the player instance
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_create_layer(0, 0, "Instances", obj_player);
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Check and initialize the camera
+if (!camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("Camera created with ID: " + string(global.camera));
+}
+
+// Transition to the next room once everything is initialized
+if (instance_exists(global.player_instance) && camera_exists(global.camera)) {
+    global.initialized = true; // Mark initialization as complete
+    room_goto_next(); // Move to the next room
+}

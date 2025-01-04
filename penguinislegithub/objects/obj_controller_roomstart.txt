@@ -1,0 +1,47 @@
+// Ensure global.player_instance exists
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Safely initialize global.camera
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+}
+
+// Debugging: Confirm camera initialization
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Room Start.");
+}
