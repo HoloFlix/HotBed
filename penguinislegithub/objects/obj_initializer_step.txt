@@ -1,0 +1,16 @@
+// Step Event for obj_initializer
+
+if (!variable_global_exists("camera")) {
+    show_debug_message("DEBUG: Global camera does not exist. Skipping Step Event.");
+    return; // Exit the event if the camera doesn't exist
+}
+
+if (!(global.camera)) {
+    show_debug_message("DEBUG: Camera does not exist. Reinitializing...");
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+} else {
+    show_debug_message("DEBUG: Camera exists in obj_initializer Step Event.");
+}
