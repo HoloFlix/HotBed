@@ -23,42 +23,27 @@ obj_player: Initialized. Driving state: 0
 DEBUG: New global camera created. ID: 97
 Player states defined: NORMAL = 0, ICETRUCK = 1
 DEBUG: Reattached to existing global camera. ID: 97
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100412
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100412
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100412
-Total memory used = 8266801 (0x007e2431) bytes 7.88MB
-Free memory = 6480096 (0x0062e0e0) bytes 6.18MB
-Peak memory used = 11423025 (0x00ae4d31) bytes 10.89MB
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+Total memory used = 8273341 (0x007e3dbd) bytes 7.89MB
+Free memory = 6480960 (0x0062e440) bytes 6.18MB
+Peak memory used = 11424465 (0x00ae52d1) bytes 10.90MB
 **********************************.
 Entering main loop.
 **********************************.
-Camera at: (16, 84)
-Camera at: (16, 84)
-Player instance: ref instance 100412
-Viewport object: 100412
-Viewport position: (16, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (16, 84)
-Camera at: (16, 84)
-Player instance: ref instance 100412
-Viewport object: 100412
-Viewport position: (16, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (16, 84)
-Camera at: (16, 84)
-Player instance: ref instance 100412
-Viewport object: 100412
-Viewport position: (16, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (16, 84)
-Camera at: (16, 84)
-Player instance: ref instance 100412
-Viewport object: 100412
-Viewport position: (16, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (16, 84)
 Camera at: (16, 84)
 Player instance: ref instance 100412
@@ -521,9 +506,19 @@ Player instance: ref instance 100412
 Viewport object: 100412
 Viewport position: (0, 74)
 DEBUG: Camera exists in obj_initializer Step Event.
-E key pressed
 Camera at: (0, 74)
-E key pressed
+Camera at: (0, 74)
+Player instance: ref instance 100412
+Viewport object: 100412
+Viewport position: (0, 74)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 74)
+Camera at: (0, 74)
+Player instance: ref instance 100412
+Viewport object: 100412
+Viewport position: (0, 74)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 74)
 Camera at: (0, 74)
 Player instance: ref instance 100412
 Viewport object: 100412
@@ -535,10 +530,70 @@ obj_player_icetruck: Initialized. Player instance ID: ref instance 100413
 Camera at: (0, 74)
 Camera at: (0, 74)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (0, 70)
+Camera at: (0, 70)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 3, Sprite Index: ref sprite 7
 Current Face: 3
@@ -547,678 +602,1034 @@ Camera at: (0, 74)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 3, Sprite Index: ref sprite 7
 Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 6, Sprite Index: ref sprite 6
-Current Face: 6
 Camera at: (0, 78)
 Camera at: (0, 78)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 6, Sprite Index: ref sprite 6
-Current Face: 6
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
 Camera at: (0, 82)
 Camera at: (0, 82)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 6, Sprite Index: ref sprite 6
-Current Face: 6
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
 Camera at: (0, 86)
 Camera at: (0, 86)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 6, Sprite Index: ref sprite 6
-Current Face: 6
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
 Camera at: (0, 90)
 Camera at: (0, 90)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 94)
+Camera at: (0, 94)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 98)
+Camera at: (0, 98)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 102)
+Camera at: (0, 102)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 106)
+Camera at: (0, 106)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 110)
+Camera at: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 114)
+Camera at: (0, 114)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 118)
+Camera at: (0, 118)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 122)
+Camera at: (0, 122)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+E key pressed
+Switching to player
+obj_player: Initialized. Driving state: 0
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 126)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 128)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 130)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 132)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 134)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 136)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 138)
+Camera at: (0, 138)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 138)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 140)
+Camera at: (0, 140)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 140)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 142)
+Camera at: (0, 142)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 142)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 144)
+Camera at: (0, 144)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 144)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100414
+Viewport object: 100414
+Viewport position: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+E key pressed
+Switching to icetruck
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100416
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (0, 90)
-Camera at: (0, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (4, 90)
-Camera at: (4, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 0, Sprite Index: ref sprite 13
 Current Face: 0
-Camera at: (8, 90)
-Camera at: (8, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (12, 90)
-Camera at: (12, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (16, 90)
-Camera at: (16, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (20, 90)
-Camera at: (20, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (24, 90)
-Camera at: (24, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (28, 90)
-Camera at: (28, 90)
+Camera at: (0, 146)
+Camera at: (0, 146)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (32, 86)
-Camera at: (32, 86)
+Camera at: (0, 142)
+Camera at: (0, 142)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (36, 82)
-Camera at: (36, 82)
+Camera at: (0, 138)
+Camera at: (0, 138)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (40, 78)
-Camera at: (40, 78)
+Camera at: (0, 134)
+Camera at: (0, 134)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (44, 74)
-Camera at: (44, 74)
+Camera at: (0, 130)
+Camera at: (0, 130)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (48, 70)
-Camera at: (48, 70)
+Camera at: (4, 126)
+Camera at: (4, 126)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (52, 66)
-Camera at: (52, 66)
+Camera at: (8, 122)
+Camera at: (8, 122)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (56, 62)
-Camera at: (56, 62)
+Camera at: (12, 118)
+Camera at: (12, 118)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (60, 58)
-Camera at: (60, 58)
+Camera at: (16, 114)
+Camera at: (16, 114)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (64, 54)
-Camera at: (64, 54)
+Camera at: (20, 110)
+Camera at: (20, 110)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (68, 50)
-Camera at: (68, 50)
+Camera at: (24, 106)
+Camera at: (24, 106)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (72, 46)
-Camera at: (72, 46)
+Camera at: (28, 102)
+Camera at: (28, 102)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (76, 42)
-Camera at: (76, 42)
+Camera at: (32, 98)
+Camera at: (32, 98)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (80, 38)
-Camera at: (80, 38)
+Camera at: (36, 94)
+Camera at: (36, 94)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
-Camera at: (84, 34)
-Camera at: (84, 34)
+Camera at: (40, 90)
+Camera at: (40, 90)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 4, Sprite Index: ref sprite 15
 Current Face: 4
+Camera at: (44, 86)
+Camera at: (44, 86)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (48, 82)
+Camera at: (48, 82)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (52, 78)
+Camera at: (52, 78)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (56, 74)
+Camera at: (56, 74)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (60, 70)
+Camera at: (60, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (64, 66)
+Camera at: (64, 66)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (68, 62)
+Camera at: (68, 62)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (72, 58)
+Camera at: (72, 58)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (76, 54)
+Camera at: (76, 54)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (80, 50)
+Camera at: (80, 50)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (84, 46)
+Camera at: (84, 46)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 4, Sprite Index: ref sprite 15
+Current Face: 4
+Camera at: (88, 42)
+Camera at: (88, 42)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 38)
+Camera at: (88, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 34)
+Camera at: (88, 34)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
 Camera at: (88, 30)
 Camera at: (88, 30)
 DEBUG: Camera exists in obj_initializer Step Event.
-Face: 4, Sprite Index: ref sprite 15
-Current Face: 4
-Camera at: (92, 26)
-Camera at: (92, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 4, Sprite Index: ref sprite 15
-Current Face: 4
-Camera at: (96, 22)
-Camera at: (96, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 4, Sprite Index: ref sprite 15
-Current Face: 4
-Camera at: (100, 18)
-Camera at: (100, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 4, Sprite Index: ref sprite 15
-Current Face: 4
-Camera at: (104, 14)
-Camera at: (104, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 4, Sprite Index: ref sprite 15
-Current Face: 4
-Camera at: (108, 10)
-Camera at: (108, 10)
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 26)
+Camera at: (88, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 6)
-Camera at: (108, 6)
+Camera at: (88, 22)
+Camera at: (88, 22)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 2)
-Camera at: (108, 2)
+Camera at: (88, 18)
+Camera at: (88, 18)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 14)
+Camera at: (88, 14)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 10)
+Camera at: (88, 10)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 6)
+Camera at: (88, 6)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 2)
+Camera at: (88, 2)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (108, 0)
-Camera at: (108, 0)
+Camera at: (88, 0)
+Camera at: (88, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 0)
+Camera at: (88, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 0)
+Camera at: (88, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 0)
+Camera at: (88, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 1, Sprite Index: ref sprite 16
+Current Face: 1
+Camera at: (88, 0)
+Camera at: (88, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
 DEBUG: Reattached to existing global camera. ID: 97
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
 Camera at: (111, 184)
 Camera at: (111, 184)
 Camera at: (111, 184)
@@ -1489,2403 +1900,1615 @@ Camera at: (111, 184)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Room start: Player instance already exists as player
-Viewport set to follow player instance: ref instance 100413
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (107, 0)
-Camera at: (107, 0)
-Camera at: (107, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (107, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (103, 0)
-Camera at: (103, 0)
-Camera at: (103, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (103, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (99, 0)
-Camera at: (99, 0)
-Camera at: (99, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (99, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (95, 0)
-Camera at: (95, 0)
-Camera at: (95, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (95, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (91, 0)
-Camera at: (91, 0)
-Camera at: (91, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (91, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (87, 0)
-Camera at: (87, 0)
-Camera at: (87, 0)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (87, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (83, 2)
-Camera at: (83, 2)
-Camera at: (83, 2)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (83, 2)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (79, 6)
-Camera at: (79, 6)
-Camera at: (79, 6)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (79, 6)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (75, 10)
-Camera at: (75, 10)
-Camera at: (75, 10)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (75, 10)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (71, 14)
-Camera at: (71, 14)
-Camera at: (71, 14)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (71, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (67, 18)
-Camera at: (67, 18)
-Camera at: (67, 18)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (67, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (63, 22)
-Camera at: (63, 22)
-Camera at: (63, 22)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (63, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (59, 26)
-Camera at: (59, 26)
-Camera at: (59, 26)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (59, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (55, 30)
-Camera at: (55, 30)
-Camera at: (55, 30)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (55, 30)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (51, 34)
-Camera at: (51, 34)
-Camera at: (51, 34)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 34)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (47, 38)
-Camera at: (47, 38)
-Camera at: (47, 38)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (47, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (43, 42)
-Camera at: (43, 42)
-Camera at: (43, 42)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (43, 46)
-Camera at: (43, 46)
-Camera at: (43, 46)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 50)
-Camera at: (43, 50)
-Camera at: (43, 50)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 54)
-Camera at: (43, 54)
-Camera at: (43, 54)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 58)
-Camera at: (43, 58)
-Camera at: (43, 58)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 62)
-Camera at: (43, 62)
-Camera at: (43, 62)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 66)
-Camera at: (43, 66)
-Camera at: (43, 66)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 70)
-Camera at: (43, 70)
-Camera at: (43, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 74)
-Camera at: (43, 74)
-Camera at: (43, 74)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 78)
-Camera at: (43, 78)
-Camera at: (43, 78)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 82)
-Camera at: (43, 82)
-Camera at: (43, 82)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 86)
-Camera at: (43, 86)
-Camera at: (43, 86)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 90)
-Camera at: (43, 90)
-Camera at: (43, 90)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 3, Sprite Index: ref sprite 7
-Current Face: 3
-Camera at: (43, 94)
-Camera at: (43, 94)
-Camera at: (43, 94)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (39, 98)
-Camera at: (39, 98)
-Camera at: (39, 98)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (39, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 7, Sprite Index: ref sprite 5
-Current Face: 7
-Camera at: (35, 102)
-Camera at: (35, 102)
-Camera at: (35, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (35, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (31, 102)
-Camera at: (31, 102)
-Camera at: (31, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (31, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (27, 102)
-Camera at: (27, 102)
-Camera at: (27, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (27, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (23, 102)
-Camera at: (23, 102)
-Camera at: (23, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (23, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (19, 102)
-Camera at: (19, 102)
-Camera at: (19, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (19, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (15, 102)
-Camera at: (15, 102)
-Camera at: (15, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (15, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (11, 102)
-Camera at: (11, 102)
-Camera at: (11, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (11, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (7, 102)
-Camera at: (7, 102)
-Camera at: (7, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (7, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 2, Sprite Index: ref sprite 12
-Current Face: 2
-Camera at: (3, 102)
-Camera at: (3, 102)
-Camera at: (3, 102)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (3, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 5, Sprite Index: ref sprite 14
-Current Face: 5
-Camera at: (0, 98)
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 5, Sprite Index: ref sprite 14
-Current Face: 5
-Camera at: (0, 94)
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 94)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 90)
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 90)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 86)
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 86)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 82)
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 82)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 78)
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 78)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 74)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-E key pressed
-Camera at: (0, 70)
-E key pressed
-Camera at: (0, 70)
-E key pressed
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 E key pressed
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
 DEBUG: Camera exists in obj_initializer Step Event.
 Face: 1, Sprite Index: ref sprite 16
 Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 1, Sprite Index: ref sprite 16
-Current Face: 1
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (3, 70)
-Camera at: (3, 70)
-Camera at: (3, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (3, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (7, 70)
-Camera at: (7, 70)
-Camera at: (7, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (7, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (11, 70)
-Camera at: (11, 70)
-Camera at: (11, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (11, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (15, 70)
-Camera at: (15, 70)
-Camera at: (15, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (15, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (19, 70)
-Camera at: (19, 70)
-Camera at: (19, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (19, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (23, 70)
-Camera at: (23, 70)
-Camera at: (23, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (23, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (27, 70)
-Camera at: (27, 70)
-Camera at: (27, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (27, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (31, 70)
-Camera at: (31, 70)
-Camera at: (31, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (31, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (35, 70)
-Camera at: (35, 70)
-Camera at: (35, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (35, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (35, 70)
-Camera at: (35, 70)
-Camera at: (35, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (35, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (35, 70)
-Camera at: (35, 70)
-Camera at: (35, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (35, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (39, 70)
-Camera at: (39, 70)
-Camera at: (39, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (39, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (43, 70)
-Camera at: (43, 70)
-Camera at: (43, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (43, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (47, 70)
-Camera at: (47, 70)
-Camera at: (47, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (47, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
-Camera at: (51, 70)
-Camera at: (51, 70)
-Camera at: (51, 70)
-Player instance: ref instance 100413
-Viewport object: 100413
-Viewport position: (51, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Face: 0, Sprite Index: ref sprite 13
-Current Face: 0
+Camera at: (111, 183)
+Camera at: (111, 183)
+Camera at: (111, 183)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 184)
+Camera at: (111, 184)
+Camera at: (111, 184)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100416
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 0)
+Camera at: (111, 0)
+Camera at: (111, 0)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 2)
+Camera at: (111, 2)
+Camera at: (111, 2)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 2)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 6)
+Camera at: (111, 6)
+Camera at: (111, 6)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 6)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 10)
+Camera at: (111, 10)
+Camera at: (111, 10)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 10)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+E key pressed
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
+Camera at: (111, 14)
+Camera at: (111, 14)
+Camera at: (111, 14)
+Player instance: ref instance 100416
+Viewport object: 100416
+Viewport position: (111, 14)
+DEBUG: Camera exists in obj_initializer Step Event.
+Face: 3, Sprite Index: ref sprite 7
+Current Face: 3
 ###game_end###254
