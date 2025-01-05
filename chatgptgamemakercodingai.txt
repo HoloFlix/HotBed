@@ -3469,3 +3469,2767 @@ Test room transitions to ensure:
 The player instance is present and functional.
 The camera properly tracks the player in the new room.
 Let me know how it works! 😊
+
+[I then shared this conversation with a GitHub Ai and this was our following converation]
+
+Can you take a look at these files located at  penguinislegithub/objects/ i.e. obj_button_create.txt, obj_button_draw.txt, obj_button_leftpressed.txt, obj_controller_create.txt, obj_controller_leftpressed.txt, obj_controller_roomstart.txt, obj_controller_step.txt, obj_icetruck_create.txt, obj_icetruck_destroy.txt, obj_icetruck_draw.txt, obj_icetruck_step.txt, obj_initializer_create.txt, obj_initializer_gamestart.txt, obj_initializer_step.txt, obj_npc_create.txt, obj_npc_step.txt, obj_player_create.txt, obj_player_icetruck_create.txt, obj_player_icetruck_step.txt, obj_player_leftpressed.txt, obj_player_step.txt, obj_skinpicker_create.txt, obj_skinpicker_destroy.txt, obj_skinpicker_draw.txt and obj_skinpicker_keypress-p.txt. lastly Ive uploaded a another file called chatgptgamemakercodingai.txt located in the main branch. Have a read of all these txt files and then provide improved code, make any upgrades where necessary. But most importantly fix the player viewport issue
+I have reviewed the provided files and have a better understanding of the current implementation. Let's address the viewport issue first and then look at any potential improvements to the code.
+
+Viewport Issue Fix
+To ensure the camera follows the player correctly, we need to consistently update the camera's position to follow the global.player_instance. Let's focus on the obj_controller step event, which is responsible for updating the camera.
+
+Updated Step Event Code for obj_controller
+gml
+// Step Event for obj_controller
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Calculate target camera position to center on the player
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp the camera position to ensure it stays within the room boundaries
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Smoothly move the camera towards the target position
+    var current_x = camera_get_view_x(global.camera);
+    var current_y = camera_get_view_y(global.camera);
+    var smooth_x = lerp(current_x, target_x, 0.1);
+    var smooth_y = lerp(current_y, target_y, 0.1);
+
+    // Set the new camera position
+    camera_set_view_pos(global.camera, smooth_x, smooth_y);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(camera_get_view_x(global.camera)) + ", " + string(camera_get_view_y(global.camera)) + ")");
+} else {
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+Improvements and Enhancements
+Camera Initialization:
+Ensure the camera is initialized properly in the create and room start events of obj_controller.
+Create Event Code for obj_controller
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!variable_global_exists("player_instance")) {
+    global.current_skin = "player"; // Default skin
+    global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    global.player_instance_initialized = true; // Signal completion of initialization
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+Room Start Event Code for obj_controller
+gml
+// Ensure global.player_instance exists
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Safely initialize global.camera
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+}
+
+// Debugging: Confirm camera initialization
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Room Start.");
+}
+Summary
+Viewport Issue Fix: The step event for obj_controller now smoothly updates the camera position to follow the player.
+Camera Initialization: Ensured the camera is properly initialized in the create and room start events of obj_controller.
+By following these steps, the camera should now dynamically and smoothly follow the player. If you encounter any further issues or need additional modifications, feel free to ask!
+
+I ran the code the got this in the output log :Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_controller: global.player_instance initialized with instance ID: -4
+Error: global.player_instance not initialized. Camera cannot follow.
+Warning: global.player_instance not initialized! Using current instance.
+xspd: 0, yspd: 0
+Input: Right=0, Left=0, Up=0, Down=0
+Driving State: 0
+Player instance: ref instance 100394
+obj_player: global.player_instance value: ref instance 100394
+Player instance created with ID: ref instance 100394
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_initializer:
+Variable <unknown_object>.camera_exists(100036, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Create_0 (line 7) - if (!camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Create_0 (line 7)
+It appears that there are multiple errors and warnings in the output log related to the initialization of the global.player_instance and global.camera. Specifically, the errors suggest that the camera is not being initialized correctly and that there are issues with setting and referencing the global.player_instance.
+
+Steps to Address the Issues
+Ensure global.player_instance is Initialized:
+
+The global.player_instance should be properly assigned an instance of the player object.
+Ensure that the player object is created before any other dependent actions.
+Initialize global.camera Correctly:
+
+Make sure the camera is created and assigned correctly.
+Ensure that the camera exists before attempting to use it.
+Fixing the Initialization in obj_initializer
+Based on the error log, it seems the obj_initializer is encountering an issue with the global.camera initialization. Let's review and update the Create event of obj_initializer to handle this properly.
+
+Updated Create Event Code for obj_initializer
+gml
+// Create Event for obj_initializer
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Summary
+Initialization of global.player_instance: Ensure that global.player_instance is created before any other dependent actions.
+Initialization of global.camera: Ensure that global.camera is created and assigned correctly.
+By following these steps, the initialization issues related to global.player_instance and global.camera should be resolved. If further issues persist, please provide additional details or logs for further troubleshooting.
+
+I ran the revised code and this was the new error : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_controller: global.player_instance initialized with instance ID: -4
+Error: global.player_instance not initialized. Camera cannot follow.
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_initializer:
+Variable <unknown_object>.camera_exists(100036, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Create_0 (line 9) - if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Create_0 (line 9)
+The error suggests that the global.camera is not properly initialized before it is being checked in the Create event of obj_initializer. We need to ensure that the global.camera and global.player_instance are properly initialized and that the camera_exists function is correctly used.
+
+Here is a refined approach:
+
+Ensure global.camera and global.player_instance are initialized in obj_controller.
+Properly handle global.camera and global.player_instance in the Create event of obj_initializer.
+Updated Code for obj_controller
+Create Event for obj_controller
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+Step Event for obj_controller
+gml
+// Step Event for obj_controller
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Calculate target camera position to center on the player
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp the camera position to ensure it stays within the room boundaries
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Smoothly move the camera towards the target position
+    var current_x = camera_get_view_x(global.camera);
+    var current_y = camera_get_view_y(global.camera);
+    var smooth_x = lerp(current_x, target_x, 0.1);
+    var smooth_y = lerp(current_y, target_y, 0.1);
+
+    // Set the new camera position
+    camera_set_view_pos(global.camera, smooth_x, smooth_y);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(camera_get_view_x(global.camera)) + ", " + string(camera_get_view_y(global.camera)) + ")");
+} else {
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+Updated Code for obj_initializer
+Create Event for obj_initializer
+gml
+// Create Event for obj_initializer
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Summary
+Initialization of global.player_instance: Ensure that global.player_instance is created and assigned correctly.
+Initialization of global.camera: Ensure that global.camera is created and exists before any dependent actions.
+By following these steps, the initialization issues related to global.player_instance and global.camera should be resolved. If further issues persist, please provide additional details or logs for further troubleshooting.
+
+Can you tell me how I should have the objects in the rooms set up, that may be why the error persits. I have a rm_init that contains the obj_controller, obj_camera and obj_initializer, its creation code is as follows: // rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+| I am then taken to the next room which is basically the player start. In all the other rooms I just have the obj_camera and obj_initalizer. Can you describe and clearly explain how I should have these objects in the rooms?
+Sure, let's go through the setup for your rooms and objects to ensure everything is initialized correctly and avoid the errors you're encountering.
+
+Understanding the Objects
+obj_controller: This object is responsible for initializing global variables, managing the player's instance, and controlling other high-level game states.
+obj_camera: This object should handle the camera logic, ensuring it follows the player and is properly set up.
+obj_initializer: This object ensures that the global variables and instances are correctly initialized when entering new rooms.
+Room Setup
+Room: rm_init
+Purpose: This room is used for initializing global variables and instances.
+Objects: obj_controller, obj_camera, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Purpose: These rooms are where the gameplay occurs, starting with the player.
+Objects: obj_camera, obj_initializer
+Detailed Object Descriptions and Their Roles
+obj_controller
+Create Event: Initializes global variables, player instance, and camera.
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+obj_camera
+Step Event: Ensure the camera follows the player.
+gml
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Calculate target camera position to center on the player
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp the camera position to ensure it stays within the room boundaries
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Smoothly move the camera towards the target position
+    var current_x = camera_get_view_x(global.camera);
+    var current_y = camera_get_view_y(global.camera);
+    var smooth_x = lerp(current_x, target_x, 0.1);
+    var smooth_y = lerp(current_y, target_y, 0.1);
+
+    // Set the new camera position
+    camera_set_view_pos(global.camera, smooth_x, smooth_y);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(camera_get_view_x(global.camera)) + ", " + string(camera_get_view_y(global.camera)) + ")");
+} else {
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+obj_initializer
+Create Event: Ensure the global variables and instances are correctly initialized when entering new rooms.
+gml
+// Create Event for obj_initializer
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Summary of Room and Object Setup
+rm_init Room:
+
+Contains obj_controller to initialize global variables and player instance.
+Contains obj_camera to set up the camera.
+Contains obj_initializer to ensure proper initialization of variables and instances.
+Other Rooms (e.g., Player Start Room):
+
+Contains obj_camera to follow the player.
+Contains obj_initializer to ensure proper initialization of variables and instances.
+By following this setup, you should ensure that all global variables and instances are properly initialized and the camera follows the player as expected. If you encounter any further issues, please provide additional details or logs for further troubleshooting.
+
+I adjusted the code and set the objects up correctly in their rooms and got this error when starting up the program : ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_camera:
+global variable name 'player_instance' index (100014) not set before reading it.
+ at gml_Object_obj_camera_Create_0 (line 16) - } else if (instance_exists(global.player_instance)) {
+############################################################################################
+gml_Object_obj_camera_Create_0 (line 16)
+The error you're encountering suggests that the global.player_instance variable is being accessed before it has been initialized. To ensure that global.player_instance is initialized properly, let's review and adjust the initialization sequence and the order in which objects are created and their events are executed.
+
+Ensure Proper Initialization Sequence
+obj_controller: Should handle the initialization of global variables including global.player_instance.
+obj_camera: Should only attempt to access global.player_instance after it has been initialized by obj_controller.
+obj_initializer: Ensures global variables and instances are initialized properly when entering new rooms.
+Steps to Fix the Issue
+Ensure obj_controller initializes global.player_instance before any other objects try to access it.
+Adjust the Create Event of obj_camera to handle cases where global.player_instance may not yet be initialized.
+Updated Code for obj_controller
+Create Event for obj_controller
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+Updated Code for obj_camera
+Create Event for obj_camera
+gml
+// Create Event for obj_camera
+
+// Ensure global.camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Check and wait for the player instance if it doesn't exist
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("Warning: global.player_instance not initialized! Waiting for initialization...");
+} else {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+}
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_camera, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera, obj_initializer
+Summary
+obj_controller: Initializes global variables and global.player_instance.
+obj_camera: Waits for global.player_instance to be initialized before attempting to follow it.
+Room Setup: Ensure rm_init contains obj_controller, obj_camera, and obj_initializer for initial setup.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.player_instance should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+What order should the object be in? "obj_controller, obj_camera, obj_initializer" like youve layed out? I will also inform you that I have both viewports and cameras turned on and viewport 0 set to visible aswell as no object selected in the object following. Is there anythign you might need to know about my project to sort the issue? This is the output log from the most recent test : Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Global.camera does not exist. Initializing...
+Global.camera is invalid. Creating a new camera...
+New camera created with ID: 97
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_camera:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+ at gml_Object_obj_camera_Create_0 (line 16) - if (camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_camera_Create_0 (line 16)
+Based on the log and the issues you're encountering, it seems there is a problem with the initialization sequence of the global variables and the objects. Let's make sure everything is set up correctly.
+
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera, obj_initializer
+Object Initialization Order and Events
+Ensure the initialization sequence is correct. Here is a detailed breakdown:
+
+obj_controller
+Create Event: Initializes global variables, player instance, and camera.
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+
+// Mark initialization as done
+global.initialized = true;
+obj_camera
+Create Event: Ensure the camera is created and set up.
+
+gml
+// Create Event for obj_camera
+
+// Ensure global.camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Wait for the player instance to be initialized
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("Warning: global.player_instance not initialized! Waiting for initialization...");
+}
+Step Event: Ensure the camera follows the player.
+
+gml
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Calculate target camera position to center on the player
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp the camera position to ensure it stays within the room boundaries
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Smoothly move the camera towards the target position
+    var current_x = camera_get_view_x(global.camera);
+    var current_y = camera_get_view_y(global.camera);
+    var smooth_x = lerp(current_x, target_x, 0.1);
+    var smooth_y = lerp(current_y, target_y, 0.1);
+
+    // Set the new camera position
+    camera_set_view_pos(global.camera, smooth_x, smooth_y);
+
+    // Debug messages to verify updates
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(camera_get_view_x(global.camera)) + ", " + string(camera_get_view_y(global.camera)) + ")");
+} else {
+    show_debug_message("Error: global.player_instance does not exist.");
+}
+obj_initializer
+Create Event: Ensure the global variables and instances are correctly initialized when entering new rooms.
+gml
+// Create Event for obj_initializer
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Summary
+Initialization Order: Ensure obj_controller initializes global.player_instance before obj_camera tries to access it.
+Room Setup: rm_init should contain obj_controller and obj_initializer. Other rooms should contain obj_camera and obj_initializer.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.player_instance and global.camera should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+This is the new output from the revised code : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=22
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Warning: global.player_instance not initialized! Using current instance.
+xspd: 0, yspd: 0
+Input: Right=0, Left=0, Up=0, Down=0
+Driving State: 0
+Player instance: ref instance 100397
+obj_player: global.player_instance value: ref instance 100397
+obj_controller: global.player_instance initialized with instance ID: ref instance 100397
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_initializer:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Create_0 (line 9) - if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Create_0 (line 9)
+The error indicates that the camera_exists function is being called before the global.camera variable is properly initialized. This problem can arise if the obj_initializer object's Create event is attempting to access the global.camera before it has been set up by obj_controller.
+
+To resolve this issue, we need to ensure that global.camera is properly initialized and checked before it is used. Here is a refined approach:
+
+Initialization Order: Ensure obj_controller initializes the global.camera before obj_initializer tries to access it.
+Check Initialization: Update obj_initializer to handle cases where global.camera might not be initialized yet.
+Updated obj_initializer
+Create Event for obj_initializer
+gml
+// Create Event for obj_initializer
+
+// Check if the global camera is initialized
+if (!variable_global_exists("camera") || !is_real(global.camera) || global.camera == -1) {
+    show_debug_message("Global.camera does not exist or is invalid. Initializing...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+    show_debug_message("Camera assigned to view and sized correctly.");
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Updated obj_camera
+Create Event for obj_camera
+gml
+// Create Event for obj_camera
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = -1; // Initialize to an invalid value
+}
+
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera is invalid. Creating a new camera...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Attach the camera to the view
+if (camera_exists(global.camera)) {
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Error: Camera cannot be assigned to the view.");
+}
+
+// Wait for the player instance to be initialized
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("Warning: global.player_instance not initialized! Waiting for initialization...");
+}
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera, obj_initializer
+Summary
+Initialization Order: Ensure obj_controller initializes global.camera before obj_initializer tries to access it.
+Check Initialization: Update obj_initializer to handle cases where global.camera might not be initialized yet.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.camera should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+ok this is the error I got have making the changes : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=3
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Warning: global.player_instance not initialized! Using current instance.
+xspd: 0, yspd: 0
+Input: Right=0, Left=0, Up=0, Down=0
+Driving State: 0
+Player instance: ref instance 100397
+obj_player: global.player_instance value: ref instance 100397
+obj_controller: global.player_instance initialized with instance ID: ref instance 100397
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_initializer:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Create_0 (line 11) - if (camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Create_0 (line 11) | and this is all the feather messages in my project, let me know if its helpful : E GM1041 The type 'Id.Instance' appears where the type 'Id.Sound, Asset.GMSound' is expected. obj_musicmanager : Step 7:23
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 25:20
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound' is expected. obj_musicmanager : Step 28:37
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 75:21
+E GM1041 The type 'Id.Instance' appears where the type 'Id.Sound, Asset.GMSound' is expected. obj_musicmanager : Step 81:25
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 81:67
+W GM2016 Instance variable 'right_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 24:1
+W GM2016 Instance variable 'left_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 25:1
+W GM2016 Instance variable 'up_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 26:1
+W GM2016 Instance variable 'down_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 27:1
+W GM2016 Instance variable 'right_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 2:1
+W GM2016 Instance variable 'left_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 3:1
+W GM2016 Instance variable 'up_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 4:1
+W GM2016 Instance variable 'down_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 5:1
+E GM1041 The type 'Pointer.Texture' appears where the type 'Real' is expected. obj_skinpicker : Draw 6:67
+E GM1041 The type 'Undefined' appears where the type 'Real' is expected. obj_slippery : Step 4:24
+Based on the error you provided, the issue is still with the camera_exists function being called before the global.camera variable is properly initialized. This can happen if obj_initializer is running before obj_controller has properly set up the global.camera.
+
+To address this issue, let's implement a more robust check for global.camera and ensure that it's initialized correctly before any other objects attempt to use it.
+
+Steps to Fix the Issue
+Ensure obj_controller initializes global.camera and global.player_instance properly before other objects are created.
+Update obj_initializer to handle cases where global.camera might not be initialized yet.
+Updated obj_initializer
+Create Event for obj_initializer
+gml
+// Create Event for obj_initializer
+
+// Initializing camera if not exists
+if (!variable_global_exists("camera") || !camera_exists(global.camera)) {
+    show_debug_message("Global.camera does not exist or is invalid. Initializing...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+    show_debug_message("Camera assigned to view and sized correctly.");
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+
+// Center the camera on the player
+if (instance_exists(global.player_instance)) {
+    var follow_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var follow_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    follow_x = clamp(follow_x, 0, room_width - camera_get_view_width(global.camera));
+    follow_y = clamp(follow_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, follow_x, follow_y); // Set camera position
+} else {
+    show_debug_message("Error: global.player_instance does not exist in Create Event.");
+}
+Updated obj_camera
+Create Event for obj_camera
+gml
+// Create Event for obj_camera
+
+// Ensure global camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Confirm that the camera exists
+if (camera_exists(global.camera)) {
+    show_debug_message("Camera initialized successfully with ID: " + string(global.camera));
+    view_set_camera(0, global.camera); // Assign the camera to view[0]
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+} else {
+    show_debug_message("Critical Error: Camera initialization failed.");
+}
+
+// Wait for the player instance to be initialized
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("Warning: global.player_instance not initialized! Waiting for initialization...");
+}
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera, obj_initializer
+Summary
+Initialization Order: Ensure obj_controller initializes global.camera and global.player_instance properly before other objects are created.
+Check Initialization: Update obj_initializer to handle cases where global.camera might not be initialized yet.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.camera should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+this is the new error after adding the revised code: ############################################################################################
+ERROR in action number 1
+of Create Event for object obj_initializer:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Create_0 (line 4) - if (!variable_global_exists("camera") || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Create_0 (line 4) | it still seems to be an issue with the camera_exists function being called before the global.camera variable is properly initialized. Is there any way we can overhaul how the player camera viewport works? I want the viewport to follow the player as they move around and when they interact with the icetruck the player camera viewport then switches to the obj_player_icetruck and follows that around until they exit. 
+Sure, let's approach this by overhauling the way the camera and viewport are managed. We will ensure that the camera follows the player or the ice truck depending on which one is active.
+
+To achieve this, we will:
+
+Create a dedicated camera object that handles all camera logic.
+Ensure the camera object is initialized properly and follows the active player instance.
+Steps to Implement
+Create a Dedicated Camera Object: This object will handle all camera logic.
+Initialize the Camera Properly: Ensure the camera is created and set up correctly before any other objects try to access it.
+Follow the Active Player Instance: The camera will follow global.player_instance, which can be either the player or the ice truck.
+Updated Room and Object Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera
+Updated Object Definitions
+obj_controller
+Create Event: Initializes global variables, player instance, and camera setup.
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Mark initialization as done
+global.initialized = true;
+obj_camera
+Create Event: Ensures the camera is created and set up correctly.
+
+gml
+// Create Event for obj_camera
+
+// Create the camera if it doesn't exist
+if (!variable_global_exists("camera") || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+}
+
+// Set the camera to the view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+Step Event: Follows the active player instance.
+
+gml
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+obj_initializer
+Create Event: Ensures the player instance and other global variables are set up correctly.
+gml
+// Create Event for obj_initializer
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+Summary
+Dedicated Camera Object: obj_camera handles all camera logic and ensures it follows the active player instance.
+Initialization Sequence: obj_controller initializes global variables and player instance, ensuring global.camera is set up before any other objects try to use it.
+Room Setup: rm_init contains obj_controller and obj_initializer for initial setup. Other rooms contain obj_camera to handle camera logic.
+By following these steps, the camera should correctly follow the active player instance, whether it is the player or the ice truck, and the initialization issues should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+ok ive added the new code and placed the objects in the correct order in the right rooms, this is the full output log : "C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/bin/igor/windows/x64/Igor.exe"  -j=8  -options="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\build.bff" -v -- Windows Run
+
+Loaded Macros from C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0\macros.json
+Options: C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226\bin\platform_setting_defaults.json
+Options: C:\Users\Shorty\AppData\Roaming/GameMakerStudio2\unknownUser_unknownUserID\local_settings.json
+Options: C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0\targetoptions.json
+Setting up the Asset compiler
+C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/bin/assetcompiler/windows/x64/GMAssetCompiler.dll  /c /mv=1 /zpex /iv=0 /rv=0 /bv=0 /j=8  /gn="Penguin Isles" /td="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP" /cd="C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0" /rtp="C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226" /zpuf="C:\Users\Shorty\AppData\Roaming/GameMakerStudio2\unknownUser_unknownUserID" /prefabs="C:\ProgramData/GameMakerStudio2/Prefabs"   /ffe="d3t+fjZrf25zeTdwgjZ5em98a3GCN4ODbTZzeH5vdnZzfW94fW82eH92dnN9cjZ2eXFzeGl9fXk2fm99fjZtf31+eXdpb3iANnBzdn41cII2cYJpd3luaYFrdnZ6a3pvfDZxgml3eW5pcWt3b31+fHN6NnZzgG9pgWt2dnprem98aX1/bH1tfHN6fnN5eDZteW5vN29uc355fDZ9fnxzeml/eH99b25pa319b359Nn96bmt+bzd6fHltb319NnprbXVrcW83d2t4a3FvfA==" /m=windows /tgt=64 /nodnd /cfg="Default" /o="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM" /sh=True /optionsini="C:\Users\Shorty\AppData\Local\GameMak
+erStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM\options.ini"  /cvm /baseproject="C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226\BaseProject\BaseProject.yyp" "C:\Users\Shorty\GameMakerProjects\Penguin Isles\Penguin Isles.yyp" /preprocess="C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0"
+Found Project Format 2
++++ GMSC serialisation:  SUCCESSFUL LOAD AND LINK TIME: 298.2503ms
+Loaded Project: Penguin Isles
+finished.
+Found Project Format 2
++++ GMSC serialisation:  SUCCESSFUL LOAD AND LINK TIME: 13.3054ms
+Loaded Project: __yy_sdf_shader
+finished.
+Found Project Format 2
++++ GMSC serialisation:  SUCCESSFUL LOAD AND LINK TIME: 11.1042ms
+Loaded Project: __yy_sdf_effect_shader
+finished.
+Found Project Format 2
++++ GMSC serialisation:  SUCCESSFUL LOAD AND LINK TIME: 14.0598ms
+Loaded Project: __yy_sdf_blur_shader
+finished.
+Found Project Format 2
++++ GMSC serialisation:  SUCCESSFUL LOAD AND LINK TIME: 18.7356ms
+Loaded Project: GMPresetParticles
+finished.
+Release build
+Options: C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0\ExtensionOptions.json
+OptionsIni
+Options: C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0\PlatformOptions.json
+[Compile] Run asset compiler
+C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/bin/assetcompiler/windows/x64/GMAssetCompiler.dll  /c /mv=1 /zpex /iv=0 /rv=0 /bv=0 /j=8  /gn="Penguin Isles" /td="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP" /cd="C:\Users\Shorty\AppData\Roaming\GameMakerStudio2\Cache\GMS2CACHE\Penguin_Is_48A520EE_A3F9C3F0" /rtp="C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226" /zpuf="C:\Users\Shorty\AppData\Roaming/GameMakerStudio2\unknownUser_unknownUserID" /prefabs="C:\ProgramData/GameMakerStudio2/Prefabs"   /ffe="d3t+fjZrf25zeTdwgjZ5em98a3GCN4ODbTZzeH5vdnZzfW94fW82eH92dnN9cjZ2eXFzeGl9fXk2fm99fjZtf31+eXdpb3iANnBzdn41cII2cYJpd3luaYFrdnZ6a3pvfDZxgml3eW5pcWt3b31+fHN6NnZzgG9pgWt2dnprem98aX1/bH1tfHN6fnN5eDZteW5vN29uc355fDZ9fnxzeml/eH99b25pa319b359Nn96bmt+bzd6fHltb319NnprbXVrcW83d2t4a3FvfA==" /m=windows /tgt=64 /nodnd /cfg="Default" /o="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM" /sh=True /optionsini="C:\Users\Shorty\AppData\Local\GameMak
+erStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM\options.ini"  /cvm /baseproject="C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226\BaseProject\BaseProject.yyp" "C:\Users\Shorty\GameMakerProjects\Penguin Isles\Penguin Isles.yyp" /debug /bt=run /rt=vm /arch=32
+Looking for built-in fallback image in C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226\bin\BuiltinImages
+Compile Constants...finished.
+Remove DnD...finished.
+Compile Scripts...finished.
+Compile Rooms...finished..... 0 CC empty
+Compile Objects...finished.... 0 empty events
+Compile Timelines...finished.
+Compile Triggers...finished.
+Compile Extensions...finished.
+Global scripts...finished.
+finished.
+collapsing enums.
+Final Compile...
+-------------------------------------------------------
+NOTE: 6 Unused Assets found (and will be removed) - 
+
+GMFont :: temp_font
+GMSprite :: spr_rockslopes, spr_trees_tiles, spr_warp
+GMTileSet :: ts_rockslopes, ts_trees
+-------------------------------------------------------
+
+finished.
+Saving IFF file... C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM\Penguin Isles.win
+Writing Chunk... GEN8 size ... -0.00 MB
+option_game_speed=60
+Writing Chunk... OPTN size ... 0.00 MB
+Writing Chunk... LANG size ... 0.00 MB
+Writing Chunk... EXTN size ... 0.00 MB
+Writing Chunk... SOND size ... 0.00 MB
+Writing audio file bg_music.ogg...
+Writing Chunk... AGRP size ... 0.00 MB
+Writing Chunk... SPRT size ... 0.00 MB
+Writing Chunk... BGND size ... 0.00 MB
+Writing Chunk... PATH size ... 0.01 MB
+Writing Chunk... SCPT size ... 0.00 MB
+Writing Chunk... GLOB size ... 0.00 MB
+Writing Chunk... SHDR size ... 0.00 MB
+Writing Chunk... FONT size ... 0.00 MB
+Writing Chunk... TMLN size ... 0.00 MB
+Writing Chunk... OBJT size ... 0.00 MB
+Writing Chunk... FEDS size ... 0.01 MB
+Writing Chunk... ACRV size ... 0.00 MB
+Writing Chunk... SEQN size ... 0.00 MB
+Writing Chunk... TAGS size ... 0.00 MB
+Writing Chunk... ROOM size ... 0.00 MB
+Writing Chunk... DAFL size ... 0.07 MB
+Writing Chunk... EMBI size ... 0.00 MB
+Writing Chunk... PSEM size ... 0.00 MB
+Writing Chunk... PSYS size ... 0.00 MB
+Writing Chunk... TPAGE size ... 0.00 MB
+Texture Group - __YY__0fallbacktexture.png_YYG_AUTO_GEN_TEX_GROUP_NAME_
+Texture Group - Default
+Writing Chunk... TGIN size ... 0.00 MB
+Writing Chunk... CODE size ... 0.00 MB
+Writing Chunk... VARI size ... 0.02 MB
+Writing Chunk... FUNC size ... 0.00 MB
+Writing Chunk... FEAT size ... 0.00 MB
+Writing Chunk... STRG size ... 0.00 MB
+Writing Chunk... TXTR size ... 0.02 MB
+0 Compressing texture... writing texture __yy__0fallbacktexture.png_yyg_auto_gen_tex_group_name__0.yytex... 
+1 Compressing texture... writing texture default_0.yytex... 
+Writing Chunk... AUDO size ... 0.21 MB
+Writing Chunk... SCPT size ... -0.00 MB
+Writing Chunk... DBGI size ... 0.00 MB
+Writing Chunk... INST size ... 0.01 MB
+Writing Chunk... LOCL size ... 0.00 MB
+Writing Chunk... DFNC size ... 0.00 MB
+Writing Chunk... STRG size ... 0.00 MB
+Stats : GMA : Elapsed=498.2145
+Stats : GMA : sp=42,au=1,bk=5,pt=0,sc=26,sh=4,fo=1,tl=0,ob=25,ro=11,da=1,ex=0,ma=14,fm=0x4000921D686C0020
+Igor complete.
+[Run] Run game
+C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/windows/x64/Runner.exe  -game "C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\Penguin_Isles_4623925F_VM\Penguin Isles.win"
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=3
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Warning: global.player_instance not initialized! Using current instance.
+xspd: 0, yspd: 0
+Input: Right=0, Left=0, Up=0, Down=0
+Driving State: 0
+Player instance: ref instance 100396
+obj_player: global.player_instance value: ref instance 100396
+Warning: global.player_instance not initialized! Using current instance.
+xspd: 0, yspd: 0
+Input: Right=0, Left=0, Up=0, Down=0
+Driving State: 0
+Player instance: ref instance 100397
+obj_player: global.player_instance value: ref instance 100397
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Other Event: Room Start for object obj_controller:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Other_4 (line 16) - if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_controller_Other_4 (line 16)
+
+
+
+C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/windows/x64/Runner.exe exited with non-zero status (1)
+elapsed time 00:00:03.4290437s for command "C:\ProgramData/GameMakerStudio2/Cache/runtimes\runtime-2024.11.0.226/bin/igor/windows/x64/Igor.exe" -j=8  -options="C:\Users\Shorty\AppData\Local\GameMakerStudio2\GMS2TEMP\build.bff" -v -- Windows Run started at 01/05/2025 11:30:14
+FAILED: Run Program Complete
+For the details of why this build failed, please review the whole log above and also see your Compile Errors window.
+| and this is all the feather messages : E GM1041 The type 'Id.Instance' appears where the type 'Id.Sound, Asset.GMSound' is expected. obj_musicmanager : Step 7:23
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 25:20
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound' is expected. obj_musicmanager : Step 28:37
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 75:21
+E GM1041 The type 'Id.Instance' appears where the type 'Id.Sound, Asset.GMSound' is expected. obj_musicmanager : Step 81:25
+E GM1041 The type 'Id.Instance' appears where the type 'Asset.GMSound, Id.Sound' is expected. obj_musicmanager : Step 81:67
+W GM2016 Instance variable 'right_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 24:1
+W GM2016 Instance variable 'left_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 25:1
+W GM2016 Instance variable 'up_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 26:1
+W GM2016 Instance variable 'down_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player : Step 27:1
+W GM2016 Instance variable 'right_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 2:1
+W GM2016 Instance variable 'left_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 3:1
+W GM2016 Instance variable 'up_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 4:1
+W GM2016 Instance variable 'down_key' declared outside of Create event, declare with 'var' or move to Create event. obj_player_icetruck : Step 5:1
+E GM1041 The type 'Pointer.Texture' appears where the type 'Real' is expected. obj_skinpicker : Draw 6:67
+E GM1041 The type 'Undefined' appears where the type 'Real' is expected. obj_slippery : Step 4:24
+| is the issue soley in how the code is written or could how I set up the project initally be interfering and causing the error?
+Based on the error message, it appears that the issue lies in the way the camera_exists function is being used before global.camera is properly initialized. We will address this by ensuring the initialization sequence is correct and robust.
+
+Ensuring Proper Initialization Sequence
+Initialize global.camera in the Create event of obj_controller.
+Check the existence of global.camera in other objects only after obj_controller has initialized it.
+Updated Code Implementation
+obj_controller
+Create Event: Initializes global variables, player instance, and camera.
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Mark initialization as done
+global.initialized = true;
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+obj_camera
+Create Event: Ensures the camera is created and set up correctly.
+
+gml
+// Create Event for obj_camera
+
+// Ensure global.camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Attach the camera to the view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+
+// Debugging message
+show_debug_message("obj_camera: Camera initialized with ID: " + string(global.camera));
+Step Event: Follows the active player instance.
+
+gml
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+obj_initializer
+Create Event: Ensures the player instance and other global variables are set up correctly.
+gml
+// Create Event for obj_initializer
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera
+Summary
+Initialization Order: Ensure obj_controller initializes global.camera and global.player_instance properly before other objects are created.
+Check Initialization: Update obj_camera and obj_initializer to handle cases where global.camera might not be initialized yet.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.camera should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+Do I need to add any of these objects as parents or child to make it work?
+To ensure that your camera and player initialization works correctly, you don't necessarily need to use parent-child relationships between objects. However, organizing objects into parent-child hierarchies can simplify the management of shared behaviors.
+
+In your current setup, the key issue seems to be ensuring that the global.camera is initialized before any other objects try to access it. If you want to use parent-child relationships, you can create a parent object for the player and the ice truck to manage shared behaviors, but this isn't required to solve the initialization problem.
+
+Steps to Ensure Proper Initialization
+Initialize global.camera in obj_controller.
+Ensure that global.camera is accessible before other objects access it.
+Updated Code and Object Setup
+obj_controller
+Create Event: Initializes global variables, player instance, and camera setup.
+gml
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Initialize global.player_instance
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Mark initialization as done
+global.initialized = true;
+
+// Attach the camera to the view
+view_set_camera(0, global.camera); // Assign it to view[0]
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Match the room's view size
+camera_set_view_pos(global.camera, 0, 0); // Set the initial position of the camera
+
+// Debugging message
+show_debug_message("obj_controller: global.player_instance initialized with instance ID: " + string(global.player_instance));
+obj_camera
+Create Event: Ensures the camera is created and set up correctly.
+
+gml
+// Create Event for obj_camera
+
+// Ensure global.camera is initialized
+if (!variable_global_exists("camera")) {
+    show_debug_message("Global.camera does not exist. Initializing...");
+    global.camera = camera_create(); // Create a new camera
+    show_debug_message("New camera created with ID: " + string(global.camera));
+}
+
+// Attach the camera to the view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+
+// Debugging message
+show_debug_message("obj_camera: Camera initialized with ID: " + string(global.camera));
+Step Event: Follows the active player instance.
+
+gml
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+obj_initializer
+Create Event: Ensures the player instance and other global variables are set up correctly.
+gml
+// Create Event for obj_initializer
+
+// Initialize the player instance if not already done
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    }
+    show_debug_message("Player instance created with ID: " + string(global.player_instance));
+}
+Room Setup
+Room: rm_init
+Objects: obj_controller, obj_initializer
+Creation Code:
+gml
+// rm_init Creation Code
+if (global.initialized) {
+    room_goto_next(); // Skip initialization if already done
+}
+Other Rooms (e.g., Player Start Room)
+Objects: obj_camera
+Parent-Child Relationships (Optional)
+If you want to use parent-child relationships to manage shared behaviors between player objects, you can:
+
+Create a parent object obj_player_parent: This will handle common behaviors.
+Set obj_player and obj_player_icetruck as children of obj_player_parent.
+obj_player_parent
+Common behaviors for player and ice truck.
+obj_player and obj_player_icetruck
+Set Parent: Set obj_player_parent as the parent for both of these objects.
+Summary
+Initialization Order: Ensure obj_controller initializes global.camera and global.player_instance properly before other objects are created.
+Check Initialization: Update obj_camera and obj_initializer to handle cases where global.camera might not be initialized yet.
+Parent-Child Relationships (Optional): Use parent-child relationships to manage shared behaviors between player objects.
+By following these steps, the initialization sequence should be correctly handled, and the errors related to global.camera should be resolved. If you encounter further issues, please provide additional details or logs for further troubleshooting.
+
+[ I then gave the entire collection of conversations and showed it to a game maker coding assistant, where we were able to solve all the issues with the viewport]
+
+Ive uploaded a zip file that contains a bunch of txt documents that represent the different objects in my gamemaker project i.e. obj_button_create.txt, obj_button_draw.txt, obj_button_leftpressed.txt, obj_controller_create.txt, obj_controller_leftpressed.txt, obj_controller_roomstart.txt, obj_controller_step.txt, obj_icetruck_create.txt, obj_icetruck_destroy.txt, obj_icetruck_draw.txt, obj_icetruck_step.txt, obj_initializer_create.txt, obj_initializer_gamestart.txt, obj_initializer_step.txt, obj_npc_create.txt, obj_npc_step.txt, obj_player_create.txt, obj_player_icetruck_create.txt, obj_player_icetruck_step.txt, obj_player_leftpressed.txt, obj_player_step.txt, obj_skinpicker_create.txt, obj_skinpicker_destroy.txt, obj_skinpicker_draw.txt and obj_skinpicker_keypress-p.txt. lastly Ive uploaded a another txt file called chatgptgamemakercodingai.txt. Can you take look at all these documents and give me an analyse of what the game is trying to do?
+
+
+To analyze your GameMaker project and determine what the game is trying to do, I'll extract and review the contents of the uploaded ZIP file containing the .txt files for your objects, events, and any associated behaviors. Then I'll summarize the objectives, mechanics, and potential game logic based on the objects and scripts defined.
+
+Let me begin by extracting and inspecting the files in your ZIP archive.
+
+The ZIP file contains multiple text files organized into a structure with various object definitions and event scripts. Here's the breakdown of key files:
+
+Main Game Mechanics and Control Objects:
+
+obj_controller_*: Likely central to the game's logic and global state management, including handling steps, room start, and left mouse button press.
+obj_initializer_*: Manages initialization logic such as create, step, and game start events.
+Gameplay Objects:
+
+obj_player_*: Manages player-related actions, including creation, interaction with icetruck mechanics, and step-by-step actions.
+obj_npc_*: Likely involves non-player characters and their behaviors.
+Game Entities:
+
+obj_icetruck_*: Represents an entity (e.g., a vehicle or environmental object), with creation, drawing, stepping, and destruction behaviors.
+obj_skinpicker_*: A system for selecting or customizing character skins, involving create, destroy, draw, and keypress events.
+User Interface:
+
+obj_button_*: Handles button behaviors, including creation, drawing, and responding to user input like left mouse presses.
+Supporting Documentation:
+
+chatgptgamemakercodingai.txt: Likely metadata or instructions regarding the AI's role in assisting with game development.
+Next, I'll examine the contents of some key files to deduce the purpose and mechanics of the game. Let's start by inspecting the controller, player, and icetruck objects. ​​
+
+Based on the contents of the inspected files, here's a preliminary analysis of the game and its mechanics:
+
+1. Core Game Logic (obj_controller_create):
+Global Variables:
+
+global.current_skin: Tracks the player's current appearance or mode (e.g., "player" or "Ice Truck").
+global.player_instance: Holds a reference to the active player instance, ensuring consistent access across game logic.
+global.camera: Initializes a camera system, setting it to track gameplay within the room's view.
+global.skins: An array defining available skins, linking their names to corresponding object types (obj_player, obj_player_icetruck).
+Initialization:
+
+Ensures all global variables are properly set up at game start, avoiding errors related to uninitialized references.
+Creates the player instance (obj_player) by default and attaches a camera to the view.
+Camera Control:
+
+Configures the camera's position and size to match the room view for smooth gameplay visuals.
+Debugging:
+
+Includes messages for logging key initialization steps, aiding in troubleshooting.
+2. Player Behavior (obj_player_create):
+Core Variables:
+
+Movement variables (xspd, yspd, move_spd) manage the player's speed and direction.
+Sliding mechanics (sliding, slide_dir_x, slide_dir_y, slide_speed) introduce advanced motion behavior.
+Sprite Configuration:
+
+Multiple directional sprites (e.g., spr_player_right, spr_player_up) define the player's appearance when facing different directions.
+Keyboard Controls:
+
+Configures movement using WASD or arrow keys.
+Ice Truck Interaction:
+
+driving: Tracks whether the player is controlling an ice truck.
+Preserves the player's original sprite and assigns an ice_truck_sprite for transitions between walking and driving modes.
+Debugging:
+
+Logs player speed, directional input states, and driving state for diagnostic purposes.
+3. Ice Truck Behavior (obj_icetruck_create):
+Directional Sprites:
+Similar to the player, the ice truck has sprites for facing different directions (e.g., spr_icetruck_faceright, spr_icetruck_faceup).
+Preliminary Game Concept:
+The game involves a player character with customizable "skins" (e.g., default player and Ice Truck modes). Movement mechanics allow walking or potentially sliding, while interaction with vehicles (ice trucks) introduces additional gameplay elements. The presence of NPCs (obj_npc_*) and skin selection (obj_skinpicker_*) suggests interactive environments and possibly objectives involving customization or role-switching.
+
+Next, I can inspect more files to refine this analysis or focus on specific aspects of the game, such as interactions, objectives, or environmental features. What would you like to explore further? ​​
+
+
+
+
+
+You said:
+if you take a look at the file chatgptgamemakercodingai.txt you will be caught up with the current issue im having.
+ChatGPT said:
+
+The file chatgptgamemakercodingai.txt provides detailed logs and error messages, indicating several issues related to initialization and type mismatches. Here's a breakdown of the key issues and recommendations:
+
+Key Observations and Issues
+Camera Initialization Issue:
+
+Error:
+gml
+Copy code
+ERROR in action number 1
+of Other Event: Room Start for object obj_controller:
+Variable <unknown_object>.camera_exists(100021, -2147483648) not set before reading it.
+This error suggests that the camera (global.camera) was not properly initialized or verified before being accessed in the obj_controller.
+Player Instance Initialization:
+
+The debug messages indicate multiple warnings about the global.player_instance not being properly initialized:
+vbnet
+Copy code
+Warning: global.player_instance not initialized! Using current instance.
+While this fallback mechanism ensures no crashes, it indicates a flawed initialization sequence.
+Type Mismatch in Scripts:
+
+Multiple errors related to type mismatches, particularly in obj_musicmanager and obj_skinpicker, such as:
+bash
+Copy code
+E GM1041 The type 'Id.Instance' appears where the type 'Id.Sound, Asset.GMSound' is expected.
+Likely caused by incorrect handling of sound or texture data types in certain events.
+Improper Variable Declaration:
+
+Warnings about instance variables declared outside the Create event:
+sql
+Copy code
+W GM2016 Instance variable 'right_key' declared outside of Create event, declare with 'var' or move to Create event.
+This can lead to unpredictable behavior or performance issues.
+Recommendations
+1. Fix Camera Initialization
+Ensure global.camera is initialized properly in the Create Event of obj_controller:
+gml
+Copy code
+// Create Event for obj_controller
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create();
+}
+Verify the camera's existence before accessing it in any other event:
+gml
+Copy code
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+}
+2. Reorganize Initialization Sequence
+Ensure obj_controller initializes critical global variables before other objects depend on them. Use obj_initializer to manage any secondary initialization:
+Place obj_controller in the first room (e.g., rm_init).
+Ensure other objects verify the presence of required globals:
+gml
+Copy code
+if (!variable_global_exists("player_instance")) {
+    show_debug_message("Error: player_instance not initialized.");
+}
+3. Address Type Mismatches
+Review obj_musicmanager and obj_skinpicker:
+Ensure sound functions use the correct type (e.g., audio_play_sound expects Asset.GMSound).
+Replace incorrect variable types with appropriate asset references:
+gml
+Copy code
+audio_play_sound(snd_background_music, 10, true);
+For drawing functions, confirm the correct use of texture or sprite assets.
+4. Correct Variable Declarations
+Move all instance variable declarations to the Create Event. For example, in obj_player:
+gml
+Copy code
+// Create Event for obj_player
+var right_key = false;
+var left_key = false;
+var up_key = false;
+var down_key = false;
+5. Consider Parent-Child Relationships (Optional)
+Use inheritance to manage shared behaviors:
+Create a parent object (e.g., obj_player_parent) with common code for movement and actions.
+Set obj_player and obj_player_icetruck as children of obj_player_parent.
+6. Debugging Support
+Add clear debug messages to ensure critical initialization steps are completed:
+gml
+Copy code
+show_debug_message("Camera initialized with ID: " + string(global.camera));
+show_debug_message("Player instance initialized with ID: " + string(global.player_instance));
+Summary
+Your issues stem from improper initialization and type mismatches. By restructuring the initialization order, ensuring proper type usage, and addressing variable declarations, you can resolve these errors. Additionally, parent-child relationships can simplify shared behaviors if needed.
+
+If you'd like, I can help refactor specific parts of your code or provide an updated version of any object or event script! Let me know how you'd like to proceed. ​​
+
+
+
+
+
+You said:
+Thank you for your explaination, can you go about improving and updating all the required code and sharing easy to follow step by step instructions for copying the changes to my current project?
+ChatGPT said:
+
+Certainly! Below, I’ll provide an updated version of the key scripts and objects in your project, addressing the issues identified. I’ll also include step-by-step instructions to integrate these changes into your current project.
+
+Improved Code for Objects
+1. obj_controller
+This object is central to initialization. We'll ensure:
+
+Proper initialization of global variables and camera.
+Robust handling of player_instance.
+Updated Create Event:
+
+gml
+Copy code
+// Create Event for obj_controller
+
+// Initialize global variables
+if (!variable_global_exists("current_skin")) {
+    global.current_skin = "player"; // Default starting skin
+}
+if (!variable_global_exists("player_instance")) {
+    global.player_instance = noone; // Initialize as noone to avoid access issues
+}
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera as a global variable
+}
+
+// Create player instance if it doesn't exist
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(100, 100, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(100, 100, "Instances", obj_player_icetruck);
+    }
+}
+
+// Initialize skins list
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck }
+];
+
+// Attach camera to view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+camera_set_view_pos(global.camera, 0, 0);
+
+// Debugging message
+show_debug_message("obj_controller: Initialization complete. Player instance ID: " + string(global.player_instance));
+Updated Room Start Event:
+
+gml
+Copy code
+// Room Start Event for obj_controller
+
+// Ensure the camera exists
+if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("obj_controller: Camera recreated during Room Start.");
+}
+
+// Ensure player instance exists
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("Error: Player instance missing during Room Start.");
+}
+2. obj_player
+The player object requires corrected variable declarations and robust handling of movement.
+
+Updated Create Event:
+
+gml
+Copy code
+// Create Event for obj_player
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 2;
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+ice_truck_sprite = spr_icetruck_facedown;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+sprite[RIGHT] = spr_player_right;
+sprite[UP] = spr_player_up;
+sprite[LEFT] = spr_player_left;
+sprite[DOWN] = spr_player_down;
+sprite[UP_RIGHT] = spr_player_up_right;
+sprite[UP_LEFT] = spr_player_up_left;
+sprite[DOWN_RIGHT] = spr_player_down_right;
+sprite[DOWN_LEFT] = spr_player_down_left;
+
+// Debugging
+show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
+3. obj_camera
+A dedicated camera object ensures smooth player tracking.
+
+Create Event:
+
+gml
+Copy code
+// Create Event for obj_camera
+
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create(); // Create the camera
+    show_debug_message("obj_camera: New camera created.");
+}
+
+// Attach camera to view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+camera_set_view_pos(global.camera, 0, 0);
+Step Event:
+
+gml
+Copy code
+// Step Event for obj_camera
+
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+Step-by-Step Instructions for Integration
+Update the obj_controller:
+
+Open the obj_controller in your project.
+Replace the existing code in the Create Event and Room Start Event with the updated scripts provided above.
+Update the obj_player:
+
+Open the obj_player object.
+Replace the Create Event code with the updated script.
+Ensure all instance variables are properly declared.
+Add a New Object: obj_camera:
+
+Create a new object named obj_camera.
+Add the provided Create Event and Step Event scripts.
+Place obj_camera in the room where the player starts.
+Verify Room Initialization:
+
+In your initialization room (rm_init), ensure obj_controller and obj_camera are placed.
+Add creation code for smooth transitions:
+gml
+Copy code
+// Creation Code for rm_init
+if (global.initialized) {
+    room_goto_next();
+}
+Test Debugging:
+
+Enable debug messages in your GameMaker console to verify proper initialization.
+Expected Outcome
+These changes should:
+
+Resolve camera-related initialization errors.
+Ensure the player instance and camera are properly managed.
+Eliminate type mismatches by correcting variable usage.
+Let me know if you encounter any issues or need additional help during integration!
+
+
+
+
+
+You said:
+I added your revised code and this was the error I recived when running the program : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_player: Initialized. Driving state: 0
+obj_controller: Initialization complete. Player instance ID: ref instance 100398
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Other Event: Room Start for object obj_controller:
+Variable <unknown_object>.camera_exists(100031, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Other_4 (line 4) - if (global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_controller_Other_4 (line 4) | im not confident Ive got the object initilization order correct. Im also not sure if the intialization order error is a fault soley with the code or with how other bits of the project are controlled outside of it. How would you go about trouble shooting this error?
+ChatGPT said:
+
+The error suggests that the initialization of global.camera in the Room Start event of obj_controller is not completed before being accessed. This could be due to object initialization order in your room, or possible interference from other parts of the project. Let’s troubleshoot this systematically:
+
+Steps to Troubleshoot and Resolve
+1. Verify Object Initialization Order
+Ensure obj_controller is initialized first:
+Open the room where the game starts (rm_init or equivalent).
+In the room editor, ensure that obj_controller is placed at the top of the instance order. You can do this by:
+Selecting the "Instance Layer" in the room editor.
+Rearranging obj_controller to be the first object in the layer.
+2. Debugging Object Initialization
+Add debugging messages to confirm when objects are initialized. Update the Create Event of obj_controller:
+
+gml
+Copy code
+show_debug_message("DEBUG: obj_controller Create Event executed.");
+if (!variable_global_exists("camera")) {
+    global.camera = camera_create();
+    show_debug_message("DEBUG: Camera created in obj_controller Create Event. ID: " + string(global.camera));
+}
+Similarly, update the Room Start event to log:
+
+gml
+Copy code
+show_debug_message("DEBUG: obj_controller Room Start Event executed.");
+show_debug_message("DEBUG: Camera value in Room Start: " + string(global.camera));
+Add debug logging in the Create Event of obj_camera:
+
+gml
+Copy code
+show_debug_message("DEBUG: obj_camera Create Event executed. Camera ID: " + string(global.camera));
+3. Test Initialization Without Dependencies
+Temporarily disable dependent code in the Room Start event of obj_controller to isolate the issue. Replace it with:
+gml
+Copy code
+if (variable_global_exists("camera")) {
+    show_debug_message("DEBUG: Camera already exists in Room Start.");
+} else {
+    show_debug_message("DEBUG: Camera missing in Room Start. Creating...");
+    global.camera = camera_create();
+}
+4. Ensure camera_exists Usage
+Confirm the camera_exists check is robust. Use the following:
+gml
+Copy code
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("DEBUG: Camera recreated in Room Start. New ID: " + string(global.camera));
+}
+5. Double-Check Room Initialization Logic
+If your room has creation code or an initialization sequence, ensure it doesn’t interfere with object placement or initialization order. Example:
+gml
+Copy code
+if (!variable_global_exists("initialized")) {
+    global.initialized = true;
+    show_debug_message("DEBUG: Global initialization complete in room creation code.");
+}
+Revised Approach for Initialization
+Updated obj_controller Room Start Event
+gml
+Copy code
+// Room Start Event for obj_controller
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("DEBUG: Camera initialized/recreated in Room Start. ID: " + string(global.camera));
+} else {
+    show_debug_message("DEBUG: Camera exists in Room Start. ID: " + string(global.camera));
+}
+
+// Ensure player instance exists
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("DEBUG: Player instance missing in Room Start. Creating...");
+    global.player_instance = instance_create_layer(100, 100, "Instances", obj_player);
+} else {
+    show_debug_message("DEBUG: Player instance exists in Room Start. ID: " + string(global.player_instance));
+}
+Step-by-Step for Testing
+Add Debug Messages:
+
+Use the debug output to trace the sequence of events and ensure objects are initialized in the correct order.
+Check Room Order:
+
+Ensure obj_controller is placed before obj_camera and other dependent objects in your initialization room.
+Disable Other Objects:
+
+Temporarily remove all other objects from the room except obj_controller and obj_camera. If the error resolves, gradually reintroduce objects to identify the problematic one.
+Review Global Variables:
+
+Verify that no other object is unintentionally resetting global.camera or global.player_instance.
+Expected Outcome
+With these changes, you should:
+
+Receive clear debug logs showing the exact initialization sequence.
+Confirm that global.camera is properly created before being accessed.
+Identify if other objects or room logic interfere with initialization.
+If you still encounter issues, please share the updated debug logs for further assistance!
+
+
+
+
+
+You said:
+I added your code and still got this error : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_player: Initialized. Driving state: 0
+obj_controller: Initialization complete. Player instance ID: ref instance 100398
+DEBUG: Room Start Event triggered in obj_controller.
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of Other Event: Room Start for object obj_controller:
+Variable <unknown_object>.camera_exists(100031, -2147483648) not set before reading it.
+ at gml_Object_obj_controller_Other_4 (line 23) - if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_controller_Other_4 (line 23) | I changed line 23 of obj_controllers room start event to : if (!variable_global_exists(global.camera) || global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) { | and it got rid of the error but now when I run the program I receive this error : **********************************.
+Entering main loop.
+**********************************.
+DEBUG: obj_camera Create Event executed. Camera ID: 100
+Player position: (100, 100)
+Camera position: (100, 100)
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_initializer:
+Variable <unknown_object>.camera_exists(100031, -2147483648) not set before reading it.
+ at gml_Object_obj_initializer_Step_0 (line 8) - if (!camera_exists(global.camera)) {
+############################################################################################
+gml_Object_obj_initializer_Step_0 (line 8) | it looks like the issue is with the code !camera_exists
+ChatGPT said:
+
+The issue with !camera_exists(global.camera) indicates that global.camera may not have been initialized properly in time for its use in obj_initializer. This points to a timing issue where the global.camera variable is either not yet created or is being accessed too early in the initialization sequence.
+
+Let's address this systematically to eliminate these timing issues.
+
+Root Cause
+Timing Issue:
+
+Objects like obj_initializer are accessing global.camera before it is fully initialized.
+Even though the obj_controller sets up the camera, the order of execution in the room may cause obj_initializer to attempt accessing it prematurely.
+Verification of Camera:
+
+The !camera_exists function checks if the camera ID is valid, but if global.camera is uninitialized or incorrectly set, it causes an error.
+Solution
+We need to ensure that:
+
+global.camera is always initialized before any other object attempts to use it.
+Every object checks the existence of global.camera in a robust manner to avoid runtime errors.
+Updated Code for Objects
+1. obj_initializer Step Event Replace the code in the Step Event of obj_initializer with a more robust check:
+
+gml
+Copy code
+// Step Event for obj_initializer
+
+if (!variable_global_exists("camera")) {
+    show_debug_message("DEBUG: Global camera does not exist. Skipping Step Event.");
+    return; // Exit the event if the camera doesn't exist
+}
+
+if (!camera_exists(global.camera)) {
+    show_debug_message("DEBUG: Camera does not exist. Reinitializing...");
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+} else {
+    show_debug_message("DEBUG: Camera exists in obj_initializer Step Event.");
+}
+2. obj_controller Room Start Event Modify obj_controller to ensure all dependencies are met:
+
+gml
+Copy code
+// Room Start Event for obj_controller
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera) || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("DEBUG: Camera initialized/recreated in Room Start. ID: " + string(global.camera));
+} else {
+    show_debug_message("DEBUG: Camera exists in Room Start. ID: " + string(global.camera));
+}
+
+// Ensure player instance exists
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("DEBUG: Player instance missing in Room Start. Creating...");
+    global.player_instance = instance_create_layer(100, 100, "Instances", obj_player);
+} else {
+    show_debug_message("DEBUG: Player instance exists in Room Start. ID: " + string(global.player_instance));
+}
+3. obj_camera Create Event Ensure obj_camera initializes itself correctly:
+
+gml
+Copy code
+// Create Event for obj_camera
+
+if (!variable_global_exists("camera") || !camera_exists(global.camera)) {
+    global.camera = camera_create();
+    show_debug_message("DEBUG: Camera initialized/recreated in obj_camera Create Event. ID: " + string(global.camera));
+}
+
+// Attach camera to view
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+camera_set_view_pos(global.camera, 0, 0);
+Step-by-Step Debugging Instructions
+Test Initialization Without Dependencies:
+
+Temporarily remove obj_initializer from the room to confirm the camera is working without interference.
+Debug Order of Execution:
+
+Add debug messages to confirm when each object initializes:
+gml
+Copy code
+show_debug_message("DEBUG: obj_controller initialized.");
+show_debug_message("DEBUG: obj_camera initialized.");
+show_debug_message("DEBUG: obj_initializer initialized.");
+Ensure Room Setup:
+
+Place obj_controller at the top of the instance layer in your starting room to guarantee it initializes first.
+Reintroduce Objects:
+
+Gradually reintroduce objects like obj_initializer and verify that global.camera is correctly initialized at each step.
+Expected Outcome
+With these updates:
+
+The camera_exists error should no longer occur, as the code ensures global.camera is initialized before use.
+Debug logs will clearly show the sequence of events, helping to pinpoint any further issues.
+If the issue persists, share the updated debug logs for further analysis!
+
+
+
+
+
+You said:
+Ok so I made some changes to line 8 of the obj_initializer : if (!(global.camera)) { | i removed the camera_exists tag, I also changed line 4 of the obj_controller room start event to : if (global.camera == -1 || !is_real(global.camera) || !(global.camera)) { | I also removed the camra_exists tag here too. I then also changed the creation code in rm_init to just be : room_goto_next();
+In the rm_init room ive got obj_controller at the top and obj_camera underneath it. Then in the player start room I have the obj_controller at the top, obj_camera underneath it then lastly obj_initializer below them all, I have the player, controller, icetruck, camera and initializer all set to persistent. This is the output log I received after running the new code : Setting scheduler resolution to 1 
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_player: Initialized. Driving state: 0
+obj_controller: Initialization complete. Player instance ID: ref instance 100397
+obj_controller: Initialization complete. Player instance ID: ref instance 100397
+Total memory used = 8255981 (0x007df9ed) bytes 7.87MB
+Free memory = 6483632 (0x0062eeb0) bytes 6.18MB
+Peak memory used = 11415557 (0x00ae3005) bytes 10.89MB
+**********************************.
+Entering main loop.
+**********************************.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+
+ChatGPT said:
+
+Your changes have effectively resolved the initialization issues, as indicated by the absence of errors. However, the camera position is not updating to follow the player, which is why it remains (0, 0) in the output log. This suggests that the camera_set_view_pos function is either not being called properly or the logic determining the camera's position relative to the player is flawed.
+
+Here’s how we can fix and improve the camera logic to ensure it follows the player as intended.
+
+Root Cause
+Camera Position Not Updating:
+The obj_camera is not adjusting the camera's position to follow the player.
+The logic in the Step Event of obj_camera needs to be re-verified to ensure it correctly calculates and applies the camera's position.
+Updated obj_camera Step Event
+Replace the existing Step Event logic with the following:
+
+gml
+Copy code
+// Step Event for obj_camera
+
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    // Target the player's position to center the camera
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Clamp the camera position to stay within room bounds
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Set the camera's position
+    camera_set_view_pos(global.camera, target_x, target_y);
+
+    // Debugging output
+    show_debug_message("Player position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+    show_debug_message("Camera position: (" + string(target_x) + ", " + string(target_y) + ")");
+} else {
+    show_debug_message("ERROR: Player instance does not exist for camera to follow.");
+}
+Additional Debugging Improvements
+Log Camera Creation and Initialization:
+Verify that global.camera is being used consistently across all objects.
+Confirm Player Position:
+Ensure the player object updates its position based on input or movement logic.
+Test Plan
+Update and Test obj_camera:
+
+Implement the updated Step Event for obj_camera.
+Place the player object in the room and ensure it moves (either automatically or via input).
+Verify Debug Logs:
+
+Check that the camera's position updates in sync with the player's position.
+Ensure the camera remains within the room boundaries.
+Expected Outcome
+After these changes:
+
+The camera will follow the player, updating its position dynamically.
+Debug logs will confirm the player's and camera's positions, helping to diagnose any remaining issues.
+If the issue persists or you need further clarification, let me know!
+
+
+
+
+
+You said:
+The program ran fine, while in the start room the camera follows the player around perfectly but when a new room is warped to the camera stops following the player, I only have an obj_camera in the second room. this is the output log from the latest test : Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_player: Initialized. Driving state: 0
+obj_controller: Initialization complete. Player instance ID: ref instance 100396
+obj_controller: Initialization complete. Player instance ID: ref instance 100396
+Total memory used = 8261057 (0x007e0dc1) bytes 7.88MB
+Free memory = 6483632 (0x0062eeb0) bytes 6.18MB
+Peak memory used = 11416461 (0x00ae338d) bytes 10.89MB
+**********************************.
+Entering main loop.
+**********************************.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+Player position: (100, 100)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 98)
+Camera position: (0, 0)
+Player position: (100, 98)
+Camera position: (0, 0)
+Player position: (100, 98)
+Camera position: (0, 0)
+Player position: (100, 98)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 96)
+Camera position: (0, 0)
+Player position: (100, 96)
+Camera position: (0, 0)
+Player position: (100, 96)
+Camera position: (0, 0)
+Player position: (100, 96)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 94)
+Camera position: (0, 0)
+Player position: (100, 94)
+Camera position: (0, 0)
+Player position: (100, 94)
+Camera position: (0, 0)
+Player position: (100, 94)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 92)
+Camera position: (0, 0)
+Player position: (100, 92)
+Camera position: (0, 0)
+Player position: (100, 92)
+Camera position: (0, 0)
+Player position: (100, 92)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 90)
+Camera position: (0, 0)
+Player position: (100, 90)
+Camera position: (0, 0)
+Player position: (100, 90)
+Camera position: (0, 0)
+Player position: (100, 90)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+Player position: (100, 88)
+Camera position: (0, 0)
+Player position: (100, 88)
+Camera position: (0, 0)
+Player position: (100, 88)
+Camera position: (0, 0)
+Player position: (100, 88)
+Camera position: (0, 0)
+DEBUG: Camera exists in obj_initializer Step Event.
+ChatGPT said:
+
+The camera no longer follows the player in the new room because the obj_camera placed in the second room is a new instance, and global.camera is not properly linked or updated to this new obj_camera. Additionally, the debug output confirms that the camera position remains at (0, 0).
+
+To fix this issue, we need to ensure that:
+
+The new obj_camera instance takes control of the existing global.camera when entering a new room.
+The global.camera variable and its behavior persist across rooms.
+Solution
+1. Update obj_camera to Reattach to global.camera
+In the Create Event of obj_camera, update the logic to ensure the camera correctly reinitializes or attaches to the existing global.camera:
+
+gml
+Copy code
+// Create Event for obj_camera
+
+// If the global camera already exists, reattach to it
+if (variable_global_exists("camera") && global.camera != -1 && is_real(global.camera)) {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Reattached to existing global camera. ID: " + string(global.camera));
+} else {
+    // If no global camera exists, create a new one
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+    show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
+}
+2. Ensure Persistent global.camera Logic in obj_controller
+The obj_controller should verify that the global.camera remains valid across room transitions. Update its Room Start Event:
+
+gml
+Copy code
+// Room Start Event for obj_controller
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera)) {
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Camera initialized/recreated in Room Start. ID: " + string(global.camera));
+} else {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Existing global camera used in Room Start. ID: " + string(global.camera));
+}
+3. Update Room Initialization
+Ensure that the obj_camera and obj_controller are correctly set up in the new room:
+
+Place both obj_camera and obj_controller in the new room.
+Ensure obj_controller is at the top of the instance layer so it initializes first.
+4. Optional: Synchronize Camera After Room Transition
+Add logic to synchronize the camera position with the player’s position after a room transition. This can be added to the Room Start Event of obj_controller:
+
+gml
+Copy code
+// Ensure the camera follows the player after a room transition
+if (instance_exists(global.player_instance) && is_real(global.camera)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+    show_debug_message("DEBUG: Camera synchronized with player position after room transition.");
+}
+Expected Changes
+After implementing the above updates:
+
+The global.camera will persist and reattach to the new obj_camera instance in the second room.
+The camera will continue to follow the player across room transitions.
+Debug logs will confirm that the camera is reattached and synchronized correctly.
+Next Steps
+Update the Create Event of obj_camera and the Room Start Event of obj_controller with the provided code.
+Test the transition from the first room to the second room and verify that the camera follows the player.
+Share the updated debug logs if any issues persist, and we can refine further!
