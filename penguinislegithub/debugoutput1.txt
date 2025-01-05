@@ -1,12 +1,52 @@
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 1 usecs for 26 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+obj_player: Initialized. Driving state: 0
+DEBUG: Create Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: New global camera created. ID: 97
+DEBUG: Create Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: Reattached to existing global camera. ID: 97
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 97
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100412
+Total memory used = 8251705 (0x007de939) bytes 7.87MB
+Free memory = 6481632 (0x0062e6e0) bytes 6.18MB
+Peak memory used = 11403501 (0x00ae00ed) bytes 10.88MB
 **********************************.
 Entering main loop.
 **********************************.
-Camera at: (16, 84)
-Camera at: (16, 84)
-Player instance: ref instance 100412
-Viewport object: -1
-Viewport position: (16, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (16, 84)
 Camera at: (16, 84)
 Player instance: ref instance 100412
@@ -565,18 +605,6 @@ Player instance: ref instance 100412
 Viewport object: -1
 Viewport position: (0, 84)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100412
-Viewport object: -1
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100412
-Viewport object: -1
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 82)
 Camera at: (0, 82)
 Player instance: ref instance 100412
@@ -643,18 +671,66 @@ Player instance: ref instance 100412
 Viewport object: -1
 Viewport position: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100412
+Viewport object: -1
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
 E key pressed
 Ice truck found at position: (48, 144)
 Switching to icetruck skin
-Player instance: ref instance 100412
+obj_player_icetruck: Initialized.
 Switched to icetruck skin. New player instance ID: ref instance 100413
-New ice truck player instance created successfully. Position: (52, 184)
+New ice truck player instance created successfully. Position: (56, 184)
 Camera at: (0, 76)
 E key pressed
 Switching back to player skin
 obj_player: Initialized. Driving state: 0
 Switched back to player skin. New player instance ID: ref instance 100414
-New player instance created successfully. Position: (52, 184)
+New player instance created successfully. Position: (56, 184)
 Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 76)
@@ -945,1645 +1021,67 @@ DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 76)
 Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (2, 76)
-Camera at: (2, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (4, 76)
-Camera at: (4, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (6, 76)
-Camera at: (6, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (8, 76)
-Camera at: (8, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (10, 76)
-Camera at: (10, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (12, 76)
-Camera at: (12, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (14, 76)
-Camera at: (14, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (16, 76)
-Camera at: (16, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (18, 74)
-Camera at: (18, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (20, 72)
-Camera at: (20, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (22, 70)
-Camera at: (22, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (24, 68)
-Camera at: (24, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (26, 66)
-Camera at: (26, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (28, 64)
-Camera at: (28, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (30, 62)
-Camera at: (30, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (32, 60)
-Camera at: (32, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (34, 58)
-Camera at: (34, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (36, 56)
-Camera at: (36, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (38, 54)
-Camera at: (38, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (40, 52)
-Camera at: (40, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (42, 50)
-Camera at: (42, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (44, 48)
-Camera at: (44, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (46, 46)
-Camera at: (46, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (48, 44)
-Camera at: (48, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (50, 42)
-Camera at: (50, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (52, 40)
-Camera at: (52, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (54, 38)
-Camera at: (54, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (56, 36)
-Camera at: (56, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (58, 34)
-Camera at: (58, 34)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (60, 32)
-Camera at: (60, 32)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (62, 30)
-Camera at: (62, 30)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (64, 28)
-Camera at: (64, 28)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (66, 26)
-Camera at: (66, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (68, 24)
-Camera at: (68, 24)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (70, 22)
-Camera at: (70, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 20)
-Camera at: (72, 20)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 18)
-Camera at: (72, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 16)
-Camera at: (72, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 14)
-Camera at: (72, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 12)
-Camera at: (72, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 10)
-Camera at: (72, 10)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 8)
-Camera at: (72, 8)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 6)
-Camera at: (72, 6)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 4)
-Camera at: (72, 4)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 2)
-Camera at: (72, 2)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (72, 0)
-Camera at: (72, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Create Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Reattached to existing global camera. ID: 97
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 184)
-Camera at: (111, 184)
-Camera at: (111, 184)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 97
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100414
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (111, 0)
-Camera at: (111, 0)
-Camera at: (111, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (109, 0)
-Camera at: (109, 0)
-Camera at: (109, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (107, 0)
-Camera at: (107, 0)
-Camera at: (107, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (105, 0)
-Camera at: (105, 0)
-Camera at: (105, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (103, 0)
-Camera at: (103, 0)
-Camera at: (103, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (101, 0)
-Camera at: (101, 0)
-Camera at: (101, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (99, 0)
-Camera at: (99, 0)
-Camera at: (99, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (97, 0)
-Camera at: (97, 0)
-Camera at: (97, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (95, 0)
-Camera at: (95, 0)
-Camera at: (95, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (93, 0)
-Camera at: (93, 0)
-Camera at: (93, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (91, 0)
-Camera at: (91, 0)
-Camera at: (91, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (89, 0)
-Camera at: (89, 0)
-Camera at: (89, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (87, 0)
-Camera at: (87, 0)
-Camera at: (87, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (85, 0)
-Camera at: (85, 0)
-Camera at: (85, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (83, 0)
-Camera at: (83, 0)
-Camera at: (83, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (81, 0)
-Camera at: (81, 0)
-Camera at: (81, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (79, 0)
-Camera at: (79, 0)
-Camera at: (79, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (77, 0)
-Camera at: (77, 0)
-Camera at: (77, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (75, 0)
-Camera at: (75, 0)
-Camera at: (75, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (73, 0)
-Camera at: (73, 0)
-Camera at: (73, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (71, 0)
-Camera at: (71, 0)
-Camera at: (71, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (69, 0)
-Camera at: (69, 0)
-Camera at: (69, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (67, 0)
-Camera at: (67, 0)
-Camera at: (67, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (65, 0)
-Camera at: (65, 0)
-Camera at: (65, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (63, 0)
-Camera at: (63, 0)
-Camera at: (63, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (61, 0)
-Camera at: (61, 0)
-Camera at: (61, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (59, 0)
-Camera at: (59, 0)
-Camera at: (59, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (57, 0)
-Camera at: (57, 0)
-Camera at: (57, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (55, 0)
-Camera at: (55, 0)
-Camera at: (55, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (53, 0)
-Camera at: (53, 0)
-Camera at: (53, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (51, 0)
-Camera at: (51, 0)
-Camera at: (51, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (49, 0)
-Camera at: (49, 0)
-Camera at: (49, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (47, 0)
-Camera at: (47, 0)
-Camera at: (47, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (45, 0)
-Camera at: (45, 0)
-Camera at: (45, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (43, 0)
-Camera at: (43, 0)
-Camera at: (43, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (41, 0)
-Camera at: (41, 0)
-Camera at: (41, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (39, 0)
-Camera at: (39, 0)
-Camera at: (39, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (37, 0)
-Camera at: (37, 0)
-Camera at: (37, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (35, 2)
-Camera at: (35, 2)
-Camera at: (35, 2)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (33, 4)
-Camera at: (33, 4)
-Camera at: (33, 4)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (31, 6)
-Camera at: (31, 6)
-Camera at: (31, 6)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (29, 8)
-Camera at: (29, 8)
-Camera at: (29, 8)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (27, 10)
-Camera at: (27, 10)
-Camera at: (27, 10)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (25, 12)
-Camera at: (25, 12)
-Camera at: (25, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (23, 12)
-Camera at: (23, 12)
-Camera at: (23, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (21, 12)
-Camera at: (21, 12)
-Camera at: (21, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (19, 12)
-Camera at: (19, 12)
-Camera at: (19, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (17, 12)
-Camera at: (17, 12)
-Camera at: (17, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (15, 12)
-Camera at: (15, 12)
-Camera at: (15, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (13, 12)
-Camera at: (13, 12)
-Camera at: (13, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 12)
-Camera at: (11, 12)
-Camera at: (11, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (9, 12)
-Camera at: (9, 12)
-Camera at: (9, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (7, 12)
-Camera at: (7, 12)
-Camera at: (7, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (5, 12)
-Camera at: (5, 12)
-Camera at: (5, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (3, 12)
-Camera at: (3, 12)
-Camera at: (3, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (1, 12)
-Camera at: (1, 12)
-Camera at: (1, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Camera at: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 14)
-Camera at: (0, 14)
-Camera at: (0, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Camera at: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
-Camera at: (0, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
-Camera at: (0, 20)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
-Camera at: (0, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
-Camera at: (0, 24)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 26)
-Camera at: (0, 26)
-Camera at: (0, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 28)
-Camera at: (0, 28)
-Camera at: (0, 28)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 30)
-Camera at: (0, 30)
-Camera at: (0, 30)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 32)
-Camera at: (0, 32)
-Camera at: (0, 32)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 34)
-Camera at: (0, 34)
-Camera at: (0, 34)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Camera at: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Camera at: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Camera at: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Camera at: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Camera at: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Camera at: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Camera at: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Camera at: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Camera at: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Camera at: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Camera at: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Camera at: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Camera at: (0, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 60)
-Camera at: (0, 60)
-Camera at: (0, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Camera at: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Camera at: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Camera at: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Camera at: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Camera at: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Camera at: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 76)
 Camera at: (0, 76)
-Camera at: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Camera at: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Camera at: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Camera at: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Camera at: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Camera at: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Camera at: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Camera at: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Camera at: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Camera at: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Camera at: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Camera at: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Camera at: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Camera at: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Camera at: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Camera at: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Camera at: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Camera at: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Camera at: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Camera at: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Camera at: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Camera at: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Camera at: (0, 100)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Camera at: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Camera at: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Camera at: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Camera at: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Camera at: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Camera at: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Camera at: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Camera at: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Camera at: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (1, 80)
-Camera at: (1, 80)
-Camera at: (1, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (3, 78)
-Camera at: (3, 78)
-Camera at: (3, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (5, 76)
-Camera at: (5, 76)
-Camera at: (5, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (7, 74)
-Camera at: (7, 74)
-Camera at: (7, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (9, 74)
-Camera at: (9, 74)
-Camera at: (9, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (11, 74)
-Camera at: (11, 74)
-Camera at: (11, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
 ###game_end###254
