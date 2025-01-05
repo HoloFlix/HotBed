@@ -1,0 +1,2 @@
+show_debug_message("Buttons left: " + string(instance_number(obj_button)));
+show_debug_message("Skinpickers left: " + string(instance_number(obj_skinpicker)));
