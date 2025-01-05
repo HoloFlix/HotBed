@@ -1,0 +1,8 @@
+draw_self(); // Draw the sprite
+
+if (distance_to_object(global.player_instance) < 48 && global.current_skin == "player") {
+    var text = "Press 'E' to enter";
+    var text_width = string_width(text);
+    draw_set_color(c_black); // Set text color to black
+    draw_text(x + (sprite_width / 2) - (text_width / 2), y - 20, text); // Center the text
+}
