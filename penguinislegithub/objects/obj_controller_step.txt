@@ -1,0 +1,69 @@
+// Step Event for obj_controller
+if (keyboard_check_pressed(ord("E"))) {
+    show_debug_message("E key pressed");
+
+    // Check for interaction with the ice truck
+    var ice_truck = noone;
+    with (obj_icetruck) {
+        if (point_distance(x, y, global.player_instance.x, global.player_instance.y) < 48) { // Expanded distance
+            show_debug_message("Ice truck found at position: (" + string(x) + ", " + string(y) + ")");
+            ice_truck = id; // Assign the ID of the nearby ice truck
+            break; // Exit the loop once a valid truck is found
+        }
+    }
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        show_debug_message("Switching to icetruck skin");
+
+        // Switch to ice truck player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        instance_destroy(ice_truck); // Remove the ice truck from the room
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck"; // Update the current skin
+        global.icetruck_destroyed = true; // Mark ice truck as destroyed
+        show_debug_message("Switched to icetruck skin. New player instance ID: " + string(global.player_instance));
+
+        // Additional debug messages to ensure the new instance is created correctly
+        if (instance_exists(global.player_instance)) {
+            show_debug_message("New ice truck player instance created successfully. Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+        } else {
+            show_debug_message("Failed to create ice truck player instance.");
+        }
+    } else if (global.current_skin == "icetruck") {
+        show_debug_message("Switching back to player skin");
+
+        // Switch back to player
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Destroy the current player instance
+        if (!global.icetruck_destroyed) {
+            instance_create_layer(player_x, player_y, "Instances", obj_icetruck); // Add the ice truck back to the room
+        }
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Update the current skin
+        show_debug_message("Switched back to player skin. New player instance ID: " + string(global.player_instance));
+
+        // Additional debug messages to ensure the new instance is created correctly
+        if (instance_exists(global.player_instance)) {
+            show_debug_message("New player instance created successfully. Position: (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+        } else {
+            show_debug_message("Failed to create player instance.");
+        }
+    }
+}
+
+// Ensure the viewport follows the current player instance
+if (instance_exists(global.player_instance)) {
+    var view_x = clamp(global.player_instance.x - (view_wview[0] / 2), 0, room_width - view_wview[0]);
+    var view_y = clamp(global.player_instance.y - (view_hview[0] / 2), 0, room_height - view_hview[0]);
+    view_xview[0] = view_x;
+    view_yview[0] = view_y;
+
+    // Debug message to ensure camera is moving
+    show_debug_message("Camera at: (" + string(view_xview[0]) + ", " + string(view_yview[0]) + ")");
+}
