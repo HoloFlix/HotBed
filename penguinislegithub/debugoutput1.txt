@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=3
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -35,9 +35,9 @@ Camera at: (0, 0)
 obj_player: Initialized. Driving state: 0
 Room Start: Reinitialized player as player. Player instance ID: ref instance 100428
 Camera at: (0, 0)
-Total memory used = 8271800 (0x007e37b8) bytes 7.89MB
+Total memory used = 8267808 (0x007e2820) bytes 7.88MB
 Free memory = 6480408 (0x0062e218) bytes 6.18MB
-Peak memory used = 11426904 (0x00ae5c58) bytes 10.90MB
+Peak memory used = 11426780 (0x00ae5bdc) bytes 10.90MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -608,1140 +608,6 @@ Viewport object: 100428
 Viewport position: (0, 0)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 2)
-Camera at: (0, 2)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 2)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 4)
-Camera at: (0, 4)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 4)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 6)
-Camera at: (0, 6)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 6)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 8)
-Camera at: (0, 8)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 8)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 10)
-Camera at: (0, 10)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 10)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 14)
-Camera at: (0, 14)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 20)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 24)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 26)
-Camera at: (0, 26)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 28)
-Camera at: (0, 28)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 28)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 30)
-Camera at: (0, 30)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 30)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 32)
-Camera at: (0, 32)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 32)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 34)
-Camera at: (0, 34)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 34)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 60)
-Camera at: (0, 60)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 114)
-Camera at: (0, 114)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 114)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 116)
-Camera at: (0, 116)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 116)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 118)
-Camera at: (0, 118)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 118)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 118)
-Camera at: (0, 118)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 118)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 116)
-Camera at: (0, 116)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 116)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 114)
-Camera at: (0, 114)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 114)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 60)
-Camera at: (0, 60)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 34)
-Camera at: (0, 34)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 34)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 32)
-Camera at: (0, 32)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 32)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 30)
-Camera at: (0, 30)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 30)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 28)
-Camera at: (0, 28)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 28)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 26)
-Camera at: (0, 26)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 26)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 24)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 20)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 14)
-Camera at: (0, 14)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 14)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 12)
-Camera at: (0, 12)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 12)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 10)
-Camera at: (0, 10)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 10)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 8)
-Camera at: (0, 8)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 8)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 6)
-Camera at: (0, 6)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 6)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 4)
-Camera at: (0, 4)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 4)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 2)
-Camera at: (0, 2)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 2)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 0)
-Camera at: (0, 0)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 2)
 Camera at: (0, 2)
 Player instance: ref instance 100428
@@ -1952,417 +818,11 @@ Viewport object: 100428
 Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 104)
-Camera at: (0, 104)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 104)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 62)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 60)
@@ -2372,277 +832,151 @@ Viewport object: 100428
 Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 58)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 56)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 54)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 52)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 50)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 48)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 46)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 44)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 42)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 40)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 38)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
+Camera at: (0, 60)
+Camera at: (0, 60)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 58)
+Viewport position: (0, 60)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 60)
@@ -2806,375 +1140,11 @@ Viewport object: 100428
 Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
+Camera at: (0, 104)
+Camera at: (0, 104)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 106)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 114)
-Camera at: (0, 114)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 114)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 116)
-Camera at: (0, 116)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 116)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 118)
-Camera at: (0, 118)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 118)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 122)
-Camera at: (0, 122)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 122)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 124)
-Camera at: (0, 124)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 124)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 126)
-Camera at: (0, 126)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 126)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 128)
-Camera at: (0, 128)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 128)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 130)
-Camera at: (0, 130)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 130)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 132)
-Camera at: (0, 132)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 132)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 134)
-Camera at: (0, 134)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 134)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 136)
-Camera at: (0, 136)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 136)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 138)
-Camera at: (0, 138)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 138)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 140)
-Camera at: (0, 140)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 140)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 142)
-Camera at: (0, 142)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 142)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 144)
-Camera at: (0, 144)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 144)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 146)
-Camera at: (0, 146)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 146)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 148)
-Camera at: (0, 148)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 148)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 150)
-Camera at: (0, 150)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 150)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 152)
-Camera at: (0, 152)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 152)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 150)
-Camera at: (0, 150)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 150)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 148)
-Camera at: (0, 148)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 148)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 146)
-Camera at: (0, 146)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 146)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 144)
-Camera at: (0, 144)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 144)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 142)
-Camera at: (0, 142)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 142)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 140)
-Camera at: (0, 140)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 140)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 138)
-Camera at: (0, 138)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 138)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 136)
-Camera at: (0, 136)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 136)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 134)
-Camera at: (0, 134)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 134)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 132)
-Camera at: (0, 132)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 132)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 130)
-Camera at: (0, 130)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 130)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 128)
-Camera at: (0, 128)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 128)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 126)
-Camera at: (0, 126)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 126)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 124)
-Camera at: (0, 124)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 124)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 122)
-Camera at: (0, 122)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 122)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 120)
-Camera at: (0, 120)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 120)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 118)
-Camera at: (0, 118)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 118)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 116)
-Camera at: (0, 116)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 116)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 114)
-Camera at: (0, 114)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 114)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
+Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 104)
@@ -3184,739 +1154,11 @@ Viewport object: 100428
 Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
+Camera at: (0, 104)
+Camera at: (0, 104)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 102)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 60)
-Camera at: (0, 60)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 36)
-Camera at: (0, 36)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 36)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 38)
-Camera at: (0, 38)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 38)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 40)
-Camera at: (0, 40)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 40)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 42)
-Camera at: (0, 42)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 42)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 44)
-Camera at: (0, 44)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 44)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 46)
-Camera at: (0, 46)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 46)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 48)
-Camera at: (0, 48)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 48)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 50)
-Camera at: (0, 50)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 50)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 52)
-Camera at: (0, 52)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 52)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 54)
-Camera at: (0, 54)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 54)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 56)
-Camera at: (0, 56)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 56)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 58)
-Camera at: (0, 58)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 58)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 60)
-Camera at: (0, 60)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 60)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 62)
-Camera at: (0, 62)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 62)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 64)
-Camera at: (0, 64)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 64)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 66)
-Camera at: (0, 66)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 66)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 68)
-Camera at: (0, 68)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 68)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 70)
-Camera at: (0, 70)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 70)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 72)
-Camera at: (0, 72)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 72)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 74)
-Camera at: (0, 74)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 74)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 76)
-Camera at: (0, 76)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 76)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 78)
-Camera at: (0, 78)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 78)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 80)
-Camera at: (0, 80)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 80)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 82)
-Camera at: (0, 82)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 82)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 84)
-Camera at: (0, 84)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 84)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 86)
-Camera at: (0, 86)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 86)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 88)
-Camera at: (0, 88)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 88)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 90)
-Camera at: (0, 90)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 90)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 92)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 94)
-Camera at: (0, 94)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 94)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 96)
-Camera at: (0, 96)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 96)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 98)
-Camera at: (0, 98)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 98)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 100)
-Camera at: (0, 100)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 100)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 102)
-Camera at: (0, 102)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 102)
+Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 104)
@@ -3926,165 +1168,25 @@ Viewport object: 100428
 Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
+Camera at: (0, 104)
+Camera at: (0, 104)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 106)
+Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
+Camera at: (0, 104)
+Camera at: (0, 104)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 108)
+Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
+Camera at: (0, 104)
+Camera at: (0, 104)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 112)
-Camera at: (0, 112)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 112)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 110)
-Camera at: (0, 110)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 110)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 108)
-Camera at: (0, 108)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 108)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 106)
-Camera at: (0, 106)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 106)
+Viewport position: (0, 104)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 104)
@@ -4360,193 +1462,67 @@ Viewport object: 100428
 Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 26)
-Camera at: (0, 26)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 26)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 24)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 22)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 20)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 18)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 28)
+Camera at: (0, 28)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 16)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 18)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 20)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 22)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 24)
-DEBUG: Camera exists in obj_initializer Step Event.
-DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 26)
-Camera at: (0, 26)
-Player instance: ref instance 100428
-Viewport object: 100428
-Viewport position: (0, 26)
+Viewport position: (0, 28)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 28)
@@ -4780,6 +1756,195 @@ Viewport object: 100428
 Viewport position: (0, 92)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 94)
+Camera at: (0, 94)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 94)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 96)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 98)
+Camera at: (0, 98)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 98)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 100)
+Camera at: (0, 100)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 100)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 102)
+Camera at: (0, 102)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 102)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 104)
+Camera at: (0, 104)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 104)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 106)
+Camera at: (0, 106)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 106)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 108)
+Camera at: (0, 108)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 108)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 110)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 108)
+Camera at: (0, 108)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 108)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 106)
+Camera at: (0, 106)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 106)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 104)
+Camera at: (0, 104)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 104)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 102)
+Camera at: (0, 102)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 102)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 100)
+Camera at: (0, 100)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 100)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 98)
+Camera at: (0, 98)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 98)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 96)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 94)
+Camera at: (0, 94)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 94)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 92)
 Camera at: (0, 92)
 Player instance: ref instance 100428
@@ -4787,109 +1952,508 @@ Viewport object: 100428
 Viewport position: (0, 92)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 90)
+Camera at: (0, 90)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 90)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 88)
+Camera at: (0, 88)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 88)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 86)
+Camera at: (0, 86)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 86)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 84)
+Camera at: (0, 84)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 84)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 82)
+Camera at: (0, 82)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 82)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 80)
+Camera at: (0, 80)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 80)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 78)
+Camera at: (0, 78)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 78)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 76)
+Camera at: (0, 76)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 76)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 74)
+Camera at: (0, 74)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 74)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 72)
+Camera at: (0, 72)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 72)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 70)
+Camera at: (0, 70)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 70)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 68)
+Camera at: (0, 68)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 68)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 66)
+Camera at: (0, 66)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 66)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 64)
+Camera at: (0, 64)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 64)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 92)
-Camera at: (0, 92)
+Camera at: (0, 62)
+Camera at: (0, 62)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 92)
+Viewport position: (0, 62)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 60)
+Camera at: (0, 60)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 60)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 58)
+Camera at: (0, 58)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 58)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 56)
+Camera at: (0, 56)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 56)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 54)
+Camera at: (0, 54)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 54)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 52)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 50)
+Camera at: (0, 50)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 50)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 48)
+Camera at: (0, 48)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 48)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 46)
+Camera at: (0, 46)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 46)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 44)
+Camera at: (0, 44)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 44)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 42)
+Camera at: (0, 42)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 42)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 40)
+Camera at: (0, 40)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 40)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 38)
+Camera at: (0, 38)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 38)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 40)
+Camera at: (0, 40)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 40)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 42)
+Camera at: (0, 42)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 42)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 44)
+Camera at: (0, 44)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 44)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 46)
+Camera at: (0, 46)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 46)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 48)
+Camera at: (0, 48)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 48)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 50)
+Camera at: (0, 50)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 50)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 52)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 54)
+Camera at: (0, 54)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 54)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 56)
+Camera at: (0, 56)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 56)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 58)
+Camera at: (0, 58)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 58)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 60)
+Camera at: (0, 60)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 60)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 62)
+Camera at: (0, 62)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 62)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 64)
+Camera at: (0, 64)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 64)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 66)
+Camera at: (0, 66)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 66)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 68)
+Camera at: (0, 68)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 68)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 70)
+Camera at: (0, 70)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 70)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 72)
+Camera at: (0, 72)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 72)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 74)
+Camera at: (0, 74)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 74)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 76)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 78)
+Camera at: (0, 78)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 78)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 80)
+Camera at: (0, 80)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 80)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 82)
+Camera at: (0, 82)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 82)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 84)
+Camera at: (0, 84)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 84)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 86)
+Camera at: (0, 86)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 86)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 88)
+Camera at: (0, 88)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 88)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 90)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 Camera at: (0, 90)
@@ -5123,438 +2687,1117 @@ Viewport object: 100428
 Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 24)
-Camera at: (0, 24)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 24)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 22)
-Camera at: (0, 22)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 22)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 20)
-Camera at: (0, 20)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 20)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 18)
-Camera at: (0, 18)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 18)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
-Camera at: (0, 16)
-Camera at: (0, 16)
+Camera at: (0, 26)
+Camera at: (0, 26)
 Player instance: ref instance 100428
 Viewport object: 100428
-Viewport position: (0, 16)
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
+DEBUG: Camera exists in obj_initializer Step Event.
+DEBUG: Camera exists in obj_initializer Step Event.
+Camera at: (0, 26)
+Camera at: (0, 26)
+Player instance: ref instance 100428
+Viewport object: 100428
+Viewport position: (0, 26)
 DEBUG: Camera exists in obj_initializer Step Event.
 DEBUG: Camera exists in obj_initializer Step Event.
 ###game_end###254
