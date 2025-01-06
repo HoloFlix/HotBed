@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=3
+Collision Event time(microsecs)=4
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -21,7 +21,8 @@ Done Extension_Initialize
 About to startroom
 obj_player: Initialized. Driving state: 0
 Initial player instance created with ID: ref instance 100424
-DEBUG: New global camera created. ID: 97
+Created new global camera with ID: 97
+DEBUG: Reattached to existing global camera. ID: 97
 Camera set to follow player instance ID: ref instance 100424
 DEBUG: Reattached to existing global camera. ID: -4
 ERROR!!! :: ############################################################################################
