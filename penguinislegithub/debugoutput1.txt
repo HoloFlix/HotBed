@@ -20,18 +20,4053 @@ Done ObjectLists
 Done Extension_Initialize
 About to startroom
 obj_player: Initialized. Driving state: 0
-Initial player instance created with ID: ref instance 100424
-Created new global camera with ID: 97
-DEBUG: Reattached to existing global camera. ID: 97
-Created new global camera with ID: 98
-DEBUG: Reattached to existing global camera. ID: 98
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 98
+DEBUG: Reattached to existing global camera. ID: -4
 obj_player: Initialized. Driving state: 0
-ERROR!!! :: ############################################################################################
-ERROR in action number 1
-of Other Event: Room Start for object obj_controller:
-global variable name 'icetruck_destroyed' index (100025) not set before reading it.
- at gml_Object_obj_controller_Other_4 (line 33) - if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
-############################################################################################
-gml_Object_obj_controller_Other_4 (line 33)
+DEBUG: Reattached to existing global camera. ID: -4
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: -4
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100425
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: -4
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100425
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: -4
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100425
+Total memory used = 8286052 (0x007e6f64) bytes 7.90MB
+Free memory = 6480376 (0x0062e1f8) bytes 6.18MB
+Peak memory used = 11428295 (0x00ae61c7) bytes 10.90MB
+**********************************.
+Entering main loop.
+**********************************.
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 52)
+Camera at: (0, 52)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 52)
+Camera at: (0, 54)
+Camera at: (0, 54)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 54)
+Camera at: (0, 56)
+Camera at: (0, 56)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 56)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 58)
+Camera at: (0, 60)
+Camera at: (0, 60)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 60)
+Camera at: (0, 62)
+Camera at: (0, 62)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 62)
+Camera at: (0, 64)
+Camera at: (0, 64)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 64)
+Camera at: (0, 66)
+Camera at: (0, 66)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 66)
+Camera at: (0, 68)
+Camera at: (0, 68)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 68)
+Camera at: (0, 70)
+Camera at: (0, 70)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 70)
+Camera at: (0, 72)
+Camera at: (0, 72)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 72)
+Camera at: (0, 74)
+Camera at: (0, 74)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 74)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 78)
+Camera at: (0, 78)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 78)
+Camera at: (0, 80)
+Camera at: (0, 80)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 80)
+Camera at: (0, 82)
+Camera at: (0, 82)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 82)
+Camera at: (0, 84)
+Camera at: (0, 84)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 84)
+Camera at: (0, 86)
+Camera at: (0, 86)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 86)
+Camera at: (0, 88)
+Camera at: (0, 88)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 88)
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 90)
+Camera at: (0, 92)
+Camera at: (0, 92)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 92)
+Camera at: (0, 94)
+Camera at: (0, 94)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 94)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 98)
+Camera at: (0, 98)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 98)
+Camera at: (0, 100)
+Camera at: (0, 100)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 100)
+Camera at: (0, 102)
+Camera at: (0, 102)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 102)
+Camera at: (0, 104)
+Camera at: (0, 104)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 104)
+Camera at: (0, 106)
+Camera at: (0, 106)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 106)
+Camera at: (0, 108)
+Camera at: (0, 108)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 108)
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 110)
+Camera at: (0, 112)
+Camera at: (0, 112)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 112)
+Camera at: (0, 114)
+Camera at: (0, 114)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 114)
+Camera at: (0, 116)
+Camera at: (0, 116)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 116)
+Camera at: (0, 118)
+Camera at: (0, 118)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 118)
+Camera at: (0, 120)
+Camera at: (0, 120)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 120)
+Camera at: (0, 122)
+Camera at: (0, 122)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 122)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 126)
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 128)
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 130)
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 132)
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 134)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 134)
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 132)
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 130)
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 128)
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 126)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 122)
+Camera at: (0, 122)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 122)
+Camera at: (0, 120)
+Camera at: (0, 120)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 120)
+Camera at: (0, 118)
+Camera at: (0, 118)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 118)
+Camera at: (0, 116)
+Camera at: (0, 116)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 116)
+Camera at: (0, 114)
+Camera at: (0, 114)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 114)
+Camera at: (0, 112)
+Camera at: (0, 112)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 112)
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 110)
+Camera at: (0, 108)
+Camera at: (0, 108)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 108)
+Camera at: (0, 106)
+Camera at: (0, 106)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 106)
+Camera at: (0, 104)
+Camera at: (0, 104)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 104)
+Camera at: (0, 102)
+Camera at: (0, 102)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 102)
+Camera at: (0, 100)
+Camera at: (0, 100)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 100)
+Camera at: (0, 98)
+Camera at: (0, 98)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 98)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 94)
+Camera at: (0, 94)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 94)
+Camera at: (0, 92)
+Camera at: (0, 92)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 92)
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 90)
+Camera at: (0, 88)
+Camera at: (0, 88)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 88)
+Camera at: (0, 86)
+Camera at: (0, 86)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 86)
+Camera at: (0, 84)
+Camera at: (0, 84)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 84)
+Camera at: (0, 82)
+Camera at: (0, 82)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 82)
+Camera at: (0, 80)
+Camera at: (0, 80)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 80)
+Camera at: (0, 78)
+Camera at: (0, 78)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 78)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 76)
+Camera at: (0, 76)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 76)
+Camera at: (0, 78)
+Camera at: (0, 78)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 78)
+Camera at: (0, 80)
+Camera at: (0, 80)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 80)
+Camera at: (0, 82)
+Camera at: (0, 82)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 82)
+Camera at: (0, 84)
+Camera at: (0, 84)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 84)
+Camera at: (0, 86)
+Camera at: (0, 86)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 86)
+Camera at: (0, 88)
+Camera at: (0, 88)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 88)
+Camera at: (0, 90)
+Camera at: (0, 90)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 90)
+Camera at: (0, 92)
+Camera at: (0, 92)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 92)
+Camera at: (0, 94)
+Camera at: (0, 94)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 94)
+Camera at: (0, 96)
+Camera at: (0, 96)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 96)
+Camera at: (0, 98)
+Camera at: (0, 98)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 98)
+Camera at: (0, 100)
+Camera at: (0, 100)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 100)
+Camera at: (0, 102)
+Camera at: (0, 102)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 102)
+Camera at: (0, 104)
+Camera at: (0, 104)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 104)
+Camera at: (0, 106)
+Camera at: (0, 106)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 106)
+Camera at: (0, 108)
+Camera at: (0, 108)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 108)
+Camera at: (0, 110)
+Camera at: (0, 110)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 110)
+Camera at: (0, 112)
+Camera at: (0, 112)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 112)
+Camera at: (0, 114)
+Camera at: (0, 114)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 114)
+Camera at: (0, 116)
+Camera at: (0, 116)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 116)
+Camera at: (0, 118)
+Camera at: (0, 118)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 118)
+Camera at: (0, 120)
+Camera at: (0, 120)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 120)
+Camera at: (0, 122)
+Camera at: (0, 122)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 122)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 126)
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 128)
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 130)
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 132)
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 134)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 138)
+Camera at: (0, 138)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 138)
+Camera at: (0, 140)
+Camera at: (0, 140)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 140)
+Camera at: (0, 142)
+Camera at: (0, 142)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 142)
+Camera at: (0, 144)
+Camera at: (0, 144)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 144)
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 146)
+Camera at: (0, 148)
+Camera at: (0, 148)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 148)
+Camera at: (0, 150)
+Camera at: (0, 150)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 150)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 154)
+Camera at: (0, 154)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 154)
+Camera at: (0, 156)
+Camera at: (0, 156)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 156)
+Camera at: (0, 158)
+Camera at: (0, 158)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 158)
+Camera at: (0, 160)
+Camera at: (0, 160)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 160)
+Camera at: (0, 162)
+Camera at: (0, 162)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 162)
+Camera at: (0, 164)
+Camera at: (0, 164)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 164)
+Camera at: (0, 166)
+Camera at: (0, 166)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 166)
+Camera at: (0, 168)
+Camera at: (0, 168)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 168)
+Camera at: (0, 170)
+Camera at: (0, 170)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 170)
+Camera at: (0, 172)
+Camera at: (0, 172)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 172)
+Camera at: (0, 174)
+Camera at: (0, 174)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 174)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 178)
+Camera at: (0, 178)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 178)
+Camera at: (0, 180)
+Camera at: (0, 180)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 180)
+Camera at: (0, 182)
+Camera at: (0, 182)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 182)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 182)
+Camera at: (0, 182)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 182)
+Camera at: (0, 180)
+Camera at: (0, 180)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 180)
+Camera at: (0, 178)
+Camera at: (0, 178)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 178)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 174)
+Camera at: (0, 174)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 174)
+Camera at: (0, 172)
+Camera at: (0, 172)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 172)
+Camera at: (0, 170)
+Camera at: (0, 170)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 170)
+Camera at: (0, 168)
+Camera at: (0, 168)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 168)
+Camera at: (0, 166)
+Camera at: (0, 166)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 166)
+Camera at: (0, 164)
+Camera at: (0, 164)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 164)
+Camera at: (0, 162)
+Camera at: (0, 162)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 162)
+Camera at: (0, 160)
+Camera at: (0, 160)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 160)
+Camera at: (0, 158)
+Camera at: (0, 158)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 158)
+Camera at: (0, 156)
+Camera at: (0, 156)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 156)
+Camera at: (0, 154)
+Camera at: (0, 154)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 154)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 150)
+Camera at: (0, 150)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 150)
+Camera at: (0, 148)
+Camera at: (0, 148)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 148)
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 146)
+Camera at: (0, 144)
+Camera at: (0, 144)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 144)
+Camera at: (0, 142)
+Camera at: (0, 142)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 142)
+Camera at: (0, 140)
+Camera at: (0, 140)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 140)
+Camera at: (0, 138)
+Camera at: (0, 138)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 138)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 134)
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 132)
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 130)
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 128)
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 126)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 124)
+Camera at: (0, 124)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 124)
+Camera at: (0, 126)
+Camera at: (0, 126)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 126)
+Camera at: (0, 128)
+Camera at: (0, 128)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 128)
+Camera at: (0, 130)
+Camera at: (0, 130)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 130)
+Camera at: (0, 132)
+Camera at: (0, 132)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 132)
+Camera at: (0, 134)
+Camera at: (0, 134)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 134)
+Camera at: (0, 136)
+Camera at: (0, 136)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 136)
+Camera at: (0, 138)
+Camera at: (0, 138)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 138)
+Camera at: (0, 140)
+Camera at: (0, 140)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 140)
+Camera at: (0, 142)
+Camera at: (0, 142)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 142)
+Camera at: (0, 144)
+Camera at: (0, 144)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 144)
+Camera at: (0, 146)
+Camera at: (0, 146)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 146)
+Camera at: (0, 148)
+Camera at: (0, 148)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 148)
+Camera at: (0, 150)
+Camera at: (0, 150)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 150)
+Camera at: (0, 152)
+Camera at: (0, 152)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 152)
+Camera at: (0, 154)
+Camera at: (0, 154)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 154)
+Camera at: (0, 156)
+Camera at: (0, 156)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 156)
+Camera at: (0, 158)
+Camera at: (0, 158)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 158)
+Camera at: (0, 160)
+Camera at: (0, 160)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 160)
+Camera at: (0, 162)
+Camera at: (0, 162)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 162)
+Camera at: (0, 164)
+Camera at: (0, 164)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 164)
+Camera at: (0, 166)
+Camera at: (0, 166)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 166)
+Camera at: (0, 168)
+Camera at: (0, 168)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 168)
+Camera at: (0, 170)
+Camera at: (0, 170)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 170)
+Camera at: (0, 172)
+Camera at: (0, 172)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 172)
+Camera at: (0, 174)
+Camera at: (0, 174)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 174)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 178)
+Camera at: (0, 178)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 178)
+Camera at: (0, 180)
+Camera at: (0, 180)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 180)
+Camera at: (0, 182)
+Camera at: (0, 182)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 182)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 182)
+Camera at: (0, 182)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 182)
+Camera at: (0, 180)
+Camera at: (0, 180)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 180)
+Camera at: (0, 178)
+Camera at: (0, 178)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 178)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 176)
+Camera at: (0, 176)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 176)
+Camera at: (0, 178)
+Camera at: (0, 178)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 178)
+Camera at: (0, 180)
+Camera at: (0, 180)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 180)
+Camera at: (0, 182)
+Camera at: (0, 182)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 182)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+Camera at: (0, 184)
+Camera at: (0, 184)
+Player instance: ref instance 100425
+Viewport object: -1
+Viewport position: (0, 184)
+###game_end###254
