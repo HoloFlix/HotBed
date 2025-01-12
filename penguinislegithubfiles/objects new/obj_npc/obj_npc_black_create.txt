@@ -1,0 +1,10 @@
+// Create Event for obj_npc_black
+
+// Initialize the animation index
+animation_index = 0;
+
+// Define animations for npc_black
+animations = [spr_black_idle, spr_black_raisehand, spr_black_talk];
+
+// Set the initial sprite
+sprite_index = animations[animation_index];

@@ -1,0 +1,13 @@
+// Handle dialog progression
+if (global.chat_active) {
+    // Advance dialog with Spacebar
+    if (keyboard_check_pressed(vk_space)) {
+        if (dialog_index < array_length(dialog_queue) - 1) {
+            dialog_index++; // Advance dialog
+        } else {
+            global.chat_active = false; // End chat
+            dialog_index = 0;           // Reset dialog index
+            global.chat_npc = noone;    // Clear active NPC
+        }
+    }
+}

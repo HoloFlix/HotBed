@@ -1,0 +1,44 @@
+// Function to switch player skin
+function switch_skin(new_skin) {
+    if (instance_exists(global.player_instance)) {
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+
+        // Create the new player instance based on the skin
+        if (new_skin == "icetruck") {
+            global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+            global.current_skin = "icetruck";
+        } else if (new_skin == "tube") {
+            global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_tube);
+            global.current_skin = "tube";
+        } else {
+            global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+            global.current_skin = "player";
+        }
+
+        show_debug_message("Switched to skin: " + global.current_skin);
+    } else {
+        show_debug_message("Error: Player instance does not exist.");
+    }
+}
+
+// Update camera position to follow the player
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    var smooth_x = lerp(camera_get_view_x(global.camera), target_x, 0.1);
+    var smooth_y = lerp(camera_get_view_y(global.camera), target_y, 0.1);
+
+    camera_set_view_pos(global.camera, smooth_x, smooth_y);
+    view_object[0] = global.player_instance;  // Set the viewport to track the player
+    
+    // Debug messages to verify camera and viewport positions
+    show_debug_message("Player position after warp: " + string(global.player_instance.x) + ", " + string(global.player_instance.y));
+    show_debug_message("Camera position after warp: " + string(camera_get_view_x(global.camera)) + ", " + string(camera_get_view_y(global.camera)));
+    show_debug_message("Viewport object: " + string(view_object[0]));
+}
