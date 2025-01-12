@@ -1,1 +1,0 @@
-instance_destroy(); // Destroy the current ice truck instance

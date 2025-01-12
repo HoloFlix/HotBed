@@ -1,5 +1,0 @@
-// Collision Event with obj_player
-if (keyboard_check_pressed(vk_space)) {
-    global.chat_active = true;
-    global.chat_npc = id;
-}

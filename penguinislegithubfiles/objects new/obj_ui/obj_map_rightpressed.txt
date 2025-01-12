@@ -1,4 +1,0 @@
-// obj_map Mouse Right Pressed Event
-camera_set_view_size(global.camera, global.camera_width, global.camera_height); // Restore original camera view size
-instance_destroy(id);
-show_debug_message("Map closed.");
