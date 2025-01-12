@@ -1,0 +1,6 @@
+// Mouse Right Pressed Event for obj_chat_window
+
+if (global.chat_active) {
+    global.chat_active = false; // Close the chat window
+    global.chat_npc = noone;    // Reset the active NPC
+}

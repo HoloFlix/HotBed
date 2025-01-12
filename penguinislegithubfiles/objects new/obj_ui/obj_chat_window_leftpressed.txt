@@ -1,0 +1,31 @@
+if (global.chat_active) {
+    // Calculate button position
+    var camera_x = camera_get_view_x(global.camera);
+    var camera_y = camera_get_view_y(global.camera);
+    var camera_width = camera_get_view_width(global.camera);
+    var camera_height = camera_get_view_height(global.camera);
+
+    var menu_width = 300; // Match your Draw Event
+    var menu_height = 150;
+    var menu_x = camera_x + (camera_width / 2) - (menu_width / 2);
+    var menu_y = camera_y + camera_height - menu_height - 50;
+
+    var close_button_size = 20;
+    var close_x = menu_x + menu_width - close_button_size - 20;
+    var close_y = menu_y + 20;
+
+    // Debug logs
+    show_debug_message("Mouse Position: " + string(mouse_x) + ", " + string(mouse_y));
+    show_debug_message("Close Button Bounds: " + string(close_x) + "-" + string(close_x + close_button_size) +
+                       ", " + string(close_y) + "-" + string(close_y + close_button_size));
+
+    // Check if mouse click is inside button
+    if (mouse_x >= close_x && mouse_x <= close_x + close_button_size &&
+        mouse_y >= close_y && mouse_y <= close_y + close_button_size) {
+        global.chat_active = false;
+        global.chat_npc = noone;
+        show_debug_message("Close button clicked!");
+    }
+}
+
+show_debug_message("Chat window Mouse Left Pressed event triggered.");
