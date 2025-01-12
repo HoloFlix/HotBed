@@ -11,21 +11,29 @@ global.current_skin = "player"; // Starting skin
 global.player_instance = noone; // Initialize player instance
 global.icetruck_destroyed = false; // Initialize icetruck_destroyed
 
-// Create player instance if it doesn't exist
-if (!instance_exists(obj_player) && !instance_exists(obj_player_icetruck)) {
-    global.player_instance = instance_create_layer(x, y, "Instances", obj_player); // Create player instance
-} else {
-    // Find the existing player or ice truck instance
-    if (instance_exists(obj_player)) {
-        global.player_instance = instance_find(obj_player, 0);
-    } else if (instance_exists(obj_player_icetruck)) {
-        global.player_instance = instance_find(obj_player_icetruck, 0);
-    } else if (instance_exists(obj_player_tube)) {
-        global.player_instance = instance_find(obj_player_tube, 0);
+// Ensure player instance exists
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
     }
+}
+
+// Debugging
+if (instance_exists(global.player_instance)) {
+    show_debug_message("Player instance created: " + string(global.player_instance));
+} else {
+    show_debug_message("Error: Failed to create player instance.");
 }
 
 // Initialize move_spd from the player instance
 if (instance_exists(global.player_instance)) {
     move_spd = global.player_instance.move_spd;
 }
+
+// In obj_controller or a similar initialization object
+global.chat_active = false;
+global.chat_npc = noone;
