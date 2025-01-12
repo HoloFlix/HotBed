@@ -1,6 +1,0 @@
-// Create Event for obj_chat_window
-
-// Initialize variables for chat
-chat_text = "";  // Text to be displayed in the chat window
-choices = [];    // Array to store player choices
-choice_selected = 0;  // Index of the currently selected choice
