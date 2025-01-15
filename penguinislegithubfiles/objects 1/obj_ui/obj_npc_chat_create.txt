@@ -1,0 +1,14 @@
+// Chat system state variables
+chat_active = false;   // Is the chat window active?
+chat_text = "";        // Current text to display
+chat_choices = [];     // Array of player choices
+choice_selected = 0;   // Currently selected choice index
+
+// Placeholder for dialog queue
+dialog_queue = [
+    "Welcome to our town!",
+    "How can I assist you today?",
+    "Feel free to explore."
+];
+
+dialog_index = 0; // Tracks progress through the dialog

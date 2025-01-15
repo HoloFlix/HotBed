@@ -1,0 +1,50 @@
+// File: obj_player_icetruck_step.txt
+
+if (keyboard_check_pressed(ord("E"))) {
+    if (distance_to_object(obj_icetruck) < 32) {
+        show_debug_message("E key pressed");
+        obj_controller.switch_skin(global.current_skin == "player" ? "icetruck" : "player");
+    }
+}
+
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+xspd = (right_key - left_key) * move_spd;
+yspd = (down_key - up_key) * move_spd;
+
+// Disable movement if the game is paused
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Update ice truck direction and sprite only if moving
+if (xspd != 0 || yspd != 0) {
+    if (xspd > 0 && yspd == 0) face = RIGHT;
+    else if (xspd < 0 && yspd == 0) face = LEFT;
+    else if (yspd > 0 && xspd == 0) face = DOWN;
+    else if (yspd < 0 && xspd == 0) face = UP;
+    else if (xspd > 0 && yspd > 0) face = DOWN_RIGHT;
+    else if (xspd > 0 && yspd < 0) face = UP_RIGHT;
+    else if (xspd < 0 && yspd > 0) face = DOWN_LEFT;
+    else if (xspd < 0 && yspd < 0) face = UP_LEFT;
+
+    sprite_index = sprite[face];
+}
+
+// Collision detection
+if (place_meeting(x + xspd, y, obj_wall)) xspd = 0;
+if (place_meeting(x, y + yspd, obj_wall)) yspd = 0;
+
+// Apply movement
+x += xspd;
+y += yspd;
+
+// Ensure proper depth sorting
+depth = -bbox_bottom;
+
+show_debug_message("Current Face: " + string(face));

@@ -1,0 +1,58 @@
+// Create a skin_manager script
+function initialize_skin_system() {
+    global.skins = {
+        player: {
+            object: obj_player,
+            sprite_right: spr_player_right,
+            sprite_up: spr_player_up,
+            sprite_left: spr_player_left,
+            sprite_down: spr_player_down
+        },
+        icetruck: {
+            object: obj_player_icetruck,
+            sprite_right: spr_icetruck_faceright,
+            sprite_up: spr_icetruck_faceup,
+            sprite_left: spr_icetruck_faceleft,
+            sprite_down: spr_icetruck_facedown
+        },
+        tube: {
+            object: obj_player_tube,
+            sprite_right: spr_tube_right,
+            sprite_up: spr_tube_up,
+            sprite_left: spr_tube_left,
+            sprite_down: spr_tube_down
+        }
+    };
+}
+
+function switch_skin(new_skin) {
+    if (!variable_struct_exists(global.skins, new_skin)) {
+        show_debug_message("Error: Invalid skin type: " + string(new_skin));
+        return;
+    }
+    
+    var player_x = room_width / 2;
+    var player_y = room_height / 2;
+    
+    if (instance_exists(global.player_instance)) {
+        player_x = global.player_instance.x;
+        player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+    }
+    
+    var skin_data = global.skins[$ new_skin];
+    global.player_instance = instance_create_layer(player_x, player_y, "Instances", skin_data.object);
+    global.current_skin = new_skin;
+    
+    // Handle special case for reverting to player
+    if (new_skin == "player") {
+        var nearby_objects = ds_list_create();
+        collision_circle_list(player_x, player_y, 32, [obj_icetruck, obj_tube], false, true, nearby_objects, false);
+        for (var i = 0; i < ds_list_size(nearby_objects); i++) {
+            instance_destroy(nearby_objects[| i]);
+        }
+        ds_list_destroy(nearby_objects);
+    }
+    
+    show_debug_message("Switched to " + new_skin + ". Player instance ID: " + string(global.player_instance));
+}

@@ -1,0 +1,83 @@
+// Create Event of obj_controller
+
+// First initialize all required global variables
+global.player_instance = noone;
+global.current_skin = "player";
+global.skins = {
+    player: {
+        object: obj_player,
+        sprite_right: spr_player_right,
+        sprite_up: spr_player_up,
+        sprite_left: spr_player_left,
+        sprite_down: spr_player_down
+    },
+    icetruck: {
+        object: obj_player_icetruck,
+        sprite_right: spr_icetruck_faceright,
+        sprite_up: spr_icetruck_faceup,
+        sprite_left: spr_icetruck_faceleft,
+        sprite_down: spr_icetruck_facedown
+    },
+    tube: {
+        object: obj_player_tube,
+        sprite_right: spr_tube_right,
+        sprite_up: spr_tube_up,
+        sprite_left: spr_tube_left,
+        sprite_down: spr_tube_down
+    }
+};
+
+// Then set up the camera - using a simpler approach
+view_enabled = true;
+view_visible[0] = true;
+
+// Create the view camera
+global.camera = camera_create_view(0, 0, 640, 480);
+view_camera[0] = global.camera;
+
+show_debug_message("Camera initialized: " + string(global.camera));
+
+// Create the initial player instance
+if (!instance_exists(global.player_instance)) {
+    global.player_instance = instance_create_layer(
+        room_width/2, 
+        room_height/2, 
+        "Instances", 
+        global.skins.player.object
+    );
+}
+
+// Camera manager function with simplified validation
+function camera_manager_update() {
+    // Safety check for camera and player
+    if (!variable_global_exists("camera") || !instance_exists(global.player_instance)) {
+        show_debug_message("WARNING: Camera or player not properly initialized");
+        return;
+    }
+    
+    var cam = view_camera[0];  // Use view camera directly
+    var target = global.player_instance;
+    
+    // Calculate target position
+    var view_w = camera_get_view_width(cam);
+    var view_h = camera_get_view_height(cam);
+    
+    var target_x = target.x - (view_w / 2);
+    var target_y = target.y - (view_h / 2);
+    
+    // Clamp to room boundaries
+    target_x = clamp(target_x, 0, room_width - view_w);
+    target_y = clamp(target_y, 0, room_height - view_h);
+    
+    // Smooth camera movement
+    var current_x = camera_get_view_x(cam);
+    var current_y = camera_get_view_y(cam);
+    var smooth_x = lerp(current_x, target_x, 0.1);
+    var smooth_y = lerp(current_y, target_y, 0.1);
+    
+    camera_set_view_pos(cam, smooth_x, smooth_y);
+}
+
+// Move the camera update to the Step Event instead of calling it in Create
+show_debug_message("Controller initialization complete");
+show_debug_message("Player instance created with ID: " + string(global.player_instance));

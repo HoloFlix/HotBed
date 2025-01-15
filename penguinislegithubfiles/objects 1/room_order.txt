@@ -1,0 +1,12 @@
+rm_menu - 2 obj_menu_buttons "Play Game" "Exit"
+rm_init - obj_controller,obj_initializer,obj_camera,obj_map_icon,obj_map [Creation Code: room_goto_next();]
+rm_welcome_room - obj_icetruck,obj_tube
+rm_shore - obj_icetruck,obj_tube
+rm_plaza - obj_icetruck,obj_tube
+rm_forest - obj_icetruck,obj_tube
+rm_cove - obj_icetruck,obj_tube
+rm_snow_fort - obj_icetruck,obj_tube
+rm_town - obj_icetruck,obj_tube
+rm_beach - obj_icetruck,obj_tube
+rm_ski_village - obj_icetruck,obj_tube
+rm_ski_mountaintop - obj_icetruck,obj_tube
