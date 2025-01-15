@@ -1,0 +1,55 @@
+GameMaker Project Analysis Report
+1. Key Features
+Controller Object
+Dynamic Skin Management:
+The controller initializes and manages global variables for skin selection (global.skins and global.current_skin).
+Supports skin switching functionality, enabling the player to change skins dynamically during gameplay.
+Player Instance Management:
+Dynamically creates player instances (global.player_instance) based on the selected skin.
+Ensures consistency by destroying and recreating the player instance when switching skins.
+Debug Logging:
+Includes logging mechanisms to track changes in player skin and instance state for debugging purposes.
+Player Object
+Movement and Interaction:
+Handles basic movement (xspd, yspd) and advanced mechanics such as sliding and vehicle driving.
+Enables interaction with NPCs and environment through keypress detection (keyboard_check_pressed).
+NPCs and UI
+NPC Behavior:
+Implements directional movement and randomized dialogues for NPCs to enhance interactivity.
+UI Elements:
+Features dynamic skin pickers, buttons, and other menu-related objects for a user-friendly interface.
+2. Bug Identification
+Overlapping Key Events (Player Object):
+The "E" key is used for both interacting with NPCs and switching skins, potentially leading to conflicts if both actions are possible at the same time.
+Unvalidated Player Instance (Controller):
+The code assumes the existence of global.player_instance without robust checks, risking crashes if the instance is destroyed unexpectedly.
+3. Code Analysis
+Weak or Redundant Code Sections
+Skin Switching Logic:
+Repeated code for skin assignment is present in multiple events (obj_controller_create and switch_skin).
+Hardcoded Elements:
+NPC sprite directions and UI layouts are hardcoded, reducing scalability.
+Optimization Suggestions
+Centralize Player Instance Logic:
+Create a reusable function for player instance initialization to avoid redundancy.
+Dynamic Assignments:
+Use loops or data-driven approaches for sprite and UI assignments to improve scalability.
+4. Functionality Understanding
+Interactions and Gameplay Flow:
+
+The obj_controller acts as a global manager, coordinating the player, skins, and game states.
+NPCs and UI objects enhance the world-building and provide user interactivity.
+Core Contribution:
+
+Dynamic skin switching adds player customization, while NPC interactions create a sense of immersion.
+5. Recommendations for Improvement
+Refactor Skin Logic:
+Consolidate repeated skin switching code into a single, reusable function.
+Enhance Input Handling:
+Implement a priority system or contextual inputs to avoid keypress conflicts (e.g., "E" key).
+Improve Scalability:
+Replace hardcoded values with data-driven approaches for NPC sprites and UI layouts.
+Robust Instance Validation:
+Add checks to ensure global.player_instance is valid before accessing or destroying it.
+Debug Message Optimization:
+Reduce the frequency and verbosity of debug logs to highlight critical issues.
