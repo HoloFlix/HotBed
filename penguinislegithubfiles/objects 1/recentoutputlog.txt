@@ -19,15 +19,69 @@ CreateColPairs took 0.000000s 2 usecs for 36 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8582631 (0x0082f5e7) bytes 8.19MB
+Total memory used = 8582815 (0x0082f69f) bytes 8.19MB
 Free memory = 6445480 (0x006259a8) bytes 6.15MB
-Peak memory used = 11685429 (0x00b24e35) bytes 11.14MB
+Peak memory used = 11685357 (0x00b24ded) bytes 11.14MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 113
 obj_player: Initialized. Driving state: 0
 Player instance created: ref instance 100507
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
 Viewport object: -1
 Viewport object: -1
 Viewport object: -1
