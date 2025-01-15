@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,22 +15,543 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 2 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 1 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8583227 (0x0082f83b) bytes 8.19MB
-Free memory = 6445288 (0x006258e8) bytes 6.15MB
-Peak memory used = 11685577 (0x00b24ec9) bytes 11.14MB
+Total memory used = 8589955 (0x00831283) bytes 8.19MB
+Free memory = 6444552 (0x00625608) bytes 6.15MB
+Peak memory used = 11687100 (0x00b254bc) bytes 11.15MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 113
-ERROR!!! :: ############################################################################################
-ERROR in action number 1
-of Create Event for object obj_controller:
-variable_struct_exists argument 1 incorrect type (array) expecting a Number (YYGI32)
- at gml_Script_switch_skin (line 33) -     if (!variable_struct_exists(global.skins, new_skin)) {
-############################################################################################
-gml_Script_switch_skin (line 33)
-gml_Object_obj_controller_Create_0 (line 14) -     switch_skin(global.current_skin);
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 100507
+Player instance created: ref instance 100507
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+Error: Player instance does not exist. Cannot set viewport object.
+Viewport object: -1
+###game_end###254
