@@ -27,7 +27,6 @@ function switch_skin(new_skin) {
         global.current_skin = "player";
         show_debug_message("Switched to player. Player instance ID: " + string(global.player_instance));
 
-		
         // Destroy tube or icetruck objects nearby if they exist
         var ice_truck = instance_place(player_x, player_y, obj_icetruck);
         if (ice_truck != noone) {
@@ -56,10 +55,12 @@ if (instance_exists(global.player_instance)) {
     camera_set_view_pos(global.camera, smooth_x, smooth_y);
 }
 
-
-// Update in obj_controller_step
+// Update the viewport object to follow the player instance
 if (instance_exists(global.player_instance)) {
-    view_object[0] = global.player_instance;  // Set the viewport to track the player
+    view_object[0] = global.player_instance;
+    show_debug_message("Viewport object set to player instance: " + string(global.player_instance));
+} else {
+    show_debug_message("Error: Player instance does not exist. Cannot set viewport object.");
 }
 
 show_debug_message("Viewport object: " + string(view_object[0]));
