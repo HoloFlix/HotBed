@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=7
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,19 +15,101 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 1 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 2 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8545011 (0x008262f3) bytes 8.15MB
-Free memory = 6451048 (0x00626f68) bytes 6.15MB
-Peak memory used = 11668937 (0x00b20dc9) bytes 11.13MB
+Total memory used = 8582631 (0x0082f5e7) bytes 8.19MB
+Free memory = 6445480 (0x006259a8) bytes 6.15MB
+Peak memory used = 11685429 (0x00b24e35) bytes 11.14MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 113
 obj_player: Initialized. Driving state: 0
 Player instance created: ref instance 100507
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
+Viewport object: -1
 Viewport object: -1
 Viewport object: -1
 Viewport object: -1
