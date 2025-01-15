@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=9
+Collision Event time(microsecs)=4
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,20 +15,22 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 1 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 2 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8586183 (0x008303c7) bytes 8.19MB
+Total memory used = 8586095 (0x0083036f) bytes 8.19MB
 Free memory = 6441144 (0x006248b8) bytes 6.14MB
-Peak memory used = 11684693 (0x00b24b55) bytes 11.14MB
+Peak memory used = 11688784 (0x00b25b50) bytes 11.15MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 113
 obj_player: Initialized. Driving state: 0
-Switched to player. Player instance ID: ref instance 100507
-Player instance created: ref instance 100507
+Switched to player. Player instance ID: ref instance 100508
+Player instance created: ref instance 100508
+obj_player: Initialized. Driving state: 0
+Viewport object: -1
 Viewport object: -1
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
@@ -424,4 +426,328 @@ Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
-###game_end###254
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_icetruck:
+Unable to find instance for object index 100508
+ at gml_Object_obj_icetruck_Step_0 (line 5) -     var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+############################################################################################
+gml_Object_obj_icetruck_Step_0 (line 5)
