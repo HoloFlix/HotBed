@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=9
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -19,9 +19,9 @@ CreateColPairs took 0.000000s 1 usecs for 36 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8581751 (0x0082f277) bytes 8.18MB
+Total memory used = 8586183 (0x008303c7) bytes 8.19MB
 Free memory = 6441144 (0x006248b8) bytes 6.14MB
-Peak memory used = 11684433 (0x00b24a51) bytes 11.14MB
+Peak memory used = 11684693 (0x00b24b55) bytes 11.14MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -30,6 +30,32 @@ obj_player: Initialized. Driving state: 0
 Switched to player. Player instance ID: ref instance 100507
 Player instance created: ref instance 100507
 Viewport object: -1
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
+Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
 Error in Step Event: Player instance does not exist. Cannot set viewport object.
