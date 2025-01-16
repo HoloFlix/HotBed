@@ -1,0 +1,12 @@
+if (global.chat_active) {
+    // Advance dialog with Spacebar
+    if (keyboard_check_pressed(vk_space)) {
+        if (dialog_index < array_length(dialog_queue) - 1) {
+            dialog_index++;
+        } else {
+            global.chat_active = false;
+            dialog_index = 0;
+            global.chat_npc = noone;
+        }
+    }
+}
