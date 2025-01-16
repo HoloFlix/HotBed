@@ -1,0 +1,8 @@
+xspd = 5;
+yspd = 5;
+
+sliding = true;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 4;
+move_spd = 0;
