@@ -15,29 +15,29 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 5 usecs for 39 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 5 usecs for 40 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8793368 (0x00862d18) bytes 8.39MB
-Free memory = 6432880 (0x00622870) bytes 6.13MB
-Peak memory used = 11897173 (0x00b58955) bytes 11.35MB
+Total memory used = 8608857 (0x00835c59) bytes 8.21MB
+Free memory = 6394696 (0x00619348) bytes 6.10MB
+Peak memory used = 11678352 (0x00b23290) bytes 11.14MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 121
 obj_player: Initialized. Driving state: 0
-Player instance created: ref instance 100511
+Player instance created: ref instance 100523
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 122
 obj_player: Initialized. Driving state: 0
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100512
+DEBUG: Player instance ID: ref instance 100524
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 122
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100512
+DEBUG: Player instance ID: ref instance 100524
 obj_warp: Initialized. Target room: 0
 Target position: (0, 0)
 Target face: 0
@@ -46,45 +46,17 @@ DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 122
 obj_player: Initialized. Driving state: 0
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100514
+DEBUG: Player instance ID: ref instance 100526
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 122
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100514
+DEBUG: Player instance ID: ref instance 100526
 obj_warp: Initialized. Target room: 0
 Target position: (0, 0)
 Target face: 0
 Target instance: -4
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 122
-obj_player: Initialized. Driving state: 0
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100516
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 122
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100516
-obj_warp: Initialized. Target room: 0
-Target position: (0, 0)
-Target face: 0
-Target instance: -4
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 122
-obj_player: Initialized. Driving state: 0
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100518
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Existing global camera used in Room Start. ID: 122
-DEBUG: Camera synchronized with player position after room transition.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100518
-obj_warp: Initialized. Target room: 0
-Target position: (0, 0)
-Target face: 0
-Target instance: -4
-Switched to sled_player. Player instance ID: ref instance 100520
+Switched to sled_player. Player instance ID: ref instance 100528
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 122
 DEBUG: Room Start Event completed. Current skin: sled_player
