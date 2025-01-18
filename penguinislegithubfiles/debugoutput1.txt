@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,1025 +15,366 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 2 usecs for 35 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 2 usecs for 36 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8541066 (0x0082538a) bytes 8.15MB
-Free memory = 6457584 (0x006288f0) bytes 6.16MB
-Peak memory used = 11656049 (0x00b1db71) bytes 11.12MB
+Total memory used = 8575597 (0x0082da6d) bytes 8.18MB
+Free memory = 6446360 (0x00625d18) bytes 6.15MB
+Peak memory used = 11673281 (0x00b21ec1) bytes 11.13MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 113
 obj_player: Initialized. Driving state: 0
-Player instance created: ref instance 100506
+Player instance created: ref instance 100507
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 113
 obj_player: Initialized. Driving state: 0
-Player recreated with skin: player
-Existing global camera used. ID: 113
-Camera synchronized with player. Position: 26, 46
-Room Start Event completed. Current skin: player
-Existing global camera used. ID: 113
-Camera synchronized with player. Position: 26, 46
-Room Start Event completed. Current skin: player
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 26, 46
-Player position after warp: 170, 154
-Camera position after warp: 26, 46
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Map icon clicked, opening map.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Player position: 170, 154
-Camera position: 0, 0
-Player position after warp: 170, 154
-Camera position after warp: 0, 0
-Viewport object: 100507
-Player instance: ref instance 100507
-Viewport object: 100507
-Viewport position: (0, 0)
-DEBUG: Camera exists in obj_initializer Step Event.
-Mouse clicked at: 94, 295
-Beach region clicked
-ERROR!!! :: ############################################################################################
-ERROR in action number 1
-of Mouse Event for Left Pressed for object obj_map:
-Variable <unknown_object>.camera_reset(100051, -2147483648) not set before reading it.
- at gml_Script_create_warp_instance@gml_Object_obj_map_Mouse_4 (line 63) -     camera_reset(inst);
-############################################################################################
-gml_Script_create_warp_instance@gml_Object_obj_map_Mouse_4 (line 63)
-gml_Object_obj_map_Mouse_4 (line 11) -     create_warp_instance(rm_beach);
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100508
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 113
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+Viewport object: 100508
+###game_end###254
