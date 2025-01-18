@@ -10,3 +10,4 @@ rm_town - obj_icetruck,obj_tube
 rm_beach - obj_icetruck,obj_tube
 rm_ski_village - obj_icetruck,obj_tube
 rm_ski_mountaintop - obj_icetruck,obj_tube
+rm_sled_racing - obj_sled_player, obj_obstacle_controller, obj_obstacle
