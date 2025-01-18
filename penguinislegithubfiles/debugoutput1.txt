@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 4 usecs for 39 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 3 usecs for 39 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8794484 (0x00863174) bytes 8.39MB
+Total memory used = 8798364 (0x0086409c) bytes 8.39MB
 Free memory = 6432880 (0x00622870) bytes 6.13MB
-Peak memory used = 11897992 (0x00b58c88) bytes 11.35MB
+Peak memory used = 11897997 (0x00b58c8d) bytes 11.35MB
 **********************************.
 Entering main loop.
 **********************************.
