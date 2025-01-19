@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=6
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 6 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 4 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8647590 (0x0083f3a6) bytes 8.25MB
+Total memory used = 8648242 (0x0083f632) bytes 8.25MB
 Free memory = 6384336 (0x00616ad0) bytes 6.09MB
-Peak memory used = 11702705 (0x00b291b1) bytes 11.16MB
+Peak memory used = 11703101 (0x00b2933d) bytes 11.16MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -42,10 +42,66 @@ DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100520
 E key pressed for skin switch to: icetruck
+Calling switch_skin function
 ERROR!!! :: ############################################################################################
 ERROR in action number 1
 of  Step Event0 for object obj_player:
 Variable <unknown_object>.switch_skin(100016, -2147483648) not set before reading it.
- at gml_Object_obj_player_Step_0 (line 22) -         obj_controller.switch_skin(global.current_skin == "player" ? target_skin : "player");
+ at gml_Object_obj_player_Step_0 (line 24) -         obj_controller.switch_skin(global.current_skin == "player" ? target_skin : "player");
 ############################################################################################
-gml_Object_obj_player_Step_0 (line 22)
+gml_Object_obj_player_Step_0 (line 24)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=4
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 4 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Total memory used = 8652414 (0x0084067e) bytes 8.25MB
+Free memory = 6384336 (0x00616ad0) bytes 6.09MB
+Peak memory used = 11703101 (0x00b2933d) bytes 11.16MB
+**********************************.
+Entering main loop.
+**********************************.
+DEBUG: New global camera created. ID: 129
+obj_player: Initialized. Driving state: 0
+Player instance created: ref instance 100519
+Create Event: global.game_started initialized as 0
+Create Event: countdown_timer initialized as 300
+Instance of obj_controller created with ID: ref instance 100002
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100520
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100520
+E key pressed for skin switch to: tube
+Calling switch_skin function
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_player:
+Variable <unknown_object>.switch_skin(100016, -2147483648) not set before reading it.
+ at gml_Object_obj_player_Step_0 (line 24) -         obj_controller.switch_skin(global.current_skin == "player" ? target_skin : "player");
+############################################################################################
+gml_Object_obj_player_Step_0 (line 24)
