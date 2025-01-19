@@ -1,0 +1,13 @@
+// scr_handle_collision.gml
+
+/// @function handle_collision
+/// @param axis - the axis to check ("x" or "y")
+/// @param speed - the speed to check for collision
+/// @returns the adjusted speed if a collision is detected, otherwise the original speed
+function handle_collision(axis, speed) {
+    var offset = (axis == "x") ? [speed, 0] : [0, speed];
+    if (place_meeting(x + offset[0], y + offset[1], obj_wall)) {
+        return 0;
+    }
+    return speed;
+}

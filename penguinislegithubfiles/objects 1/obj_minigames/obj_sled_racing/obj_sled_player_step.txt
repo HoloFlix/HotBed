@@ -1,0 +1,19 @@
+// Step Event for obj_sled_player
+
+// Horizontal movement using 'A', 'D' keys and arrow keys
+if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
+    x -= 5; // Move left
+} 
+if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
+    x += 5; // Move right
+}
+
+// Prevent movement outside the room boundaries
+x = clamp(x, 0, room_width - sprite_width);
+
+// Check for collision with obstacles
+if (place_meeting(x, y, obj_obstacle)) {
+    // Handle collision (e.g., stop movement, end game, etc.)
+    show_debug_message("Collision with obstacle!");
+    // Add more logic here to handle what happens on collision
+}

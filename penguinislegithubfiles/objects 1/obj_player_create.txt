@@ -1,0 +1,24 @@
+// Create Event for obj_player
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 2;
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+ice_truck_sprite = spr_icetruck_facedown;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
+
+// Debugging
+show_debug_message("obj_player: Initialized. Driving state: " + string(driving));

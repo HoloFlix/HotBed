@@ -1,0 +1,34 @@
+// scr_switch_skin
+
+/// Function: switch_skin
+/// Description: Switches the player's skin to the specified skin.
+/// Parameters: new_skin (string) - The name of the skin to switch to.
+function switch_skin(new_skin) {
+    var player_x, player_y;
+
+    if (instance_exists(global.player_instance)) {
+        player_x = global.player_instance.x;
+        player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+    } else {
+        player_x = room_width / 2;
+        player_y = room_height / 2;
+        show_debug_message("Warning: global.player_instance was invalid, defaulting position to room center.");
+    }
+
+    if (new_skin == "icetruck") {
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+    } 
+    else if (new_skin == "tube") {
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_tube);
+    } 
+    else if (new_skin == "player") {
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+    }
+    else if (new_skin == "sled_player") {
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_sled_player);
+    }
+
+    global.current_skin = new_skin;
+    show_debug_message("Switched to " + new_skin + ". Player instance ID: " + string(global.player_instance));
+}

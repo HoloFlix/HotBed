@@ -1,0 +1,10 @@
+// Step Event for obj_obstacle
+
+// Move the obstacle upwards
+y -= 5; // Adjust speed as needed
+
+// Reset the obstacle's position if it moves out of the camera viewport
+if (y < -sprite_height) {
+    y = room_height + sprite_height; // Reset to below the viewport
+    x = irandom_range(0, room_width - sprite_width); // Randomize horizontal position
+}

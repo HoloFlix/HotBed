@@ -1,0 +1,5 @@
+// Create Event for obj_sled_player
+xspd = 0;
+yspd = 0;
+move_spd = 4;
+lives = 3;

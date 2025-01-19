@@ -1,0 +1,10 @@
+// Create Event for obj_npc_blue
+
+// Initialize the animation index
+animation_index = 0;
+
+// Define animations for npc_blue
+animations = [spr_blue_idle, spr_blue_lookaround, spr_blue_talk];
+
+// Set the initial sprite
+sprite_index = animations[animation_index];

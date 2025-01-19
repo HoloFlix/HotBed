@@ -1,0 +1,40 @@
+// Step Event for obj_controller
+
+// Ensure this is not affecting obj_sled_player
+if (global.current_skin != "sled_player") {
+    // Existing movement logic for other player skins
+    if (keyboard_check(vk_left)) {
+        global.player_instance.x -= 5;
+    } else if (keyboard_check(vk_right)) {
+        global.player_instance.x += 5;
+    }
+
+    // Prevent movement outside the room boundaries
+    global.player_instance.x = clamp(global.player_instance.x, 0, room_width - sprite_width);
+}
+
+// Countdown and Game Logic
+if (!global.game_started) {
+    global.countdown_timer -= 1; // Use global.countdown_timer directly
+    if (global.countdown_timer <= 0) {
+        global.game_started = true;
+        game_timer = 10 * room_speed; // 10 seconds game timer
+    }
+} else {
+    // Game logic goes here
+    game_timer -= 1;
+    if (game_timer <= 0 && global.lives > 0) {
+        switch_skin("player");
+        room_goto(rm_ski_village);
+    }
+
+    // Check for collisions and reduce lives
+    if (place_meeting(global.player_instance.x, global.player_instance.y, obj_obstacle)) {
+        global.lives -= 1;
+        show_debug_message("Collision! Lives left: " + string(global.lives));
+        if (global.lives <= 0) {
+            switch_skin("player");
+            room_goto(rm_ski_mountaintop);
+        }
+    }
+}
