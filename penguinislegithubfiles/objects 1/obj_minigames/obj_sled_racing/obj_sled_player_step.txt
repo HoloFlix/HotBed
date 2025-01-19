@@ -1,11 +1,10 @@
 // Step Event for obj_sled_player
 
-if (!global.game_started) {
-    global.countdown_timer -= 1; // Decrement the countdown timer
-    if (global.countdown_timer <= 0) {
-        global.game_started = true;
-    }
-} else {
+if (room == rm_sled_racing && !global.game_started) {
+    global.game_started = true;
+}
+
+if (global.game_started) {
     game_timer -= 1; // Decrement game timer
 
     // Horizontal movement using 'A', 'D' keys and arrow keys
