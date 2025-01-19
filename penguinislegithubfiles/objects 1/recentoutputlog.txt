@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -19,9 +19,9 @@ CreateColPairs took 0.000000s 4 usecs for 42 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8673631 (0x0084595f) bytes 8.27MB
+Total memory used = 8661587 (0x00842a53) bytes 8.26MB
 Free memory = 6380176 (0x00615a90) bytes 6.08MB
-Peak memory used = 11716105 (0x00b2c609) bytes 11.17MB
+Peak memory used = 11716881 (0x00b2c911) bytes 11.17MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -41,10 +41,8 @@ DEBUG: Existing global camera used in Room Start. ID: 130
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100520
-ERROR!!! :: ############################################################################################
-ERROR in action number 1
-of Mouse Event for Left Pressed for object obj_player:
-instance_create_layer :: specified layer "UI" does not exist
- at gml_Object_obj_player_Mouse_4 (line 2) - instance_create_layer(0, 0, "UI", obj_pause_menu);
-############################################################################################
-gml_Object_obj_player_Mouse_4 (line 2)
+###game_end###254
+Attempting to set gamepadcount to 0
+Script_Free called with 52 and global 6
+Warning: Prevented call into an uninitialised yyal from Audio_BusDestroy
+Unsetting previous scheduler resolution of 1
