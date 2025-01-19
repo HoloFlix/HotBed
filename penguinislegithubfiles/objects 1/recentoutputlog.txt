@@ -19,9 +19,9 @@ CreateColPairs took 0.000000s 4 usecs for 41 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8650186 (0x0083fdca) bytes 8.25MB
+Total memory used = 8649938 (0x0083fcd2) bytes 8.25MB
 Free memory = 6383200 (0x00616660) bytes 6.09MB
-Peak memory used = 11708160 (0x00b2a700) bytes 11.17MB
+Peak memory used = 11708257 (0x00b2a761) bytes 11.17MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -41,10 +41,40 @@ DEBUG: Existing global camera used in Room Start. ID: 130
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100520
+obj_warp: Initialized. Target room: 0
+Target position: (0, 0)
+Target face: 0
+Target instance: -4
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100522
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100522
+obj_warp: Initialized. Target room: 0
+Target position: (0, 0)
+Target face: 0
+Target instance: -4
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100524
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100524
+E key pressed
 ERROR!!! :: ############################################################################################
 ERROR in action number 1
-of  Step Event0 for object obj_controller:
-Variable <unknown_object>.starting_sled_racing_game(100056, -2147483648) not set before reading it.
- at gml_Object_obj_controller_Step_0 (line 43) - if (starting_sled_racing_game) { // Replace with actual condition to start the sled racing game
+of  Step Event0 for object obj_player:
+global variable name 'skin_switching' index (100057) not set before reading it.
+ at gml_Script_switch_skin@gml_Object_obj_controller_Step_0 (line 49) -     if (global.skin_switching) return; // Prevent multiple switches in one frame
 ############################################################################################
-gml_Object_obj_controller_Step_0 (line 43)
+gml_Script_switch_skin@gml_Object_obj_controller_Step_0 (line 49)
+gml_Object_obj_player_Step_0 (line 18) -         obj_controller.switch_skin(global.current_skin == "player" ? "icetruck" : "player");
