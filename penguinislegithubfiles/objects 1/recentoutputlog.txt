@@ -1,39 +1,51 @@
-// scr_switch_skin
-
-/// Function: switch_skin
-/// Description: Switches the player's skin to the specified skin.
-/// Parameters: new_skin (string) - The name of the skin to switch to.
-function switch_skin(new_skin) {
-    var player_x, player_y;
-
-    if (instance_exists(global.player_instance)) {
-        player_x = global.player_instance.x;
-        player_y = global.player_instance.y;
-        // Debugging message for instance destruction
-        show_debug_message("Destroying player instance: " + string(global.player_instance));
-        instance_destroy(global.player_instance);
-    } else {
-        player_x = room_width / 2;
-        player_y = room_height / 2;
-        show_debug_message("Warning: global.player_instance was invalid, defaulting position to room center.");
-    }
-
-    // Debugging message for new skin creation
-    show_debug_message("Creating new player instance with skin: " + new_skin);
-
-    if (new_skin == "icetruck") {
-        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
-    } 
-    else if (new_skin == "tube") {
-        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_tube);
-    } 
-    else if (new_skin == "player") {
-        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
-    }
-    else if (new_skin == "sled_player") {
-        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_sled_player);
-    }
-
-    global.current_skin = new_skin;
-    show_debug_message("Switched to " + new_skin + ". Player instance ID: " + string(global.player_instance));
-}
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=6
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 6 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Total memory used = 8647590 (0x0083f3a6) bytes 8.25MB
+Free memory = 6384336 (0x00616ad0) bytes 6.09MB
+Peak memory used = 11702705 (0x00b291b1) bytes 11.16MB
+**********************************.
+Entering main loop.
+**********************************.
+DEBUG: New global camera created. ID: 129
+obj_player: Initialized. Driving state: 0
+Player instance created: ref instance 100519
+Create Event: global.game_started initialized as 0
+Create Event: countdown_timer initialized as 300
+Instance of obj_controller created with ID: ref instance 100002
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100520
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100520
+E key pressed for skin switch to: icetruck
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_player:
+Variable <unknown_object>.switch_skin(100016, -2147483648) not set before reading it.
+ at gml_Object_obj_player_Step_0 (line 22) -         obj_controller.switch_skin(global.current_skin == "player" ? target_skin : "player");
+############################################################################################
+gml_Object_obj_player_Step_0 (line 22)
