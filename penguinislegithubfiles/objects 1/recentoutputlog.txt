@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=4
+Collision Event time(microsecs)=20
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -19,9 +19,9 @@ CreateColPairs took 0.000000s 4 usecs for 41 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8648310 (0x0083f676) bytes 8.25MB
+Total memory used = 8660306 (0x00842552) bytes 8.26MB
 Free memory = 6383824 (0x006168d0) bytes 6.09MB
-Peak memory used = 11702657 (0x00b29181) bytes 11.16MB
+Peak memory used = 11702425 (0x00b29099) bytes 11.16MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -62,28 +62,27 @@ Camera at: (26, 46)
 Camera at: (26, 46)
 Camera at: (26, 46)
 Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
+Camera at: (26, 46)
 Camera at: (24, 46)
 Camera at: (22, 46)
 Camera at: (20, 46)
 Camera at: (18, 46)
-Camera at: (16, 46)
-Camera at: (14, 46)
-Camera at: (12, 46)
-Camera at: (10, 46)
-Camera at: (8, 46)
-Camera at: (6, 46)
-Camera at: (4, 46)
-Camera at: (2, 46)
-Camera at: (0, 46)
-Camera at: (0, 46)
-Camera at: (0, 48)
-Camera at: (0, 50)
-Camera at: (0, 52)
-Camera at: (0, 54)
-Camera at: (0, 56)
-Camera at: (0, 58)
-Camera at: (0, 60)
-Camera at: (0, 62)
+Camera at: (16, 48)
+Camera at: (14, 50)
+Camera at: (12, 52)
+Camera at: (10, 54)
+Camera at: (8, 56)
+Camera at: (6, 58)
+Camera at: (4, 60)
+Camera at: (2, 62)
 Camera at: (0, 64)
 Camera at: (0, 66)
 Camera at: (0, 68)
@@ -114,25 +113,1036 @@ Camera at: (0, 80)
 Camera at: (0, 78)
 Camera at: (0, 76)
 Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
-Camera at: (0, 74)
+Camera at: (0, 72)
+Camera at: (0, 70)
+Camera at: (0, 68)
+Camera at: (0, 66)
+Camera at: (0, 64)
+Camera at: (0, 62)
+Camera at: (0, 60)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
+Camera at: (0, 58)
 E key pressed
 Switching to icetruck
-ERROR!!! :: ############################################################################################
-ERROR in action number 1
-of  Step Event0 for object obj_player:
-Variable <unknown_object>.skin_switching(100044, -2147483648) not set before reading it.
- at gml_Script_switch_skin@gml_Object_obj_controller_Step_0 (line 5) -     if (skin_switching) return; // Prevent multiple switches in one frame
-############################################################################################
-gml_Script_switch_skin@gml_Object_obj_controller_Step_0 (line 5)
-gml_Object_obj_player_Step_0 (line 7) -         obj_controller.switch_skin("icetruck");
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100521
+Switched to icetruck. Player instance ID: ref instance 100521
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 58)
+Current Face: 3
+Camera at: (0, 62)
+Current Face: 3
+Camera at: (0, 66)
+Current Face: 3
+Camera at: (0, 70)
+Current Face: 3
+Camera at: (0, 74)
+Current Face: 3
+Camera at: (0, 78)
+Current Face: 3
+Camera at: (0, 82)
+Current Face: 3
+Camera at: (0, 86)
+Current Face: 3
+Camera at: (0, 90)
+Current Face: 3
+Camera at: (0, 94)
+Current Face: 3
+Camera at: (0, 98)
+Current Face: 3
+Camera at: (0, 102)
+Current Face: 3
+Camera at: (0, 106)
+Current Face: 6
+Camera at: (0, 110)
+Current Face: 6
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (0, 114)
+Current Face: 0
+Camera at: (2, 114)
+Current Face: 0
+Camera at: (6, 114)
+Current Face: 0
+Camera at: (10, 114)
+Current Face: 0
+Camera at: (14, 114)
+Current Face: 0
+Camera at: (18, 114)
+Current Face: 0
+Camera at: (22, 114)
+Current Face: 0
+Camera at: (26, 114)
+Current Face: 0
+Camera at: (30, 114)
+Current Face: 0
+Camera at: (34, 114)
+Current Face: 4
+Camera at: (38, 110)
+Current Face: 4
+Camera at: (42, 106)
+Current Face: 4
+Camera at: (46, 102)
+Current Face: 4
+Camera at: (50, 98)
+Current Face: 4
+Camera at: (54, 94)
+Current Face: 4
+Camera at: (58, 90)
+Current Face: 0
+Camera at: (62, 90)
+Current Face: 0
+Camera at: (66, 90)
+Current Face: 0
+Camera at: (70, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+Current Face: 0
+Camera at: (74, 90)
+obj_player: Initialized. Driving state: 0
+Exited ice truck. Current skin: player
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (74, 90)
+Camera at: (72, 90)
+Camera at: (70, 90)
+Camera at: (68, 90)
+Camera at: (66, 90)
+Camera at: (64, 90)
+Camera at: (62, 90)
+Camera at: (60, 92)
+Camera at: (58, 94)
+Camera at: (58, 96)
+Camera at: (58, 98)
+Camera at: (58, 100)
+Camera at: (58, 102)
+Camera at: (58, 104)
+Camera at: (58, 106)
+Camera at: (60, 108)
+Camera at: (62, 110)
+Camera at: (64, 112)
+Camera at: (66, 114)
+Camera at: (68, 114)
+Camera at: (70, 114)
+Camera at: (72, 114)
+Camera at: (74, 114)
+Camera at: (76, 114)
+Camera at: (78, 114)
+Camera at: (80, 114)
+Camera at: (82, 114)
+Camera at: (84, 114)
+Camera at: (86, 114)
+Camera at: (88, 114)
+Camera at: (90, 114)
+Camera at: (92, 114)
+Camera at: (94, 114)
+Camera at: (96, 112)
+Camera at: (98, 110)
+Camera at: (100, 108)
+Camera at: (102, 106)
+Camera at: (104, 104)
+Camera at: (106, 102)
+Camera at: (106, 102)
+Camera at: (106, 102)
+Camera at: (106, 102)
+Camera at: (106, 102)
+Camera at: (106, 102)
+Camera at: (106, 102)
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100524
+Entered ice truck. Current skin: icetruck
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 3
+Camera at: (106, 102)
+Current Face: 1
+Camera at: (106, 98)
+Current Face: 1
+Camera at: (106, 94)
+Current Face: 1
+Camera at: (106, 90)
+Current Face: 1
+Camera at: (106, 86)
+Current Face: 1
+Camera at: (106, 82)
+Current Face: 1
+Camera at: (106, 78)
+Current Face: 1
+Camera at: (106, 74)
+Current Face: 1
+Camera at: (106, 70)
+Current Face: 1
+Camera at: (106, 66)
+Current Face: 1
+Camera at: (106, 62)
+Current Face: 1
+Camera at: (106, 58)
+Current Face: 1
+Camera at: (106, 54)
+Current Face: 1
+Camera at: (106, 50)
+Current Face: 1
+Camera at: (106, 46)
+Current Face: 1
+Camera at: (106, 42)
+Current Face: 1
+Camera at: (106, 38)
+Current Face: 1
+Camera at: (106, 34)
+Current Face: 1
+Camera at: (106, 30)
+Current Face: 1
+Camera at: (106, 26)
+Current Face: 1
+Camera at: (106, 22)
+Current Face: 1
+Camera at: (106, 18)
+Current Face: 1
+Camera at: (106, 14)
+Current Face: 1
+Camera at: (106, 10)
+Current Face: 1
+Camera at: (106, 6)
+Current Face: 1
+Camera at: (106, 2)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 1
+Camera at: (106, 0)
+Current Face: 5
+Camera at: (102, 0)
+Current Face: 5
+Camera at: (98, 0)
+Current Face: 5
+Camera at: (94, 0)
+Current Face: 5
+Camera at: (90, 0)
+Current Face: 2
+Camera at: (86, 0)
+Current Face: 2
+Camera at: (82, 0)
+Current Face: 2
+Camera at: (78, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+Current Face: 2
+Camera at: (74, 0)
+obj_player: Initialized. Driving state: 0
+Exited ice truck. Current skin: player
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (74, 0)
+Camera at: (76, 0)
+Camera at: (78, 0)
+Camera at: (80, 0)
+Camera at: (82, 0)
+Camera at: (84, 0)
+Camera at: (86, 0)
+Camera at: (88, 0)
+Camera at: (90, 0)
+Camera at: (92, 0)
+Camera at: (94, 0)
+Camera at: (96, 0)
+Camera at: (98, 0)
+Camera at: (100, 0)
+Camera at: (102, 0)
+Camera at: (104, 0)
+Camera at: (106, 0)
+Camera at: (108, 0)
+Camera at: (110, 0)
+Camera at: (112, 0)
+Camera at: (114, 0)
+Camera at: (116, 0)
+Camera at: (118, 0)
+Camera at: (120, 0)
+Camera at: (122, 0)
+Camera at: (124, 0)
+Camera at: (126, 0)
+Camera at: (128, 0)
+Camera at: (130, 0)
+Camera at: (132, 0)
+Camera at: (134, 0)
+Camera at: (136, 0)
+Camera at: (138, 0)
+Camera at: (140, 0)
+Camera at: (142, 0)
+Camera at: (144, 0)
+Camera at: (146, 0)
+Camera at: (148, 0)
+Camera at: (150, 0)
+Camera at: (152, 0)
+Camera at: (154, 0)
+Camera at: (156, 0)
+Camera at: (158, 0)
+Camera at: (160, 0)
+Camera at: (162, 0)
+Camera at: (164, 0)
+Camera at: (166, 0)
+Camera at: (168, 0)
+Camera at: (170, 0)
+Camera at: (172, 0)
+Camera at: (174, 0)
+Camera at: (176, 0)
+Camera at: (178, 0)
+Camera at: (180, 0)
+Camera at: (182, 0)
+Camera at: (184, 0)
+Camera at: (186, 0)
+Camera at: (188, 0)
+Camera at: (190, 0)
+Camera at: (192, 0)
+Camera at: (194, 0)
+Camera at: (196, 0)
+Camera at: (198, 0)
+Camera at: (200, 0)
+Camera at: (202, 0)
+Camera at: (204, 0)
+Camera at: (206, 0)
+Camera at: (208, 0)
+Camera at: (210, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 0)
+Camera at: (212, 2)
+Camera at: (212, 4)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+Camera at: (212, 6)
+E key pressed
+Switching to icetruck
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100527
+Switched to icetruck. Player instance ID: ref instance 100527
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 6)
+Current Face: 3
+Camera at: (212, 10)
+Current Face: 3
+Camera at: (212, 14)
+Current Face: 3
+Camera at: (212, 18)
+Current Face: 3
+Camera at: (212, 22)
+Current Face: 3
+Camera at: (212, 26)
+Current Face: 3
+Camera at: (212, 30)
+Current Face: 3
+Camera at: (212, 34)
+Current Face: 3
+Camera at: (212, 38)
+Current Face: 3
+Camera at: (212, 42)
+Current Face: 3
+Camera at: (212, 46)
+Current Face: 3
+Camera at: (212, 50)
+Current Face: 3
+Camera at: (212, 54)
+Current Face: 3
+Camera at: (212, 58)
+Current Face: 3
+Camera at: (212, 62)
+Current Face: 3
+Camera at: (212, 66)
+Current Face: 3
+Camera at: (212, 70)
+Current Face: 7
+Camera at: (212, 74)
+Current Face: 7
+Camera at: (212, 78)
+Current Face: 7
+Camera at: (212, 82)
+Current Face: 7
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+Current Face: 2
+Camera at: (212, 86)
+obj_player: Initialized. Driving state: 0
+Exited ice truck. Current skin: player
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 86)
+Camera at: (212, 88)
+Camera at: (212, 90)
+Camera at: (212, 92)
+Camera at: (212, 94)
+Camera at: (212, 96)
+Camera at: (212, 98)
+Camera at: (212, 100)
+Camera at: (212, 102)
+Camera at: (212, 104)
+Camera at: (212, 106)
+Camera at: (212, 108)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100530
+Entered ice truck. Current skin: icetruck
+obj_player: Initialized. Driving state: 0
+Exited ice truck. Current skin: player
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 110)
+Camera at: (212, 112)
+Camera at: (212, 114)
+Camera at: (212, 116)
+Camera at: (212, 118)
+Camera at: (212, 120)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+obj_player_icetruck: Initialized. Player instance ID: ref instance 100533
+Entered ice truck. Current skin: icetruck
+obj_player: Initialized. Driving state: 0
+Exited ice truck. Current skin: player
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 122)
+Camera at: (212, 120)
+Camera at: (212, 118)
+Camera at: (212, 116)
+Camera at: (212, 114)
+Camera at: (212, 112)
+Camera at: (212, 110)
+Camera at: (212, 108)
+Camera at: (212, 106)
+Camera at: (212, 104)
+Camera at: (212, 102)
+Camera at: (212, 100)
+Camera at: (212, 98)
+Camera at: (212, 96)
+Camera at: (212, 94)
+Camera at: (212, 92)
+Camera at: (212, 90)
+Camera at: (212, 88)
+Camera at: (212, 86)
+Camera at: (212, 84)
+Camera at: (212, 82)
+Camera at: (212, 80)
+Camera at: (212, 78)
+Camera at: (212, 76)
+Camera at: (212, 74)
+Camera at: (212, 72)
+Camera at: (212, 70)
+Camera at: (212, 68)
+Camera at: (212, 66)
+Camera at: (212, 64)
+Camera at: (212, 62)
+Camera at: (212, 60)
+Camera at: (212, 58)
+Camera at: (210, 56)
+Camera at: (208, 54)
+Camera at: (206, 52)
+Camera at: (204, 50)
+Camera at: (202, 48)
+Camera at: (200, 46)
+Camera at: (198, 44)
+Camera at: (196, 42)
+Camera at: (194, 40)
+Camera at: (192, 38)
+Camera at: (190, 36)
+Camera at: (188, 34)
+Camera at: (186, 32)
+Camera at: (184, 30)
+Camera at: (182, 28)
+Camera at: (180, 26)
+Camera at: (178, 24)
+Camera at: (176, 22)
+Camera at: (174, 20)
+Camera at: (172, 18)
+Camera at: (170, 16)
+Camera at: (168, 14)
+Camera at: (168, 12)
+Camera at: (168, 10)
+Camera at: (168, 8)
+Camera at: (168, 6)
+Camera at: (168, 4)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+Camera at: (168, 2)
+###game_end###254
+Attempting to set gamepadcount to 0
+Script_Free called with 51 and global 6
+Warning: Prevented call into an uninitialised yyal from Audio_BusDestroy
+Unsetting previous scheduler resolution of 1
