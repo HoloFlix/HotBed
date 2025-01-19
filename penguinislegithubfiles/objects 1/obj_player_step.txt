@@ -1,3 +1,5 @@
+// Step Event for obj_player
+
 // Handle interaction with NPC
 if (keyboard_check_pressed(ord("E"))) {
     var target_npc = instance_nearest(x, y, obj_npc); // Find the nearest NPC
@@ -14,12 +16,7 @@ if (keyboard_check_pressed(ord("E"))) {
     if (distance_to_object(obj_icetruck) < 32) {
         show_debug_message("E key pressed");
         obj_controller.switch_skin(global.current_skin == "player" ? "icetruck" : "player");
-    }
-}
-
-// Handle skin switching
-if (keyboard_check_pressed(ord("E"))) {
-    if (distance_to_object(obj_tube) < 32) {
+    } else if (distance_to_object(obj_tube) < 32) {
         show_debug_message("E key pressed");
         obj_controller.switch_skin(global.current_skin == "player" ? "tube" : "player");
     }
