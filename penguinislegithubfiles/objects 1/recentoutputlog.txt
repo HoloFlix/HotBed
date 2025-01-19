@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=7
+Collision Event time(microsecs)=4
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 5 usecs for 43 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 4 usecs for 43 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8679371 (0x00846fcb) bytes 8.28MB
-Free memory = 6380064 (0x00615a20) bytes 6.08MB
-Peak memory used = 11722037 (0x00b2dd35) bytes 11.18MB
+Total memory used = 8670691 (0x00844de3) bytes 8.27MB
+Free memory = 6380032 (0x00615a00) bytes 6.08MB
+Peak memory used = 11721973 (0x00b2dcf5) bytes 11.18MB
 **********************************.
 Entering main loop.
 **********************************.
