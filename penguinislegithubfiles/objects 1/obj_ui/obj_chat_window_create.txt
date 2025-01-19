@@ -1,9 +1,0 @@
-// Initialize chat window state
-global.chat_active = false;   // Chat starts inactive
-global.chat_npc = noone;      // No active NPC
-dialog_queue = [];            // Dialog to display
-dialog_index = 0;             // Current dialog position
-choice_selected = 0;          // Placeholder for player choice
-
-// In obj_chat_window Create Event
-depth = -1000; // Ensure it draws above everything
