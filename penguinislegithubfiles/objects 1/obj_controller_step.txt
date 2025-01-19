@@ -25,7 +25,7 @@ if (!global.game_started) {
     game_timer -= 1;
     if (game_timer <= 0 && global.lives > 0) {
         switch_skin("player");
-        room_goto(rm_ski_village);
+        room_goto(rm_ski_village); // Ensure rm_ski_village transition
     }
 
     // Check for collisions and reduce lives
@@ -37,4 +37,60 @@ if (!global.game_started) {
             room_goto(rm_ski_mountaintop);
         }
     }
+}
+
+// Logic to switch to sled player when starting the sled racing game
+if (starting_sled_racing_game) { // Replace with actual condition to start the sled racing game
+    switch_skin("sled_player");
+}
+
+// Function to switch skins
+function switch_skin(new_skin) {
+    if (global.skin_switching) return; // Prevent multiple switches in one frame
+    global.skin_switching = true;      // Set the flag
+
+    var player_x = global.player_instance.x;
+    var player_y = global.player_instance.y;
+
+    if (new_skin == "icetruck") {
+        // Destroy current player instance if it exists
+        if (instance_exists(global.player_instance)) {
+            instance_destroy(global.player_instance);
+        }
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+        global.icetruck_destroyed = false;
+        show_debug_message("Switched to icetruck. Player instance ID: " + string(global.player_instance));
+    } else if (new_skin == "tube") {
+        // Destroy current player instance if it exists
+        if (instance_exists(global.player_instance)) {
+            instance_destroy(global.player_instance);
+        }
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_tube);
+        global.current_skin = "tube";
+        show_debug_message("Switched to tube. Player instance ID: " + string(global.player_instance));
+    } else if (new_skin == "sled_player") {
+        // Destroy current player instance if it exists
+        if (instance_exists(global.player_instance)) {
+            instance_destroy(global.player_instance);
+        }
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_sled_player);
+        global.current_skin = "sled_player";
+        show_debug_message("Switched to sled_player. Player instance ID: " + string(global.player_instance));
+    } else if (new_skin == "player") {
+        // Destroy current player instance if it exists
+        if (instance_exists(global.player_instance)) {
+            instance_destroy(global.player_instance);
+        }
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        // Ensure the ice truck or tube is destroyed if it exists
+        var vehicle = instance_place(player_x, player_y, obj_icetruck) || instance_place(player_x, player_y, obj_tube);
+        if (vehicle != noone) {
+            instance_destroy(vehicle);
+        }
+        global.current_skin = "player";
+        show_debug_message("Switched to player. Player instance ID: " + string(global.player_instance));
+    }
+
+    global.skin_switching = false; // Reset the flag
 }
