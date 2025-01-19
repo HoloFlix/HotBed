@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=5
+Collision Event time(microsecs)=7
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 4 usecs for 42 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 5 usecs for 43 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8661587 (0x00842a53) bytes 8.26MB
-Free memory = 6380176 (0x00615a90) bytes 6.08MB
-Peak memory used = 11716881 (0x00b2c911) bytes 11.17MB
+Total memory used = 8679371 (0x00846fcb) bytes 8.28MB
+Free memory = 6380064 (0x00615a20) bytes 6.08MB
+Peak memory used = 11722037 (0x00b2dd35) bytes 11.18MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -43,6 +43,6 @@ DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100520
 ###game_end###254
 Attempting to set gamepadcount to 0
-Script_Free called with 52 and global 6
+Script_Free called with 54 and global 6
 Warning: Prevented call into an uninitialised yyal from Audio_BusDestroy
 Unsetting previous scheduler resolution of 1
