@@ -9,16 +9,19 @@ global.countdown_timer = 5 * room_fps; // 5 seconds countdown
 global.game_started = false; // Flag to check if the game has started
 global.lives = 3; // Initialize player lives
 game_timer = 0; // Initialize game timer
+global.skin_switching = false; // Initialize the skin switching flag
 
 // Initialize global variables
 global.skins = [
     { name: "Player", object: obj_player },
     { name: "Ice Truck", object: obj_player_icetruck },
-    { name: "Tube", object: obj_player_tube }
+    { name: "Tube", object: obj_player_tube },
+    { name: "Sled Player", object: obj_sled_player } // Added sled player
 ];
 global.current_skin = "player"; // Starting skin
 global.player_instance = noone; // Initialize player instance
 global.icetruck_destroyed = false; // Initialize icetruck_destroyed
+starting_sled_racing_game = false; // Initialize the sled racing game flag
 
 // Ensure player instance exists
 if (global.player_instance == noone) {
@@ -28,6 +31,8 @@ if (global.player_instance == noone) {
         global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
     } else if (global.current_skin == "tube") {
         global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    } else if (global.current_skin == "sled_player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_sled_player);
     }
 }
 
