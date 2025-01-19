@@ -103,3 +103,4 @@ penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_obstacle_step
 penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_sled_player_create.txt
 penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_sled_player_roomstart.txt
 penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_sled_player_step.txt
+penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_sled_player_draw.txt
