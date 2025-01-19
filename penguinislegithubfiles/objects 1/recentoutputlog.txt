@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=27
+Collision Event time(microsecs)=4
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 3 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 4 usecs for 41 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8662758 (0x00842ee6) bytes 8.26MB
+Total memory used = 8654090 (0x00840d0a) bytes 8.25MB
 Free memory = 6382256 (0x006162b0) bytes 6.09MB
-Peak memory used = 11711469 (0x00b2b3ed) bytes 11.17MB
+Peak memory used = 11711465 (0x00b2b3e9) bytes 11.17MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -4172,7 +4172,6 @@ DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 101209
 obj_player: Initialized. Driving state: 0
 Switched to player. Player instance ID: ref instance 101210
-###game_end###254
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Existing global camera used in Room Start. ID: 130
 obj_player: Initialized. Driving state: 0
@@ -4183,6 +4182,1315 @@ DEBUG: Existing global camera used in Room Start. ID: 130
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 101211
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101212
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101213
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101213
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101214
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101215
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101215
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101216
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101217
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101217
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101218
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101219
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101219
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101220
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101221
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101221
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101222
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101223
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101223
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101224
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101225
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101225
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101226
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101227
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101227
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101228
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101229
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101229
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101230
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101231
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101231
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101232
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101233
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101233
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101234
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101235
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101235
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101236
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101237
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101237
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101238
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101239
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101239
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101240
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101241
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101241
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101242
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101243
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101243
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101244
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101245
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101245
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101246
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101247
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101247
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101248
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101249
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101249
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101250
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101251
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101251
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101252
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101253
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101253
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101254
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101255
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101255
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101256
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101257
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101257
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101258
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101259
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101259
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101260
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101261
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101261
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101262
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101263
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101263
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101264
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101265
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101265
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101266
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101267
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101267
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101268
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101269
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101269
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101270
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101271
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101271
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101272
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101273
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101273
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101274
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101275
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101275
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101276
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101277
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101277
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101278
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101279
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101279
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101280
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101281
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101281
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101282
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101283
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101283
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101284
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101285
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101285
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101286
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101287
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101287
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101288
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101289
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101289
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101290
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101291
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101291
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101292
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101293
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101293
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101294
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101295
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101295
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101296
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101297
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101297
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101298
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101299
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101299
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101300
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101301
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101301
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101302
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101303
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101303
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101304
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101305
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101305
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101306
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101307
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101307
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101308
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101309
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101309
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101310
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101311
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101311
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101312
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101313
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101313
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101314
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101315
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101315
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101316
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101317
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101317
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101318
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101319
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101319
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101320
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101321
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101321
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101322
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101323
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101323
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101324
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101325
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101325
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101326
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101327
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101327
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101328
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101329
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101329
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101330
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101331
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101331
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101332
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101333
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101333
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101334
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101335
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101335
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101336
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101337
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101337
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101338
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101339
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101339
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101340
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101341
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101341
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101342
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101343
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101343
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101344
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101345
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101345
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101346
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101347
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101347
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101348
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101349
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101349
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101350
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101351
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101351
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101352
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101353
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101353
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101354
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101355
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101355
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101356
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101357
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101357
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101358
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101359
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101359
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101360
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101361
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101361
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101362
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101363
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101363
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101364
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101365
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101365
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101366
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101367
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101367
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101368
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101369
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101369
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101370
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101371
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101371
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101372
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101373
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101373
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101374
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101375
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101375
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101376
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101377
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101377
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101378
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101379
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101379
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101380
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101381
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101381
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101382
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101383
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101383
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101384
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101385
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101385
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101386
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101387
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101387
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101388
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101389
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101389
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101390
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101391
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101391
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101392
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101393
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101393
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101394
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101395
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101395
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101396
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101397
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101397
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101398
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101399
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101399
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101400
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101401
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101401
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101402
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101403
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101403
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101404
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101405
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101405
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101406
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101407
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101407
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101408
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101409
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101409
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101410
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101411
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101411
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101412
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101413
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101413
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101414
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101415
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101415
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101416
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101417
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101417
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101418
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101419
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101419
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101420
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101421
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101421
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101422
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101423
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101423
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101424
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101425
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101425
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101426
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101427
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101427
+obj_player: Initialized. Driving state: 0
+Switched to player. Player instance ID: ref instance 101428
+###game_end###254
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+obj_player: Initialized. Driving state: 0
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101429
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Existing global camera used in Room Start. ID: 130
+DEBUG: Camera synchronized with player position after room transition.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 101429
 Attempting to set gamepadcount to 0
 Script_Free called with 52 and global 6
 Warning: Prevented call into an uninitialised yyal from Audio_BusDestroy
