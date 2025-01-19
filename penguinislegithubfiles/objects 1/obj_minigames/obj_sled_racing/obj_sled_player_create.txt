@@ -3,3 +3,7 @@ xspd = 0;
 yspd = 0;
 move_spd = 4;
 lives = 3;
+global.game_started = false; // Reset game started flag for the sled racing game
+global.countdown_timer = 5 * 60; // 5 seconds countdown (assuming 60 FPS)
+game_timer = 10 * 60; // 10 seconds game timer (assuming 60 FPS)
+collision_cooldown = 30; // Initialize collision cooldown
