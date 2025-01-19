@@ -95,6 +95,9 @@ penguinislegithubfiles/objects 1/obj_ui/obj_skinpicker_keypress-p.txt
 penguinislegithubfiles/objects 1/obj_ui/obj_skinpickerbutton_create.txt
 penguinislegithubfiles/objects 1/obj_ui/obj_skinpickerbutton_draw.txt
 penguinislegithubfiles/objects 1/obj_ui/obj_skinpickerbutton_leftpressed.txt
+penguinislegithubfiles/objects 1/obj_ui/pause_menu/obj_pause_menu_create.txt
+penguinislegithubfiles/objects 1/obj_ui/pause_menu/obj_pause_menu_draw.txt
+penguinislegithubfiles/objects 1/obj_ui/pause_menu/obj_pause_menu_step.txt
 
 
 penguinislegithubfiles/objects 1/obj_minigames/obj_sled_racing/obj_obstacle__controller_create.txt
