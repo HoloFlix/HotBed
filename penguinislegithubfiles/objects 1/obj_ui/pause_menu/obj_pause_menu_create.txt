@@ -25,3 +25,6 @@ menu_level = 0;
 
 // Pause the game
 game_paused = true;
+
+// Disable player controls
+global.player_controls_enabled = false;
