@@ -1,6 +1,6 @@
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=15
+Collision Event time(microsecs)=5
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 4 usecs for 43 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
+CreateColPairs took 0.000000s 5 usecs for 43 object types obj_col_numb=0 physobjcount=1 resizes 0 final size 1
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8667827 (0x008442b3) bytes 8.27MB
-Free memory = 6380032 (0x00615a00) bytes 6.08MB
-Peak memory used = 11722657 (0x00b2dfa1) bytes 11.18MB
+Total memory used = 8677945 (0x00846a39) bytes 8.28MB
+Free memory = 6379904 (0x00615980) bytes 6.08MB
+Peak memory used = 11723821 (0x00b2e42d) bytes 11.18MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -41,8 +41,10 @@ DEBUG: Existing global camera used in Room Start. ID: 130
 DEBUG: Camera synchronized with player position after room transition.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100520
-###game_end###254
-Attempting to set gamepadcount to 0
-Script_Free called with 54 and global 6
-Warning: Prevented call into an uninitialised yyal from Audio_BusDestroy
-Unsetting previous scheduler resolution of 1
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_pause_menu:
+instance_create_layer :: specified layer "UI" does not exist
+ at gml_Object_obj_pause_menu_Step_0 (line 48) -                     instance_create_layer(x, y, "UI", obj_skinpicker); 
+############################################################################################
+gml_Object_obj_pause_menu_Step_0 (line 48)
