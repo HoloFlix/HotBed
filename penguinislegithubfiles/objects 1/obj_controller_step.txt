@@ -13,16 +13,10 @@ if (global.current_skin != "sled_player") {
     global.player_instance.x = clamp(global.player_instance.x, 0, room_width - sprite_width);
 }
 
-// Countdown and Game Logic
-if (!global.game_started) {
-    global.countdown_timer -= 1; // Use global.countdown_timer directly
-    if (global.countdown_timer <= 0) {
-        global.game_started = true;
-        game_timer = 10 * room_speed; // 10 seconds game timer
-    }
-} else {
-    // Game logic goes here
+// Game logic
+if (global.game_started) {
     game_timer -= 1;
+
     if (game_timer <= 0 && global.lives > 0) {
         switch_skin("player");
         room_goto(rm_ski_village); // Ensure rm_ski_village transition
@@ -40,8 +34,12 @@ if (!global.game_started) {
 }
 
 // Logic to switch to sled player when starting the sled racing game
-if (starting_sled_racing_game) { // Replace with actual condition to start the sled racing game
+if (room == rm_sled_racing && !global.game_started) { // When the player enters rm_sled_racing
     switch_skin("sled_player");
+    global.game_started = true;
+
+    // Ensure the camera follows the player
+    camera_set_view_target(view_camera[0], global.player_instance);
 }
 
 // Function to switch skins
@@ -91,6 +89,9 @@ function switch_skin(new_skin) {
         global.current_skin = "player";
         show_debug_message("Switched to player. Player instance ID: " + string(global.player_instance));
     }
+
+    // Ensure the camera follows the newly created player instance
+    camera_set_view_target(view_camera[0], global.player_instance);
 
     global.skin_switching = false; // Reset the flag
 }
