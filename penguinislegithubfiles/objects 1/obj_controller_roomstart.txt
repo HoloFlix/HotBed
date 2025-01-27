@@ -38,5 +38,10 @@ if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
     }
 }
 
+// obj_controller: Room Start Event
+if (room == rm_sled_racing) {
+    camera_set_view_pos(view_camera[0], obj_sled_player.x - (camera_get_view_width(view_camera[0]) / 2), obj_sled_player.y - (camera_get_view_height(view_camera[0]) / 2));
+}
+
 show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
 show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
