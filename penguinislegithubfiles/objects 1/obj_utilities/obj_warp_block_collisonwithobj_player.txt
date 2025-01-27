@@ -1,5 +1,4 @@
 // Collision Event with obj_player in obj_warp_block
-
 if (other != noone && other.object_index == obj_player) {
     if (target_rm == rm_sled_racing) {
         switch_skin("sled_player");
