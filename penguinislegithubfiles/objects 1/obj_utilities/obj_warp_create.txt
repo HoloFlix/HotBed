@@ -4,9 +4,3 @@ target_x = 0;
 target_y = 0;
 target_face = 0;
 target_instance = noone; // Track the instance to move
-
-// Debugging
-show_debug_message("obj_warp: Initialized. Target room: " + string(target_rm));
-show_debug_message("Target position: (" + string(target_x) + ", " + string(target_y) + ")");
-show_debug_message("Target face: " + string(target_face));
-show_debug_message("Target instance: " + string(target_instance));
