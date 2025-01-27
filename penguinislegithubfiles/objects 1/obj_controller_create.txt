@@ -5,7 +5,8 @@ var room_fps = game_get_speed(gamespeed_fps);
 
 // Initialize countdown_timer with the desired duration in seconds multiplied by room_fps
 global.countdown_timer = 5 * room_fps; // 5 seconds countdown 
-
+// In obj_controller or initialization object
+global.is_pause_menu_active = false;
 global.game_started = false; // Flag to check if the game has started
 global.lives = 3; // Initialize player lives
 game_timer = 0; // Initialize game timer
