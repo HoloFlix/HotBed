@@ -1,0 +1,77 @@
+// Step Event for obj_player
+// Handle interaction (E Key)
+if (keyboard_check_pressed(ord("E"))) {
+    if (instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16) {
+        obj_controller.switch_skin("icetruck");
+    } else if (instance_exists(obj_tube) && distance_to_object(obj_tube) < 16) {
+        obj_controller.switch_skin("tube");
+    } else if (instance_exists(obj_color_wheel) && distance_to_object(obj_color_wheel) < 16) {
+        global.player_color = choose(c_red, c_blue, c_green, c_yellow, c_white);
+        show_debug_message("Color changed to: " + string(global.player_color));
+    } else {
+        obj_controller.switch_skin("player"); // Default to switching back to player
+    }
+}
+
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+// Handle movement and sliding logic
+if (!sliding) {
+    xspd = (right_key - left_key) * move_spd;
+    yspd = (down_key - up_key) * move_spd;
+} else {
+    xspd = slide_dir_x * slide_speed;
+    yspd = slide_dir_y * slide_speed;
+    slide_speed *= 0.98;
+    if (abs(slide_speed) < 0.1) {
+        sliding = false;
+        xspd = 0;
+        yspd = 0;
+    }
+}
+
+// Pause player movement if paused
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Set movement direction
+if (yspd < 0) {
+    if (xspd < 0) { face = UP_LEFT; }
+    else if (xspd > 0) { face = UP_RIGHT; }
+    else { face = UP; }
+} else if (yspd > 0) {
+    if (xspd < 0) { face = DOWN_LEFT; }
+    else if (xspd > 0) { face = DOWN_RIGHT; }
+    else { face = DOWN; }
+} else {
+    if (xspd > 0) { face = RIGHT; }
+    else if (xspd < 0) { face = LEFT; }
+}
+
+// Handle movement
+xspd = handle_collision("x", xspd);
+yspd = handle_collision("y", yspd);
+x += xspd;
+y += yspd;
+
+// Animation handling
+if (xspd != 0 || yspd != 0) {
+    image_speed = 0.15; // Control animation speed
+} else {
+    image_speed = 0;
+    image_index = 0; // Reset to idle frame
+}
+
+if (image_index >= 3) {
+    image_index = 0;
+}
+
+// Depth
+depth = -bbox_bottom;
+

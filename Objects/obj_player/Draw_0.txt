@@ -1,0 +1,28 @@
+// Ensure valid frame selection
+var frame_index = floor(image_index) mod (array_length(frame_data[face]) / 4);
+
+// Extract frame data
+var frame_x = frame_data[face][frame_index * 4];
+var frame_y = frame_data[face][frame_index * 4 + 1];
+var frame_width = frame_data[face][frame_index * 4 + 2];
+var frame_height = frame_data[face][frame_index * 4 + 3];
+
+// Draw the body layer
+draw_sprite_part_ext(
+    spr_player_body, 0,  
+    frame_x, frame_y,  
+    frame_width, frame_height,  
+    x, y,  
+    1, 1,  
+    c_white, 1  
+);
+
+// Draw the color overlay layer
+draw_sprite_part_ext(
+    spr_player_colour, 0,  
+    frame_x, frame_y,  
+    frame_width, frame_height,  
+    x, y,  
+    1, 1,  
+    global.player_color, 1  
+);

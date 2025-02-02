@@ -1,0 +1,2 @@
+// Create Event for obj_obstacle_controller
+alarm[0] = 30; // Spawn an obstacle every 30 steps

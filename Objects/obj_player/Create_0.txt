@@ -1,0 +1,89 @@
+// Create Event for obj_player
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 2;
+global.player_color = c_white; // Default color
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+//init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
+// Define player sprite layers
+sprite_body = spr_player_body;
+sprite_color = spr_player_colour;
+
+// Collision mask setup
+mask_index = spr_player_body;
+
+// Debugging
+show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
+
+// Define animation frames for each movement direction (192x72 sprite sheet, 24x24 grid)
+frame_data = array_create(8);
+
+// Down (Facing Forward)
+frame_data[DOWN] = [
+    0, 0, 24, 24,   // Frame 1
+    0, 24, 24, 24,  // Frame 2
+    0, 48, 24, 24   // Frame 3
+];
+
+// Up (Facing Back)
+frame_data[UP] = [
+    24, 0, 24, 24,  
+    24, 24, 24, 24,  
+    24, 48, 24, 24  
+];
+
+// Down-Left
+frame_data[DOWN_LEFT] = [
+    48, 0, 24, 24,  
+    48, 24, 24, 24,  
+    48, 48, 24, 24  
+];
+
+// Down-Right
+frame_data[DOWN_RIGHT] = [
+    72, 0, 24, 24,  
+    72, 24, 24, 24,  
+    72, 48, 24, 24  
+];
+
+// Left
+frame_data[LEFT] = [
+    96, 0, 24, 24,  
+    96, 24, 24, 24,  
+    96, 48, 24, 24  
+];
+
+// Right
+frame_data[RIGHT] = [
+    120, 0, 24, 24,  
+    120, 24, 24, 24,  
+    120, 48, 24, 24  
+];
+
+// Up-Right
+frame_data[UP_RIGHT] = [
+    144, 0, 24, 24,  
+    144, 24, 24, 24,  
+    144, 48, 24, 24  
+];
+
+// Up-Left
+frame_data[UP_LEFT] = [
+    168, 0, 24, 24,  
+    168, 24, 24, 24,  
+    168, 48, 24, 24  
+];

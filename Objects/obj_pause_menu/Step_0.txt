@@ -1,0 +1,73 @@
+// Update op_length dynamically based on menu_level
+op_length = array_length(option[menu_level]);
+
+// Menu navigation using the mouse
+var mouse_x_pos = mouse_x + view_xview[0];
+var mouse_y_pos = mouse_y + view_yview[0];
+
+var menu_width = 300; // Width of the menu
+var menu_height = 40 * op_length + 20; // Height of the menu
+var menu_top = y - menu_height / 2 + 20; // Top of the menu options
+var menu_left = x - menu_width / 2; // Left of the menu
+
+if (mouse_x_pos > menu_left && mouse_x_pos < menu_left + menu_width) {
+    pos = floor((mouse_y_pos - menu_top) / 40); // Calculate option index
+} else {
+    pos = -1; // Mouse is not over the menu
+}
+
+// Ensure pos stays within bounds
+if (pos < 0 || pos >= op_length) {
+    pos = -1;
+}
+
+// Handle selection with mouse click
+if (mouse_check_button_pressed(mb_left) && pos >= 0) {
+    switch (menu_level) {
+        case 0: // Main pause menu
+            switch (pos) {
+                case 0: 
+                    // Resume game
+                    game_paused = false;
+                    global.player_controls_enabled = true;
+                    instance_destroy();
+					global.is_pause_menu_active = false;
+                    break; 
+                case 1: 
+                    // Go to settings menu
+                    menu_level = 1; 
+                    break; 
+                case 2: 
+                    // Quit game
+                    game_end(); 
+                    break; 
+            }
+            break;
+
+        case 1: // Settings menu
+            switch (pos) {
+                case 0: 
+					// Open Skin Picker and close pause menu
+                    instance_create_layer(x, y, "UI", obj_skinpicker); 
+                    instance_destroy(); 
+                    global.is_pause_menu_active = false;
+                    break;
+                case 1: 
+					// Open Color Wheel and close pause menu
+                    instance_create_layer(x, y, "UI", obj_color_wheel); 
+                    instance_destroy(); 
+                    global.is_pause_menu_active = false;
+                    break;
+                case 2: 
+                   // Go back to main menu
+                    menu_level = 0; 
+                    break; 
+            }
+            break;
+    }
+}
+
+// Debug mouse position
+show_debug_message("Mouse X: " + string(mouse_x) + " | Mouse Y: " + string(mouse_y));
+show_debug_message("GUI Mouse X: " + string(device_mouse_x_to_gui(0)) + " | GUI Mouse Y: " + string(device_mouse_y_to_gui(0)));
+show_debug_message("View X: " + string(camera_get_view_x(view_camera[0])) + " | View Y: " + string(camera_get_view_y(view_camera[0])));
