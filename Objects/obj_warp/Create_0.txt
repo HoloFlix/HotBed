@@ -1,0 +1,14 @@
+// Create Event for obj_warp
+target_rm = 0;
+target_x = 0;
+target_y = 0;
+target_face = 0;
+target_instance = noone;
+
+// Prevent instant re-warping
+global.warp_cooldown = true;
+alarm[0] = room_speed / 2; // Half a second delay
+
+// Debugging
+show_debug_message("obj_warp: Initialized. Target room: " + string(target_rm) +
+    " Target position: (" + string(target_x) + ", " + string(target_y) + ") Face: " + string(target_face));

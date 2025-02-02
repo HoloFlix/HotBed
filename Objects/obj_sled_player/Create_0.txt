@@ -1,0 +1,8 @@
+// Create Event for obj_sled_player
+xspd = 0;
+yspd = 0;
+move_spd = 4;
+lives = 3;
+global.game_started = true; // Game starts immediately
+game_timer = 10 * 60; // 10 seconds game timer (assuming 60 FPS)
+collision_cooldown = 30; // Initialize collision cooldown

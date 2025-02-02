@@ -1,0 +1,36 @@
+// Step Event for obj_sled_player
+
+if (global.game_started) {
+    game_timer -= 1; // Decrement game timer
+
+    // Horizontal movement using 'A', 'D' keys and arrow keys
+    if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
+        x -= 5; // Move left
+    } 
+    if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
+        x += 5; // Move right
+    }
+
+    // Prevent movement outside the room boundaries
+    x = clamp(x, 0, room_width - sprite_width);
+
+    // Check for collision with obstacles
+    if (collision_cooldown <= 0 && place_meeting(x, y, obj_obstacle)) {
+        // Handle collision (e.g., stop movement, end game, etc.)
+        show_debug_message("Collision with obstacle!");
+        lives -= 1; // Reduce lives on collision
+        collision_cooldown = 30; // Reset cooldown
+        if (lives <= 0) {
+            switch_skin("player");
+            room_goto(rm_ski_mountaintop);
+        }
+    } else {
+        collision_cooldown -= 1; // Decrement cooldown
+    }
+
+    // Game win condition
+    if (game_timer <= 0 && lives > 0) {
+        switch_skin("player");
+        room_goto(rm_ski_village); // Transition to rm_ski_village
+    }
+}

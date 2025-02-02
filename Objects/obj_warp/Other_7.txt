@@ -1,0 +1,23 @@
+/// Animation End Event for obj_warp
+show_debug_message("DEBUG: obj_warp transition initiated. Moving player before room transition.");
+
+// Ensure the player moves before switching rooms
+if (target_instance != noone) {
+    target_instance.x = target_x;
+    target_instance.y = target_y;
+    target_instance.face = target_face;
+    global.player_instance = target_instance; // Update global instance
+    show_debug_message("Player successfully moved to new position.");
+} else {
+    show_debug_message("ERROR: Target instance not found during warp.");
+}
+
+// Perform the room transition
+room_goto(target_rm);
+
+// Restore camera settings
+if (instance_exists(global.camera)) {
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, 640, 480);
+    show_debug_message("DEBUG: Camera viewport restored after room transition.");
+}
