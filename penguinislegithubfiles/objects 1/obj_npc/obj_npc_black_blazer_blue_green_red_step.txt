@@ -1,8 +1,0 @@
-// Step Event for NPCs
-
-if (!global.chat_active) {
-    scr_npc_animate(self); // Animate only when chat is not active
-}
-
-// Update sprite based on the animation index
-sprite_index = animations[animation_index];

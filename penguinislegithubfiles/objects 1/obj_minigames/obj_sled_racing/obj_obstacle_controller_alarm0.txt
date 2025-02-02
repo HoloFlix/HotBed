@@ -1,3 +1,0 @@
-// Alarm[0] Event for obj_obstacle_controller
-instance_create_layer(random(room_width), room_height, "Instances", obj_obstacle);
-alarm[0] = 30; // Reset the alarm

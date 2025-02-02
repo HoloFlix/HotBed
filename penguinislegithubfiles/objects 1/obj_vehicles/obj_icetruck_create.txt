@@ -1,7 +1,0 @@
-// File: obj_icetruck_create.txt
-
-// Assign sprite directions
-sprite[RIGHT] = spr_icetruck_faceright;
-sprite[UP] = spr_icetruck_faceup;
-sprite[LEFT] = spr_icetruck_faceleft;
-sprite[DOWN] = spr_icetruck_facedown;

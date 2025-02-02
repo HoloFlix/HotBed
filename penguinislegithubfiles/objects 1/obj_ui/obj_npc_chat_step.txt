@@ -1,8 +1,0 @@
-// Handle dialog progression
-if (chat_active) {
-    if (keyboard_check_pressed(vk_space) && dialog_index < array_length(dialog_queue) - 1) {
-        dialog_index++;
-    } else if (keyboard_check_pressed(vk_space)) {
-        chat_active = false; // End chat
-    }
-}

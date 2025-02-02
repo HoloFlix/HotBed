@@ -1,1 +1,0 @@
-obj_warp is parent to obj_pauser

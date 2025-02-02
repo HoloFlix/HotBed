@@ -1,2 +1,0 @@
-color_options = [c_red, c_green, c_blue, c_yellow, c_purple]; // Add more colors as needed
-selected_color = color_options[0];

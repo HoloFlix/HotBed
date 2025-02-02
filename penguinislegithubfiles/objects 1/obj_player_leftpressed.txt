@@ -1,9 +1,0 @@
-if (!instance_exists(obj_pause_menu)) {
-    if (instance_exists(global.player_instance)) {
-        // Open the pause menu at the player's current position
-        instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_pause_menu);
-    } else {
-        // Fallback: Center the pause menu in the view
-        instance_create_layer(view_xview[0] + view_wview[0] / 2, view_yview[0] + view_hview[0] / 2, "Instances", obj_pause_menu);
-    }
-}

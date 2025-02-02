@@ -1,6 +1,0 @@
-// Step Event for obj_initializer
-
-// Ensure the camera is correctly set to follow the player
-var cam = camera_create();
-camera_set_view_target(cam, global.player_instance);
-camera_apply(cam);
