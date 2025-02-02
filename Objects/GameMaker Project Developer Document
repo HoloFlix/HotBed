@@ -1,0 +1,1389 @@
+GameMaker Project Developer Document
+Project Overview
+
+This document provides an overview of the different objects in the game and their relevant event code. It will help new developers understand the current state of the project and the gameplay features and elements.
+Objects
+1. obj_slippery
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+xspd = 5;
+yspd = 5;
+
+sliding = true;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 4;
+move_spd = 0;
+
+Step Event (Step_0.txt):
+gml
+
+    if (!sliding) {
+        sliding = true;
+        slide_dir_x = sign(xspd);
+        slide_dir_y = sign(yspd);
+        slide_speed = max(abs(xspd), abs(yspd)); // Start with current speed
+    }
+
+    // Deceleration logic for sliding
+    xspd += -slide_dir_x * 0.2; // Adjust the "0.2" for more/less deceleration
+    yspd += -slide_dir_y * 0.2;
+
+    // Add a rubber-band effect by reversing the sliding direction slightly
+    if (abs(xspd) < 0.1) slide_dir_x = -slide_dir_x;
+    if (abs(yspd) < 0.1) slide_dir_y = -slide_dir_y;
+
+    // Clamp speed to avoid infinite sliding
+    slide_speed *= 0.95; // Reduce speed gradually
+    if (slide_speed < 0.1) {
+        sliding = false;
+        
+        if (place_meeting(x + slide_dir_x * slide_speed, y, obj_wall)) {
+            slide_dir_x = -slide_dir_x; // Bounce back
+        }
+        if (place_meeting(x, y + slide_dir_y * slide_speed, obj_wall)) {
+            slide_dir_y = -slide_dir_y;
+        }
+    }
+
+Object Properties (obj_slipperytxt):
+
+    Name: obj_slippery
+    Parent Object: obj_utilities
+    Sprite: spr_slippery
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+2. obj_tall_trees
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+    //depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_tall_treestxt):
+
+    Name: obj_tall_trees
+    Parent Object: obj_env
+    Sprite: spr_tall_trees
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+3. obj_bulletin_board
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+    //depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_bulletin_boardtxt):
+
+    Name: obj_bulletin_board
+    Parent Object: obj_props
+    Sprite: spr_bulletin_board
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+4. obj_controller
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+// Create Event for obj_controller
+
+// Initialize global variables early to avoid undefined references
+global.dialogue_active = false; // Dialogue system starts inactive
+
+// Get the FPS value for the room
+var room_fps = game_get_speed(gamespeed_fps);
+
+// Initialize countdown_timer with the desired duration in seconds multiplied by room_fps
+global.countdown_timer = 5 * room_fps; // 5 seconds countdown 
+global.is_pause_menu_active = false;
+global.game_started = false; // Flag to check if the game has started
+global.lives = 3; // Initialize player lives
+game_timer = 0; // Initialize game timer
+global.skin_switching = false; // Initialize the skin switching flag
+
+// Initialize global variables
+global.skins = [
+    { name: "Player", object: obj_player },
+    { name: "Ice Truck", object: obj_player_icetruck },
+    { name: "Tube", object: obj_player_tube },
+    { name: "Sled Player", object: obj_sled_player },
+    { name: "Ninja", object: obj_player_ninja } // Add Ninja
+];
+
+global.current_skin = "player"; // Starting skin
+global.player_instance = noone; // Initialize player instance
+global.icetruck_destroyed = false; // Initialize icetruck_destroyed
+starting_sled_racing_game = false; // Initialize the sled racing game flag
+
+// Ensure player instance exists
+if (global.player_instance == noone) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    } else if (global.current_skin == "sled_player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_sled_player);
+    } else if (global.current_skin == "ninja") {  // Add Ninja case
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_ninja);
+    }
+}
+
+if (instance_exists(global.player_instance)) {
+    global.player_instance.image_blend = global.player_color;
+}
+
+// Debugging
+if (instance_exists(global.player_instance)) {
+    show_debug_message("Player instance created: " + string(global.player_instance));
+} else {
+    show_debug_message("Error: Failed to create player instance.");
+}
+
+show_debug_message("Create Event: global.game_started initialized as " + string(global.game_started));
+show_debug_message("Create Event: countdown_timer initialized as " + string(global.countdown_timer));
+show_debug_message("Instance of obj_controller created with ID: " + string(id));
+
+Step Event (Step_0.txt):
+gml
+
+// Toggle pause menu
+if (keyboard_check_pressed(vk_escape)) {
+    if (!global.is_pause_menu_active) {
+        show_debug_message("Attempting to open pause menu...");
+        if (!instance_exists(obj_pause_menu)) {
+            instance_create_layer(view_xview[0] + view_wview[0] / 2, 
+                                  view_yview[0] + view_hview[0] / 2, 
+                                  "UI", obj_pause_menu);
+            global.is_pause_menu_active = true;
+            global.player_controls_enabled = false;
+            show_debug_message("Pause menu opened successfully.");
+        }
+    } else {
+        show_debug_message("Attempting to close pause menu...");
+        with (obj_pause_menu) { instance_destroy(); }
+        global.is_pause_menu_active = false;
+        global.player_controls_enabled = true;
+        show_debug_message("Pause menu closed successfully.");
+    }
+}
+
+function switch_skin(new_skin) {
+    if (global.skin_switching) return;
+    global.skin_switching = true;
+
+    var player_x = global.player_instance != noone ? global.player_instance.x : x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : y;
+
+    // Destroy current instance
+    if (instance_exists(global.player_instance)) {
+        instance_destroy(global.player_instance);
+    }
+
+    // Determine new player instance
+    var new_instance = noone;
+    if (new_skin == "icetruck" || new_skin == "tube") {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[new_skin].object);
+        global.current_skin = new_skin;
+
+        // Remove vehicle from room
+        if (new_skin == "icetruck") with (obj_icetruck) instance_destroy();
+        if (new_skin == "tube") with (obj_tube) instance_destroy();
+    } else {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+    }
+
+    // Assign new instance
+    if (new_instance != noone) {
+        global.player_instance = new_instance;
+    } else {
+        show_debug_message("ERROR: Failed to create player instance for skin: " + new_skin);
+    }
+
+    // Camera update
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(view_camera[0], global.player_instance);
+    } else {
+        show_debug_message("ERROR: Camera could not follow new player instance.");
+    }
+
+    global.skin_switching = false;
+}
+
+Other Event (Other_4.txt):
+gml
+
+// Room Start Event for obj_controller
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+if (instance_exists(global.player_instance)) {
+    global.player_instance.image_blend = global.player_color;
+}
+
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera)) {
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Camera initialized/recreated in Room Start. ID: " + string(global.camera));
+} else {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Existing global camera used in Room Start. ID: " + string(global.camera));
+}
+
+// Ensure the camera follows the player
+if (instance_exists(global.player_instance) && is_real(global.camera)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+
+// Ensure a "UI" layer exists
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+}
+
+// Pause system
+if (global.dialogue_active) {
+    // Pause NPC and player movement during dialogue
+    with (obj_player) { move_speed = 0; }
+    with (obj_npc) { move_speed = 0; }
+} else {
+    // Resume NPC and player movement
+    with (obj_player) { move_speed = move_spd; }
+    with (obj_npc) { move_speed = move_spd; }
+}
+
+// Handle player instance and skin on room transition
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    }
+}
+
+// Ensure the ice truck remains destroyed if it was destroyed previously
+if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
+    with (obj_icetruck) {
+        instance_destroy();
+    }
+}
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+// Check and create the "UI" layer if it doesn't exist
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+    show_debug_message("UI layer created successfully.");
+} else {
+    show_debug_message("UI layer already exists.");
+}
+
+show_debug_message("Pause menu closed.");
+if (instance_exists(obj_skinpicker)) {
+    show_debug_message("Skin picker opened successfully.");
+} else if (instance_exists(obj_color_wheel)) {
+    show_debug_message("Color wheel opened successfully.");
+}
+
+show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
+show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
+
+Alarm Event (Alarm_0.txt):
+gml
+
+    // Ensure the new player instance is created after the previous one is destroyed
+    if (global.skin_to_spawn != noone) {
+        var player_x = global.last_player_x;
+        var player_y = global.last_player_y;
+
+        // Create the new player instance
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", global.skin_to_spawn);
+        global.current_skin = global.skin_name_to_spawn;
+
+        // Reset the temporary skin variables
+        global.skin_to_spawn = noone;
+        global.skin_name_to_spawn = "";
+
+        // Ensure camera follows the new player
+        if (instance_exists(global.player_instance)) {
+            camera_set_view_target(view_camera[0], global.player_instance);
+            show_debug_message("Skin switched to: " + global.current_skin + ". New instance ID: " + string(global.player_instance));
+        } else {
+            show_debug_message("ERROR: Failed to create player instance.");
+        }
+    }
+
+Object Properties (obj_controllertxt):
+
+    Name: obj_controller
+    Parent Object: Objects
+    Persistent: true
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+5. obj_fishbarrel3
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+    //depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_fishbarrel3txt):
+
+    Name: obj_fishbarrel3
+    Parent Object: barrels
+    Sprite: spr_fishbarrel3
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+6. obj_rocks
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+    //depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_rockstxt):
+
+    Name: obj_rocks
+    Parent Object: obj_env
+    Sprite: spr_rocks
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+7. obj_lamp
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+    //depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_lamptxt):
+
+    Name: obj_lamp
+    Parent Object: obj_props
+    Sprite: spr_lamp
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+8. obj_map_icon
+
+Event Scripts:
+
+    Mouse Left Pressed Event (Mouse_4.txt):
+    gml
+
+// obj_map_icon Mouse Left Pressed Event
+global.camera_width = camera_get_view_width(global.camera);
+global.camera_height = camera_get_view_height(global.camera);
+
+// Expand the camera view to the room size
+camera_set_view_size(global.camera, room_width, room_height);
+
+// Ensure the sprite is correctly referenced
+var map_x = (room_width - sprite_get_width(spr_map)) / 2;
+var map_y = (room_height - sprite_get_height(spr_map)) / 2;
+
+// Create the map instance at the calculated position
+instance_create_layer(map_x, map_y, "Instances", obj_map);
+
+show_debug_message("Map icon clicked, opening map.");
+
+Step Event (Step_0.txt):
+gml
+
+    // Prevent map interaction when chat is active
+    if (global.chat_active) {
+        exit;
+    }
+
+    depth = -1000;
+
+    // Position map icon in the corner of the screen
+    x = camera_get_view_x(global.camera) + 10;
+    y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - sprite_height - 10;
+
+    // Check if the mouse is hovering over the icon
+    if (position_meeting(mouse_x, mouse_y, id)) {
+        image_index = 1; // Change to highlighted sprite
+    } else {
+        image_index = 0; // Revert to normal sprite
+    }
+
+Object Properties (obj_map_icontxt):
+
+    Name: obj_map_icon
+    Parent Object: obj_ui
+    Sprite: spr_map_icon
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+9. obj_obstacle
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+// Create Event for obj_obstacle
+vspd = -4; // Speed at which obstacles move upwards
+
+// Step Event for obj_obstacle
+y += vspd;
+
+// Destroy the obstacle if it goes off the top of the screen
+if (y < -sprite_height) {
+    instance_destroy();
+}
+
+//depth
+depth = -bbox_bottom;
+
+Step Event (Step_0.txt):
+gml
+
+    // Step Event for obj_obstacle
+
+    if (global.game_started) {
+        // Move the obstacle upwards
+        y -= 5; // Adjust speed as needed
+
+        // Reset the obstacle's position if it moves out of the camera viewport
+        if (y < -sprite_height) {
+            y = room_height + sprite_height; // Reset to below the viewport
+            x = irandom_range(0, room_width - sprite_width); // Randomize horizontal position
+        }
+    }
+
+Object Properties (obj_obstacletxt):
+
+    Name: obj_obstacle
+    Parent Object: obj_sled_racing
+    Sprite: spr_long_bush
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+10. obj_menu_button
+
+Event Scripts:
+
+    Mouse Left Pressed Event (Mouse_4.txt):
+    gml
+
+if (btn_action == "play") {
+    room_goto(rm_init); // Go to the next room (your game room)
+} else if (btn_action == "settings") {
+    room_goto(rm_settings_menu);
+}else if (btn_action == "exit") {
+    game_end(); // Exit the game
+}
+
+Mouse Enter Event (Mouse_10.txt):
+gml
+
+hover = true;
+
+Mouse Leave Event (Mouse_11.txt):
+gml
+
+hover = false;
+
+Draw Event (Draw_0.txt):
+gml
+
+// Draw the button sprite
+draw_self();
+
+// Set text alignment
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+// Calculate text position
+var text_x = x + sprite_width / 2; // Center horizontally
+var text_y = y + sprite_height / 2; // Center vertically
+
+// Draw the button text with wrapping
+draw_set_color(c_black);
+draw_set_font(btn_font);
+draw_text_ext(text_x, text_y, btn_text, -1, sprite_width - 100);
+
+// Reset alignment (optional, for other draw calls later)
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+
+Create Event (Create_0.txt):
+gml
+
+    btn_action = ""; // This will define what the button does (e.g., "play", "exit")
+    btn_text = "";   // Text to display on the button
+    btn_font = -1;   // Default font (-1 means no custom font used)
+    text_color = c_white; // Default text color
+    hover = false;   // To detect mouse hover
+    btn_font = fnt_bumbastika_sml;
+
+Object Properties (obj_menu_buttontxt):
+
+    Name: obj_menu_button
+    Parent Object: main_menu
+    Sprite: spr_button
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+11. obj_camera
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+// Create Event for obj_camera
+
+// If the global camera already exists, reattach to it
+if (variable_global_exists("camera") && global.camera != -1 && is_real(global.camera)) {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Reattached to existing global camera. ID: " + string(global.camera));
+} else {
+    // If no global camera exists, create a new one
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+    show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
+}
+
+Step Event (Step_0.txt):
+gml
+
+    // Ensure the player instance exists
+    if (instance_exists(global.player_instance)) {
+        var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+        var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+        // Ensure the camera doesn't go out of bounds
+        target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+        target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+        // Set the camera position
+        camera_set_view_pos(global.camera, target_x, target_y);
+    }
+
+Object Properties (obj_cameratxt):
+
+    Name: obj_camera
+    Parent Object: Objects
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+12. obj_player
+
+Event Scripts:
+
+    Create Event (Create_0.txt):
+    gml
+
+// Create Event for obj_player
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 2;
+global.player_color = c_white; // Default color
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+//init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
+// Define player sprite layers
+sprite_body = spr_player_body;
+sprite_color = spr_player_colour;
+
+// Collision mask setup
+mask_index = spr_player_body;
+
+// Debugging
+show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
+
+// Define animation frames for each movement direction (192x72 sprite sheet, 24x24 grid)
+frame_data = array_create(8);
+
+// Down (Facing Forward)
+frame_data[DOWN] = [
+    0, 0, 24, 24,   // Frame 1
+    0, 24, 24, 24,  // Frame 2
+    0, 48, 24, 24   // Frame 3
+];
+
+// Up (Facing Back)
+frame_data[UP] = [
+    24, 0, 24, 24,  
+    24, 24, 24, 24,  
+    24, 48, 24, 24  
+];
+
+// Down-Left
+frame_data[DOWN_LEFT] = [
+    48, 0, 24, 24,  
+    48, 24, 24, 24,  
+    48, 48, 24, 24  
+];
+
+// Down-Right
+frame_data[DOWN_RIGHT] = [
+    72, 0, 24, 24,  
+    72, 24, 24, 24,  
+    72, 48, 24, 24  
+];
+
+// Left
+frame_data[LEFT] = [
+    96, 0, 24, 24,  
+    96, 24, 24, 24,  
+    96, 48, 24, 24  
+];
+
+// Right
+frame_data[RIGHT] = [
+    120, 0, 24, 24,  
+    120, 24, 24, 24,  
+    120, 48, 24, 24  
+];
+
+// Up-Right
+frame_data[UP_RIGHT] = [
+    144, 0, 24, 24,  
+    144, 24, 24, 24,  
+    144, 48, 24, 24  
+];
+
+// Up-Left
+frame_data[UP_LEFT] = [
+    168, 0, 24, 24,  
+    168, 24, 24, 24,  
+    168, 48, 24, 24  
+];
+
+Step Event (Step_0.txt):
+gml
+
+    // Step Event for obj_player
+    // Handle interaction (E Key)
+    if (keyboard_check_pressed(ord("E"))) {
+        if (instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16) {
+            obj_controller.switch_skin("icetruck");
+        } else if (instance_exists(obj_tube) && distance_to_object(obj_tube) < 16) {
+            obj_controller.switch_skin("tube");
+        } else if (instance_exists(obj_color_wheel) && distance_to_object(obj_color_wheel) < 16) {
+            global.player_color = choose(c_red, c_blue, c_green, c_yellow, c_white);
+            show_debug_message("Color changed to: " + string(global.player_color));
+        } else {
+            obj_controller.switch_skin("player"); // Default to switching back to player
+        }
+    }
+
+    // Handle movement input
+    var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+    var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+    var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+    var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+    // Handle movement and sliding logic
+    if (!sliding) {
+        xspd = (right_key - left_key) * move_spd;
+        yspd = (down_key - up_key) * move_spd;
+    } else {
+        xspd = slide_dir_x * slide_speed;
+        yspd = slide_dir_y * slide_speed;
+        slide_speed *= 0.98;
+        if (abs(slide_speed) < 0.1) {
+            sliding = false;
+            xspd = 0;
+            yspd = 0;
+        }
+    }
+
+    // Pause player movement if paused
+    if (instance_exists(obj_pauser)) {
+        xspd = 0;
+        yspd = 0;
+    }
+
+    // Set movement direction
+    if (yspd < 0) {
+        if (xspd < 0) { face = UP_LEFT; }
+        else if (xspd > 0) { face = UP_RIGHT; }
+        else { face = UP; }
+    } else if (yspd > 0) {
+        if (xspd < 0) { face = DOWN_LEFT; }
+        else if (xspd > 0) { face = DOWN_RIGHT; }
+        else { face = DOWN; }
+    } else {
+        if (xspd > 0) { face = RIGHT; }
+        else if (xspd < 0) { face = LEFT; }
+    }
+
+    // Handle movement
+    xspd = handle_collision("x", xspd);
+    yspd = handle_collision("y", yspd);
+    x += xspd;
+    y += yspd;
+
+    // Animation handling
+    if (xspd != 0 || yspd != 0) {
+        image_speed = 0.15; // Control animation speed
+    } else {
+        image_speed = 0;
+        image_index = 0; // Reset to idle frame
+    }
+
+    if (image_index >= 3) {
+        image_index = 0;
+    }
+
+    // Depth
+    depth = -bbox_bottom;
+
+Object Properties (obj_playertxt):
+
+    Name: obj_player
+    Parent Object: obj_controller
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+13. obj_big_bush
+
+Object Properties (obj_big_bushtxt):
+
+    Name: obj_big_bush
+    Parent Object: obj_env
+    Sprite: spr_big_bush
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+14. obj_bulletin_board
+
+Object Properties (obj_bulletin_boardtxt):
+
+    Name: obj_bulletin_board
+    Parent Object: obj_props
+    Sprite: spr_bulletin_board
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+15. obj_chat_window
+
+Object Properties (obj_chat_windowtxt):
+
+    Name: obj_chat_window
+    Parent Object: obj_ui
+    Sprite: spr_chat
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+16. obj_color_wheel
+
+Object Properties (obj_color_wheeltxt):
+
+    Name: obj_color_wheel
+    Parent Object: pause_menu
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+17. obj_controller
+
+Object Properties (obj_controllertxt):
+
+    Name: obj_controller
+    Parent Object: Objects
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+18. obj_crates
+
+Object Properties (obj_cratestxt):
+
+    Name: obj_crates
+    Parent Object: obj_props
+    Sprite: spr_crates
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+19. obj_fishbarrel1
+
+Object Properties (obj_fishbarrel1txt):
+
+    Name: obj_fishbarrel1
+    Parent Object: barrels
+    Sprite: spr_fishbarrel1
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+20. obj_fishbarrel2
+
+Object Properties (obj_fishbarrel2txt):
+
+    Name: obj_fishbarrel2
+    Parent Object: barrels
+    Sprite: spr_fishbarrel2
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+21. obj_fishbarrel3
+
+Object Properties (obj_fishbarrel3txt):
+
+    Name: obj_fishbarrel3
+    Parent Object: barrels
+    Sprite: spr_fishbarrel3
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+22. obj_fishbarrel4
+
+Object Properties (obj_fishbarrel4txt):
+
+    Name: obj_fishbarrel4
+    Parent Object: barrels
+    Sprite: spr_fishbarrel4
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+23. obj_icetruck
+
+Object Properties (obj_icetrucktxt):
+
+    Name: obj_icetruck
+    Parent Object: obj_vehicles
+    Sprite: spr_icetruck_facedown
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+24. obj_initializer
+
+Object Properties (obj_initializertxt):
+
+    Name: obj_initializer
+    Parent Object: obj_utilities
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+25. obj_lamp
+
+Object Properties (obj_lamptxt):
+
+    Name: obj_lamp
+    Parent Object: obj_props
+    Sprite: spr_lamp
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+26. obj_long_bush
+
+Object Properties (obj_long_bushtxt):
+
+    Name: obj_long_bush
+    Parent Object: obj_env
+    Sprite: spr_long_bush
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+27. obj_main_settings
+
+Object Properties (obj_main_settingstxt):
+
+    Name: obj_main_settings
+    Parent Object: main_menu
+    Sprite: spr_pause_menu
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+28. obj_map
+
+Object Properties (obj_maptxt):
+
+    Name: obj_map
+    Parent Object: obj_ui
+    Sprite: spr_map
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+29. obj_map_icon
+
+Object Properties (obj_map_icontxt):
+
+    Name: obj_map_icon
+    Parent Object: obj_ui
+    Sprite: spr_map_icon
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+30. obj_musicmanager
+
+Object Properties (obj_musicmanagertxt):
+
+    Name: obj_musicmanager
+    Parent Object: obj_utilities
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+31. obj_npc
+
+Object Properties (obj_npctxt):
+
+    Name: obj_npc
+    Parent Object: obj_npc
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+32. obj_npc_old
+
+Object Properties (obj_npc_oldtxt):
+
+    Name: obj_npc_old
+    Parent Object: obj_npc
+    Sprite: spr_player_down
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+33. obj_obstacle
+
+Object Properties (obj_obstacletxt):
+
+    Name: obj_obstacle
+    Parent Object: obj_sled_racing
+    Sprite: spr_long_bush
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+34. obj_obstacle_controller
+
+Object Properties (obj_obstacle_controllertxt):
+
+    Name: obj_obstacle_controller
+    Parent Object: obj_sled_racing
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+35. obj_parallax_background
+
+Object Properties (obj_parallax_backgroundtxt):
+
+    Name: obj_parallax_background
+    Parent Object: obj_utilities
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+36. obj_pause_menu
+
+Object Properties (obj_pause_menutxt):
+
+    Name: obj_pause_menu
+    Parent Object: pause_menu
+    Sprite: spr_pause_menu
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+37. obj_pauser
+
+Object Properties (obj_pausertxt):
+
+    Name: obj_pauser
+    Parent Object: obj_utilities
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+38. obj_player_icetruck
+
+Object Properties (obj_player_icetrucktxt):
+
+    Name: obj_player_icetruck
+    Parent Object: obj_vehicles
+    Sprite: spr_icetruck_down
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+39. obj_player_ninja
+
+Object Properties (obj_player_ninjatxt):
+
+    Name: obj_player_ninja
+    Parent Object: Objects
+    Sprite: spr_ninja_down
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+40. obj_player_tube
+
+Object Properties (obj_player_tubetxt):
+
+    Name: obj_player_tube
+    Parent Object: obj_vehicles
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+41. obj_rocks
+
+Object Properties (obj_rockstxt):
+
+    Name: obj_rocks
+    Parent Object: obj_env
+    Sprite: spr_rocks
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+42. obj_settings
+
+Object Properties (obj_settingstxt):
+
+    Name: obj_settings
+    Parent Object: obj_utilities
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+43. obj_skinpicker
+
+Object Properties (obj_skinpickertxt):
+
+    Name: obj_skinpicker
+    Parent Object: obj_ui
+    Sprite: spr_menu
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+44. obj_skinpickerbutton
+
+Object Properties (obj_skinpickerbuttontxt):
+
+    Name: obj_skinpickerbutton
+    Parent Object: obj_ui
+    Sprite: spr_button
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+45. obj_sled_player
+
+Object Properties (obj_sled_playertxt):
+
+    Name: obj_sled_player
+    Parent Object: obj_sled_racing
+    Sprite: spr_tube_down
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+46. obj_slippery
+
+Object Properties (obj_slipperytxt):
+
+    Name: obj_slippery
+    Parent Object: obj_utilities
+    Sprite: spr_slippery
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+47. obj_small_bushes
+
+Object Properties (obj_small_bushestxt):
+
+    Name: obj_small_bushes
+    Parent Object: obj_env
+    Sprite: spr_small_bushes
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+48. obj_small_trees
+
+Object Properties (obj_small_treestxt):
+
+    Name: obj_small_trees
+    Parent Object: obj_env
+    Sprite: spr_small_trees
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+49. obj_tall_bush
+
+Object Properties (obj_tall_bushtxt):
+
+    Name: obj_tall_bush
+    Parent Object: obj_env
+    Sprite: spr_tall_bush
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+50. obj_tall_trees
+
+Object Properties (obj_tall_treestxt):
+
+    Name: obj_tall_trees
+    Parent Object: obj_env
+    Sprite: spr_tall_trees
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+51. obj_tube
+
+Object Properties (obj_tubetxt):
+
+    Name: obj_tube
+    Parent Object: obj_vehicles
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+52. obj_ui
+
+Object Properties (obj_uitxt):
+
+    Name: obj_ui
+    Parent Object: obj_ui
+    Sprite: None
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+53. obj_wall
+
+Object Properties (obj_walltxt):
+
+    Name: obj_wall
+    Parent Object: obj_utilities
+    Sprite: spr_wall
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+54. obj_warp
+
+Object Properties (obj_warptxt):
+
+    Name: obj_warp
+    Parent Object: obj_utilities
+    Sprite: spr_warp_transition
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+55. obj_warp_block
+
+Object Properties (obj_warp_blocktxt):
+
+    Name: obj_warp_block
+    Parent Object: obj_utilities
+    Sprite: spr_warp_block
+    Physics Properties:
+        Density: 0.5
+        Friction: 0.2
+        Restitution: 0.1
+        Shape: 1 (default shape)
+
+
