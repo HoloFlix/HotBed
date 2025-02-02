@@ -1,0 +1,6 @@
+/// Room Start Event for obj_camera
+
+show_debug_message("DEBUG: Restoring camera settings after room transition...");
+
+// Delay camera setup until the player is fully initialized
+alarm[0] = 1;

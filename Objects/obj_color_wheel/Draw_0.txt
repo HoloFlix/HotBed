@@ -1,0 +1,5 @@
+// Draw the background first
+draw_sprite(spr_color_wheel_background, 0, x, y);
+
+// Draw the color wheel directly without using the surface
+draw_sprite(spr_color_wheel, 0, x + 31, y + 19);

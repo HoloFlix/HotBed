@@ -1,0 +1,78 @@
+// Room Start Event for obj_controller
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+if (instance_exists(global.player_instance)) {
+    global.player_instance.image_blend = global.player_color;
+}
+
+if (!variable_global_exists("camera") || global.camera == -1 || !is_real(global.camera)) {
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Camera initialized/recreated in Room Start. ID: " + string(global.camera));
+} else {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Existing global camera used in Room Start. ID: " + string(global.camera));
+}
+
+// Ensure the camera follows the player
+if (instance_exists(global.player_instance) && is_real(global.camera)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+
+// Ensure a "UI" layer exists
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+}
+
+// Pause system
+if (global.dialogue_active) {
+    // Pause NPC and player movement during dialogue
+    with (obj_player) { move_speed = 0; }
+    with (obj_npc) { move_speed = 0; }
+} else {
+    // Resume NPC and player movement
+    with (obj_player) { move_speed = move_spd; }
+    with (obj_npc) { move_speed = move_spd; }
+}
+
+// Handle player instance and skin on room transition
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    }
+}
+
+// Ensure the ice truck remains destroyed if it was destroyed previously
+if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
+    with (obj_icetruck) {
+        instance_destroy();
+    }
+}
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+// Check and create the "UI" layer if it doesn't exist
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+    show_debug_message("UI layer created successfully.");
+} else {
+    show_debug_message("UI layer already exists.");
+}
+
+show_debug_message("Pause menu closed.");
+if (instance_exists(obj_skinpicker)) {
+    show_debug_message("Skin picker opened successfully.");
+} else if (instance_exists(obj_color_wheel)) {
+    show_debug_message("Color wheel opened successfully.");
+}
+
+show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
+show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));

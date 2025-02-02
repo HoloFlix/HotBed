@@ -1,0 +1,63 @@
+// Toggle pause menu
+if (keyboard_check_pressed(vk_escape)) {
+    if (!global.is_pause_menu_active) {
+        show_debug_message("Attempting to open pause menu...");
+        if (!instance_exists(obj_pause_menu)) {
+            instance_create_layer(view_xview[0] + view_wview[0] / 2, 
+                                  view_yview[0] + view_hview[0] / 2, 
+                                  "UI", obj_pause_menu);
+            global.is_pause_menu_active = true;
+            global.player_controls_enabled = false;
+            show_debug_message("Pause menu opened successfully.");
+        }
+    } else {
+        show_debug_message("Attempting to close pause menu...");
+        with (obj_pause_menu) { instance_destroy(); }
+        global.is_pause_menu_active = false;
+        global.player_controls_enabled = true;
+        show_debug_message("Pause menu closed successfully.");
+    }
+}
+
+function switch_skin(new_skin) {
+    if (global.skin_switching) return;
+    global.skin_switching = true;
+
+    var player_x = global.player_instance != noone ? global.player_instance.x : x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : y;
+
+    // Destroy current instance
+    if (instance_exists(global.player_instance)) {
+        instance_destroy(global.player_instance);
+    }
+
+    // Determine new player instance
+    var new_instance = noone;
+    if (new_skin == "icetruck" || new_skin == "tube") {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[new_skin].object);
+        global.current_skin = new_skin;
+
+        // Remove vehicle from room
+        if (new_skin == "icetruck") with (obj_icetruck) instance_destroy();
+        if (new_skin == "tube") with (obj_tube) instance_destroy();
+    } else {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+    }
+
+    // Assign new instance
+    if (new_instance != noone) {
+        global.player_instance = new_instance;
+    } else {
+        show_debug_message("ERROR: Failed to create player instance for skin: " + new_skin);
+    }
+
+    // Camera update
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(view_camera[0], global.player_instance);
+    } else {
+        show_debug_message("ERROR: Camera could not follow new player instance.");
+    }
+
+    global.skin_switching = false;
+}

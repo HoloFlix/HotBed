@@ -1,0 +1,33 @@
+// Handle mouse click for selecting a color
+if (mouse_check_button_pressed(mb_left)) {
+    var mx = (mouse_x / display_get_width()) * camera_get_view_width(view_camera[0]) + camera_get_view_x(view_camera[0]);
+	var my = (mouse_y / display_get_height()) * camera_get_view_height(view_camera[0]) + camera_get_view_y(view_camera[0]);
+
+// Get accurate world mouse position
+var mouse_world_pos = scr_convert_gui_to_world();
+var mouse_world_x = device_mouse_x_to_gui(0);
+var mouse_world_y = device_mouse_y_to_gui(0);
+
+// Convert GUI position to world position relative to camera
+mouse_world_x = (mouse_world_x / display_get_gui_width()) * camera_get_view_width(global.camera) + camera_get_view_x(global.camera);
+mouse_world_y = (mouse_world_y / display_get_gui_height()) * camera_get_view_height(global.camera) + camera_get_view_y(global.camera); {
+ 
+        selected_color = draw_getpixel(mx, my); // Get pixel color
+        global.player_color = selected_color;   // Store globally
+
+        // Apply color instantly to player sprite
+        if (instance_exists(global.player_instance)) {
+            global.player_instance.image_blend = global.player_color;
+        }
+
+        show_debug_message("Color selected: " + string(selected_color));
+
+        // Close color wheel and pause menu
+        instance_destroy();
+    }
+}
+
+// Debug mouse position
+show_debug_message("Mouse X: " + string(mouse_x) + " | Mouse Y: " + string(mouse_y));
+show_debug_message("GUI Mouse X: " + string(device_mouse_x_to_gui(0)) + " | GUI Mouse Y: " + string(device_mouse_y_to_gui(0)));
+show_debug_message("View X: " + string(camera_get_view_x(view_camera[0])) + " | View Y: " + string(camera_get_view_y(view_camera[0])));
