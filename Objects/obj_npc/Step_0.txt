@@ -1,0 +1,42 @@
+// Check for interaction with player
+if (keyboard_check_pressed(ord("E"))) {
+    var _player = instance_nearest(x, y, obj_player);
+    if (_player != noone && distance_to_object(_player) < 16) {
+        if (current_dialogue_index == -1) {
+            // Start dialogue
+            current_dialogue_index = 0;
+        } else {
+            // Progress dialogue
+            current_dialogue_index++;
+            if (current_dialogue_index >= array_length(dialogue)) {
+                // Reset dialogue if all lines have been shown
+                current_dialogue_index = -1;
+
+                // Handle quest logic
+                if (quest_active && !quest_complete) {
+                    // Display quest-related dialogue
+                    if (player_has_item("quest_item")) { // Replace "quest_item" with your logic
+                        quest_complete = true;
+                        dialogue = ["Thank you for completing the quest!"];
+                    } else {
+                        dialogue = ["Please bring me the quest item."];
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Function: Check if Player Has Item
+function player_has_item(_item) {
+    return (array_length(global.player_inventory) > 0) && array_contains(global.player_inventory, _item);
+}
+
+// Function: Give Player Reward
+function give_player_reward(_reward) {
+    array_push(global.player_inventory, _reward);
+    show_debug_message("You received: " + _reward);
+}
+
+// Depth
+depth = -bbox_bottom;

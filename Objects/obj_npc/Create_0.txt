@@ -1,0 +1,43 @@
+// Movement settings (keep existing movement)
+xspd = 0;
+yspd = 0;
+move_spd = 0;
+move_x = 0;
+move_y = 0;
+is_moving = false;
+collision_delay = 0;
+stuck_timer = 0;
+wait_timer = 3;
+last_x = x;
+last_y = y;
+face = DOWN;
+
+// NPC Settings
+npc_name = "NPC";  // Default name
+npc_portrait = spr_ninja_down;  // Default portrait
+is_static = true;  // If true, NPC doesn't move
+
+// Dialogue and quest-related variables
+dialogue = ["Hello there!", "I have nothing important to say."]; // Custom dialogue
+quest_active = false; // Is a quest active?
+quest_complete = false; // Is the quest completed?
+current_dialogue_index = -1; // Start with no dialogue active
+
+// Quest System
+is_quest_giver = false;  // Can this NPC give a quest?
+quest_given = false;  // Has the quest been given?
+quest_required_item = "";  // Item required for quest ("" = no quest)
+quest_completed = false;  // Has the player completed the quest?
+quest_reward = "";  // Reward given after quest completion
+
+// Set the sprite based on the NPC's unique properties
+if (npc_portrait != "") {
+    sprite_index = npc_portrait;
+}
+
+// Stop animation from cycling through frames
+image_speed = 0; 
+image_index = 0;
+
+// Delay sprite assignment until the next step
+alarm[0] = 1;

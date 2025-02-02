@@ -1,0 +1,17 @@
+// Prevent map interaction when chat is active
+if (global.chat_active) {
+    exit;
+}
+
+depth = -1000;
+
+// Position map icon in the corner of the screen
+x = camera_get_view_x(global.camera) + 10;
+y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - sprite_height - 10;
+
+// Check if the mouse is hovering over the icon
+if (position_meeting(mouse_x, mouse_y, id)) {
+    image_index = 1; // Change to highlighted sprite
+} else {
+    image_index = 0; // Revert to normal sprite
+}

@@ -1,0 +1,42 @@
+depth = -1000;
+// Draw NPC as usual
+draw_self();
+
+// Draw the dialogue box if active
+if (current_dialogue_index >= 0) {
+    // Text and box parameters
+    var margin = 8; // Padding around the text
+    var max_width = 200; // Maximum width for the dialogue box
+    var text_scale = 0.50; // Scale the text smaller
+
+    // Calculate text dimensions
+	draw_set_font(fnt_bumbastika_sml);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    var text_width = string_width(dialogue[current_dialogue_index]) * text_scale;
+    var text_height = string_height(dialogue[current_dialogue_index]) * text_scale;
+
+    // Calculate box dimensions (add padding around the text)
+    var box_width = min(max_width, text_width + margin * 2);
+    var box_height = text_height + margin * 2;
+
+    // Position the box
+    var box_x = x - box_width / 2;
+    var box_y = y - sprite_height - box_height - 0.5;
+
+    // Draw 9-slice sprite background
+    draw_sprite_stretched(
+        spr_chat,     // Sprite
+        0,                       // Sub-image index
+        box_x,                   // X position
+        box_y,                   // Y position
+        box_width,               // Scaled width
+        box_height               // Scaled height
+    );
+
+    // Draw the scaled text
+    var text_x = box_x + box_width / 2;
+    var text_y = box_y + box_height / 2;
+    draw_set_color(c_black);
+    draw_text_transformed(text_x, text_y, dialogue[current_dialogue_index], text_scale, text_scale, 0);
+}

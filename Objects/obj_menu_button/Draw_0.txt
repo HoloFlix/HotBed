@@ -1,0 +1,19 @@
+// Draw the button sprite
+draw_self();
+
+// Set text alignment
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+// Calculate text position
+var text_x = x + sprite_width / 2; // Center horizontally
+var text_y = y + sprite_height / 2; // Center vertically
+
+// Draw the button text with wrapping
+draw_set_color(c_black);
+draw_set_font(btn_font);
+draw_text_ext(text_x, text_y, btn_text, -1, sprite_width - 100);
+
+// Reset alignment (optional, for other draw calls later)
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
