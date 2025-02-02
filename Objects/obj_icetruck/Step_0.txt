@@ -1,0 +1,40 @@
+// File: obj_icetruck_step.txt
+
+// Check for interaction with obj_icetruck
+if (keyboard_check_pressed(ord("E"))) {
+    var ice_truck = instance_place(global.player_instance.x, global.player_instance.y, obj_icetruck);
+
+    if (ice_truck != noone && global.current_skin == "player") {
+        // Enter the ice truck
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Remove player
+        instance_destroy(ice_truck);             // Remove ice truck
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+        global.current_skin = "icetruck";
+
+        show_debug_message("Entered ice truck. Current skin: " + global.current_skin);
+    } else if (global.current_skin == "icetruck") {
+        // Exit the ice truck
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        instance_destroy(global.player_instance); // Remove icetruck player
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+
+        instance_create_layer(player_x + 32, player_y, "Instances", obj_icetruck); // Re-create ice truck nearby
+        global.current_skin = "player";
+
+        show_debug_message("Exited ice truck. Current skin: " + global.current_skin);
+    }
+}
+
+// Display interaction message if the player is close enough to the ice truck
+if (distance_to_object(global.player_instance) < 32 && global.current_skin == "player") {
+    draw_text(x, y - 20, "Press 'E' to enter");
+}
+
+// Ensure proper depth sorting
+depth = -bbox_bottom;
