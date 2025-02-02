@@ -1,8 +1,0 @@
-// Create Event for Unified Chat System
-global.chat_active = false;
-global.chat_npc = noone;
-dialog_queue = [];
-dialog_index = 0;
-choice_selected = 0; // For future choice-based dialogs
-
-depth = -1000;
