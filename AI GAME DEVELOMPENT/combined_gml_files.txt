@@ -1,0 +1,3147 @@
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_big_bush
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_bulletin_board
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
+File: Alarm_0.gml
+/// Alarm[0] Event for obj_camera
+
+if (instance_exists(global.player_instance)) {
+    camera_set_view_target(global.camera, global.player_instance);
+    show_debug_message("DEBUG: Camera now follows player.");
+} else {
+    show_debug_message("ERROR: Player instance still not found. Retrying...");
+    alarm[0] = 2; // Retry in 2 frames
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
+File: Create_0.gml
+// Create Event for obj_camera
+
+// If the global camera already exists, reattach to it
+if (variable_global_exists("camera") && global.camera != -1 && is_real(global.camera)) {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Reattached to existing global camera. ID: " + string(global.camera));
+} else {
+    // If no global camera exists, create a new one
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+    show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
+File: Other_4.gml
+/// Room Start Event for obj_camera
+
+show_debug_message("DEBUG: Restoring camera settings after room transition...");
+
+// Ensure the camera is correctly set up
+if (variable_global_exists("camera") && is_real(global.camera)) {
+    view_set_camera(0, global.camera);
+    show_debug_message("DEBUG: Reattached to global camera. ID: " + string(global.camera));
+} else {
+    global.camera = camera_create();
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+    camera_set_view_pos(global.camera, 0, 0);
+    show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
+}
+
+// Delay camera setup if player does not exist yet
+if (!instance_exists(global.player_instance)) {
+    show_debug_message("WARNING: Player instance missing at Room Start. Delaying camera setup...");
+    alarm[0] = 2; // Retry setting up the camera in 2 frames
+}// else {
+// Force camera control in `rm_snow_fort`, `rm_town`, and `rm_beach`
+//if (room == rm_snow_fort || room == rm_town || room == rm_beach) {
+//    show_debug_message("DEBUG: Forcing camera reset in special room: " + string(room));
+//    camera_set_view_pos(global.camera, global.player_instance.x - (camera_get_view_width(global.camera) / 2),
+//                                        global.player_instance.y - (camera_get_view_height(global.camera) / 2));
+//}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
+File: Step_0.gml
+// Ensure the player instance exists
+if (instance_exists(global.player_instance)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    // Ensure the camera doesn't go out of bounds
+    target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
+    target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
+
+    // Set the camera position
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_chat_window
+File: Create_0.gml
+// Create Event for Unified Chat System
+global.chat_active = false;
+global.chat_npc = noone;
+dialog_queue = [];
+dialog_index = 0;
+choice_selected = 0; // For future choice-based dialogs
+
+depth = -1000;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_chat_window
+File: Draw_0.gml
+if (global.chat_active) {
+    // Draw chat window
+    var window_width = 400;
+    var window_height = 200;
+    var window_x = camera_get_view_x(global.camera) + (camera_get_view_width(global.camera) / 2) - (window_width / 2);
+    var window_y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - window_height - 20;
+
+    draw_sprite_stretched(spr_chat, 0, window_x, window_y, window_width, window_height);
+
+    // Draw text
+    draw_set_color(c_black);
+    draw_text(window_x + 20, window_y + 20, dialog_queue[dialog_index]);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_chat_window
+File: Mouse_4.gml
+// Mouse Left Pressed Event
+if (global.chat_active) {
+    var camera_x = camera_get_view_x(global.camera);
+    var camera_y = camera_get_view_y(global.camera);
+    var camera_width = camera_get_view_width(global.camera);
+    var camera_height = camera_get_view_height(global.camera);
+
+    var menu_width = 300;
+    var menu_height = 150;
+    var menu_x = camera_x + (camera_width - menu_width) / 2;
+    var menu_y = camera_y + camera_height - menu_height - 50;
+
+    var close_button_size = 20;
+    var close_x = menu_x + menu_width - close_button_size - 20;
+    var close_y = menu_y + 20;
+
+    if (mouse_x >= close_x && mouse_x <= close_x + close_button_size &&
+        mouse_y >= close_y && mouse_y <= close_y + close_button_size) {
+        global.chat_active = false;
+        global.chat_npc = noone;
+        dialog_queue = [];
+        show_debug_message("Close button clicked. Chat deactivated.");
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_chat_window
+File: Step_0.gml
+if (global.chat_active) {
+    // Advance dialog with Spacebar
+    if (keyboard_check_pressed(vk_space)) {
+        if (dialog_index < array_length(dialog_queue) - 1) {
+            dialog_index++;
+        } else {
+            global.chat_active = false;
+            dialog_index = 0;
+            global.chat_npc = noone;
+        }
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_color_wheel
+File: Create_0.gml
+depth = -1000;
+// Menu dimensions
+menu_width = 109;
+menu_height = 72;
+
+// Position the skin picker around the current player instance or center it in the view
+if (instance_exists(global.player_instance)) {
+    x = global.player_instance.x - menu_width / 2;
+    y = global.player_instance.y - menu_height / 2;
+} else {
+    x = view_xview[0] + (view_wview[0] - menu_width) / 2;
+    y = view_yview[0] + (view_hview[0] - menu_height) / 2;
+}
+
+// Initialize variables
+selected_color = c_white;
+global.player_color = c_white;
+
+// Define selection areas
+color_wheel_x = x + 31;
+color_wheel_y = y + 19;
+color_wheel_width = 46;
+color_wheel_height = 46;
+
+exit_x = x + 6;
+exit_y = y + 6;
+exit_width = 9;
+exit_height = 9;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_color_wheel
+File: Draw_0.gml
+// Draw the background first
+draw_sprite(spr_colorpicker_background, 0, x, y);
+
+// Draw the color wheel directly without using the surface
+draw_sprite(spr_color_bar, 0, x + 31, y + 19);
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_color_wheel
+File: Mouse_4.gml
+var mx = (device_mouse_x_to_gui(0) / display_get_gui_width()) * camera_get_view_width(global.camera) + camera_get_view_x(global.camera);
+var my = (device_mouse_y_to_gui(0) / display_get_gui_height()) * camera_get_view_height(global.camera) + camera_get_view_y(global.camera);
+
+// Check if the player clicked inside the exit button (6,6 to 14,14)
+if (point_in_rectangle(mx, my, exit_x, exit_y, exit_x + exit_width, exit_y + exit_height)) {
+    show_debug_message("Closing color wheel...");
+    with (obj_pause_menu) instance_destroy();
+    instance_destroy();
+    return;
+}
+
+// Check if the click is inside the color wheel selection area
+if (point_in_rectangle(mx, my, color_wheel_x, color_wheel_y, color_wheel_x + color_wheel_width, color_wheel_y + color_wheel_height)) {
+    var sx = mx - color_wheel_x; // Convert to surface coordinates
+	var sy = my - color_wheel_y;
+
+	if (sx >= 0 && sy >= 0 && sx < sprite_get_width(spr_color_bar) && sy < sprite_get_height(spr_color_bar)) {
+		selected_color = surface_getpixel(surf_color_wheel, sx, sy);
+	}
+
+   if (selected_color != c_black) { // Avoid selecting transparent areas
+    global.player_color = selected_color;
+
+    if (instance_exists(global.player_instance)) {
+        global.player_instance.image_blend = global.player_color;
+    }
+
+    show_debug_message("Color selected: " + string(selected_color));
+    
+    // Close color wheel & pause menu
+    with (obj_pause_menu) instance_destroy();
+    instance_destroy();
+	}
+}
+
+show_debug_message("Color picked: " + string(draw_getpixel(mx, my)));
+show_debug_message("Fixed Mouse World X: " + string(mouse_world_x) + " | Y: " + string(mouse_world_y));
+show_debug_message("View X: " + string(camera_get_view_x(global.camera)) + " | View Y: " + string(camera_get_view_y(global.camera)));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_color_wheel
+File: Step_0.gml
+// Handle mouse click for selecting a color
+if (mouse_check_button_pressed(mb_left)) {
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+
+    if (point_in_rectangle(mx, my, x, y, x + sprite_width, y + sprite_height)) {
+        var sx = mx - x; // Convert to surface coordinates
+        var sy = my - y;
+
+        // Ensure the surface exists before sampling
+        if (surface_exists(surf_color_wheel)) {
+            selected_color = surface_getpixel(surf_color_wheel, sx, sy);
+        } else {
+            selected_color = c_black; // Fallback
+        }
+
+        // Apply color globally if valid
+        if (selected_color != c_black) {
+            global.player_color = selected_color;
+            if (instance_exists(global.player_instance)) {
+                global.player_instance.image_blend = global.player_color;
+            }
+            show_debug_message("Color selected: " + string(selected_color));
+        }
+        
+        // Close the color wheel and return to previous room
+        if (variable_global_exists("last_room") && global.last_room != noone) {
+            room_goto(global.last_room);
+        } else {
+            room_goto(rm_town); // Default return room
+        }
+        instance_destroy();
+    }
+}
+
+
+// Debug mouse position
+show_debug_message("Mouse X: " + string(mouse_x) + " | Mouse Y: " + string(mouse_y));
+show_debug_message("GUI Mouse X: " + string(device_mouse_x_to_gui(0)) + " | GUI Mouse Y: " + string(device_mouse_y_to_gui(0)));
+show_debug_message("View X: " + string(camera_get_view_x(view_camera[0])) + " | View Y: " + string(camera_get_view_y(view_camera[0])));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
+File: Alarm_0.gml
+// Ensure the new player instance is created after the previous one is destroyed
+if (global.skin_to_spawn != noone) {
+    var player_x = global.last_player_x;
+    var player_y = global.last_player_y;
+
+    // Create the new player instance
+    global.player_instance = instance_create_layer(player_x, player_y, "Instances", global.skin_to_spawn);
+    global.current_skin = global.skin_name_to_spawn;
+
+    // Reset the temporary skin variables
+    global.skin_to_spawn = noone;
+    global.skin_name_to_spawn = "";
+
+    // Ensure camera follows the new player
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(view_camera[0], global.player_instance);
+        show_debug_message("Skin switched to: " + global.current_skin + ". New instance ID: " + string(global.player_instance));
+    } else {
+        show_debug_message("ERROR: Failed to create player instance.");
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
+File: Create_0.gml
+// Create Event for obj_controller
+
+// Initialize global variables early to avoid undefined references
+global.dialogue_active = false; // Dialogue system starts inactive
+
+// Get the FPS value for the room
+var room_fps = game_get_speed(gamespeed_fps);
+
+// Initialize countdown_timer with the desired duration in seconds multiplied by room_fps
+global.countdown_timer = 5 * room_fps; // 5 seconds countdown 
+global.is_pause_menu_active = false;
+global.game_started = false; // Flag to check if the game has started
+global.lives = 3; // Initialize player lives
+game_timer = 0; // Initialize game timer
+global.skin_switching = false; // Initialize the skin switching flag
+
+// Initialize global variables
+global.skins = [
+    { name: "player", object: obj_player },
+    { name: "icetruck", object: obj_player_icetruck },
+    { name: "tube", object: obj_player_tube },
+    { name: "sled_player", object: obj_sled_player },
+    { name: "ninja", object: obj_player_ninja } // Add Ninja
+];
+
+global.current_skin = "player"; // Starting skin
+global.player_instance = noone; // Initialize player instance
+global.icetruck_destroyed = false; // Initialize icetruck_destroyed
+starting_sled_racing_game = false; // Initialize the sled racing game flag
+
+// Ensure player instance exists
+if (global.player_instance == noone) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    } else if (global.current_skin == "sled_player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_sled_player);
+    } else if (global.current_skin == "ninja") {  // Add Ninja case
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_ninja);
+    }
+}
+
+if (instance_exists(global.player_instance)) {
+    global.player_instance.image_blend = global.player_color;
+}
+
+// Debugging
+if (instance_exists(global.player_instance)) {
+    show_debug_message("Player instance created: " + string(global.player_instance));
+} else {
+    show_debug_message("Error: Failed to create player instance.");
+}
+
+//show_debug_message("Create Event: global.game_started initialized as " + string(global.game_started));
+//show_debug_message("Create Event: countdown_timer initialized as " + string(global.countdown_timer));
+//show_debug_message("Instance of obj_controller created with ID: " + string(id));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
+File: Other_4.gml
+// obj_controller: Room Start Event (Ensure Camera Follows Player)
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+// Check if we are in a UI room (where the player should be hidden)
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || 
+                  room == rm_pause_menu || room == rm_settings_menu);
+
+if (is_ui_room) {
+    show_debug_message("DEBUG: UI Room detected. Removing player instance.");
+    
+    if (instance_exists(global.player_instance)) {
+        global.last_player_x = global.player_instance.x;
+        global.last_player_y = global.player_instance.y;
+        instance_destroy(global.player_instance);
+        global.player_instance = noone;
+    }
+} else {
+    // Ensure the player instance is recreated when returning from rm_map
+    if (!instance_exists(global.player_instance)) {
+        show_debug_message("WARNING: No player instance found. Recreating...");
+        var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
+        var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
+
+        show_debug_message("Spawning player at: (" + string(player_x) + ", " + string(player_y) + ")");
+
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player"; // Ensure correct skin is applied
+
+        if (instance_exists(global.player_instance)) {
+            show_debug_message("DEBUG: Player instance successfully recreated.");
+        } else {
+            show_debug_message("ERROR: Failed to recreate player instance!");
+        }
+    }
+
+    // ✅ Reattach the camera to the new player instance
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(view_camera[0], global.player_instance);
+        show_debug_message("DEBUG: Camera now follows player.");
+    } else {
+        show_debug_message("ERROR: Camera could not follow new player instance.");
+    }
+}
+
+
+// Ensure the camera follows the player
+if (instance_exists(global.player_instance) && is_real(global.camera)) {
+    var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
+
+    camera_set_view_pos(global.camera, target_x, target_y);
+}
+
+// Ensure a "UI" layer exists for GUI elements
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+    show_debug_message("DEBUG: UI layer created.");
+} else {
+    show_debug_message("DEBUG: UI layer already exists.");
+}
+
+// Pause system
+if (global.dialogue_active) {
+    // Pause NPC and player movement during dialogue
+    with (obj_player) { move_speed = 0; }
+    with (obj_npc) { move_speed = 0; }
+} else {
+    // Resume NPC and player movement
+    with (obj_player) { move_speed = move_spd; }
+    with (obj_npc) { move_speed = move_spd; }
+}
+
+// Handle player instance and skin on room transition
+if (!instance_exists(global.player_instance)) {
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    }
+}
+
+// Ensure the ice truck remains destroyed if it was destroyed previously
+if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
+    with (obj_icetruck) {
+        instance_destroy();
+    }
+}
+
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+
+// Check and create the "UI" layer if it doesn't exist
+if (!layer_exists("UI")) {
+    layer_create(0, "UI");
+    show_debug_message("UI layer created successfully.");
+} else {
+    show_debug_message("UI layer already exists.");
+}
+
+show_debug_message("Pause menu closed.");
+if (instance_exists(obj_skinpicker)) {
+    show_debug_message("Skin picker opened successfully.");
+} else if (instance_exists(obj_color_wheel)) {
+    show_debug_message("Color wheel opened successfully.");
+}
+
+show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
+show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
+File: Step_0.gml
+// Before switching to a UI room, store the last player position
+if (keyboard_check_pressed(vk_escape)) {
+    if (room != rm_pause_menu) {
+        if (instance_exists(global.player_instance)) {
+            global.player_x = global.player_instance.x;
+            global.player_y = global.player_instance.y;
+            show_debug_message("DEBUG: Stored player position: (" + string(global.player_x) + ", " + string(global.player_y) + ")");
+        } else {
+            show_debug_message("WARNING: No player instance found before switching rooms!");
+        }
+
+        show_debug_message("Switching to pause menu room...");
+        global.last_room = room;
+        room_goto(rm_pause_menu);
+    } else if (variable_global_exists("last_room") && global.last_room != noone) {
+        show_debug_message("Returning to previous room: " + string(global.last_room));
+        room_goto(global.last_room);
+    }
+}
+
+
+
+function switch_skin(new_skin) {
+    if (global.skin_switching) return;
+    global.skin_switching = true;
+
+    var player_x = global.player_instance != noone ? global.player_instance.x : x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : y;
+
+    // Destroy current player instance
+    if (instance_exists(global.player_instance)) {
+        instance_destroy(global.player_instance);
+    }
+
+    var new_instance = noone;
+    var skin_found = false;
+
+    // Find the correct skin object from global.skins
+    for (var i = 0; i < array_length(global.skins); i++) {
+        if (global.skins[i].name == new_skin) {
+            new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
+            global.current_skin = new_skin;
+            skin_found = true;
+            show_debug_message("Switched to skin: " + new_skin);
+            break;
+        }
+    }
+
+    // If no valid skin found, default to player
+    if (!skin_found || new_instance == noone) {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+        show_debug_message("WARNING: Defaulted to player skin. Invalid skin name: " + new_skin);
+    }
+
+    // Assign new instance and update camera
+    if (new_instance != noone) {
+        global.player_instance = new_instance;
+        camera_set_view_target(view_camera[0], global.player_instance);
+    } else {
+        show_debug_message("ERROR: Failed to create player instance for skin: " + new_skin);
+    }
+
+    global.skin_switching = false;
+}
+
+// Hide player instead of destroying in UI rooms
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
+
+if (is_ui_room) {
+    if (instance_exists(global.player_instance)) {
+        global.player_instance.visible = false;
+        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
+    }
+} else {
+    if (instance_exists(global.player_instance)) {
+        global.player_instance.visible = true;
+        //show_debug_message("DEBUG: Returning to game room. Player instance visible.");
+    } else {
+        //show_debug_message("WARNING: No player instance found. Recreating...");
+        global.player_instance = instance_create_layer(global.player_x, global.player_y, "Instances", obj_player);
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_crates
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel1
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel2
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel3
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel4
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
+File: Create_0.gml
+// The ice truck starts as repaired and driveable
+repair_required = false;
+is_driveable = true;
+
+// Assign fixed ice truck sprite (facing down by default)
+sprite_index = spr_icetruck_facedown;
+
+// Store directional sprites
+sprite_fixed[RIGHT] = spr_icetruck_faceright;
+sprite_fixed[UP] = spr_icetruck_faceup;
+sprite_fixed[LEFT] = spr_icetruck_faceleft;
+sprite_fixed[DOWN] = spr_icetruck_facedown;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
+File: Destroy_0.gml
+instance_destroy(); // Destroy the current ice truck instance
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
+File: Draw_0.gml
+// Depth for proper rendering
+depth = -1000;
+draw_self();
+
+// Display interaction prompt when the player is close
+if (distance_to_object(global.player_instance) < 16 && global.current_skin == "player") {
+    var text = "Press 'E' to drive";
+    var text_width = string_width(text);
+
+    draw_set_font(fnt_earlygb);
+    draw_set_color(c_black);
+    draw_text(x + (sprite_width / 2) - (text_width / 2), y - 20, text);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
+File: Step_0.gml
+// Ensure the truck is repaired before allowing entry
+if (!repair_required) { 
+    if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
+        if (global.current_skin == "player") {
+            // Enter the ice truck
+            var player_x = global.player_instance.x;
+            var player_y = global.player_instance.y;
+
+            instance_destroy(global.player_instance); // Remove player
+            instance_destroy(id); // Remove icetruck
+
+            global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
+            global.current_skin = "icetruck";
+
+            show_debug_message("Entered ice truck. Current skin: " + global.current_skin);
+        }
+    }
+} else {
+    show_debug_message("The truck is still broken! Repair it first.");
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_initializer
+File: Create_0.gml
+// Create Event for obj_initializer
+
+// Initialize the camera if it doesn't already exist
+if (!instance_exists(obj_camera)) {
+    instance_create_layer(0, 0, "Instances", obj_camera);
+}
+
+// Initialize the global camera
+global.camera = camera_create();
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+view_camera[0] = global.camera;
+
+// Ensure the global player instance is set correctly
+if (instance_exists(obj_player)) {
+    global.player_instance = obj_player;
+} else if (instance_exists(obj_sled_player)) {
+    global.player_instance = obj_sled_player;
+} else if (instance_exists(obj_player_icetruck)) {
+    global.player_instance = obj_player_icetruck;
+} else if (instance_exists(obj_player_tube)) {
+    global.player_instance = obj_player_tube;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_initializer
+File: Other_2.gml
+// Initialize all required global variables
+global.player_instance = noone;
+global.player_instance_initialized = false;
+global.camera = noone;
+global.current_skin = "player"; // Default skin
+global.initialized = false; // To track overall initialization
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_initializer
+File: Step_0.gml
+// Step Event for obj_initializer
+
+// Ensure the camera is correctly set to follow the player
+var cam = camera_create();
+camera_set_view_target(cam, global.player_instance);
+camera_apply(cam);
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lamp
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_long_bush
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_main_settings
+File: Create_0.gml
+// obj_pause_menu create event
+depth = -99990; // Ensure it's drawn above all other objects
+
+// Disable player controls
+global.player_controls_enabled = false;
+
+width = display_get_width();
+height = display_get_height();
+op_border = 8;
+op_space = 16;
+pos = 0;
+
+// Settings menu options
+option[0, 0] = "Window Size";
+option[0, 1] = "Brightness";
+option[0, 2] = "Controls";
+option[0, 3] = "Back";
+
+menu_level = 0;
+// Ensure menu_level is valid
+if (menu_level < 0 || menu_level >= array_length(option)) {
+    show_debug_message("ERROR: Invalid initial menu_level " + string(menu_level));
+    menu_level = 0; // Reset to default
+}
+op_length = array_length(option[menu_level]); // Dynamically set op_length
+
+// Pause the game
+game_paused = true;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_main_settings
+File: Draw_0.gml
+draw_set_font(fnt_bumbastika_sml);
+
+// Ensure menu_level is valid
+if (menu_level < 0 || menu_level >= array_length(option)) {
+    show_debug_message("ERROR: Invalid menu_level " + string(menu_level));
+    return; // Exit the Draw Event
+}
+
+// Dynamically get width and height of menu
+var _new_w = 0;
+for (var i = 0; i < op_length; i++) {
+    if (i < array_length(option[menu_level])) { // Check that index is within bounds
+        var _op_w = string_width(option[menu_level][i]);
+        _new_w = max(_new_w, _op_w);
+    }
+}
+width = _new_w + op_border * 2;
+height = op_border * 4.5 + string_height(option[menu_level][0]) * op_length;
+
+// Center menu
+x = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) - width) / 2;
+y = camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) - height) / 2;
+
+// Draw the menu background
+draw_sprite_ext(
+    spr_pause_menu, 
+    0, 
+    x, 
+    y, 
+    width / sprite_get_width(spr_pause_menu), 
+    height / sprite_get_height(spr_pause_menu), 
+    0, 
+    c_white, 
+    1
+);
+
+// Draw the options
+draw_set_valign(fa_top);
+draw_set_halign(fa_center);
+for (var i = 0; i < op_length; i++) {
+    if (i < array_length(option[menu_level])) { // Check bounds again
+        var _c = c_white;
+        if (pos == i) { 
+            _c = c_yellow; // Highlight the option being hovered over
+        }
+        draw_text_color(
+            x + width / 2, 
+            y + op_border + op_space * i, 
+            option[menu_level][i], // Access using nested arrays
+            _c, 
+            _c, 
+            _c, 
+            _c, 
+            1
+        );
+    } else {
+        show_debug_message("ERROR: Invalid option index " + string(i) + " for menu_level " + string(menu_level));
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_main_settings
+File: Step_0.gml
+// Update op_length dynamically based on menu_level
+op_length = array_length(option[menu_level]);
+
+// Menu navigation using the mouse
+var mouse_x_pos = device_mouse_x(0); // Get mouse x-coordinate
+var mouse_y_pos = device_mouse_y(0); // Get mouse y-coordinate
+
+var menu_width = 300; // Width of the menu
+var menu_height = 40 * op_length + 20; // Height of the menu
+var menu_top = y - menu_height / 2 + 20; // Top of the menu options
+var menu_left = x - menu_width / 2; // Left of the menu
+
+if (mouse_x_pos > menu_left && mouse_x_pos < menu_left + menu_width) {
+    pos = floor((mouse_y_pos - menu_top) / 40); // Calculate option index
+} else {
+    pos = -1; // Mouse is not over the menu
+}
+
+// Ensure pos stays within bounds
+if (pos < 0 || pos >= op_length) {
+    pos = -1;
+}
+
+// Handle selection with mouse click
+if (mouse_check_button_pressed(mb_left) && pos >= 0) {
+    switch (menu_level) {
+        case 0: // Main settings menu
+             switch (pos) {
+                case 0: 
+                    break; // Window Size (placeholder)
+                case 1: 
+                    break; // Brightness (placeholder)
+                case 2: 
+                    break; // Controls (placeholder)
+				case 3:	
+					room_goto(rm_main_menu);
+					break;
+            }
+            break;
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: Create_0.gml
+// obj_map Create Event
+depth = -9998; // Ensure it's drawn above all other objects
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: Draw_0.gml
+// obj_map Draw Event
+draw_self(); // Draw the full map sprite
+
+// Draw markers or labels for clickable regions (halved size)
+draw_set_color(c_red);
+draw_rectangle(185 - 25, 228 - 25, 185 + 25, 228 + 25, false); // Town
+draw_rectangle(55 - 25, 190 - 25, 55 + 25, 190 + 25, false); // Beach
+draw_rectangle(155 - 25, 128 - 25, 155 + 25, 128 + 25, false); // Ski village
+draw_rectangle(280 - 25, 250 - 25, 280 + 25, 250 + 25, false); // Snow fort
+draw_rectangle(410 - 25, 277 - 25, 410 + 25, 277 + 25, false); // Welcome room
+draw_rectangle(380 - 25, 230 - 25, 380 + 25, 230 + 25, false); // Plaza
+draw_rectangle(395 - 25, 170 - 25, 395 + 25, 170 + 25, false); // Forest
+draw_rectangle(400 - 25, 130 - 25, 400 + 25, 130 + 25, false); // Cove
+draw_rectangle(135 - 25, 60 - 25, 135 + 25, 60 + 25, false); // Mountain top
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: KeyPress_27.gml
+if (global.chat_active) {
+    show_debug_message("Map interaction blocked: Chat is active.");
+    exit; // Prevent interaction when the chat window is open
+}
+
+camera_set_view_size(global.camera, global.camera_width, global.camera_height); // Restore original camera view size
+instance_destroy(id);
+show_debug_message("Map closed.");
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: Mouse_4.gml
+if (global.chat_active) {
+    show_debug_message("Map interaction blocked: Chat is active.");
+    exit; // Prevent interaction when the chat window is open
+}
+
+// obj_map Mouse Left Pressed Event
+var click_x = device_mouse_x_to_gui(0);
+var click_y = device_mouse_y_to_gui(0);
+
+show_debug_message("Mouse clicked at: " + string(click_x) + ", " + string(click_y));
+
+// Define clickable regions for different rooms (halved size)
+if (click_x > 87 - 25 && click_x < 87 + 25 && click_y > 283 - 25 && click_y < 283 + 25) {
+    // Move to Beach
+    show_debug_message("Beach region clicked");
+    room_goto(rm_beach);
+} else if (click_x > 185 - 25 && click_x < 185 + 25 && click_y > 228 - 25 && click_y < 228 + 25) {
+    // Move to town
+    show_debug_message("Town region clicked");
+    room_goto(rm_town);
+} else if (click_x > 55 - 25 && click_x < 55 + 25 && click_y > 190 - 25 && click_y < 190 + 25) {
+    // Move to beach
+    show_debug_message("Beach region clicked");
+    room_goto(rm_beach);
+} else if (click_x > 155 - 25 && click_x < 155 + 25 && click_y > 128 - 25 && click_y < 128 + 25) {
+    // Move to ski village
+    show_debug_message("Ski village region clicked");
+    room_goto(rm_ski_village);
+} else if (click_x > 280 - 25 && click_x < 280 + 25 && click_y > 250 - 25 && click_y < 250 + 25) {
+    // Move to snow fort
+    show_debug_message("Snow fort region clicked");
+    room_goto(rm_snow_fort);
+} else if (click_x > 410 - 25 && click_x < 410 + 25 && click_y > 277 - 25 && click_y < 277 + 25) {
+    // Move to welcome room
+    show_debug_message("Welcome room region clicked");
+    room_goto(rm_welcome_room);
+} else if (click_x > 380 - 25 && click_x < 380 + 25 && click_y > 230 - 25 && click_y < 230 + 25) {
+    // Move to plaza
+    show_debug_message("Plaza region clicked");
+    room_goto(rm_plaza);
+} else if (click_x > 395 - 25 && click_x < 395 + 25 && click_y > 170 - 25 && click_y < 170 + 25) {
+    // Move to forest
+    show_debug_message("Forest region clicked");
+    room_goto(rm_forest);
+} else if (click_x > 400 - 25 && click_x < 400 + 25 && click_y > 130 - 25 && click_y < 130 + 25) {
+    // Move to cove
+    show_debug_message("Cove region clicked");
+    room_goto(rm_cove);
+} else if (click_x > 135 - 25 && click_x < 135 + 25 && click_y > 60 - 25 && click_y < 60 + 25) {
+    // Move to mountain top
+    show_debug_message("Mountain top region clicked");
+    room_goto(rm_ski_mountaintop);
+} else {
+    show_debug_message("No region matched. Click ignored.");
+}
+
+function create_warp_instance(target_room) {
+    // Create a warp instance at the correct position
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+
+    // Ensure the player warps to a valid position
+    if (instance_exists(global.player_instance)) {
+        inst.target_x = global.player_instance.x;
+        inst.target_y = global.player_instance.y;
+    } else {
+        inst.target_x = 320; // Default center of the room (fallback)
+        inst.target_y = 240;
+    }
+
+    inst.target_rm = target_room;
+    inst.target_face = 0; // Set default direction
+    inst.target_instance = global.player_instance;
+
+    show_debug_message("DEBUG: Creating warp to " + string(target_room) + 
+        " at (" + string(inst.target_x) + ", " + string(inst.target_y) + ")");
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: Mouse_5.gml
+if (global.chat_active) {
+    show_debug_message("Map interaction blocked: Chat is active.");
+    exit;
+}
+
+if (variable_global_exists("last_room") && global.last_room != noone) {
+    show_debug_message("Returning to previous room: " + string(global.last_room));
+    var target_room = global.last_room;
+    global.last_room = noone; // Reset after use
+	room_goto(target_room);
+} else {
+    show_debug_message("No previous room recorded. Returning to default.");
+    room_goto(rm_welcome_room);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map
+File: KeyPress_77.gml
+if (global.chat_active) {
+    show_debug_message("Map interaction blocked: Chat is active.");
+    exit;
+}
+
+if (variable_global_exists("last_room") && global.last_room != noone) {
+    show_debug_message("Returning to previous room: " + string(global.last_room));
+    var target_room = global.last_room;
+    global.last_room = noone; // Reset after use
+
+    // Ensure the player instance is recreated when switching back
+    room_goto(target_room);
+} else {
+    show_debug_message("No previous room recorded. Returning to default.");
+    room_goto(rm_welcome_room);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map_icon
+File: Mouse_4.gml
+if (room != rm_map) {
+    if (instance_exists(global.player_instance)) {
+        global.player_x = global.player_instance.x;
+        global.player_y = global.player_instance.y;
+
+        show_debug_message("DEBUG: Stored player position: (" + string(global.player_x) + ", " + string(global.player_y) + ")");
+        
+        // Hide the player instead of destroying
+        global.player_instance.visible = false;
+    } else {
+        show_debug_message("WARNING: No player instance found before switching rooms! Using default coordinates.");
+        
+        // Set default safe position
+        global.player_x = 170;
+        global.player_y = 154;
+    }
+
+    show_debug_message("Switching to map room...");
+    global.last_room = room;
+    room_goto(rm_map);
+}
+else if (variable_global_exists("last_room") && global.last_room != noone) {
+    show_debug_message("Returning to previous room: " + string(global.last_room));
+    room_goto(global.last_room);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map_icon
+File: Step_0.gml
+//Step event
+// Prevent map interaction when chat is active
+if (global.chat_active) {
+    exit;
+}
+
+depth = -1000;
+
+// Position map icon in the corner of the screen
+x = camera_get_view_x(global.camera) + 10;
+y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - sprite_height - 10;
+
+// Check if the mouse is hovering over the icon
+if (position_meeting(mouse_x, mouse_y, id)) {
+    image_index = 1; // Change to highlighted sprite
+} else {
+    image_index = 0; // Revert to normal sprite
+}
+
+// Hide player instead of destroying in UI rooms
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
+
+if (is_ui_room) {
+    if (instance_exists(obj_map_icon)) {
+        obj_map_icon.visible = false;
+        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
+    }
+} else {
+    if (instance_exists(obj_map_icon)) {
+       obj_map_icon.visible = true;
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map_icon
+File: Draw_64.gml
+/// Draw GUI Event for obj_map_icon
+draw_sprite_ext(
+    sprite_index, image_index,
+    10, display_get_height() - sprite_height - 10, // Fixed GUI position
+    1, 1, 0, c_white, 1
+);
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
+File: Create_0.gml
+btn_action = ""; // This will define what the button does (e.g., "play", "exit")
+btn_text = "";   // Text to display on the button
+btn_font = -1;   // Default font (-1 means no custom font used)
+text_color = c_white; // Default text color
+hover = false;   // To detect mouse hover
+btn_font = fnt_bumbastika_sml;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
+File: Draw_0.gml
+// Draw the button sprite
+draw_self();
+
+// Set text alignment
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+// Calculate text position
+var text_x = x + sprite_width / 2; // Center horizontally
+var text_y = y + sprite_height / 2; // Center vertically
+
+// Draw the button text with wrapping
+draw_set_color(c_black);
+draw_set_font(btn_font);
+draw_text_ext(text_x, text_y, btn_text, -1, sprite_width - 100);
+
+// Reset alignment (optional, for other draw calls later)
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
+File: Mouse_10.gml
+hover = true;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
+File: Mouse_11.gml
+hover = false;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
+File: Mouse_4.gml
+if (btn_action == "play") {
+    room_goto(rm_init); // Go to the next room (your game room)
+} else if (btn_action == "colour") {
+    room_goto(rm_colorpicker_menu);
+} else if (btn_action == "settings") {
+    room_goto(rm_settings_menu);
+} else if (btn_action == "exit") {
+    game_end(); // Exit the game
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_musicmanager
+File: Create_0.gml
+//global volume control
+global.masterVolume = 1;
+global.musicVolume = 1;
+
+//info for the song that we are currently playing / trying to play
+songInstance = noone;
+songAsset = noone;
+targetSongAsset = noone;
+endFadeOutTime = 0;//how many frames to fade out the song currently playing
+startFadeInTime = 0;//how many frames to fade in the new song
+fadeInInstVol = 1;//the volume of songInstance
+
+//for fading music out and stopping songs that are no longer playing
+fadeOutInstances = array_create(0);//audio instances to fade out
+fadeOutInstVol = array_create(0);//the volume of each indiviual audio instance
+fadeOutInstTime = array_create(0);//how fast the fadeout should happen
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_musicmanager
+File: Other_4.gml
+// Play the correct music
+
+if room == rm_welcome_room
+|| room == rm_plaza
+|| room == rm_shore
+{
+	set_song_ingame( bg_music, 60, 0 );
+}
+
+//For other rooms that require different music
+//if room == rm_template
+//{
+//	set_song_ingame( bg_music, 3*60 );
+//}
+
+//if room == rm_template
+//{
+//	set_song_ingame( bg_music, 2*60, 2*60 );
+//}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_musicmanager
+File: Step_0.gml
+var _finalVol = global.musicVolume*global.masterVolume;
+
+//Play the target song
+if songAsset != targetSongAsset
+{
+	//Tell the old song to fade out
+	if audio_is_playing( songInstance )
+	{
+		//add out songInstance to our array of songs to fade out
+		array_push( fadeOutInstances, songInstance );
+		//add the songInstance's starting volume (so theres no adrupt change in volume)
+		array_push( fadeOutInstVol, fadeInInstVol );
+		//add the fadeOutInstance's fade out frames
+		array_push( fadeOutInstTime, endFadeOutTime );
+		
+		//reset the songInstance and songAsset variables
+		songInstance = noone;
+		songAsset = noone;
+	}
+	
+	
+	//Play the song if the old song has faded out
+	if array_length( fadeOutInstances) == 0
+	{
+		if audio_exists( targetSongAsset)
+		{
+			//Play the song and store its instance in a variable
+			songInstance = audio_play_sound( targetSongAsset, 4, true );
+	
+			//Start the song's volume at 0
+			audio_sound_gain( songInstance, 0, 0 );
+			fadeInInstVol = 0;
+		}
+	
+	//Set the songAssest to match the targetSongAsset
+	songAsset = targetSongAsset;
+	}
+}
+
+
+//Volume Control
+	//Main song volume
+	if audio_is_playing( songInstance )
+	{
+		//Fade the song in
+		if startFadeInTime > 0
+		{
+			if fadeInInstVol < 1 { fadeInInstVol += 1/startFadeInTime; } else fadeInInstVol = 1
+		}
+		//Immediately start the song if the fade in time is 0 framces
+		else
+		{
+			fadeInInstVol = 1;
+		}
+	
+		//Actually set the gain
+		audio_sound_gain( songInstance, fadeInInstVol*_finalVol, 0 )
+	}
+	
+	//Fading songs out
+	for(var i = 0; i < array_length(fadeOutInstances); i++ )
+	{
+		//Fade the volume
+		if fadeOutInstTime[i] > 0
+		{
+			if	fadeOutInstVol[i] > 0 {fadeOutInstVol[i] -= 1/fadeOutInstTime[i]; }
+		}
+		//Immediately cut volume to 0 otherwuse
+		else
+		{
+			fadeOutInstVol[i] = 0;
+		}
+		
+		//Actually set the gain
+		audio_sound_gain( fadeOutInstances[i], fadeOutInstVol[i]*_finalVol, 0 );
+		
+		//Stop the song when it's volume is at 0 and remove it from ALL arrays
+		if fadeOutInstVol[i] <= 0
+		{
+			//stop the song	
+			if audio_is_playing( fadeOutInstances[i] ) { audio_stop_sound( fadeOutInstances[i] ); };
+			//remove it from the arrays
+			array_delete( fadeOutInstances, i, 1);
+			array_delete( fadeOutInstVol, i, 1);
+			array_delete( fadeOutInstTime, i, 1);
+			//set the loop back 1 since we just deleted an entry
+			i--;
+		}
+	}
+	
+	
+	
+	
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc
+File: Alarm_0.gml
+if (npc_portrait != "") {
+    sprite_index = npc_portrait;
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc
+File: Create_0.gml
+// Movement settings (keep existing movement)
+xspd = 0;
+yspd = 0;
+move_spd = 0;
+move_x = 0;
+move_y = 0;
+is_moving = false;
+collision_delay = 0;
+stuck_timer = 0;
+wait_timer = 3;
+last_x = x;
+last_y = y;
+face = DOWN;
+
+// NPC Settings
+npc_name = "NPC";  // Default name
+npc_portrait = spr_ninja_down;  // Default portrait
+is_static = true;  // If true, NPC doesn't move
+
+// Dialogue and quest-related variables
+dialogue = ["Hello there!", "I have nothing important to say."]; // Custom dialogue
+quest_active = false; // Is a quest active?
+quest_complete = false; // Is the quest completed?
+current_dialogue_index = -1; // Start with no dialogue active
+
+// Quest System
+is_quest_giver = false;  // Can this NPC give a quest?
+quest_given = false;  // Has the quest been given?
+quest_required_item = "";  // Item required for quest ("" = no quest)
+quest_completed = false;  // Has the player completed the quest?
+quest_reward = "";  // Reward given after quest completion
+
+// Set the sprite based on the NPC's unique properties
+if (npc_portrait != "") {
+    sprite_index = npc_portrait;
+}
+
+// Stop animation from cycling through frames
+image_speed = 0; 
+image_index = 0;
+
+// Delay sprite assignment until the next step
+alarm[0] = 1;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc
+File: Draw_0.gml
+depth = -1000;
+// Draw NPC as usual
+draw_self();
+
+// Draw the dialogue box if active
+if (current_dialogue_index >= 0) {
+    // Text and box parameters
+    var margin = 8; // Padding around the text
+    var max_width = 200; // Maximum width for the dialogue box
+    var text_scale = 0.50; // Scale the text smaller
+
+    // Calculate text dimensions
+	draw_set_font(fnt_earlygb);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    var text_width = string_width(dialogue[current_dialogue_index]) * text_scale;
+    var text_height = string_height(dialogue[current_dialogue_index]) * text_scale;
+
+    // Calculate box dimensions (add padding around the text)
+    var box_width = min(max_width, text_width + margin * 2);
+    var box_height = text_height + margin * 2;
+
+    // Position the box
+    var box_x = x - box_width / 2;
+    var box_y = y - sprite_height - box_height - 0.5;
+
+    // Draw 9-slice sprite background
+    draw_sprite_stretched(
+        spr_chat,     // Sprite
+        0,                       // Sub-image index
+        box_x,                   // X position
+        box_y,                   // Y position
+        box_width,               // Scaled width
+        box_height               // Scaled height
+    );
+
+    // Draw the scaled text
+    var text_x = box_x + box_width / 2;
+    var text_y = box_y + box_height / 2;
+    draw_set_color(c_black);
+    draw_text_transformed(text_x, text_y, dialogue[current_dialogue_index], text_scale, text_scale, 0);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc
+File: Step_0.gml
+// Check for interaction with player
+if (keyboard_check_pressed(ord("E"))) {
+    var _player = instance_nearest(x, y, obj_player);
+    
+    if (_player != noone && distance_to_object(_player) < 16) {
+        if (current_dialogue_index == -1) {
+            // Start dialogue
+            current_dialogue_index = 0;
+        } else {
+            // Progress dialogue
+            current_dialogue_index++;
+            if (current_dialogue_index >= array_length(dialogue)) {
+                // Reset dialogue if all lines have been shown
+                current_dialogue_index = -1;
+
+                // If NPC is a quest giver and has not given the quest reward yet
+                if (is_quest_giver && !quest_given) {
+                    quest_given = true; // Mark quest as given
+
+                    // Ensure `obj_inventory` exists before giving the item
+                    if (instance_exists(obj_inventory)) {
+                        if (!obj_inventory.has_item(quest_reward)) {
+                            obj_inventory.add_to_inventory(quest_reward);
+                            show_debug_message(npc_name + " gave you a " + quest_reward + "!");
+                        } else {
+                            show_debug_message("You already have a " + quest_reward + ".");
+                        }
+                    } else {
+                        show_debug_message("ERROR: obj_inventory not found!");
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc_old
+File: Alarm_0.gml
+// Alarm[0] Event
+// Reset moving state to allow the NPC to pick a new target
+is_moving = false;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc_old
+File: Create_0.gml
+xspd = 0;
+yspd = 0;
+
+move_spd = 0.5; // Lower speed for smoother movement
+move_x = 0;
+move_y = 0;
+is_moving = false;
+collision_delay = 0; // Timer for delaying after a collision
+stuck_timer = 0; // Timer to handle stuck state
+wait_timer = 3; //Timer to handle how long to pause before walking
+last_x = x;      // Tracks previous position for stuck detection
+last_y = y;      // Tracks previous position for stuck detection
+
+// Initialize movement variables
+target_x = x; // Default to current position
+target_y = y; // Default to current position
+is_moving = false;
+move_speed = 1; // Default movement speed
+
+sprite[RIGHT] = spr_player_right;
+sprite[UP] = spr_player_up;
+sprite[LEFT] = spr_player_left;
+sprite[DOWN] = spr_player_down;
+sprite[UP_RIGHT] = spr_player_up_right;
+sprite[UP_LEFT] = spr_player_up_left;
+sprite[DOWN_RIGHT] = spr_player_down_right;
+sprite[DOWN_LEFT] = spr_player_down_left;
+
+face = DOWN;
+
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Random initial direction
+direction = choose(0, 45, 90, 135, 180, 225, 270, 315);
+change_direction_timer = fps * 2; // Change direction every 2 seconds
+
+phrases = ["Hello there!", "Nice to meet you!", "What brings you here?", "Have a great day!", "Stay safe!"];
+current_phrase = ""; // Will hold the currently displayed phrase
+talk_timer = 0; // Timer for how long the phrase is displayed
+interact_pause = 0; // Timer to pause movement after interaction
+
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc_old
+File: Draw_0.gml
+// Draw NPC as usual
+draw_self();
+
+// Ensure chat box is drawn above everything
+if (talk_timer > 0) {
+    // Text setup
+    var text = current_phrase;
+    var text_scale = 0.5; // Scale factor for text
+    var text_padding = 10; // Padding around the text
+
+    // Calculate text dimensions
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    var text_width = string_width(text) * text_scale; // Scaled width of the text
+    var text_height = string_height(text) * text_scale; // Scaled height of the text
+
+    // Calculate box dimensions (add padding around the text)
+    var box_width = max(64, text_width + text_padding * 2); // Minimum width for aesthetics
+    var box_height = text_height + text_padding * 2;
+
+    // Position the box
+    var box_x = x - box_width / 2;
+    var box_y = y - sprite_height - box_height - 10;
+
+    // Draw 9-slice sprite background
+    draw_sprite_stretched(
+        spr_menu,     // Sprite
+        0,                       // Sub-image index
+        box_x,                   // X position
+        box_y,                   // Y position
+        box_width,               // Scaled width
+        box_height               // Scaled height
+    );
+
+    // Draw the scaled text
+    var text_x = box_x + box_width / 2;
+    var text_y = box_y + box_height / 2;
+    draw_set_color(c_black);
+    draw_text_transformed(text_x, text_y, text, text_scale, text_scale, 0);
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_npc_old
+File: Step_0.gml
+// Step Event for obj_npc
+if (!sliding) {
+    // Normal movement logic
+    var move_x = lengthdir_x(move_spd, direction);
+    var move_y = lengthdir_y(move_spd, direction);
+
+    // Handle collisions with walls
+    if (place_meeting(x + move_x, y, obj_wall)) {
+        direction = 360 - direction; // Reverse direction on x-axis
+    }
+    if (place_meeting(x, y + move_y, obj_wall)) {
+        direction = 180 - direction; // Reverse direction on y-axis
+    }
+
+    // Check for collision with obj_slippery to start sliding
+    if (place_meeting(x + move_x, y, obj_slippery) || place_meeting(x, y + move_y, obj_slippery)) {
+        sliding = true;
+        slide_dir_x = sign(move_x);
+        slide_dir_y = sign(move_y);
+        slide_speed = move_spd * 1.5; // Initial slide speed, adjust as necessary
+    } else {
+        // Move the NPC normally
+        x += move_x;
+        y += move_y;
+    }
+
+    // Decrease the timer for changing direction
+    change_direction_timer--;
+    if (change_direction_timer <= 0) {
+        direction = choose(0, 45, 90, 135, 180, 225, 270, 315);
+        change_direction_timer = fps * 2; // Reset the timer
+    }
+} else {
+    // Sliding logic
+    var slide_move_x = slide_dir_x * slide_speed;
+    var slide_move_y = slide_dir_y * slide_speed;
+
+    // Decelerate slide over time
+    slide_speed *= 0.98; // Adjust this value to control sliding deceleration
+
+    // Stop sliding if speed is low enough
+    if (abs(slide_speed) < 0.1) {
+        sliding = false;
+        slide_move_x = 0;
+        slide_move_y = 0;
+    }
+
+    // Move the NPC while sliding
+    x += slide_move_x;
+    y += slide_move_y;
+}
+
+// Update the sprite based on direction
+if (slide_speed > 0) {
+    if (slide_dir_y < 0) {
+        if (slide_dir_x < 0) { face = UP_LEFT; }
+        if (slide_dir_x > 0) { face = UP_RIGHT; }
+        if (slide_dir_x == 0) { face = UP; }
+    }
+    if (slide_dir_y > 0) {
+        if (slide_dir_x < 0) { face = DOWN_LEFT; }
+        if (slide_dir_x > 0) { face = DOWN_RIGHT; }
+        if (slide_dir_x == 0) { face = DOWN; }
+    }
+    if (slide_dir_y == 0) {
+        if (slide_dir_x > 0) { face = RIGHT; }
+        if (slide_dir_x < 0) { face = LEFT; }
+    }
+} else {
+    if (direction == 0) face = RIGHT;
+    else if (direction == 45) face = UP_RIGHT;
+    else if (direction == 90) face = UP;
+    else if (direction == 135) face = UP_LEFT;
+    else if (direction == 180) face = LEFT;
+    else if (direction == 225) face = DOWN_LEFT;
+    else if (direction == 270) face = DOWN;
+    else if (direction == 315) face = DOWN_RIGHT;
+}
+sprite_index = sprite[face];
+
+// Depth
+depth = -bbox_bottom;
+
+// Debugging logs
+
+show_debug_message("NPC Direction: " + string(direction));
+show_debug_message("NPC Face: " + string(face));
+show_debug_message("NPC Position: " + string(x) + ", " + string(y));
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
+File: Create_0.gml
+// Create Event for obj_obstacle
+vspd = -4; // Speed at which obstacles move upwards
+
+// Step Event for obj_obstacle
+y += vspd;
+
+// Destroy the obstacle if it goes off the top of the screen
+if (y < -sprite_height) {
+    instance_destroy();
+}
+
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
+File: Step_0.gml
+// Step Event for obj_obstacle
+
+if (global.game_started) {
+    // Move the obstacle upwards
+    y -= 5; // Adjust speed as needed
+
+    // Reset the obstacle's position if it moves out of the camera viewport
+    if (y < -sprite_height) {
+        y = room_height + sprite_height; // Reset to below the viewport
+        x = irandom_range(0, room_width - sprite_width); // Randomize horizontal position
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
+File: Alarm_0.gml
+// Alarm[0] Event for obj_obstacle_controller
+instance_create_layer(random(room_width), room_height, "Instances", obj_obstacle);
+alarm[0] = 30; // Reset the alarm
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
+File: Create_0.gml
+// Create Event for obj_obstacle_controller
+alarm[0] = 30; // Spawn an obstacle every 30 steps
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_parallax_background
+File: Create_0.gml
+depth = 10000;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_parallax_background
+File: Draw_0.gml
+var _camx = camera_get_view_x(global.camera);  // Use global.camera explicitly
+var _camy = camera_get_view_y(global.camera);
+
+var _p = 0.5;  // Parallax factor (adjust as needed)
+
+if (sprite_exists(bg_sky)) {
+    draw_sprite(bg_sky, 0, _camx * _p, _camy * _p);
+} else {
+    show_debug_message("ERROR: bg_sky sprite does not exist!");
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pause_menu
+File: Create_0.gml
+// obj_pause_menu create event
+depth = -99990; // Ensure it's drawn above everything
+game_paused = true; // Pause the game
+global.player_controls_enabled = false;
+
+image_speed = 0.5; // Set animation speed for cycling frames
+
+width = display_get_width();
+height = display_get_height();
+op_border = 8;
+op_space = 16;
+pos = 0;
+
+// Pause menu options
+option[0, 0] = "Back to Game";
+option[0, 1] = "Settings";
+option[0, 2] = "Quit Game";
+
+// Settings menu options
+option[1, 0] = "Change Skin";
+//option[1, 1] = "Change Color";
+//option[1, 1] = "Window Size";
+//option[1, 2] = "Brightness";
+//option[1, 3] = "Controls";
+option[1, 1] = "Back";
+
+menu_level = 0;
+// Ensure menu_level is valid
+if (menu_level < 0 || menu_level >= array_length(option)) {
+    show_debug_message("ERROR: Invalid initial menu_level " + string(menu_level));
+    menu_level = 0; // Reset to default
+}
+op_length = array_length(option[menu_level]); // Dynamically set op_length
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pause_menu
+File: Draw_0.gml
+draw_set_font(fnt_bumbastika_sml);
+
+// Ensure menu_level is valid
+if (menu_level < 0 || menu_level >= array_length(option)) {
+    show_debug_message("ERROR: Invalid menu_level " + string(menu_level));
+    return; // Exit the Draw Event
+}
+
+// Dynamically get width and height of menu
+var _new_w = 0;
+for (var i = 0; i < op_length; i++) {
+    if (i < array_length(option[menu_level])) { // Check that index is within bounds
+        var _op_w = string_width(option[menu_level][i]);
+        _new_w = max(_new_w, _op_w);
+    }
+}
+width = _new_w + op_border * 2;
+height = op_border * 4 + string_height(option[menu_level][0]) * op_length;
+
+// Center menu
+x = camera_get_view_x(view_camera[0]) + (camera_get_view_width(view_camera[0]) - width) / 2;
+y = camera_get_view_y(view_camera[0]) + (camera_get_view_height(view_camera[0]) - height) / 2;
+
+// Draw the menu background
+draw_sprite_ext(
+    spr_pause_menu, 
+    floor(image_index), // Use image_index for animation
+    x, 
+    y, 
+    width / sprite_get_width(spr_pause_menu), 
+    height / sprite_get_height(spr_pause_menu), 
+    0, 
+    c_white, 
+    1
+);
+
+// Draw the options
+draw_set_valign(fa_top);
+draw_set_halign(fa_center);
+for (var i = 0; i < op_length; i++) {
+    if (i < array_length(option[menu_level])) { // Check bounds again
+        var _c = c_white;
+        if (pos == i) { 
+            _c = c_yellow; // Highlight the option being hovered over
+        }
+        draw_text_color(
+            x + width / 2, 
+            y + op_border + op_space * i, 
+            option[menu_level][i], // Access using nested arrays
+            _c, 
+            _c, 
+            _c, 
+            _c, 
+            1
+        );
+    } else {
+        show_debug_message("ERROR: Invalid option index " + string(i) + " for menu_level " + string(menu_level));
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pause_menu
+File: Step_0.gml
+// Update op_length dynamically based on menu_level
+op_length = array_length(option[menu_level]);
+
+// Menu navigation using the mouse
+var mouse_x_pos = mouse_x + view_xview[0];
+var mouse_y_pos = mouse_y + view_yview[0];
+
+var menu_width = 300; // Width of the menu
+var menu_height = 0 * op_length + 20; // Height of the menu
+var menu_top = y - menu_height / 2 + 20; // Top of the menu options
+var menu_left = x - menu_width / 2; // Left of the menu
+
+if (mouse_x_pos > menu_left && mouse_x_pos < menu_left + menu_width) {
+    pos = floor((mouse_y_pos - menu_top) / 40); // Calculate option index
+} else {
+    pos = -1; // Mouse is not over the menu
+}
+
+// Ensure pos stays within bounds
+if (pos < 0 || pos >= op_length) {
+    pos = -1;
+}
+
+// Handle selection with mouse click
+if (mouse_check_button_pressed(mb_left) && pos >= 0) {
+    switch (menu_level) {
+        case 0: // Main pause menu
+            switch (pos) {
+                case 0: 
+					// Resume game
+					game_paused = false;
+					global.player_controls_enabled = true;
+					global.is_pause_menu_active = false;
+    
+					 if (variable_global_exists("last_room") && global.last_room != noone) {
+					 show_debug_message("Returning to previous room from pause menu: " + string(global.last_room));
+					 var target_room = global.last_room;
+					 global.last_room = noone; // Reset after use
+					 room_goto(target_room);
+				 } else {
+					 show_debug_message("No previous room recorded. Returning to default.");
+					 room_goto(rm_welcome_room);
+			}
+
+    instance_destroy();
+    break;  
+                case 1: 
+                    // Go to settings menu
+                    menu_level = 1; 
+                    break; 
+                case 2: 
+                    // Quit game
+                    game_end(); 
+                    break; 
+            }
+            break;
+
+        case 1: // Settings menu
+            switch (pos) {
+                case 0: 
+					// Open Skin Picker and close pause menu
+                    instance_create_layer(x, y, "UI", obj_skinpicker); 
+                    instance_destroy(); 
+                    global.is_pause_menu_active = false;
+                    break;
+                //case 1: 
+					// Open Color Wheel and close pause menu
+                    //instance_create_layer(x, y, "UI", obj_color_wheel); 
+                    //instance_destroy(); 
+                   // global.is_pause_menu_active = false;
+                  //  break;
+                case 1: 
+                    break; // Window Size (placeholder)
+                case 2: 
+                    break; // Brightness (placeholder)
+                case 3: 
+                    break; // Controls (placeholder)
+				case 4: 
+                   // Go back to main menu
+                    menu_level = 0; 
+                    break; 
+            }
+            break;
+    }
+}
+
+// Debug mouse position
+show_debug_message("Mouse X: " + string(mouse_x) + " | Mouse Y: " + string(mouse_y));
+show_debug_message("GUI Mouse X: " + string(device_mouse_x_to_gui(0)) + " | GUI Mouse Y: " + string(device_mouse_y_to_gui(0)));
+show_debug_message("View X: " + string(camera_get_view_x(view_camera[0])) + " | View Y: " + string(camera_get_view_y(view_camera[0])));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
+File: Create_0.gml
+// Create Event for obj_player
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 2;
+global.player_color = c_white; // Default color
+state = "walking";
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+//init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
+// Define player sprite layers
+sprite_body = spr_player_body;
+sprite_color = spr_player_colour;
+
+// Collision mask setup
+mask_index = spr_player_body;
+
+// Debugging
+show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
+
+// Define animation frames for each movement direction (192x72 sprite sheet, 24x24 grid)
+frame_data = array_create(8);
+
+// Down (Facing Forward)
+frame_data[DOWN] = [
+    0, 0, 24, 24,   // Frame 1
+    0, 24, 24, 24,  // Frame 2
+    0, 48, 24, 24   // Frame 3
+];
+
+// Up (Facing Back)
+frame_data[UP] = [
+    24, 0, 24, 24,  
+    24, 24, 24, 24,  
+    24, 48, 24, 24  
+];
+
+// Down-Left
+frame_data[DOWN_LEFT] = [
+    48, 0, 24, 24,  
+    48, 24, 24, 24,  
+    48, 48, 24, 24  
+];
+
+// Down-Right
+frame_data[DOWN_RIGHT] = [
+    72, 0, 24, 24,  
+    72, 24, 24, 24,  
+    72, 48, 24, 24  
+];
+
+// Left
+frame_data[LEFT] = [
+    96, 0, 24, 24,  
+    96, 24, 24, 24,  
+    96, 48, 24, 24  
+];
+
+// Right
+frame_data[RIGHT] = [
+    120, 0, 24, 24,  
+    120, 24, 24, 24,  
+    120, 48, 24, 24  
+];
+
+// Up-Right
+frame_data[UP_RIGHT] = [
+    144, 0, 24, 24,  
+    144, 24, 24, 24,  
+    144, 48, 24, 24  
+];
+
+// Up-Left
+frame_data[UP_LEFT] = [
+    168, 0, 24, 24,  
+    168, 24, 24, 24,  
+    168, 48, 24, 24  
+];
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
+File: Draw_0.gml
+// Ensure valid frame selection
+var frame_index = floor(image_index) mod (array_length(frame_data[face]) / 4);
+
+// Extract frame data
+var frame_x = frame_data[face][frame_index * 4];
+var frame_y = frame_data[face][frame_index * 4 + 1];
+var frame_width = frame_data[face][frame_index * 4 + 2];
+var frame_height = frame_data[face][frame_index * 4 + 3];
+
+// Draw the body layer
+draw_sprite_part_ext(
+    spr_player_body, 0,  
+    frame_x, frame_y,  
+    frame_width, frame_height,  
+    x, y,  
+    1, 1,  
+    c_white, 1  
+);
+
+// Draw the color overlay layer
+draw_sprite_part_ext(
+    spr_player_colour, 0,  
+    frame_x, frame_y,  
+    frame_width, frame_height,  
+    x, y,  
+    1, 1,  
+    global.player_color, 1  
+);
+
+// Draw the Party Hat if the player owns it and it’s toggled on
+if (obj_inventory.has_item("Party Hat") && global.party_hat_visible) {
+    draw_sprite_part_ext(
+        spr_player_partyhat, 0,  
+        frame_x, frame_y,  
+        frame_width, frame_height,  
+        x, y,  
+        1, 1,  
+        c_white, 1  
+    );
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
+File: Step_0.gml
+// Ensure `obj_inventory` exists before accessing it
+if (instance_exists(obj_inventory)) {
+    if (obj_inventory.has_item("Wrench")) {
+        show_debug_message("Player has a wrench. Can repair objects!");
+    }
+}
+
+// 🎿 **Handle Player Interactions**
+if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
+    if (place_meeting(x, y, obj_icetruck_broken) && obj_inventory.has_item("Wrench")) {
+        show_debug_message("Repairing ice truck...");
+        
+        with (instance_place(x, y, obj_icetruck_broken)) instance_destroy();
+        instance_create_layer(x, y, "Instances", obj_icetruck);
+
+        show_debug_message("Ice truck repaired!");
+    }
+}
+
+if (keyboard_check_pressed(ord("T"))) { // Enter/Exit Tube
+    if (global.current_skin == "player" && obj_inventory.has_item("Tube")) {
+        obj_controller.switch_skin("tube");
+        show_debug_message("Entered tube mode.");
+    } else if (global.current_skin == "tube") {
+        obj_controller.switch_skin("player");
+        show_debug_message("Exited tube mode.");
+    }
+}
+
+if (keyboard_check_pressed(ord("E"))) { // Enter/Exit Ice Truck
+    var truck_nearby = instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16;
+
+    if (truck_nearby && global.current_skin == "player") {
+        obj_controller.switch_skin("icetruck");
+    } else if (global.current_skin == "icetruck") {
+        obj_controller.switch_skin("player");
+    }
+}
+
+if (keyboard_check_pressed(ord("P")) && obj_inventory.has_item("Party Hat")) { // Toggle Party Hat
+    global.party_hat_visible = !global.party_hat_visible;
+    show_debug_message("Party Hat toggled: " + string(global.party_hat_visible));
+}
+
+// Passive item checks
+if (instance_exists(obj_inventory)) {
+    if (obj_inventory.has_item("Fishing Rod")) {
+        show_debug_message("Player can now fish!");
+    }
+}
+
+// 🎮 **Handle Movement**
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+if (!sliding) {
+    xspd = (right_key - left_key) * move_spd;
+    yspd = (down_key - up_key) * move_spd;
+} else {
+    xspd = slide_dir_x * slide_speed;
+    yspd = slide_dir_y * slide_speed;
+    slide_speed *= 0.98;
+    if (abs(slide_speed) < 0.1) {
+        sliding = false;
+        xspd = 0;
+        yspd = 0;
+    }
+}
+
+// Prevent movement if paused
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Set movement direction
+if (yspd < 0) {
+    if (xspd < 0) { face = UP_LEFT; }
+    else if (xspd > 0) { face = UP_RIGHT; }
+    else { face = UP; }
+} else if (yspd > 0) {
+    if (xspd < 0) { face = DOWN_LEFT; }
+    else if (xspd > 0) { face = DOWN_RIGHT; }
+    else { face = DOWN; }
+} else {
+    if (xspd > 0) { face = RIGHT; }
+    else if (xspd < 0) { face = LEFT; }
+}
+
+// Handle movement
+xspd = handle_collision("x", xspd);
+yspd = handle_collision("y", yspd);
+x += xspd;
+y += yspd;
+
+// 🎞️ **Animation Handling**
+if (xspd != 0 || yspd != 0) {
+    image_speed = 0.15;
+} else {
+    image_speed = 0;
+    image_index = 0;
+}
+
+if (image_index >= 3) {
+    image_index = 0;
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_icetruck
+File: Create_0.gml
+// Ice truck driving player instance
+global.player_instance = id;
+global.current_skin = "icetruck";
+
+// Core movement variables
+xspd = 0;
+yspd = 0;
+move_spd = 4;
+
+// Set direction and sprites
+face = DOWN;
+sprite[RIGHT] = spr_icetruck_right;
+sprite[UP] = spr_icetruck_up;
+sprite[LEFT] = spr_icetruck_left;
+sprite[DOWN] = spr_icetruck_down;
+sprite[UP_RIGHT] = spr_icetruck_up_right;
+sprite[UP_LEFT] = spr_icetruck_up_left;
+sprite[DOWN_RIGHT] = spr_icetruck_down_right;
+sprite[DOWN_LEFT] = spr_icetruck_down_left;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_icetruck
+File: Step_0.gml
+// Handle exiting the truck
+if (keyboard_check_pressed(ord("E"))) {
+    // Exit only if there's space
+    if (!place_meeting(x, y, obj_icetruck)) {
+        var exit_x = x;
+        var exit_y = y + 16; // Place the player just below the truck
+
+        instance_destroy(id); // Remove ice truck player instance
+        global.player_instance = instance_create_layer(exit_x, exit_y, "Instances", obj_player);
+
+        // Respawn ice truck in the last driven position
+        instance_create_layer(x, y, "Instances", obj_icetruck);
+
+        global.current_skin = "player";
+        show_debug_message("Exited ice truck. Current skin: " + global.current_skin);
+    } else {
+        show_debug_message("No space to exit!");
+    }
+}
+
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+xspd = (right_key - left_key) * move_spd;
+yspd = (down_key - up_key) * move_spd;
+
+// Disable movement if the game is paused
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Update ice truck direction and sprite only if moving
+if (xspd != 0 || yspd != 0) {
+    if (xspd > 0 && yspd == 0) face = RIGHT;
+    else if (xspd < 0 && yspd == 0) face = LEFT;
+    else if (yspd > 0 && xspd == 0) face = DOWN;
+    else if (yspd < 0 && xspd == 0) face = UP;
+    else if (xspd > 0 && yspd > 0) face = DOWN_RIGHT;
+    else if (xspd > 0 && yspd < 0) face = UP_RIGHT;
+    else if (xspd < 0 && yspd > 0) face = DOWN_LEFT;
+    else if (xspd < 0 && yspd < 0) face = UP_LEFT;
+
+    sprite_index = sprite[face];
+}
+
+// Collision detection
+if (place_meeting(x + xspd, y, obj_wall)) xspd = 0;
+if (place_meeting(x, y + yspd, obj_wall)) yspd = 0;
+
+// Apply movement
+x += xspd;
+y += yspd;
+
+// Ensure proper depth sorting
+depth = -bbox_bottom;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_ninja
+File: Create_0.gml
+// Create Event for obj_player_ninja
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 3;
+
+// Sliding variables
+sliding = false;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 0;
+
+// Driving variables
+driving = false;
+ice_truck_sprite = spr_icetruck_facedown;
+original_sprite = sprite_index;
+
+// Set direction and sprites
+face = DOWN;
+init_sprites(spr_ninja_right, spr_ninja_up, spr_ninja_left, spr_ninja_down, spr_ninja_up_right, spr_ninja_up_left, spr_ninja_down_right, spr_ninja_down_left);
+
+// Debugging
+show_debug_message("obj_player_ninja: Initialized. Driving state: " + string(driving));
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_ninja
+File: Step_0.gml
+// Step Event for obj_player
+
+// Handle interaction with NPC
+if (keyboard_check_pressed(ord("E"))) {
+    var target_npc = instance_nearest(x, y, obj_npc_old); // Find the nearest NPC
+    if (target_npc != noone && distance_to_object(target_npc) < 48) { // Check proximity
+        target_npc.current_phrase = target_npc.phrases[irandom_range(0, array_length(target_npc.phrases) - 1)]; // Pick a random phrase
+        target_npc.talk_timer = fps * 3; // Show the phrase for 3 seconds
+        target_npc.interact_pause = fps * 3; // Pause NPC movement for 3 seconds
+        show_debug_message("Player interacted with NPC. NPC says: " + target_npc.current_phrase);
+    }
+}
+
+// Handle skin switching
+if (keyboard_check_pressed(ord("E"))) {
+    if (distance_to_object(obj_icetruck) < 32) {
+        show_debug_message("E key pressed");
+        obj_controller.switch_skin(global.current_skin == "player" ? "icetruck" : "player");
+    } else if (distance_to_object(obj_tube) < 32) {
+        show_debug_message("E key pressed");
+        obj_controller.switch_skin(global.current_skin == "player" ? "tube" : "player");
+    }
+}
+
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+// Get xspd & yspd
+if (!sliding) {
+    xspd = (right_key - left_key) * move_spd;
+    yspd = (down_key - up_key) * move_spd;
+} else {
+    // Continue sliding
+    xspd = slide_dir_x * slide_speed;
+    yspd = slide_dir_y * slide_speed;
+
+    // Decelerate slide over time
+    slide_speed *= 0.98; // Adjust this value to control sliding deceleration
+
+    // Stop sliding if speed is low enough
+    if (abs(slide_speed) < 0.1) {
+        sliding = false;
+        xspd = 0;
+        yspd = 0;
+    }
+}
+
+// Pause
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Set sprite
+mask_index = sprite[DOWN];
+if (yspd < 0) {
+    if (xspd < 0) { face = UP_LEFT; }
+    else if (xspd > 0) { face = UP_RIGHT; }
+    else { face = UP; }
+} else if (yspd > 0) {
+    if (xspd < 0) { face = DOWN_LEFT; }
+    else if (xspd > 0) { face = DOWN_RIGHT; }
+    else { face = DOWN; }
+} else {
+    if (xspd > 0) { face = RIGHT; }
+    else if (xspd < 0) { face = LEFT; }
+}
+
+sprite_index = sprite[face];
+
+// Collisions
+xspd = handle_collision("x", xspd);
+yspd = handle_collision("y", yspd);
+
+// Move the player
+x += xspd;
+y += yspd;
+
+// Animate
+if (xspd == 0 && yspd == 0) {
+    image_index = 0;
+}
+
+// Depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_tube
+File: Create_0.gml
+// Create Event for obj_player_tube
+
+// Core variables
+xspd = 0;
+yspd = 0;
+move_spd = 3;
+sliding = true;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 3;
+
+// Set direction
+face = DOWN;
+
+// Define sprite positions for the tube
+tube_sprites = array_create(8);
+tube_sprites[UP] = [0, 0];        
+tube_sprites[LEFT] = [0, 0];      
+tube_sprites[DOWN] = [24, 0];     
+tube_sprites[RIGHT] = [24, 0];    
+tube_sprites[UP_LEFT] = [48, 0];  
+tube_sprites[DOWN_RIGHT] = [48, 0];
+tube_sprites[DOWN_LEFT] = [72, 0]; 
+tube_sprites[UP_RIGHT] = [72, 0];
+
+// Ensure a valid face direction
+if (!array_length(tube_sprites[face])) {
+    face = DOWN; // Default if invalid
+}
+
+mask_index = spr_tube_sheet; // Ensure collision works
+
+// Set global player instance
+global.player_instance = id;
+global.current_skin = "tube";
+
+// Debugging
+show_debug_message("obj_player_tube: Initialized. Player instance ID: " + string(id));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_tube
+File: Draw_0.gml
+// Get tube sprite position
+var tube_x = tube_sprites[face][0];
+var tube_y = tube_sprites[face][1];
+
+// Draw tube
+draw_sprite_part(spr_tube_sheet, 0, tube_x, tube_y, 24, 24, x, y);
+
+// Draw player sitting inside the tube
+var sitting_sprites = array_create(8);
+sitting_sprites[DOWN] = [0, 72];
+sitting_sprites[DOWN_LEFT] = [24, 72];
+sitting_sprites[LEFT] = [48, 72];
+sitting_sprites[UP_LEFT] = [72, 72];
+sitting_sprites[UP] = [96, 72];
+sitting_sprites[UP_RIGHT] = [120, 72];
+sitting_sprites[RIGHT] = [144, 72];
+sitting_sprites[DOWN_RIGHT] = [168, 72];
+
+var sit_x = sitting_sprites[face][0];
+var sit_y = sitting_sprites[face][1];
+
+// Draw player sitting
+draw_sprite_part_ext(spr_player_body, 0, sit_x, sit_y, 24, 24, x, y, 1, 1, c_white, 1);
+draw_sprite_part_ext(spr_player_colour, 0, sit_x, sit_y, 24, 24, x, y, 1, 1, global.player_color, 1);
+
+if (obj_inventory.has_item("Party Hat") && global.party_hat_visible) {
+    draw_sprite_part_ext(
+        spr_player_partyhat, 0,  
+        sit_x, sit_y,  
+        24, 24,  
+        x, y,  
+        1, 1,  
+        c_white, 1  
+    );
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_tube
+File: Step_0.gml
+// Exit the tube
+if (keyboard_check_pressed(ord("E")) && global.current_skin == "tube") {
+    obj_controller.switch_skin("player");
+    show_debug_message("Exited tube. Switched back to player.");
+}
+
+if (keyboard_check_pressed(ord("P")) && obj_inventory.has_item("Party Hat")) { // Toggle Party Hat
+    global.party_hat_visible = !global.party_hat_visible;
+    show_debug_message("Party Hat toggled: " + string(global.party_hat_visible));
+}
+
+// Handle movement input
+var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+xspd = (right_key - left_key) * move_spd;
+yspd = (down_key - up_key) * move_spd;
+
+// Disable movement if the game is paused
+if (instance_exists(obj_pauser)) {
+    xspd = 0;
+    yspd = 0;
+}
+
+// Update tube direction and sprite only if moving
+if (xspd != 0 || yspd != 0) {
+    if (xspd > 0 && yspd == 0) face = RIGHT;
+    else if (xspd < 0 && yspd == 0) face = LEFT;
+    else if (yspd > 0 && xspd == 0) face = DOWN;
+    else if (yspd < 0 && xspd == 0) face = UP;
+    else if (xspd > 0 && yspd > 0) face = DOWN_RIGHT;
+    else if (xspd > 0 && yspd < 0) face = UP_RIGHT;
+    else if (xspd < 0 && yspd > 0) face = DOWN_LEFT;
+    else if (xspd < 0 && yspd < 0) face = UP_LEFT;
+}
+
+// Collision handling
+if (place_meeting(x + xspd, y, obj_wall)) xspd = 0;
+if (place_meeting(x, y + yspd, obj_wall)) yspd = 0;
+
+// Apply movement
+x += xspd;
+y += yspd;
+
+// Ensure proper depth sorting
+depth = -bbox_bottom;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_rocks
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_settings
+File: CleanUp_0.gml
+//font_delete(global.font_main);
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_settings
+File: Create_0.gml
+global.font_main = fnt_bumbastika_sml;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpicker
+File: Create_0.gml
+depth = -1000; // Ensuring the skin picker is in front of everything
+
+// Menu dimensions
+menu_width = 109;
+menu_height = 72;
+
+// Position the skin picker around the current player instance or center it in the view
+if (instance_exists(global.player_instance)) {
+    x = global.player_instance.x - menu_width / 2;
+    y = global.player_instance.y - menu_height / 2;
+} else {
+    x = view_xview[0] + (view_wview[0] - menu_width) / 2;
+    y = view_yview[0] + (view_hview[0] - menu_height) / 2;
+}
+
+// Ensure the global skins array exists
+if (!variable_global_exists("skins")) {
+    global.skins = [
+        {object: obj_player_icetruck, name: "Ice Truck"},
+        {object: obj_player, name: "Penguin"},
+        {object: obj_player_tube, name: "Tube"}
+    ];
+}
+
+// Button properties
+var button_width = 37.5; 
+var button_height = 10; 
+var button_padding = 2.5; 
+var button_x = x + (menu_width - button_width) / 2; 
+var button_y = y + button_padding; 
+
+// Create buttons for each skin
+for (var i = 0; i < array_length(global.skins); i++) {
+    var skin = global.skins[i];
+    var btn_skin = instance_create_layer(button_x, button_y, "Instances", obj_skinpickerbutton); // Reference obj_skinpickerbutton
+    btn_skin.skin_object = skin.object; // Set the object to switch to
+    btn_skin.skin_name = skin.name;    // Set the button label
+
+    // Scale buttons
+    btn_skin.image_xscale = button_width / sprite_get_width(spr_button);
+    btn_skin.image_yscale = button_height / sprite_get_height(spr_button);
+
+    button_y += button_height + button_padding; // Position the next button
+}
+
+// Create a Close button
+var btn_close = instance_create_layer(button_x, button_y, "Instances", obj_skinpickerbutton);
+btn_close.skin_object = noone; // No skin switch, just close
+btn_close.skin_name = "Close"; 
+btn_close.sprite_index = spr_button;
+
+// Scale the Close button
+btn_close.image_xscale = button_width / sprite_get_width(spr_button);
+btn_close.image_yscale = button_height / sprite_get_height(spr_button);
+
+
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpicker
+File: Destroy_0.gml
+// Destroy all button instances when the skin picker menu is destroyed
+with (obj_skinpickerbutton) {
+    instance_destroy(); // Destroy all buttons linked to this menu
+}
+shader_reset(); // Reset the shader to remove the blur effect
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpicker
+File: Draw_0.gml
+// Draw Event for obj_skinpicker
+//if (shader_is_compiled(shd_blur)) {
+    // Apply blur shader
+//    var tex = surface_get_texture(application_surface);
+//    shader_set(shd_blur);
+ //   shader_set_uniform_i(shader_get_uniform(shd_blur, "texture"), tex);
+//    draw_surface(application_surface, 0, 0);
+//    shader_reset();
+//}
+
+// Draw the skin picker menu
+draw_self();
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpicker
+File: KeyPress_80.gml
+show_debug_message("Buttons left: " + string(instance_number(obj_skinpickerbutton)));
+show_debug_message("Skinpickers left: " + string(instance_number(obj_skinpicker)));
+show_debug_message("Skin picker buttons: " + string(instance_number(obj_skinpickerbutton)));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpickerbutton
+File: Create_0.gml
+depth = -1010; // Ensure buttons are in front of the skin picker
+
+// Initialize button-specific variables
+skin_object = noone; // The skin this button switches to
+skin_name = "";      // The name displayed on the button
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpickerbutton
+File: Draw_0.gml
+// Draw Event for obj_button
+draw_self(); // Draw the button sprite
+
+// Draw the button text
+draw_set_color(c_black); // Set text color to black
+draw_set_halign(fa_center); // Center text horizontally
+draw_set_valign(fa_middle); // Center text vertically
+
+var button_width = sprite_width * image_xscale;
+var button_height = sprite_height * image_yscale;
+
+var text_x = x + button_width / 2;
+var text_y = y + button_height / 2;
+
+draw_text(text_x, text_y, skin_name); // Center the text
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_skinpickerbutton
+File: Mouse_4.gml
+if (skin_object != noone) {
+    // Ensure the player instance exists
+    if (instance_exists(global.player_instance)) {
+        // Store the current player position
+        var player_x = global.player_instance.x;
+        var player_y = global.player_instance.y;
+
+        // Destroy the current player instance
+        instance_destroy(global.player_instance);
+
+        // Create the new player instance with the selected skin
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", skin_object);
+        global.current_skin = skin_name; // Update the current skin name
+
+        show_debug_message("Skin switched to: " + global.current_skin);
+    } else {
+        show_debug_message("Error: global.player_instance does not exist!");
+    }
+} else if (skin_name == "Close") {
+    // Close the menu
+    with (obj_skinpicker) {
+        instance_destroy();
+    }
+    show_debug_message("Skin picker closed.");
+} else {
+    show_debug_message("Error: Skin object is invalid.");
+}
+
+// Destroy the skin picker menu if a valid skin was selected
+if (skin_object != noone) {
+    with (obj_skinpicker) {
+        instance_destroy();
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
+File: Create_0.gml
+// Create Event for obj_sled_player
+xspd = 0;
+yspd = 0;
+move_spd = 4;
+lives = 3;
+global.game_started = true; // Game starts immediately
+game_timer = 10 * 60; // 10 seconds game timer (assuming 60 FPS)
+collision_cooldown = 30; // Initialize collision cooldown
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
+File: Draw_0.gml
+// Draw Event for obj_sled_player
+
+draw_self(); // Draw the player sprite
+
+if (!global.game_started) {
+    var countdown_seconds = global.countdown_timer div 60;
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_color(c_black);
+    draw_text(room_width / 2, room_height / 2, string(countdown_seconds));
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
+File: Other_4.gml
+// Room Start Event for obj_sled_player
+global.player_instance = id;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
+File: Step_0.gml
+// Step Event for obj_sled_player
+
+if (global.game_started) {
+    game_timer -= 1; // Decrement game timer
+
+    // Horizontal movement using 'A', 'D' keys and arrow keys
+    if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
+        x -= 5; // Move left
+    } 
+    if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
+        x += 5; // Move right
+    }
+
+    // Prevent movement outside the room boundaries
+    x = clamp(x, 0, room_width - sprite_width);
+
+    // Check for collision with obstacles
+    if (collision_cooldown <= 0 && place_meeting(x, y, obj_obstacle)) {
+        // Handle collision (e.g., stop movement, end game, etc.)
+        show_debug_message("Collision with obstacle!");
+        lives -= 1; // Reduce lives on collision
+        collision_cooldown = 30; // Reset cooldown
+        if (lives <= 0) {
+            switch_skin("player");
+            room_goto(rm_ski_mountaintop);
+        }
+    } else {
+        collision_cooldown -= 1; // Decrement cooldown
+    }
+
+    // Game win condition
+    if (game_timer <= 0 && lives > 0) {
+        switch_skin("player");
+        room_goto(rm_ski_village); // Transition to rm_ski_village
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_slippery
+File: Create_0.gml
+xspd = 5;
+yspd = 5;
+
+sliding = true;
+slide_dir_x = 0;
+slide_dir_y = 0;
+slide_speed = 4;
+move_spd = 0;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_slippery
+File: Step_0.gml
+if (!sliding) {
+    sliding = true;
+    slide_dir_x = sign(xspd);
+    slide_dir_y = sign(yspd);
+     slide_speed = max(abs(xspd), abs(yspd)); // Start with current speed
+}
+
+ // Deceleration logic for sliding
+    xspd += -slide_dir_x * 0.2; // Adjust the "0.2" for more/less deceleration
+    yspd += -slide_dir_y * 0.2;
+
+    // Add a rubber-band effect by reversing the sliding direction slightly
+    if (abs(xspd) < 0.1) slide_dir_x = -slide_dir_x;
+    if (abs(yspd) < 0.1) slide_dir_y = -slide_dir_y;
+
+    // Clamp speed to avoid infinite sliding
+    slide_speed *= 0.95; // Reduce speed gradually
+	if (slide_speed < 0.1) {
+		sliding = false;
+		
+	if (place_meeting(x + slide_dir_x * slide_speed, y, obj_wall)) {
+    slide_dir_x = -slide_dir_x; // Bounce back
+	}
+	if (place_meeting(x, y + slide_dir_y * slide_speed, obj_wall)) {
+    slide_dir_y = -slide_dir_y;
+	}
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_small_bushes
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_small_trees
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tall_bush
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tall_trees
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
+File: Create_0.gml
+// Core variables
+face = DOWN;
+
+// Assign sprite sheet directions (indices for spr_tube_sheet)
+tube_sprites = array_create(8);
+tube_sprites[UP] = [0, 0];        // UP, LEFT
+tube_sprites[LEFT] = [0, 0];
+tube_sprites[DOWN] = [24, 0];     // DOWN, RIGHT
+tube_sprites[RIGHT] = [24, 0];
+tube_sprites[UP_LEFT] = [48, 0];  // UP_LEFT, DOWN_RIGHT
+tube_sprites[DOWN_RIGHT] = [48, 0];
+tube_sprites[DOWN_LEFT] = [72, 0]; // DOWN_LEFT, UP_RIGHT
+tube_sprites[UP_RIGHT] = [72, 0];
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
+File: Destroy_0.gml
+instance_destroy(); // Destroy the current ice truck instance
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
+File: Draw_0.gml
+// Get tube sprite position
+var tube_x = tube_sprites[face][0];
+var tube_y = tube_sprites[face][1];
+
+// Draw tube
+draw_sprite_part(spr_tube_sheet, 0, tube_x, tube_y, 24, 24, x, y);
+
+// Draw player sitting inside the tube
+var sitting_sprites = array_create(8);
+sitting_sprites[DOWN] = [0, 72];
+sitting_sprites[DOWN_LEFT] = [24, 72];
+sitting_sprites[LEFT] = [48, 72];
+sitting_sprites[UP_LEFT] = [72, 72];
+sitting_sprites[UP] = [96, 72];
+sitting_sprites[UP_RIGHT] = [120, 72];
+sitting_sprites[RIGHT] = [144, 72];
+sitting_sprites[DOWN_RIGHT] = [168, 72];
+
+var sit_x = sitting_sprites[face][0];
+var sit_y = sitting_sprites[face][1];
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Tube");
+        if (added) {
+            show_debug_message("Tube added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full. Cannot pick up tube.");
+        }
+    }
+}
+
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_ui
+File: Create_0.gml
+// obj_ui_create.txt
+// Initialize variables
+ui_elements = []; // Array to store UI elements
+
+// Example: Add a button to the UI
+var button = {
+    x: 100,
+    y: 100,
+    width: 200,
+    height: 50,
+    text: "Click Me",
+    action: function() {
+        show_message("Button Clicked!");
+    }
+};
+array_push(ui_elements, button);
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_ui
+File: Draw_0.gml
+// obj_ui_draw.txt
+// Set font and alignment for UI text
+draw_set_font(fnt_bumbastika_sml);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+
+// Draw UI elements
+for (var i = 0; i < array_length(ui_elements); i++) {
+    var elem = ui_elements[i];
+    draw_rectangle(elem.x, elem.y, elem.x + elem.width, elem.y + elem.height, false);
+    draw_text(elem.x + elem.width / 2, elem.y + elem.height / 2, elem.text);
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_ui
+File: Mouse_4.gml
+// obj_ui_leftpressed.txt
+// Get mouse position
+var mouse_x_pos = device_mouse_x_to_gui(0);
+var mouse_y_pos = device_mouse_y_to_gui(0);
+
+// Check if any UI element is clicked
+for (var i = 0; i < array_length(ui_elements); i++) {
+    var elem = ui_elements[i];
+    if (mouse_x_pos > elem.x && mouse_x_pos < elem.x + elem.width && mouse_y_pos > elem.y && mouse_y_pos < elem.y + elem.height) {
+        // Execute the action associated with the UI element
+        elem.action();
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
+File: Alarm_0.gml
+/// Alarm[0] Event
+global.warp_cooldown = false;
+show_debug_message("DEBUG: Warp cooldown finished. Player can warp again.");
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
+File: Create_0.gml
+// obj_warp: Create Event
+target_rm = 0;
+target_x = 0;
+target_y = 0;
+target_face = 0;
+target_instance = noone;
+
+global.warp_cooldown = true;
+alarm[0] = room_speed / 2;
+
+show_debug_message("obj_warp initialized. Target Room: " + string(target_rm));
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
+File: Draw_0.gml
+draw_sprite_tiled(sprite_index, image_index, 0, 0)
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
+File: Other_7.gml
+/// Animation End Event for obj_warp
+show_debug_message("DEBUG: obj_warp transition initiated. Moving player before room transition.");
+
+// Ensure the player moves before switching rooms
+if (target_instance != noone) {
+    target_instance.x = target_x;
+    target_instance.y = target_y;
+    target_instance.face = target_face;
+    global.player_instance = target_instance; // Update global instance
+    show_debug_message("Player successfully moved to new position.");
+} else {
+    show_debug_message("ERROR: Target instance not found during warp.");
+}
+
+// Perform the room transition
+room_goto(target_rm);
+
+// Restore camera settings
+if (instance_exists(global.camera)) {
+    view_set_camera(0, global.camera);
+    camera_set_view_size(global.camera, 640, 480);
+    show_debug_message("DEBUG: Camera viewport restored after room transition.");
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
+File: Step_0.gml
+// Step Event for obj_warp
+if (room == target_rm && image_index < 1) {
+    instance_destroy();
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_block
+File: Create_0.gml
+target_rm = 0;
+target_x = 0;
+target_y = 0;
+target_face = 0;
+// Create Event for obj_warp
+if (!variable_global_exists("warp_cooldown")) {
+    global.warp_cooldown = false;
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_block
+File: Other_4.gml
+// Check if a warp instance exists
+if (instance_exists(obj_warp)) {
+    var warp_inst = instance_find(obj_warp, 0);
+    if (warp_inst != noone) {
+        // Move the player instance to the target coordinates
+        global.player_instance.x = warp_inst.target_x;
+        global.player_instance.y = warp_inst.target_y;
+
+        // Optional: Adjust the player's facing direction
+        if (is_real(warp_inst.target_face)) {
+            global.player_instance.face = warp_inst.target_face;
+        }
+
+        // Destroy the warp instance once used
+        instance_destroy(warp_inst);
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_block
+File: Step_0.gml
+/// Step Event for obj_warp_block
+
+// Handle Player Warping
+if (instance_exists(global.player_instance) && place_meeting(x, y, global.player_instance) && !instance_exists(obj_warp)) 
+{
+    show_debug_message("DEBUG: obj_player detected on obj_warp_block. Warping...");
+    
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;   // Ensure correct target coordinates
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = self.target_face;
+    inst.target_instance = global.player_instance; // Use global instance of player
+	
+}
+
+// Handle Ice Truck Warping
+if (instance_exists(obj_player_icetruck) && place_meeting(x, y, obj_player_icetruck) && !instance_exists(obj_warp)) 
+{
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = obj_player_icetruck.face;
+    inst.target_instance = instance_find(obj_player_icetruck, 0);
+
+}
+
+/// Step Event for obj_warp_block
+
+// Handle Player Warping
+if (instance_exists(global.player_instance) && place_meeting(global.player_instance.x, global.player_instance.y, id) && !instance_exists(obj_warp)) 
+{
+    show_debug_message("DEBUG: obj_player_tube detected on obj_warp_block. Warping...");
+
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;   // Correctly assign the warp block's values
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = self.target_face;
+    inst.target_instance = global.player_instance;
+
+    // Debugging output to confirm correct values are passed
+    show_debug_message("Warping obj_player_tube to Room: " + string(inst.target_rm) +
+        " Position: (" + string(inst.target_x) + ", " + string(inst.target_y) + ") Facing: " + string(inst.target_face));
+}
+
+
+
+// Handle NPC Warping
+if (instance_exists(obj_npc_old) && place_meeting(x, y, obj_npc_old) && !instance_exists(obj_warp)) 
+{
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = obj_npc_old.face;
+    inst.target_instance = instance_find(obj_npc_old, 0);
+
+}
+
+if (!global.warp_cooldown && instance_exists(global.player_instance) && place_meeting(global.player_instance.x, global.player_instance.y, id) && !instance_exists(obj_warp)) 
+{
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = self.target_face;
+    inst.target_instance = global.player_instance;
+}
+
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishing_rod
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Fishing Rod");
+        if (added) {
+            show_debug_message("Fishing Rod added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
+File: Alarm_0.gml
+global.repair_cooldown = false;
+show_debug_message("Repair cooldown ended. You can now enter the truck.");
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
+File: Create_0.gml
+// The broken state of the ice truck
+repair_required = true;
+is_driveable = false;
+
+// Assign broken ice truck sprite (facing down by default)
+sprite_index = spr_icetruck_facedown;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
+File: Destroy_0.gml
+instance_destroy(); // Destroy the current ice truck instance
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
+File: Draw_0.gml
+// Depth for proper rendering
+depth = -1000;
+draw_self();
+
+// Display prompt if the player is near
+if (distance_to_object(obj_player) < 16) {
+    draw_set_font(fnt_earlygb);
+    draw_set_color(c_black);
+    draw_text(x - 20, y - 20, "Press 'R' to repair");
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
+File: Step_0.gml
+// Ensure player is near and pressing "E" to repair
+if (keyboard_check_pressed(ord("R")) && place_meeting(x, y, obj_player) < 32) {
+    if (instance_exists(obj_inventory) && obj_inventory.has_item("Wrench")) {
+        show_debug_message("Repairing ice truck...");
+
+        // Destroy the broken truck
+        instance_destroy();
+        
+        // Replace with repaired version
+        var new_truck = instance_create_layer(x, y, "Instances", obj_icetruck);
+        new_truck.repair_required = false; // ✅ Mark as repaired
+        new_truck.is_driveable = true; // ✅ Allow driving
+        
+        // Prevent instant entry by disabling key input for a short time
+        global.repair_cooldown = true;
+        alarm[0] = 30; // Set a short cooldown before allowing entry (0.5 sec)
+
+        show_debug_message("Ice truck repaired! It is now driveable.");
+    } else {
+        show_debug_message("You need a wrench to repair this!");
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
+File: Create_0.gml
+// Initialize inventory system
+inventory_size = 8; // Number of slots
+inventory = array_create(inventory_size, -1); // Store item indices instead of strings
+
+// Define item indices based on the sprite sheet layout
+item_index_map = ds_map_create();
+ds_map_add(item_index_map, "Wrench", 0);
+ds_map_add(item_index_map, "Party Hat", 1);
+ds_map_add(item_index_map, "Fishing Rod", 2);
+ds_map_add(item_index_map, "Tube", 3);
+ds_map_add(item_index_map, "Fish", 4);
+ds_map_add(item_index_map, "Mullet", 5);
+
+// Track toggled state of the party hat
+global.party_hat_visible = true;
+
+persistent = true; // Ensure inventory stays across rooms
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
+File: Draw_0.gml
+// Draw inventory UI at fixed bottom-center position
+draw_sprite(spr_inventory_ui, 0, x, y);
+depth = -5000;
+// Define slot positions based on the new layout
+var slot_positions = [
+    [x + 5, y + 5],    // Slot 1
+    [x + 25, y + 5],   // Slot 2
+    [x + 45, y + 5],   // Slot 3
+    [x + 65, y + 5],   // Slot 4
+    [x + 85, y + 5],   // Slot 5
+    [x + 105, y + 5],  // Slot 6
+    [x + 125, y + 5],  // Slot 7
+    [x + 145, y + 5]   // Slot 8
+];
+
+// Draw items in assigned slots if player has them
+for (var i = 0; i < inventory_size; i++) {
+    if (inventory[i] != -1) { // Valid item index
+        var slot_x = slot_positions[i][0];
+        var slot_y = slot_positions[i][1];
+
+        // Correctly draw the item using its assigned index
+        draw_sprite_part(spr_inventory_items, 0, inventory[i] * 18, 0, 18, 18, slot_x, slot_y);
+    }
+}
+
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
+File: Step_0.gml
+// Position inventory UI fixed at the bottom center of the viewport
+x = camera_get_view_x(global.camera) + (camera_get_view_width(global.camera) / 2) - (170 / 2);
+y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - 29 - 10;
+
+// Function: Check if player has an item
+function has_item(item_name) {
+    return array_contains(inventory, ds_map_find_value(item_index_map, item_name));
+}
+
+// Function: Add an item to the inventory in the next available slot
+function add_to_inventory(item_name) {
+    var item_index = ds_map_find_value(item_index_map, item_name);
+
+    if (is_undefined(item_index)) {
+        show_debug_message("ERROR: Invalid item name - " + string(item_name));
+        return false;
+    }
+
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == -1) { // Empty slot
+            inventory[i] = item_index; // Store the correct sprite index
+            show_debug_message("Added " + item_name + " (Index: " + string(item_index) + ") to inventory.");
+            return true;
+        }
+    }
+
+    show_debug_message("Inventory full!");
+    return false;
+}
+
+
+// Hide player instead of destroying in UI rooms
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
+
+if (is_ui_room) {
+    if (instance_exists(obj_inventory)) {
+        obj_inventory.visible = false;
+        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
+    }
+} else {
+    if (instance_exists(obj_inventory)) {
+       obj_inventory.visible = true;
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lrg_boat
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_party_hat
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Party Hat");
+        if (added) {
+            show_debug_message("Party Hat added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_signpost
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sml_boat
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_map
+File: Create_0.gml
+// obj_warp_map: Create Event
+target_rm = noone;  // Set this in Creation Code
+target_x = 0;  
+target_y = 0;  
+target_face = 0;  
+depth = -9999;  // Ensure it's drawn on top
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_map
+File: Mouse_4.gml
+// obj_warp_map: Left Pressed Event (Handles Click to Warp)
+if (target_rm != noone) {
+    show_debug_message("Warping to Room: " + string(target_rm) + " at (" + string(target_x) + ", " + string(target_y) + ")");
+    
+    // Store last room before warping
+    global.last_room = room;  
+    
+    // Create warp instance to handle transition
+    var warp_inst = instance_create_depth(0, 0, -9999, obj_warp);
+    warp_inst.target_rm = target_rm;
+    warp_inst.target_x = target_x;
+    warp_inst.target_y = target_y;
+    warp_inst.target_face = target_face;
+    warp_inst.target_instance = global.player_instance;
+    
+    room_goto(target_rm);
+	
+	
+}
+
+
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_coffeshop_complete
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_giftshop_complete
+File: Create_0.gml
+//depth
+depth = -bbox_bottom;
