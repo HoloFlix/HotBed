@@ -1,0 +1,16 @@
+rm_menu - 3 obj_menu_buttons "Play Game" "Settings" "Exit"
+rm_colorpicker_menu
+rm_init - obj_controller,obj_initializer,obj_camera,obj_chat_window,obj_pauser,obj_map_icon,obj_map,obj_inventory,obj_ui,obj_pause_menu, obj_skinpicker, obj_color_wheel [Creation Code: room_goto_next();]
+rm_welcome_room - obj_icetruck,obj_tube, obj_npc
+rm_shore - obj_icetruck,obj_tube
+rm_plaza - obj_icetruck,obj_tube
+rm_forest - obj_icetruck,obj_tube
+rm_cove - obj_icetruck,obj_tube
+rm_snow_fort - obj_icetruck,obj_tube
+rm_town - obj_icetruck,obj_tube
+rm_beach - obj_icetruck,obj_tube
+rm_ski_village - obj_icetruck,obj_tube
+rm_ski_mountaintop - obj_icetruck,obj_tube
+rm_sled_racing - obj_sled_player, obj_obstacle, obj_obstacle_controller
+rm_pause_screen - obj_pause_menu, obj_settings
+rm_settings_menu - obj_settings, obj_main_settings
