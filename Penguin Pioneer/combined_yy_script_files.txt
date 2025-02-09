@@ -1,0 +1,105 @@
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
+File: scr_camera_easing.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_camera_easing",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_camera_easing",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_convert_gui_to_world
+File: scr_convert_gui_to_world.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_convert_gui_to_world",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_convert_gui_to_world",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_handle_collision
+File: scr_handle_collision.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_handle_collision",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_handle_collision",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
+File: scr_init_sprites.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_init_sprites",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_init_sprites",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_macros
+File: scr_macros.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_macros",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_macros",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_music_function
+File: scr_music_function.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_music_function",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_music_function",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_skin_switch
+File: scr_skin_switch.yy
+{
+  "$GMScript":"v1",
+  "%Name":"scr_skin_switch",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_skin_switch",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
