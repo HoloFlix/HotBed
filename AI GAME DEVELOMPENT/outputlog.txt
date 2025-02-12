@@ -1,0 +1,3034 @@
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=5
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 2 usecs for 61 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Total memory used = 8763793 (0x0085b991) bytes 8.36MB
+Free memory = 6303496 (0x00602f08) bytes 6.01MB
+Peak memory used = 11770001 (0x00b39891) bytes 11.22MB
+**********************************.
+Entering main loop.
+**********************************.
+DEBUG: New global camera created. ID: 153
+obj_player: Initialized. Driving state: 0
+Player instance created: ref instance 100556
+DEBUG: Room Start Event triggered in obj_controller.
+obj_player: Initialized. Driving state: 0
+DEBUG: Camera now follows player.
+DEBUG: UI layer already exists.
+DEBUG: Room Start Event triggered in obj_controller.
+UI layer already exists.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100563
+DEBUG: Restoring camera settings after room transition...
+DEBUG: Reattached to global camera. ID: 154
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Camera now follows player.
+DEBUG: UI layer already exists.
+DEBUG: Room Start Event triggered in obj_controller.
+UI layer already exists.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100563
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+Added Snow to inventory.
+Snow added to inventory.
+Added Wood to inventory.
+Wood added to inventory.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 1 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+ERROR: Item index 0 not found in item_index_map
+ERROR: Failed to drop item. Item name is empty.
+###game_end###254
