@@ -3006,24 +3006,24 @@ if (keyboard_check_pressed(ord("R")) && place_meeting(x, y, obj_player) < 32) {
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Create_0.gml
+/// Create Event for obj_inventory
+
 // Initialize inventory system
 inventory_size = 8; // Number of slots
 inventory = array_create(inventory_size, -1); // Store item indices instead of strings
 active_slot = 0; // Currently selected inventory slot
 
 // Define item indices based on the sprite sheet layout
-if (!variable_instance_exists(self, "item_index_map") || is_undefined(item_index_map)) {
-    item_index_map = ds_map_create();
-    ds_map_add(item_index_map, "Wrench", 0);
-    ds_map_add(item_index_map, "Party Hat", 1);
-    ds_map_add(item_index_map, "Fishing Rod", 2);
-    ds_map_add(item_index_map, "Tube", 3);
-    ds_map_add(item_index_map, "Fish", 4);
-    ds_map_add(item_index_map, "Mullet", 5);
-    ds_map_add(item_index_map, "Battery", 6);
-    ds_map_add(item_index_map, "Wood", 7);
-    ds_map_add(item_index_map, "Snow", 8);
-}
+global.item_index_map = ds_map_create();
+ds_map_add(global.item_index_map, "Wrench", 0);
+ds_map_add(global.item_index_map, "Party Hat", 1);
+ds_map_add(global.item_index_map, "Fishing Rod", 2);
+ds_map_add(global.item_index_map, "Tube", 3);
+ds_map_add(global.item_index_map, "Fish", 4);
+ds_map_add(global.item_index_map, "Mullet", 5);
+ds_map_add(global.item_index_map, "Battery", 6);
+ds_map_add(global.item_index_map, "Wood", 7);
+ds_map_add(global.item_index_map, "Snow", 8);
 
 // Track special items (auto-remove when used)
 auto_remove_items = ["Party Hat", "Tube"];
@@ -3031,8 +3031,10 @@ auto_remove_items = ["Party Hat", "Tube"];
 // Track toggled state of the party hat
 global.party_hat_visible = true;
 
-persistent = true; // Ensure inventory stays across rooms
+// Initialize global active item index
+global.active_item_index = active_slot; // Set to the first slot initially
 
+persistent = true; // Ensure inventory stays across rooms
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Draw_0.gml
 // Draw inventory UI
@@ -3061,6 +3063,8 @@ for (var i = 0; i < inventory_size; i++) {
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Step_0.gml
+/// Step Event for obj_inventory
+
 // Position inventory UI fixed at the bottom center of the viewport
 x = camera_get_view_x(global.camera) + (camera_get_view_width(global.camera) / 2) - (170 / 2);
 y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - 29 - 10;
@@ -3068,12 +3072,14 @@ y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - 2
 // Scroll inventory (Clamp within valid range)
 if (mouse_wheel_up()) {
     active_slot = min(active_slot + 1, inventory_size - 1);
+    global.active_item_index = active_slot; // Update global active item index
 }
 if (mouse_wheel_down()) {
     active_slot = max(active_slot - 1, 0);
+    global.active_item_index = active_slot; // Update global active item index
 }
 
-// Handle item dropping with "D"
+// Handle item dropping with "F"
 if (keyboard_check_pressed(ord("F"))) {
     drop_active_item();
 }
@@ -3096,7 +3102,7 @@ if (keyboard_check_pressed(ord("P"))) {
 
 // Function: Check if player has an item
 function has_item(item_name) {
-    var item_index = ds_map_find_value(item_index_map, item_name);
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
     if (is_undefined(item_index)) return false;
     
     for (var i = 0; i < inventory_size; i++) {
@@ -3107,7 +3113,7 @@ function has_item(item_name) {
 
 // Function: Add an item to the inventory
 function add_to_inventory(item_name) {
-    var item_index = ds_map_find_value(item_index_map, item_name);
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
     if (is_undefined(item_index)) {
         show_debug_message("ERROR: Invalid item name - " + string(item_name));
         return false;
@@ -3127,7 +3133,7 @@ function add_to_inventory(item_name) {
 
 // Function: Remove an item
 function remove_item(item_name) {
-    var item_index = ds_map_find_value(item_index_map, item_name);
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
     if (is_undefined(item_index)) return;
 
     for (var i = 0; i < inventory_size; i++) {
@@ -3139,47 +3145,44 @@ function remove_item(item_name) {
     }
 }
 
-// Function: Drop the active item
+// Function to drop the active item from the inventory
 function drop_active_item() {
-    var item_index = inventory[active_slot];
-    if (item_index == -1) return; // No item to drop
+    var item_index = get_active_item_index();
+    var item_name = get_item_name_from_index(item_index);
 
-    var item_name;
-if (!is_undefined(item_index)) {
-    item_name = get_item_name_from_index(item_index);
-}
-    if (is_undefined(item_name)) {
-        show_debug_message("ERROR: Item name lookup failed.");
-        return;
+    if (item_name != "") {
+        // Additional code to handle item dropping...
+        show_debug_message("Dropped item: " + item_name);
+    } else {
+        show_debug_message("ERROR: Failed to drop item. Item name is empty.");
     }
-
-    var obj = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_dropped_item);
-    obj.item_type = item_name;
-    
-    remove_item(item_name);
-    show_debug_message("Dropped " + item_name + " in room.");
 }
 
-// Function: Get item name from index
-function get_item_name_from_index(index) {
-    if (is_undefined(item_index_map)) {
-        show_debug_message("ERROR: item_index_map is undefined!");
-        return undefined;
+// Function to get the name of the item from its index
+function get_item_name_from_index(item_index) {
+    // Ensure the item_index exists in the map
+    var item_name = ds_map_find_value(global.item_index_map, item_index);
+    if (!is_undefined(item_name)) {
+        return item_name;
+    } else {
+        show_debug_message("ERROR: Item index " + string(item_index) + " not found in item_index_map");
+        return "";
     }
-
-    var keys = ds_map_keys(item_index_map);
-    if (array_length(keys) == 0) {
-        show_debug_message("ERROR: item_index_map has no keys!");
-        return undefined;
-    }
-
-    for (var i = 0; i < array_length(keys); i++) {
-        if (ds_map_find_value(item_index_map, keys[i]) == index) return keys[i];
-    }
-    
-    show_debug_message("ERROR: No matching item name found for index " + string(index));
-    return undefined;
 }
+
+// Function to get the active item index (placeholder implementation)
+function get_active_item_index() {
+    // Ensure global.active_item_index is defined and valid
+    if (global.active_item_index != undefined && global.active_item_index >= 0 && global.active_item_index < inventory_size) {
+        return global.active_item_index;
+    } else {
+        show_debug_message("ERROR: global.active_item_index is not defined or out of range");
+        return -1;
+    }
+}
+
+// Drop the active item
+drop_active_item();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lrg_boat
 File: Create_0.gml
 //depth
