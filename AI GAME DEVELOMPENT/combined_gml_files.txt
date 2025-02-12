@@ -376,22 +376,21 @@ if (is_ui_room) {
     }
 } else {
     // Ensure the player instance is recreated when returning from rm_map
-    if (!instance_exists(global.player_instance)) {
-        show_debug_message("WARNING: No player instance found. Recreating...");
-        var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
-        var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
+if (!instance_exists(global.player_instance)) {
+    var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
+    var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
 
-        show_debug_message("Spawning player at: (" + string(player_x) + ", " + string(player_y) + ")");
-
-        global.player_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
-        global.current_skin = "player"; // Ensure correct skin is applied
-
-        if (instance_exists(global.player_instance)) {
-            show_debug_message("DEBUG: Player instance successfully recreated.");
-        } else {
-            show_debug_message("ERROR: Failed to recreate player instance!");
+    // Ensure the correct skin is used
+    var new_skin = obj_player; // Default
+    for (var i = 0; i < array_length(global.skins); i++) {
+        if (global.skins[i].name == global.current_skin) {
+            new_skin = global.skins[i].object;
+            break;
         }
     }
+
+    global.player_instance = instance_create_layer(player_x, player_y, "Instances", new_skin);
+}
 
     // ✅ Reattach the camera to the new player instance
     if (instance_exists(global.player_instance)) {
@@ -1974,6 +1973,31 @@ if (instance_exists(obj_inventory)) {
     }
 }
 
+// Step Event for obj_player
+
+var b = instance_nearest(x, y, obj_building);
+
+if (b != noone && distance_to_object(b) < 32 && b.repair_state == 0) {
+    if (keyboard_check_pressed(ord("E"))) {
+        var has_items = true;
+
+        // Check if the player has all required repair materials
+        for (var i = 0; i < array_length(b.repair_items); i++) {
+            if (!obj_inventory.has_item(b.repair_items[i])) {
+                has_items = false;
+                break;
+            }
+        }
+
+        if (has_items) {
+            b.repair_state = 1;
+            show_debug_message("Repair started!");
+        } else {
+            show_debug_message("Missing required items!");
+        }
+    }
+}
+
 // 🎮 **Handle Movement**
 var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
 var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
@@ -2688,7 +2712,7 @@ var sit_x = sitting_sprites[face][0];
 var sit_y = sitting_sprites[face][1];
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
 File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
     if (instance_exists(obj_inventory)) {
         var added = obj_inventory.add_to_inventory("Tube");
         if (added) {
@@ -2957,7 +2981,7 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
 File: Step_0.gml
 // Ensure player is near and pressing "E" to repair
 if (keyboard_check_pressed(ord("R")) && place_meeting(x, y, obj_player) < 32) {
-    if (instance_exists(obj_inventory) && obj_inventory.has_item("Wrench")) {
+    if (instance_exists(obj_inventory) && obj_inventory.has_item("Battery")) {
         show_debug_message("Repairing ice truck...");
 
         // Destroy the broken truck
@@ -2985,15 +3009,24 @@ File: Create_0.gml
 // Initialize inventory system
 inventory_size = 8; // Number of slots
 inventory = array_create(inventory_size, -1); // Store item indices instead of strings
+active_slot = 0; // Currently selected inventory slot
 
 // Define item indices based on the sprite sheet layout
-item_index_map = ds_map_create();
-ds_map_add(item_index_map, "Wrench", 0);
-ds_map_add(item_index_map, "Party Hat", 1);
-ds_map_add(item_index_map, "Fishing Rod", 2);
-ds_map_add(item_index_map, "Tube", 3);
-ds_map_add(item_index_map, "Fish", 4);
-ds_map_add(item_index_map, "Mullet", 5);
+if (!variable_instance_exists(self, "item_index_map") || is_undefined(item_index_map)) {
+    item_index_map = ds_map_create();
+    ds_map_add(item_index_map, "Wrench", 0);
+    ds_map_add(item_index_map, "Party Hat", 1);
+    ds_map_add(item_index_map, "Fishing Rod", 2);
+    ds_map_add(item_index_map, "Tube", 3);
+    ds_map_add(item_index_map, "Fish", 4);
+    ds_map_add(item_index_map, "Mullet", 5);
+    ds_map_add(item_index_map, "Battery", 6);
+    ds_map_add(item_index_map, "Wood", 7);
+    ds_map_add(item_index_map, "Snow", 8);
+}
+
+// Track special items (auto-remove when used)
+auto_remove_items = ["Party Hat", "Tube"];
 
 // Track toggled state of the party hat
 global.party_hat_visible = true;
@@ -3002,32 +3035,29 @@ persistent = true; // Ensure inventory stays across rooms
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Draw_0.gml
-// Draw inventory UI at fixed bottom-center position
+// Draw inventory UI
 draw_sprite(spr_inventory_ui, 0, x, y);
 depth = -5000;
-// Define slot positions based on the new layout
+
 var slot_positions = [
-    [x + 5, y + 5],    // Slot 1
-    [x + 25, y + 5],   // Slot 2
-    [x + 45, y + 5],   // Slot 3
-    [x + 65, y + 5],   // Slot 4
-    [x + 85, y + 5],   // Slot 5
-    [x + 105, y + 5],  // Slot 6
-    [x + 125, y + 5],  // Slot 7
-    [x + 145, y + 5]   // Slot 8
+    [x + 5, y + 5], [x + 25, y + 5], [x + 45, y + 5], [x + 65, y + 5],
+    [x + 85, y + 5], [x + 105, y + 5], [x + 125, y + 5], [x + 145, y + 5]
 ];
 
-// Draw items in assigned slots if player has them
+// Draw items
 for (var i = 0; i < inventory_size; i++) {
-    if (inventory[i] != -1) { // Valid item index
+    if (inventory[i] != -1) {
         var slot_x = slot_positions[i][0];
         var slot_y = slot_positions[i][1];
 
-        // Correctly draw the item using its assigned index
         draw_sprite_part(spr_inventory_items, 0, inventory[i] * 18, 0, 18, 18, slot_x, slot_y);
+
+        // Highlight the active slot
+        if (i == active_slot) {
+            draw_sprite(spr_inventory_highlight, 0, slot_x, slot_y);
+        }
     }
 }
-
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Step_0.gml
@@ -3035,15 +3065,49 @@ File: Step_0.gml
 x = camera_get_view_x(global.camera) + (camera_get_view_width(global.camera) / 2) - (170 / 2);
 y = camera_get_view_y(global.camera) + camera_get_view_height(global.camera) - 29 - 10;
 
-// Function: Check if player has an item
-function has_item(item_name) {
-    return array_contains(inventory, ds_map_find_value(item_index_map, item_name));
+// Scroll inventory (Clamp within valid range)
+if (mouse_wheel_up()) {
+    active_slot = min(active_slot + 1, inventory_size - 1);
+}
+if (mouse_wheel_down()) {
+    active_slot = max(active_slot - 1, 0);
 }
 
-// Function: Add an item to the inventory in the next available slot
+// Handle item dropping with "D"
+if (keyboard_check_pressed(ord("F"))) {
+    drop_active_item();
+}
+
+// Auto-remove Tube when switching to obj_player_tube
+if (global.current_skin == "tube" && has_item("Tube")) {
+    remove_item("Tube");
+}
+
+// Toggle Party Hat when pressing "P"
+if (keyboard_check_pressed(ord("P"))) {
+    if (global.party_hat_visible) {
+        global.party_hat_visible = false;
+        if (!has_item("Party Hat")) add_to_inventory("Party Hat"); // Ensure it only adds once
+    } else {
+        global.party_hat_visible = true;
+        remove_item("Party Hat");
+    }
+}
+
+// Function: Check if player has an item
+function has_item(item_name) {
+    var item_index = ds_map_find_value(item_index_map, item_name);
+    if (is_undefined(item_index)) return false;
+    
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == item_index) return true;
+    }
+    return false;
+}
+
+// Function: Add an item to the inventory
 function add_to_inventory(item_name) {
     var item_index = ds_map_find_value(item_index_map, item_name);
-
     if (is_undefined(item_index)) {
         show_debug_message("ERROR: Invalid item name - " + string(item_name));
         return false;
@@ -3051,8 +3115,8 @@ function add_to_inventory(item_name) {
 
     for (var i = 0; i < inventory_size; i++) {
         if (inventory[i] == -1) { // Empty slot
-            inventory[i] = item_index; // Store the correct sprite index
-            show_debug_message("Added " + item_name + " (Index: " + string(item_index) + ") to inventory.");
+            inventory[i] = item_index;
+            show_debug_message("Added " + item_name + " to inventory.");
             return true;
         }
     }
@@ -3061,21 +3125,61 @@ function add_to_inventory(item_name) {
     return false;
 }
 
+// Function: Remove an item
+function remove_item(item_name) {
+    var item_index = ds_map_find_value(item_index_map, item_name);
+    if (is_undefined(item_index)) return;
 
-// Hide player instead of destroying in UI rooms
-var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
-
-if (is_ui_room) {
-    if (instance_exists(obj_inventory)) {
-        obj_inventory.visible = false;
-        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
-    }
-} else {
-    if (instance_exists(obj_inventory)) {
-       obj_inventory.visible = true;
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == item_index) {
+            inventory[i] = -1;
+            show_debug_message("Removed " + item_name + " from inventory.");
+            return;
+        }
     }
 }
 
+// Function: Drop the active item
+function drop_active_item() {
+    var item_index = inventory[active_slot];
+    if (item_index == -1) return; // No item to drop
+
+    var item_name;
+if (!is_undefined(item_index)) {
+    item_name = get_item_name_from_index(item_index);
+}
+    if (is_undefined(item_name)) {
+        show_debug_message("ERROR: Item name lookup failed.");
+        return;
+    }
+
+    var obj = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_dropped_item);
+    obj.item_type = item_name;
+    
+    remove_item(item_name);
+    show_debug_message("Dropped " + item_name + " in room.");
+}
+
+// Function: Get item name from index
+function get_item_name_from_index(index) {
+    if (is_undefined(item_index_map)) {
+        show_debug_message("ERROR: item_index_map is undefined!");
+        return undefined;
+    }
+
+    var keys = ds_map_keys(item_index_map);
+    if (array_length(keys) == 0) {
+        show_debug_message("ERROR: item_index_map has no keys!");
+        return undefined;
+    }
+
+    for (var i = 0; i < array_length(keys); i++) {
+        if (ds_map_find_value(item_index_map, keys[i]) == index) return keys[i];
+    }
+    
+    show_debug_message("ERROR: No matching item name found for index " + string(index));
+    return undefined;
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lrg_boat
 File: Create_0.gml
 //depth
@@ -3144,4 +3248,173 @@ depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_giftshop_complete
 File: Create_0.gml
 //depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_battery
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Battery");
+        if (added) {
+            show_debug_message("Battery added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_building
+File: Create_0.gml
+// Create Event for obj_building
+repair_state = 0; // 0 = Damaged, 1 = Repairing, 2 = Repaired
+repair_items = ["wood", "snow"]; // Required materials
+repair_progress = 0;
+repair_max = 100;
+sprite_index = spr_building_damaged; // Default damaged sprite
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_building
+File: Draw_0.gml
+// Draw Event for obj_building
+draw_self();
+
+if (repair_state == 0) {
+    draw_text(x, y - 20, "Damaged! Press 'E' to repair.");
+} else if (repair_state == 1) {
+    draw_text(x, y - 20, "Repairing... " + string(repair_progress) + "%");
+} else {
+    draw_text(x, y - 20, "Fully Repaired!");
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_building
+File: Step_0.gml
+// Step Event for obj_building
+if (distance_to_object(global.player_instance) < 16 && repair_state == 0) {
+    if (keyboard_check_pressed(ord("E"))) {
+        var has_items = true;
+
+        // Convert required item names to indices and check inventory
+        for (var i = 0; i < array_length(repair_items); i++) {
+            var item_name = repair_items[i]; // "Wood", "Snow"
+            var item_index = ds_map_find_value(obj_inventory.item_index_map, item_name);
+
+            if (is_undefined(item_index) || !obj_inventory.has_item(item_name)) {
+                has_items = false;
+                show_debug_message("Missing item: " + item_name);
+                break;
+            }
+        }
+
+        if (has_items) {
+            repair_state = 1;
+            show_debug_message("Repair started!");
+        } else {
+            show_debug_message("Missing required materials!");
+        }
+    }
+}
+
+
+// Handle repair progress
+if (repair_state == 1) {
+    repair_progress += 1;
+
+    if (repair_progress >= repair_max) {
+        repair_state = 2; // Fully repaired!
+        sprite_index = spr_building_fixed; // Change sprite
+
+        // Remove items from inventory
+        for (var i = 0; i < array_length(repair_items); i++) {
+            obj_inventory.remove_item(repair_items[i]);
+        }
+        
+        show_debug_message("Building repaired!");
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
+File: Create_0.gml
+// Set item properties
+item_type = ""; // Set when the object is created
+sprite_index = spr_inventory_items;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
+File: Draw_0.gml
+// Draw the dropped item
+draw_sprite(sprite_index, 0, x, y);
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
+File: Step_0.gml
+// Check if player picks up the item
+if (distance_to_object(global.player_instance) < 16 && keyboard_check_pressed(ord("E"))) {
+    obj_inventory.add_to_inventory(item_type);
+    instance_destroy();
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_repair_ui
+File: Create_0.gml
+// Create Event for obj_repair_ui
+visible = false;
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_repair_ui
+File: Draw_64.gml
+// Draw GUI Event for obj_repair_ui
+if (visible) {
+    var ui_x = camera_get_view_x(view_camera[0]) + 20;
+    var ui_y = camera_get_view_y(view_camera[0]) + 20;
+
+    draw_set_color(c_white);
+    draw_rectangle(ui_x, ui_y, ui_x + 150, ui_y + 50, false);
+    draw_set_color(c_black);
+    draw_text(ui_x + 10, ui_y + 10, "Press 'E' to Repair");
+
+    // Draw required materials
+    for (var i = 0; i < 3; i++) {
+        draw_sprite(spr_inventory_items, 7 + i, ui_x + 10 + (i * 20), ui_y + 30);
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_repair_ui
+File: Step_0.gml
+// Step Event for obj_repair_ui
+var b = instance_nearest(global.player_instance.x, global.player_instance.y, obj_building);
+
+if (b != noone && distance_to_object(b) < 32 && b.repair_state == 0) {
+    visible = true;
+} else {
+    visible = false;
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snow
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Snow");
+        if (added) {
+            show_debug_message("Snow added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_wood
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Wood");
+        if (added) {
+            show_debug_message("Wood added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
 depth = -bbox_bottom;
