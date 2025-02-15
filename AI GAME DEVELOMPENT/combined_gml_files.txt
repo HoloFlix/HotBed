@@ -293,10 +293,9 @@ if (global.skin_to_spawn != noone) {
         show_debug_message("ERROR: Failed to create player instance.");
     }
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Create_0.gml
-// Create Event for obj_controller
+/// Create Event for obj_controller
 
 // Initialize global variables early to avoid undefined references
 global.dialogue_active = false; // Dialogue system starts inactive
@@ -355,10 +354,10 @@ if (instance_exists(global.player_instance)) {
 //show_debug_message("Create Event: global.game_started initialized as " + string(global.game_started));
 //show_debug_message("Create Event: countdown_timer initialized as " + string(global.countdown_timer));
 //show_debug_message("Instance of obj_controller created with ID: " + string(id));
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Other_4.gml
-// obj_controller: Room Start Event (Ensure Camera Follows Player)
+/// Room Start Event for obj_controller
+
 show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
 
 // Check if we are in a UI room (where the player should be hidden)
@@ -376,21 +375,21 @@ if (is_ui_room) {
     }
 } else {
     // Ensure the player instance is recreated when returning from rm_map
-if (!instance_exists(global.player_instance)) {
-    var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
-    var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
+    if (!instance_exists(global.player_instance)) {
+        var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
+        var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
 
-    // Ensure the correct skin is used
-    var new_skin = obj_player; // Default
-    for (var i = 0; i < array_length(global.skins); i++) {
-        if (global.skins[i].name == global.current_skin) {
-            new_skin = global.skins[i].object;
-            break;
+        // Ensure the correct skin is used
+        var new_skin = obj_player; // Default
+        for (var i = 0; i < array_length(global.skins); i++) {
+            if (global.skins[i].name == global.current_skin) {
+                new_skin = global.skins[i].object;
+                break;
+            }
         }
-    }
 
-    global.player_instance = instance_create_layer(player_x, player_y, "Instances", new_skin);
-}
+        global.player_instance = instance_create_layer(player_x, player_y, "Instances", new_skin);
+    }
 
     // ✅ Reattach the camera to the new player instance
     if (instance_exists(global.player_instance)) {
@@ -400,7 +399,6 @@ if (!instance_exists(global.player_instance)) {
         show_debug_message("ERROR: Camera could not follow new player instance.");
     }
 }
-
 
 // Ensure the camera follows the player
 if (instance_exists(global.player_instance) && is_real(global.camera)) {
@@ -1011,13 +1009,13 @@ if (position_meeting(mouse_x, mouse_y, id)) {
     image_index = 0; // Revert to normal sprite
 }
 
-// Hide player instead of destroying in UI rooms
+// Hide map icon instead of destroying in UI rooms
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
 
 if (is_ui_room) {
     if (instance_exists(obj_map_icon)) {
         obj_map_icon.visible = false;
-        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
+        show_debug_message("DEBUG: UI Room detected. Map Icon hidden.");
     }
 } else {
     if (instance_exists(obj_map_icon)) {
@@ -3085,19 +3083,25 @@ if (keyboard_check_pressed(ord("F"))) {
 }
 
 // Auto-remove Tube when switching to obj_player_tube
-if (global.current_skin == "tube" && has_item("Tube")) {
-    remove_item("Tube");
+if (keyboard_check_pressed(ord("E")) && global.current_skin == "tube") {
+    obj_controller.switch_skin("player");
+    add_to_inventory("Tube"); // Re-add tube when exiting
+    show_debug_message("Exited tube. Switched back to player. Tube added back to inventory.");
 }
+
 
 // Toggle Party Hat when pressing "P"
 if (keyboard_check_pressed(ord("P"))) {
+    global.party_hat_visible = !global.party_hat_visible;
+
     if (global.party_hat_visible) {
-        global.party_hat_visible = false;
-        if (!has_item("Party Hat")) add_to_inventory("Party Hat"); // Ensure it only adds once
-    } else {
-        global.party_hat_visible = true;
         remove_item("Party Hat");
+    } else {
+        if (!has_item("Party Hat")) {
+            add_to_inventory("Party Hat");
+        }
     }
+    show_debug_message("Party Hat toggled: " + string(global.party_hat_visible));
 }
 
 // Function: Check if player has an item
@@ -3148,14 +3152,17 @@ function remove_item(item_name) {
 // Function to drop the active item from the inventory
 function drop_active_item() {
     var item_index = get_active_item_index();
-    var item_name = get_item_name_from_index(item_index);
-
-    if (item_name != "") {
-        // Additional code to handle item dropping...
-        show_debug_message("Dropped item: " + item_name);
-    } else {
-        show_debug_message("ERROR: Failed to drop item. Item name is empty.");
+    if (item_index == -1) {
+        show_debug_message("ERROR: No valid active item to drop.");
+        return;
     }
+    var item_name = get_item_name_from_index(item_index);
+    if (item_name == "" || is_undefined(item_name)) {
+        show_debug_message("ERROR: Failed to drop item. Item name is empty or undefined.");
+        return;
+    }
+    remove_item(item_name);
+    show_debug_message("Dropped item: " + item_name);
 }
 
 // Function to get the name of the item from its index
@@ -3292,48 +3299,54 @@ if (repair_state == 0) {
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_building
 File: Step_0.gml
-// Step Event for obj_building
-if (distance_to_object(global.player_instance) < 16 && repair_state == 0) {
-    if (keyboard_check_pressed(ord("E"))) {
-        var has_items = true;
+/// Step Event for obj_building
 
-        // Convert required item names to indices and check inventory
-        for (var i = 0; i < array_length(repair_items); i++) {
-            var item_name = repair_items[i]; // "Wood", "Snow"
-            var item_index = ds_map_find_value(obj_inventory.item_index_map, item_name);
+// Ensure the player instance exists before proceeding
+if (instance_exists(global.player_instance)) {
+    var player = global.player_instance;
+    
+    // Ensure the building only triggers when the player is close
+    if (distance_to_object(player) < 16 && repair_state == 0) {
+        if (keyboard_check_pressed(ord("E"))) {
+            var has_items = true;
 
-            if (is_undefined(item_index) || !obj_inventory.has_item(item_name)) {
-                has_items = false;
-                show_debug_message("Missing item: " + item_name);
-                break;
+            // Convert required item names to indices and check inventory
+            for (var i = 0; i < array_length(repair_items); i++) {
+                var item_name = repair_items[i]; // Example: "Wood", "Snow"
+                var item_index = ds_map_find_value(obj_inventory.item_index_map, item_name);
+
+                if (is_undefined(item_index) || !obj_inventory.has_item(item_name)) {
+                    has_items = false;
+                    show_debug_message("Missing item: " + item_name);
+                    break;
+                }
+            }
+
+            if (has_items) {
+                repair_state = 1;
+                show_debug_message("Repair started!");
+            } else {
+                show_debug_message("Missing required materials!");
             }
         }
-
-        if (has_items) {
-            repair_state = 1;
-            show_debug_message("Repair started!");
-        } else {
-            show_debug_message("Missing required materials!");
-        }
     }
-}
 
+    // Handle repair progress
+    if (repair_state == 1) {
+        repair_progress += 1;
 
-// Handle repair progress
-if (repair_state == 1) {
-    repair_progress += 1;
+        if (repair_progress >= repair_max) {
+            repair_state = 2; // Fully repaired!
+            sprite_index = spr_building_fixed; // Change sprite
 
-    if (repair_progress >= repair_max) {
-        repair_state = 2; // Fully repaired!
-        sprite_index = spr_building_fixed; // Change sprite
-
-        // Remove items from inventory
-        for (var i = 0; i < array_length(repair_items); i++) {
-            obj_inventory.remove_item(repair_items[i]);
+            // Remove items from inventory
+            for (var i = 0; i < array_length(repair_items); i++) {
+                obj_inventory.remove_item(repair_items[i]);
+            }
+            
+            show_debug_message("Building repaired!");
         }
-        
-        show_debug_message("Building repaired!");
-    }
+	}    
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
