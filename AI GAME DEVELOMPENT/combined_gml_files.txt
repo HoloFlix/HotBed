@@ -549,7 +549,6 @@ if (is_ui_room) {
         global.player_instance = instance_create_layer(global.player_x, global.player_y, "Instances", obj_player);
     }
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_crates
 File: Create_0.gml
 //depth
@@ -1009,13 +1008,13 @@ if (position_meeting(mouse_x, mouse_y, id)) {
     image_index = 0; // Revert to normal sprite
 }
 
-// Hide map icon instead of destroying in UI rooms
+// Hide player instead of destroying in UI rooms
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
 
 if (is_ui_room) {
     if (instance_exists(obj_map_icon)) {
         obj_map_icon.visible = false;
-        show_debug_message("DEBUG: UI Room detected. Map Icon hidden.");
+        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
     }
 } else {
     if (instance_exists(obj_map_icon)) {
@@ -1971,31 +1970,6 @@ if (instance_exists(obj_inventory)) {
     }
 }
 
-// Step Event for obj_player
-
-var b = instance_nearest(x, y, obj_building);
-
-if (b != noone && distance_to_object(b) < 32 && b.repair_state == 0) {
-    if (keyboard_check_pressed(ord("E"))) {
-        var has_items = true;
-
-        // Check if the player has all required repair materials
-        for (var i = 0; i < array_length(b.repair_items); i++) {
-            if (!obj_inventory.has_item(b.repair_items[i])) {
-                has_items = false;
-                break;
-            }
-        }
-
-        if (has_items) {
-            b.repair_state = 1;
-            show_debug_message("Repair started!");
-        } else {
-            show_debug_message("Missing required items!");
-        }
-    }
-}
-
 // 🎮 **Handle Movement**
 var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
 var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
@@ -2710,7 +2684,7 @@ var sit_x = sitting_sprites[face][0];
 var sit_y = sitting_sprites[face][1];
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
 File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
     if (instance_exists(obj_inventory)) {
         var added = obj_inventory.add_to_inventory("Tube");
         if (added) {
@@ -2979,7 +2953,7 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
 File: Step_0.gml
 // Ensure player is near and pressing "E" to repair
 if (keyboard_check_pressed(ord("R")) && place_meeting(x, y, obj_player) < 32) {
-    if (instance_exists(obj_inventory) && obj_inventory.has_item("Battery")) {
+    if (instance_exists(obj_inventory) && obj_inventory.has_item("Wrench")) {
         show_debug_message("Repairing ice truck...");
 
         // Destroy the broken truck
