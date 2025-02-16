@@ -10,8 +10,8 @@ File: obj_battery.yy
   "name":"obj_battery",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -77,6 +77,46 @@ File: obj_big_bush.yy
   "spriteId":{
     "name":"spr_big_bush",
     "path":"sprites/spr_big_bush/spr_big_bush.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_boxpuffleo_item
+File: obj_boxpuffleo_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_boxpuffleo_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_boxpuffleo_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_puffleo_object",
+    "path":"sprites/spr_puffleo_object/spr_puffleo_object.yy",
   },
   "spriteMaskId":null,
   "visible":true,
@@ -369,6 +409,46 @@ File: obj_dropped_item.yy
   "spriteMaskId":null,
   "visible":true,
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_epfphone_item
+File: obj_epfphone_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_epfphone_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_epfphone_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_snowshovel_object",
+    "path":"sprites/spr_snowshovel_object/spr_snowshovel_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel1
 File: obj_fishbarrel1.yy
 {
@@ -541,8 +621,8 @@ File: obj_fishing_rod.yy
   "name":"obj_fishing_rod",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -734,6 +814,46 @@ File: obj_inventory.yy
   "spriteId":{
     "name":"spr_inventory_ui",
     "path":"sprites/spr_inventory_ui/spr_inventory_ui.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_Jackhammer_item
+File: obj_Jackhammer_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_Jackhammer_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_Jackhammer_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_starterdeck_object",
+    "path":"sprites/spr_starterdeck_object/spr_starterdeck_object.yy",
   },
   "spriteMaskId":null,
   "visible":true,
@@ -1005,8 +1125,8 @@ File: obj_map_item.yy
   "name":"obj_map_item",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -1328,8 +1448,8 @@ File: obj_party_hat.yy
   "name":"obj_party_hat",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -1429,6 +1549,46 @@ File: obj_pause_menu.yy
   "spriteId":{
     "name":"spr_pause_menu",
     "path":"sprites/spr_pause_menu/spr_pause_menu.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pizzaslice_item
+File: obj_pizzaslice_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_pizzaslice_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_pizzaslice_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_wrench_object",
+    "path":"sprites/spr_wrench_object/spr_wrench_object.yy",
   },
   "spriteMaskId":null,
   "visible":true,
@@ -1602,6 +1762,86 @@ File: obj_player_tube.yy
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":null,
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_puffleo_item
+File: obj_puffleo_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_puffleo_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_puffleo_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_pufflewhistle_object",
+    "path":"sprites/spr_pufflewhistle_object/spr_pufflewhistle_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pufflewhistle_item
+File: obj_pufflewhistle_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_pufflewhistle_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_pufflewhistle_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_pizzaslice_object",
+    "path":"sprites/spr_pizzaslice_object/spr_pizzaslice_object.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
@@ -2066,6 +2306,46 @@ File: obj_sml_boat.yy
   "spriteMaskId":null,
   "visible":true,
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowshovel_item
+File: obj_snowshovel_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_snowshovel_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_snowshovel_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_snowshovel_object",
+    "path":"sprites/spr_snowshovel_object/spr_snowshovel_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snow_item
 File: obj_snow_item.yy
 {
@@ -2078,8 +2358,8 @@ File: obj_snow_item.yy
   "name":"obj_snow_item",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -2106,6 +2386,46 @@ File: obj_snow_item.yy
   "spriteMaskId":null,
   "visible":true,
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_spyphone_item
+File: obj_spyphone_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_spyphone_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_spyphone_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_spyphone_object",
+    "path":"sprites/spr_spyphone_object/spr_spyphone_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_stampbook_item
 File: obj_stampbook_item.yy
 {
@@ -2118,8 +2438,8 @@ File: obj_stampbook_item.yy
   "name":"obj_stampbook_item",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -2142,6 +2462,46 @@ File: obj_stampbook_item.yy
   "spriteId":{
     "name":"spr_stampbook_object",
     "path":"sprites/spr_stampbook_object/spr_stampbook_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_starterdeck_item
+File: obj_starterdeck_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_starterdeck_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_starterdeck_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_boxpuffleo_object",
+    "path":"sprites/spr_boxpuffleo_object/spr_boxpuffleo_object.yy",
   },
   "spriteMaskId":null,
   "visible":true,
@@ -2491,8 +2851,8 @@ File: obj_wood_item.yy
   "name":"obj_wood_item",
   "overriddenProperties":[],
   "parent":{
-    "name":"obj_props",
-    "path":"folders/Objects/obj_props.yy",
+    "name":"obj_items",
+    "path":"folders/Objects/obj_props/obj_items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -2515,6 +2875,46 @@ File: obj_wood_item.yy
   "spriteId":{
     "name":"spr_wood_object",
     "path":"sprites/spr_wood_object/spr_wood_object.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_wrench_item
+File: obj_wrench_item.yy
+{
+  "$GMObject":"",
+  "%Name":"obj_wrench_item",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_wrench_item",
+  "overriddenProperties":[],
+  "parent":{
+    "name":"obj_props",
+    "path":"folders/Objects/obj_props.yy",
+  },
+  "parentObjectId":null,
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_wrench_object",
+    "path":"sprites/spr_wrench_object/spr_wrench_object.yy",
   },
   "spriteMaskId":null,
   "visible":true,
