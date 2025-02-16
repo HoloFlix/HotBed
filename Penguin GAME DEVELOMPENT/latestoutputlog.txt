@@ -19,9 +19,9 @@ CreateColPairs took 0.000000s 3 usecs for 72 object types obj_col_numb=0 physobj
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8813833 (0x00867d09) bytes 8.41MB
+Total memory used = 8810081 (0x00866e61) bytes 8.40MB
 Free memory = 6286976 (0x005fee80) bytes 6.00MB
-Peak memory used = 11806349 (0x00b4268d) bytes 11.26MB
+Peak memory used = 11806769 (0x00b42831) bytes 11.26MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -61,7 +61,7 @@ ERROR!!! :: ####################################################################
 ERROR in action number 1
 of  Step Event0 for object obj_inventory:
 Variable <unknown_object>.ds_map_keys(100132, -2147483648) not set before reading it.
- at gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 148) -     var map_keys = ds_map_keys(global.item_index_map);
+ at gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 149) -         var map_keys = ds_map_keys(global.item_index_map);
 ############################################################################################
-gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 148)
+gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 149)
 gml_Object_obj_inventory_Step_0 (line 19) -     drop_active_item();
