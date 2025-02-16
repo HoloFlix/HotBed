@@ -15,13 +15,13 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 2 usecs for 62 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 3 usecs for 72 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 8775212 (0x0085e62c) bytes 8.37MB
-Free memory = 6297600 (0x00601800) bytes 6.01MB
-Peak memory used = 11782229 (0x00b3c855) bytes 11.24MB
+Total memory used = 8813833 (0x00867d09) bytes 8.41MB
+Free memory = 6286976 (0x005fee80) bytes 6.00MB
+Peak memory used = 11806349 (0x00b4268d) bytes 11.26MB
 **********************************.
 Entering main loop.
 **********************************.
@@ -29,6 +29,7 @@ DEBUG: New global camera created. ID: 153
 obj_player: Initialized. Driving state: 0
 Player instance created: ref instance 100561
 DEBUG: global.item_index_map initialized in obj_initializer.
+DEBUG: global.item_object_map initialized in obj_initializer.
 DEBUG: obj_initializer Create Event executed.
 DEBUG: global.item_index_map is valid in obj_inventory Create Event.
 DEBUG: Room Start Event triggered in obj_controller.
@@ -52,25 +53,15 @@ Pause menu closed.
 DEBUG: Room Start Event completed. Current skin: player
 DEBUG: Player instance ID: ref instance 100568
 DEBUG: Resetting repair flag...
-Added Battery to inventory in slot 0
-Battery added to inventory.
-You need a wrench or a battery to repair this!
-Repairing ice truck...
-DEBUG: Battery detected in inventory. Attempting to remove...
-Removed 1 Battery(s) from inventory.
-Battery removed after repair.
-Ice truck repaired!
-Entered ice truck. Current skin: icetruck
-obj_player: Initialized. Driving state: 0
-Exited ice truck. Current skin: player
-Added Tube to inventory in slot 0
-Tube added to inventory.
-obj_player_tube: Initialized. Player instance ID: ref instance 100573
-Switched to skin: tube
-Removed 1 Tube(s) from inventory.
-Added Tube to inventory in slot 0
-Exited tube. Switched back to player. Tube added back to inventory.
-Exited tube. Switched back to player. Tube added back to inventory.
-Exited tube. Switched back to player. Tube added back to inventory.
-Exited tube. Switched back to player. Tube added back to inventory.
-###game_end###254
+Added Map to inventory in slot 0
+Map added to inventory.
+Added Stamp Book to inventory in slot 1
+Stamp Book added to inventory.
+ERROR!!! :: ############################################################################################
+ERROR in action number 1
+of  Step Event0 for object obj_inventory:
+Variable <unknown_object>.ds_map_keys(100132, -2147483648) not set before reading it.
+ at gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 148) -     var map_keys = ds_map_keys(global.item_index_map);
+############################################################################################
+gml_Script_drop_active_item@gml_Object_obj_inventory_Step_0 (line 148)
+gml_Object_obj_inventory_Step_0 (line 19) -     drop_active_item();
