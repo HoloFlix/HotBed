@@ -18,6 +18,22 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_big_bush
 File: Create_0.gml
 //depth
 depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_boxpuffleo_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Box Puffle O");
+        if (added) {
+            show_debug_message("Box Puffle O added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_bulletin_board
 File: Create_0.gml
 //depth
@@ -485,6 +501,8 @@ show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.
 show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Step_0.gml
+/// Step Event for obj_controller
+
 // Before switching to a UI room, store the last player position
 if (keyboard_check_pressed(vk_escape)) {
     if (room != rm_pause_menu) {
@@ -505,6 +523,7 @@ if (keyboard_check_pressed(vk_escape)) {
     }
 }
 
+// Function to switch skins
 function switch_skin(new_skin) {
     if (global.skin_switching) return;
     global.skin_switching = true;
@@ -514,6 +533,7 @@ function switch_skin(new_skin) {
 
     // Destroy current player instance
     if (instance_exists(global.player_instance)) {
+        show_debug_message("Destroying current player instance: " + string(global.player_instance));
         instance_destroy(global.player_instance);
     }
 
@@ -526,7 +546,7 @@ function switch_skin(new_skin) {
             new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
             global.current_skin = new_skin;
             skin_found = true;
-            show_debug_message("Switched to skin: " + new_skin);
+            show_debug_message("Switched to skin: " + new_skin + ". New instance ID: " + string(new_instance));
             break;
         }
     }
@@ -537,8 +557,19 @@ function switch_skin(new_skin) {
         global.current_skin = "player";
         show_debug_message("WARNING: Defaulted to player skin. Invalid skin name: " + new_skin);
     }
-}
 
+    global.player_instance = new_instance;
+
+    // Ensure the camera follows the new player instance
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(global.camera, global.player_instance);
+        show_debug_message("Camera now follows player: " + string(global.player_instance));
+    } else {
+        show_debug_message("ERROR: Camera could not follow new player instance.");
+    }
+
+    global.skin_switching = false;
+}
 
 // Hide player instead of destroying in UI rooms
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
@@ -580,6 +611,22 @@ if (distance_to_object(global.player_instance) < 16 && keyboard_check_pressed(or
     instance_destroy();
 }
 
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_epfphone_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("EPF Phone");
+        if (added) {
+            show_debug_message("EPF Phone added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel1
 File: Create_0.gml
 //depth
@@ -744,18 +791,43 @@ if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_initializer
 File: Create_0.gml
-// Ensure global variables are initialized correctly
+/// Create Event for obj_initializer
 
 // Initialize item_index_map (one-time setup)
 if (!variable_global_exists("item_index_map")) {
     global.item_index_map = ds_map_create();
-    var item_names = ["Wrench", "Party Hat", "Fishing Rod", "Tube", "Fish", "Mullet", "Battery", "Wood", "Snow", "Map", "Stamp Book"];
+    var item_names = ["Wrench", "Party Hat", "Fishing Rod", "Tube", "Fish", "Mullet", "Battery", "Wood", "Snow", "Map", "Stamp Book", "Pizza Slice", "Puffle Whistle", "Spy Phone", "Puffle O", "Box Puffle O", "Starter Deck", "Jackhammer", "Snow Shovel", "EPF Phone"];
     for (var i = 0; i < array_length(item_names); i++) {
         ds_map_add(global.item_index_map, item_names[i], i);
     }
     show_debug_message("DEBUG: global.item_index_map initialized in obj_initializer.");
 } else {
     show_debug_message("DEBUG: global.item_index_map already exists.");
+}
+
+// Initialize item_object_map (one-time setup)
+if (!variable_global_exists("item_object_map")) {
+    global.item_object_map = ds_map_create();
+    ds_map_add(global.item_object_map, "Battery", obj_battery);
+    ds_map_add(global.item_object_map, "Box Puffle O", obj_boxpuffleo_item);
+    ds_map_add(global.item_object_map, "EPF Phone", obj_epfphone_item);
+    ds_map_add(global.item_object_map, "Fishing Rod", obj_fishing_rod);
+    ds_map_add(global.item_object_map, "Jackhammer", obj_Jackhammer_item);
+    ds_map_add(global.item_object_map, "Map", obj_map_item);
+    ds_map_add(global.item_object_map, "Party Hat", obj_party_hat);
+    ds_map_add(global.item_object_map, "Pizza Slice", obj_pizzaslice_item);
+    ds_map_add(global.item_object_map, "Puffle O", obj_puffleo_item);
+    ds_map_add(global.item_object_map, "Puffle Whistle", obj_pufflewhistle_item);
+    ds_map_add(global.item_object_map, "Snow", obj_snow_item);
+    ds_map_add(global.item_object_map, "Snow Shovel", obj_snowshovel_item);
+    ds_map_add(global.item_object_map, "Spy Phone", obj_spyphone_item);
+    ds_map_add(global.item_object_map, "Stamp Book", obj_stampbook_item);
+    ds_map_add(global.item_object_map, "Starter Deck", obj_starterdeck_item);
+    ds_map_add(global.item_object_map, "Wood", obj_wood_item);
+    ds_map_add(global.item_object_map, "Tube", obj_tube);
+    show_debug_message("DEBUG: global.item_object_map initialized in obj_initializer.");
+} else {
+    show_debug_message("DEBUG: global.item_object_map already exists.");
 }
 
 // Ensure party_hat_visible is set (default to false)
@@ -895,7 +967,7 @@ if (keyboard_check_pressed(ord("F"))) {
 // Remove the used item from inventory
 if (keyboard_check_pressed(ord("R")) && global.repair_complete) { 
     show_debug_message("DEBUG: Repair complete flag detected in inventory."); 
-	if (has_item("Battery")) {
+    if (has_item("Battery")) {
         show_debug_message("DEBUG: Battery detected in inventory. Attempting to remove...");
         remove_item("Battery");
         show_debug_message("Battery removed after repair.");
@@ -904,18 +976,22 @@ if (keyboard_check_pressed(ord("R")) && global.repair_complete) {
     }
 }
 
-
 // Auto-remove Tube when switching to obj_player_tube
 if (keyboard_check_pressed(ord("T")) && global.current_skin == "tube") {
+    show_debug_message("Switching from tube to player");
     obj_controller.switch_skin("player");
     if (!has_item("Tube")) {
         add_to_inventory("Tube");
-	} // Re-add tube when exiting
+    }
     show_debug_message("Exited tube. Switched back to player. Tube added back to inventory.");
-} else if (keyboard_check_pressed(ord("T")) && global.current_skin == "player" && obj_inventory.has_item("Tube")) {
+} else if (keyboard_check_pressed(ord("T")) && global.current_skin == "player" && has_item("Tube")) {
+    show_debug_message("Switching from player to tube");
     obj_controller.switch_skin("tube");
-	if (has_item("Tube")) {
+    if (has_item("Tube")) {
+        show_debug_message("Removing Tube from inventory...");
         remove_item("Tube");
+    } else {
+        show_debug_message("ERROR: Tube not found in inventory!");
     }
 }
 
@@ -941,7 +1017,7 @@ if (keyboard_check_pressed(ord("P"))) {
 
 // Press "I" to open expanded inventory
 if (keyboard_check_pressed(ord("I"))) {
-	global.inventory_expanded = !global.inventory_expanded;
+    global.inventory_expanded = !global.inventory_expanded;
     show_debug_message("Inventory Expanded: " + string(global.inventory_expanded));
 }
 
@@ -984,93 +1060,81 @@ function add_to_inventory(item_name) {
     return false;
 }
 
-// Function: Get item count
-function get_item_count(item_name) {
-    if (!ds_map_exists(global.item_index_map, item_name)) {
-        show_debug_message("ERROR: Item '" + item_name + "' does not exist in item_index_map.");
-        return 0;
-    }
-
+// Function: Remove an item from the inventory
+function remove_item(item_name) {
     var item_index = ds_map_find_value(global.item_index_map, item_name);
-    if (is_undefined(item_index)) return 0;
-
-    var count = 0;
-    for (var i = 0; i < inventory_size; i++) {
-        if (inventory[i] == item_index) {
-            count++;
-        }
-    }
-    return count;
-}
-
-// Function: Remove multiple items
-function remove_item(item_name, amount = 1) {
-    if (!ds_map_exists(global.item_index_map, item_name)) {
-        show_debug_message("ERROR: Attempted to remove '" + item_name + "', but it does not exist in item_index_map.");
-        return;
+    if (is_undefined(item_index)) {
+        show_debug_message("ERROR: Invalid item name - " + string(item_name));
+        return false;
     }
 
-    var item_index = ds_map_find_value(global.item_index_map, item_name);
-    if (is_undefined(item_index)) return;
-
-    var removed = 0;
     for (var i = 0; i < inventory_size; i++) {
         if (inventory[i] == item_index) {
             inventory[i] = -1;
-            removed++;
-            if (removed >= amount) {
-                show_debug_message("Removed " + string(removed) + " " + item_name + "(s) from inventory.");
-                return;
-            }
+            show_debug_message("Removed " + item_name + " from inventory slot " + string(i));
+            return true;
         }
     }
+
+    show_debug_message("ERROR: Item " + item_name + " not found in inventory!");
+    return false;
 }
 
-
-// Function to drop the active item from the inventory
+// Function: Drop the active item
 function drop_active_item() {
-    var item_index = get_active_item_index();
+    var item_index = inventory[active_slot];
     if (item_index == -1) {
-        show_debug_message("ERROR: No valid active item to drop.");
+        show_debug_message("No item in active slot to drop.");
         return;
     }
-    var item_name = get_item_name_from_index(item_index);
-    if (item_name == "" || is_undefined(item_name)) {
-        show_debug_message("ERROR: Failed to drop item. Item name is empty or undefined.");
-        return;
-    }
-    remove_item(item_name);
-    inventory[active_slot] = -1; // Clear slot
-    global.active_item_index = -1; // Reset active item
-    show_debug_message("Dropped item: " + item_name);
-}
 
-
-// Function to get the name of the item from its index
-function get_item_name_from_index(item_index) {
-    if (global.item_index_map != undefined && ds_exists(global.item_index_map, ds_type_map)) {
-        if (ds_map_exists(global.item_index_map, item_index)) {
-            return ds_map_find_value(global.item_index_map, item_index);
-        } else {
-            show_debug_message("ERROR: Item index " + string(item_index) + " does not exist in global.item_index_map.");
+    // Get the item name from the index
+    var item_name = "";
+    var map_keys = ds_map_keys(global.item_index_map);
+    for (var i = 0; i < ds_list_size(map_keys); i++) {
+        var key = ds_list_find_value(map_keys, i);
+        if (ds_map_find_value(global.item_index_map, key) == item_index) {
+            item_name = key;
+            break;
         }
-    } else {
-        show_debug_message("ERROR: global.item_index_map is not initialized or valid.");
     }
-    return "";
+    ds_list_destroy(map_keys);
+
+    if (item_name == "") {
+        show_debug_message("ERROR: Invalid item index - " + string(item_index));
+        return;
+    }
+
+    // Get the corresponding object type for the item
+    var item_object = ds_map_find_value(global.item_object_map, item_name);
+    if (is_undefined(item_object)) {
+        show_debug_message("ERROR: Invalid item name - " + item_name);
+        return;
+    }
+
+    // Create a dropped item instance at the player's position
+    var dropped_item = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", item_object);
+
+    // Remove the item from the inventory
+    inventory[active_slot] = -1;
+    show_debug_message("Dropped item from slot " + string(active_slot) + ": " + item_name);
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_Jackhammer_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Jackhammer");
+        if (added) {
+            show_debug_message("Jackhammer added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
 }
 
-
-// Function to get the active item index
-function get_active_item_index() {
-    if (active_slot >= 0 && active_slot < inventory_size) {
-        return inventory[active_slot];
-    } else {
-        show_debug_message("ERROR: active_slot is out of range.");
-        return -1;
-    }
-}
-
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lamp
 File: Create_0.gml
 //depth
@@ -2228,6 +2292,22 @@ show_debug_message("Mouse X: " + string(mouse_x) + " | Mouse Y: " + string(mouse
 show_debug_message("GUI Mouse X: " + string(device_mouse_x_to_gui(0)) + " | GUI Mouse Y: " + string(device_mouse_y_to_gui(0)));
 show_debug_message("View X: " + string(camera_get_view_x(view_camera[0])) + " | View Y: " + string(camera_get_view_y(view_camera[0])));
 
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pizzaslice_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Pizza Slice");
+        if (added) {
+            show_debug_message("Pizza Slice added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Create_0.gml
 // Create Event for obj_player
@@ -2810,6 +2890,38 @@ y += yspd;
 // Ensure proper depth sorting
 depth = -bbox_bottom;
 
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_puffleo_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Puffle O");
+        if (added) {
+            show_debug_message("Puffle O added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pufflewhistle_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Puffle Whistle");
+        if (added) {
+            show_debug_message("Puffle Whistle added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_repair_ui
 File: Create_0.gml
 // Create Event for obj_repair_ui
@@ -3125,6 +3237,22 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sml_boat
 File: Create_0.gml
 //depth
 depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowshovel_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Snow Shovel");
+        if (added) {
+            show_debug_message("Snow Shovel added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snow_item
 File: Step_0.gml
 if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
@@ -3141,6 +3269,22 @@ if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instanc
 
 // Ensure correct depth
 depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_spyphone_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Spy Phone");
+        if (added) {
+            show_debug_message("Spy Phone added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_stampbook_item
 File: Step_0.gml
 if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
@@ -3148,6 +3292,22 @@ if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instanc
         var added = obj_inventory.add_to_inventory("Stamp Book");
         if (added) {
             show_debug_message("Stamp Book added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_starterdeck_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Starter Deck");
+        if (added) {
+            show_debug_message("Starter Deck added to inventory.");
             instance_destroy();
         } else {
             show_debug_message("Inventory full.");
@@ -3474,6 +3634,22 @@ if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instanc
         var added = obj_inventory.add_to_inventory("Wood");
         if (added) {
             show_debug_message("Wood added to inventory.");
+            instance_destroy();
+        } else {
+            show_debug_message("Inventory full.");
+        }
+    }
+}
+
+// Ensure correct depth
+depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_wrench_item
+File: Step_0.gml
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+    if (instance_exists(obj_inventory)) {
+        var added = obj_inventory.add_to_inventory("Wrench");
+        if (added) {
+            show_debug_message("Wrench added to inventory.");
             instance_destroy();
         } else {
             show_debug_message("Inventory full.");
