@@ -15,19 +15,40 @@ return [world_x, world_y];
 
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_handle_collision
 File: scr_handle_collision.gml
-// scr_handle_collision.gml
-
 /// @function handle_collision
-/// @param axis - the axis to check ("x" or "y")
-/// @param speed - the speed to check for collision
-/// @returns the adjusted speed if a collision is detected, otherwise the original speed
+/// @param axis - "x" or "y" (direction to check)
+/// @param speed - how far to move in that direction
+/// @returns - the adjusted speed after collision check
+
 function handle_collision(axis, speed) {
-    var offset = (axis == "x") ? [speed, 0] : [0, speed];
-    if (place_meeting(x + offset[0], y + offset[1], obj_wall)) {
-        return 0;
+    var sign_speed = sign(speed); // Get direction (1 = right/down, -1 = left/up)
+    var abs_speed = abs(speed);   // Get absolute movement amount
+    var step_size; // Used for progressive movement
+
+    while (abs_speed > 0) {
+        step_size = min(abs_speed, 1); // Move in small steps (pixel by pixel)
+
+        // Check collision at next sub-step
+        if (axis == "x") {
+            if (!place_meeting(x + step_size * sign_speed, y, obj_wall)) {
+                x += step_size * sign_speed;
+            } else {
+                return 0; // Stop movement on collision
+            }
+        } else if (axis == "y") {
+            if (!place_meeting(x, y + step_size * sign_speed, obj_wall)) {
+                y += step_size * sign_speed;
+            } else {
+                return 0; // Stop movement on collision
+            }
+        }
+
+        abs_speed -= step_size; // Reduce remaining movement
     }
-    return speed;
+
+    return speed; // Return remaining movement
 }
+
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
 File: scr_init_sprites.gml
 function init_sprites(right, up, left, down, up_right, up_left, down_right, down_left) {
@@ -65,6 +86,86 @@ function set_song_ingame( _song, _fadeOutCurrentSong = 0, _fadeIn = 0 )
 		startFadeInTime = _fadeIn;
 	}
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_room_state
+File: scr_room_state.gml
+// Define save_room_state function
+function save_room_state(room_id) {
+    var state_list;
+    if (ds_map_exists(global.room_states, room_id)) {
+        var old_list = ds_map_find_value(global.room_states, room_id);
+        ds_list_destroy(old_list); // Destroy the old list to prevent memory leaks
+    }
+    state_list = ds_list_create();
+    ds_map_replace(global.room_states, room_id, state_list);
+
+    with (all) {
+    if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube /* add other player objects */) {
+        // Save state as before
+        var state = {
+            object_index: object_index,
+            x: x,
+            y: y,
+            direction: variable_instance_exists(id, "face") ? face : 0
+        };
+        // Rest of the saving logic
+
+            // Save additional properties for specific objects
+            if (object_index == obj_icetruck) {
+                state.repair_required = repair_required;
+                state.is_driveable = is_driveable;
+            } else if (object_index == obj_icetruck_broken) {
+                state.repair_required = repair_required;
+                state.is_driveable = is_driveable;
+            } else if (object_index == obj_dropped_item) {
+                state.item_type = item_type;
+            }
+            // Add more object-specific properties as needed
+
+            ds_list_add(state_list, state);
+            show_debug_message("Saved state for " + object_get_name(object_index) + " at (" + string(x) + ", " + string(y) + ")");
+        }
+    }
+    show_debug_message("Saved state for room: " + room_get_name(room_id));
+}
+
+// Define load_room_state function
+function load_room_state(room_id) {
+    if (ds_map_exists(global.room_states, room_id)) {
+        var state_list = ds_map_find_value(global.room_states, room_id);
+        // Destroy existing savable objects
+        with (all) {
+			if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube /* add others */) {
+			instance_destroy();
+		    }
+		}
+        // Recreate objects from saved state
+        for (var i = 0; i < ds_list_size(state_list); i++) {
+            var state = ds_list_find_value(state_list, i);
+            var inst = instance_create_layer(state.x, state.y, "Instances", state.object_index);
+            if (variable_instance_exists(inst, "face")) {
+                inst.face = state.direction;
+            }
+            // Load additional properties
+            if (state.object_index == obj_icetruck || state.object_index == obj_icetruck_broken) {
+                if (variable_struct_exists(state, "repair_required")) {
+                    inst.repair_required = state.repair_required;
+                }
+                if (variable_struct_exists(state, "is_driveable")) {
+                    inst.is_driveable = state.is_driveable;
+                }
+            } else if (state.object_index == obj_dropped_item) {
+                if (variable_struct_exists(state, "item_type")) {
+                    inst.item_type = state.item_type;
+                }
+            }
+            // Add more object-specific property loading as needed
+            show_debug_message("Loaded " + object_get_name(state.object_index) + " at (" + string(state.x) + ", " + string(state.y) + ")");
+        }
+        show_debug_message("Loaded state for room: " + room_get_name(room_id));
+    } else {
+        show_debug_message("No saved state found for room: " + room_get_name(room_id));
+    }
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_set_depth
 File: scr_set_depth.gml
 // scr_set_depth.gml
@@ -74,121 +175,48 @@ function set_depth() {
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_skin_switch
 File: scr_skin_switch.gml
 function switch_skin(new_skin) {
-    if (global.skin_switching) return; // Prevent double-switching issues
+    if (global.skin_switching) return;
     global.skin_switching = true;
 
-    // Ensure we have a valid position
-    var player_x = 170; // Default spawn position
-    var player_y = 154;
-    var player_face = DOWN;
+    var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
+    var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
+    var player_face = DOWN; // Default face direction
 
     if (instance_exists(global.player_instance)) {
         player_x = global.player_instance.x;
         player_y = global.player_instance.y;
-        player_face = global.player_instance.face;
-    } else if (variable_global_exists("last_player_x") && variable_global_exists("last_player_y")) {
-        player_x = global.last_player_x;
-        player_y = global.last_player_y;
+        // Check if the face variable exists before accessing it
+        if (variable_instance_exists(global.player_instance, "face")) {
+            player_face = global.player_instance.face;
+        } else {
+            show_debug_message("WARNING: No face variable found for current player instance. Using default.");
+        }
+        instance_destroy(global.player_instance);
     }
 
-    show_debug_message("Switching skin to: " + new_skin + " at (" + string(player_x) + ", " + string(player_y) + ")");
-
-    // Only change color, do not create a new instance
-    if (new_skin == "player_color") {
-	    global.skin_switching = false;
-	    return;
-	}
-
-    // Destroy old instance *only after* creating the new one
-    var old_instance = global.player_instance;
-
-    // Create the new instance
-    var new_instance;
-    if (new_skin == "icetruck") {
-        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_icetruck);
-    } else if (new_skin == "tube") {
-        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player_tube);
-    } else {
+    var new_instance = noone;
+    for (var i = 0; i < array_length(global.skins); i++) {
+        if (global.skins[i].name == new_skin) {
+            new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
+            break;
+        }
+    }
+    if (new_instance == noone) {
         new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        new_skin = "player";
     }
 
-    if (new_instance != noone) {
-        new_instance.face = player_face; // Keep facing direction
-        global.player_instance = new_instance;
-        instance_destroy(old_instance); // Destroy after switching
-        show_debug_message("Successfully switched to " + new_skin);
+    // Set face if the new instance has the face variable
+    if (variable_instance_exists(new_instance, "face")) {
+        new_instance.face = player_face;
     } else {
-        show_debug_message("ERROR: Failed to create player instance for skin: " + string(new_skin));
+        show_debug_message("WARNING: New player instance does not have a face variable.");
     }
 
-    // Ensure the camera follows the new instance
-    if (instance_exists(global.player_instance)) {
-        camera_set_view_target(global.camera, global.player_instance);
-    } else {
-        show_debug_message("ERROR: Camera could not follow new player instance.");
-    }
+    global.player_instance = new_instance;
+    global.current_skin = new_skin;
+    camera_set_view_target(global.camera, global.player_instance);
+    show_debug_message("Switched to skin: " + new_skin + " at (" + string(player_x) + ", " + string(player_y) + ")");
 
     global.skin_switching = false;
 }
-
-Folder: D:\PenguinIsleProject\Penguin Isles\scripts\start_special_action
-File: start_special_action.gml
-function start_special_action(action) {
-    // If the same action is already playing, stop it
-    if (action_active && special_action == action) {
-        stop_special_action();
-        return;
-    }
-
-    action_active = true;
-    special_action = action;
-    image_index = 0;
-    image_speed = 0.2; // Adjust speed to slow down animation
-    xspd = 0;
-    yspd = 0; // Stop movement during special action
-
-    visible = false; // Hide default player sprite
-
-    switch (action) {
-        case "dancing":
-            special_sprite = spr_player_body;
-            special_colour_sprite = spr_player_colour;
-            frame_count = array_length(frame_data_dancing);
-            break;
-
-        case "waving":
-            special_sprite = spr_player_body;
-            special_colour_sprite = spr_player_colour;
-            frame_count = array_length(frame_data_waving);
-            break;
-
-        case "jackhammer":
-            special_sprite = spr_player_body_jackhammer;
-            special_colour_sprite = spr_player_colour_jackhammer;
-            frame_count = array_length(frame_data_jackhammer);
-            break;
-
-        case "snow_shovel":
-            special_sprite = spr_player_body_snowshovel;
-            special_colour_sprite = spr_player_colour_snowshovel;
-            frame_count = array_length(frame_data_snow_shovel);
-            break;
-    }
-
-    show_debug_message("Started special action: " + action);
-}
-
-Folder: D:\PenguinIsleProject\Penguin Isles\scripts\stop_special_action
-File: stop_special_action.gml
-function stop_special_action() {
-    special_action_active = false;
-    action_active = false;
-    special_action = "";
-    special_sprite = noone;
-    special_colour_sprite = noone;
-    visible = true; // Restore normal player sprite
-    image_speed = 1;
-
-    show_debug_message("Stopped special action.");
-}
-
