@@ -1,0 +1,418 @@
+Below is a comprehensive plan and guide to implement your requested features for expanding the inventory system in your GameMaker Studio project. This response integrates your requirements—aligning the map icon, expanding the inventory logic, adding clothing item slots, and including a character viewer—while ensuring compatibility with your existing mechanics. I’ve structured it with clear explanations and provided copy-paste-ready code snippets tailored to your project.
+Overview of the Implementation Plan
+Your goal is to enhance the inventory system in your game by:
+Aligning the Map Icon: Adjust obj_map_icon to align with obj_inventory and the outfit menu on the screen.
+Expanding the Inventory System:
+Increase the inventory capacity from 8 to 42 slots, showing only the first 8 in the normal view and all in an expanded view.
+Open the expanded inventory with “I” or a click on spr_inventory_ui (55,3 to 111,9), pausing the game.
+Close it with “I” or a click on spr_inventory_expanded (99,2 to 155,11), resuming the game.
+Display items in a 7x6 grid within spr_inventory_expanded.
+Adding Clothing Item Slots:
+Introduce slots for head, face, neck, body, hand, and feet.
+Equip/unequip items like “Beta Hat” (head), “Party Hat” (head), “Jackhammer” (hand), and “Snow Shovel” (hand), removing them from or adding them to the inventory.
+Display equipped items in designated slots within spr_inventory_expanded.
+Implementing a Character Viewer:
+Show the player sprite with equipped clothing items in a rectangle (29,35 to 103,150) within spr_inventory_expanded.
+Preserving Existing Mechanics: Ensure changes integrate seamlessly without breaking current functionality.
+I’ll modify obj_inventory, obj_map_icon, obj_initializer, and obj_player to achieve this. Here’s how:
+Step-by-Step Implementation Guide
+Step 1: Align the Map Icon with obj_inventory and Outfit Menu
+Currently, obj_map_icon is drawn in the Draw GUI event at a fixed position (10, bottom - sprite_height - 10). To align it with obj_inventory (bottom center) and the outfit menu (to the right of the inventory), we’ll position it to the left of the inventory in the GUI layer.
+Modifications to obj_map_icon
+Draw GUI Event: Update to calculate its position relative to obj_inventory’s GUI position.
+gml
+// obj_map_icon: Draw GUI Event
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+var inv_width = sprite_get_width(spr_inventory_ui); // 170 from your code
+var inv_x = (gui_width - inv_width) / 2; // Center of inventory
+var inv_y = gui_height - 29 - 10; // Bottom position from original Step event
+var padding = 10;
+var map_icon_x = inv_x - sprite_get_width(sprite_index) - padding;
+var map_icon_y = inv_y; // Align vertically with inventory
+draw_sprite_ext(sprite_index, image_index, map_icon_x, map_icon_y, 1, 1, 0, c_white, 1);
+Step Event: Remove positioning code since it’s now handled in Draw GUI. Keep visibility and hover logic.
+gml
+// obj_map_icon: Step Event
+if (global.chat_active) {
+    exit;
+}
+depth = -1000;
+// Check if the mouse is hovering over the icon
+if (position_meeting(mouse_x, mouse_y, id)) {
+    image_index = 1; // Highlighted sprite
+} else {
+    image_index = 0; // Normal sprite
+}
+// Visibility in UI rooms
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
+visible = !is_ui_room;
+This positions the map icon to the left of obj_inventory with a 10-pixel padding, aligning it vertically with the inventory and outfit menu.
+Step 2: Expand the Inventory System
+We’ll expand the inventory to 42 slots, display only the first 8 in the normal UI, and show all in a centered expanded UI that pauses the game.
+Modifications to obj_initializer
+Create Event: Initialize additional globals for pausing and clothing slots.
+gml
+// obj_initializer: Create Event (append to existing code)
+if (!variable_global_exists("game_paused")) {
+    global.game_paused = false;
+}
+if (!variable_global_exists("equipped_items")) {
+    global.equipped_items = {
+        head: -1,
+        face: -1,
+        neck: -1,
+        body: -1,
+        hand: -1,
+        feet: -1
+    };
+}
+if (!variable_global_exists("item_type_map")) {
+    global.item_type_map = ds_map_create();
+    ds_map_add(global.item_type_map, ds_map_find_value(global.item_index_map, "Beta Hat"), "head");
+    ds_map_add(global.item_type_map, ds_map_find_value(global.item_index_map, "Party Hat"), "head");
+    ds_map_add(global.item_type_map, ds_map_find_value(global.item_index_map, "Jackhammer"), "hand");
+    ds_map_add(global.item_type_map, ds_map_find_value(global.item_index_map, "Snow Shovel"), "hand");
+    // Add more items as you define them
+}
+Modifications to obj_inventory
+Create Event: Increase inventory size to 42.
+gml
+// obj_inventory: Create Event
+inventory_size = 42; // Expanded to 42 slots
+inventory = array_create(inventory_size, -1);
+active_slot = 0;
+global.active_item_index = active_slot;
+persistent = true;
+if (is_undefined(global.item_index_map)) {
+    show_debug_message("ERROR: global.item_index_map not initialized.");
+} else {
+    show_debug_message("DEBUG: global.item_index_map is valid.");
+}
+Step Event: Add toggle logic, pausing, and mouse interaction.
+gml
+// obj_inventory: Step Event
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+var inv_x = (gui_width - sprite_get_width(spr_inventory_ui)) / 2;
+var inv_y = gui_height - 29 - 10;
+var gui_mouse_x = device_mouse_x_to_gui(0);
+var gui_mouse_y = device_mouse_y_to_gui(0);
+
+// Toggle expanded inventory with "I"
+if (keyboard_check_pressed(ord("I"))) {
+    global.inventory_expanded = !global.inventory_expanded;
+    show_debug_message("Inventory Expanded: " + string(global.inventory_expanded));
+}
+
+// Mouse click to open (55,3 to 111,9 on spr_inventory_ui)
+var click_area_left = inv_x + 55;
+var click_area_top = inv_y + 3;
+var click_area_right = inv_x + 111;
+var click_area_bottom = inv_y + 9;
+if (mouse_check_button_pressed(mb_left) &&
+    gui_mouse_x >= click_area_left && gui_mouse_x <= click_area_right &&
+    gui_mouse_y >= click_area_top && gui_mouse_y <= click_area_bottom) {
+    global.inventory_expanded = !global.inventory_expanded;
+    show_debug_message("Inventory toggled via mouse: " + string(global.inventory_expanded));
+}
+
+// Pause/unpause game
+if (global.inventory_expanded && !global.game_paused) {
+    instance_deactivate_all(true);
+    instance_activate_object(obj_inventory);
+    instance_activate_object(obj_map_icon);
+    instance_activate_object(global.player_instance); // Keep player for drawing
+    global.game_paused = true;
+} else if (!global.inventory_expanded && global.game_paused) {
+    instance_activate_all();
+    global.game_paused = false;
+}
+
+// Existing scroll and drop logic (unchanged)
+if (mouse_wheel_up()) {
+    active_slot = min(active_slot + 1, 7); // Limit to first 8 slots
+    global.active_item_index = inventory[active_slot];
+}
+if (mouse_wheel_down()) {
+    active_slot = max(active_slot - 1, 0);
+    global.active_item_index = inventory[active_slot];
+}
+if (keyboard_check_pressed(ord("F"))) {
+    drop_active_item();
+}
+
+// Existing Tube and Party Hat logic (unchanged)
+// [Insert your existing Tube and Party Hat code here]
+
+// Depth
+depth = -1000;
+
+// Existing functions (has_item, add_to_inventory, remove_item, drop_active_item)
+// [Insert your existing functions here]
+Draw Event: Move to Draw GUI for consistency, add expanded inventory and clothing slots.
+gml
+// obj_inventory: Draw GUI Event
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+var inv_x = (gui_width - 170) / 2;
+var inv_y = gui_height - 29 - 10;
+var slot_positions = [
+    [inv_x + 5, inv_y + 14], [inv_x + 25, inv_y + 14], [inv_x + 45, inv_y + 14], [inv_x + 65, inv_y + 14],
+    [inv_x + 85, inv_y + 14], [inv_x + 105, inv_y + 14], [inv_x + 125, inv_y + 14], [inv_x + 145, inv_y + 14]
+];
+
+// Draw normal inventory
+draw_sprite(spr_inventory_ui, 0, inv_x, inv_y);
+for (var i = 0; i < 8; i++) {
+    if (inventory[i] != -1) {
+        var slot_x = slot_positions[i][0];
+        var slot_y = slot_positions[i][1];
+        draw_sprite_part(spr_inventory_items, 0, inventory[i] * 18, 0, 18, 18, slot_x, slot_y);
+        if (i == active_slot) {
+            draw_sprite(spr_inventory_highlight, 0, slot_x - 1, slot_y - 1);
+        }
+    }
+}
+
+// Draw outfit menu
+draw_sprite(spr_outfit_menu, 0, inv_x + 190, inv_y + 12);
+
+// Draw expanded inventory
+if (global.inventory_expanded) {
+    var expanded_x = (gui_width - sprite_get_width(spr_inventory_expanded)) / 2;
+    var expanded_y = (gui_height - sprite_get_height(spr_inventory_expanded)) / 2;
+    draw_sprite(spr_inventory_expanded, 0, expanded_x, expanded_y);
+
+    // Draw 7x6 item grid (107,34 within sprite)
+    var grid_start_x = expanded_x + 107;
+    var grid_start_y = expanded_y + 34;
+    var item_size = 18;
+    var gap = 3;
+    for (var row = 0; row < 6; row++) {
+        for (var col = 0; col < 7; col++) {
+            var slot_index = row * 7 + col;
+            if (slot_index < inventory_size && inventory[slot_index] != -1) {
+                var item_x = grid_start_x + col * (item_size + gap);
+                var item_y = grid_start_y + row * (item_size + gap);
+                draw_sprite_part(spr_inventory_items, 0, inventory[slot_index] * 18, 0, 18, 18, item_x, item_y);
+            }
+        }
+    }
+
+    // Draw equipped items
+    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+    var slot_positions = [[7, 34], [7, 54], [7, 74], [7, 94], [7, 114], [7, 134]];
+    for (var i = 0; i < 6; i++) {
+        var item_index = global.equipped_items[$ slots[i]];
+        if (item_index != -1) {
+            var slot_x = expanded_x + slot_positions[i][0];
+            var slot_y = expanded_y + slot_positions[i][1];
+            draw_sprite_part(spr_inventory_items, 0, item_index * 18, 0, 18, 18, slot_x, slot_y);
+        }
+    }
+
+    // Draw character viewer (placeholder, detailed in Step 4)
+    var char_x = expanded_x + 29;
+    var char_y = expanded_y + 35;
+    // [Character drawing code moved to Step 4]
+}
+Pause Player Movement
+obj_player Step Event: Add pause check at the top.
+gml
+// obj_player: Step Event (replace existing)
+if (global.game_paused) exit;
+// [Rest of your existing Step code]
+This expands the inventory to 42 slots, shows 8 in the normal UI, and displays all in a centered 7x6 grid when toggled, pausing the game appropriately.
+Step 3: Add Clothing Item Slots
+We’ll allow equipping/unequipping items via clicks in the expanded inventory, managing them with global.equipped_items.
+Modifications to obj_inventory
+Step Event: Add equipping/unequipping logic (append to existing).
+gml
+// obj_inventory: Step Event (append after pause logic)
+if (global.inventory_expanded && mouse_check_button_pressed(mb_left)) {
+    var expanded_x = (gui_width - sprite_get_width(spr_inventory_expanded)) / 2;
+    var expanded_y = (gui_height - sprite_get_height(spr_inventory_expanded)) / 2;
+
+    // Equip from grid
+    var grid_start_x = expanded_x + 107;
+    var grid_start_y = expanded_y + 34;
+    var item_size = 18;
+    var gap = 3;
+    for (var row = 0; row < 6; row++) {
+        for (var col = 0; col < 7; col++) {
+            var slot_x = grid_start_x + col * (item_size + gap);
+            var slot_y = grid_start_y + row * (item_size + gap);
+            if (gui_mouse_x >= slot_x && gui_mouse_x < slot_x + item_size &&
+                gui_mouse_y >= slot_y && gui_mouse_y < slot_y + item_size) {
+                var slot_index = row * 7 + col;
+                if (slot_index < inventory_size && inventory[slot_index] != -1) {
+                    var item_index = inventory[slot_index];
+                    var item_type = ds_map_find_value(global.item_type_map, item_index);
+                    if (!is_undefined(item_type)) {
+                        var current_equipped = global.equipped_items[$ item_type];
+                        if (current_equipped != -1) {
+                            add_to_inventory(get_item_name(current_equipped));
+                        }
+                        global.equipped_items[$ item_type] = item_index;
+                        inventory[slot_index] = -1;
+                        show_debug_message("Equipped item " + string(item_index) + " to " + item_type);
+                    }
+                }
+            }
+        }
+    }
+
+    // Unequip from slots
+    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+    var slot_positions = [[7, 34], [7, 54], [7, 74], [7, 94], [7, 114], [7, 134]];
+    for (var i = 0; i < 6; i++) {
+        var slot_x = expanded_x + slot_positions[i][0];
+        var slot_y = expanded_y + slot_positions[i][1];
+        if (gui_mouse_x >= slot_x && gui_mouse_x < slot_x + 18 &&
+            gui_mouse_y >= slot_y && gui_mouse_y < slot_y + 18) {
+            var item_index = global.equipped_items[$ slots[i]];
+            if (item_index != -1) {
+                add_to_inventory(get_item_name(item_index));
+                global.equipped_items[$ slots[i]] = -1;
+                show_debug_message("Unequipped item " + string(item_index) + " from " + slots[i]);
+            }
+        }
+    }
+
+    // Close expanded inventory (99,2 to 155,11)
+    var close_left = expanded_x + 99;
+    var close_top = expanded_y + 2;
+    var close_right = expanded_x + 155;
+    var close_bottom = expanded_y + 11;
+    if (gui_mouse_x >= close_left && gui_mouse_x <= close_right &&
+        gui_mouse_y >= close_top && gui_mouse_y <= close_bottom) {
+        global.inventory_expanded = false;
+        show_debug_message("Expanded inventory closed via mouse.");
+    }
+}
+
+// Helper function to get item name from index
+function get_item_name(item_index) {
+    var keys = ds_map_keys_to_array(global.item_index_map);
+    for (var i = 0; i < array_length(keys); i++) {
+        if (ds_map_find_value(global.item_index_map, keys[i]) == item_index) {
+            return keys[i];
+        }
+    }
+    return "";
+}
+This enables clicking on grid items to equip them (swapping if a slot is occupied) and clicking on equipped slots to unequip them back to the inventory.
+Step 4: Implement the Character Viewer
+The character viewer at (29,35 to 103,150) within spr_inventory_expanded will show the player sprite with equipped items. For simplicity, we’ll draw the player facing down.
+Modifications to obj_inventory
+Draw GUI Event: Add character viewer drawing (append within if (global.inventory_expanded) block).
+gml
+// obj_inventory: Draw GUI Event (within if (global.inventory_expanded))
+    // Draw character viewer
+    var char_x = expanded_x + 29;
+    var char_y = expanded_y + 35;
+    var frame_data = [
+        0, 0, 24, 24,  // Frame 1: DOWN
+        0, 24, 24, 24, // Frame 2
+        0, 48, 24, 24  // Frame 3
+    ];
+    var frame_index = floor(current_time / 200) mod 3; // Simple animation
+    var frame_x = frame_data[frame_index * 4];
+    var frame_y = frame_data[frame_index * 4 + 1];
+    var frame_width = frame_data[frame_index * 4 + 2];
+    var frame_height = frame_data[frame_index * 4 + 3];
+    draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, char_x, char_y, 1, 1, c_white, 1);
+    draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, char_x, char_y, 1, 1, global.player_color, 1);
+    if (global.equipped_items.head != -1) {
+        var head_item = global.equipped_items.head;
+        if (head_item == ds_map_find_value(global.item_index_map, "Beta Hat")) {
+            draw_sprite_part_ext(spr_player_betahat, 0, frame_x, frame_y, frame_width, frame_height, char_x, char_y, 1, 1, c_white, 1);
+        } else if (head_item == ds_map_find_value(global.item_index_map, "Party Hat")) {
+            draw_sprite_part_ext(spr_player_partyhat, 0, frame_x, frame_y, frame_width, frame_height, char_x, char_y, 1, 1, c_white, 1);
+        }
+    }
+    // Add more clothing items as needed (e.g., hand items like Jackhammer)
+This draws the player sprite animated and overlays equipped head items. Expand this with additional sprites for other slots as you create them.
+Final Notes
+Testing: Test the expanded inventory toggle, pausing, and clothing equipping/unequipping thoroughly. Adjust sprite coordinates if they don’t align perfectly with your spr_inventory_expanded.
+Future Clothing Items: Add new items to global.item_type_map and extend the character viewer drawing logic with their sprites.
+Compatibility: The code preserves your existing inventory functions (e.g., Tube switching, Party Hat toggling) by integrating around them.
+This implementation meets all your requirements while maintaining your game’s current mechanics. Copy and paste the provided snippets into the respective events, and let me know if you need further tweaks!
+Your code gave no error and the game loaded and played normally. I have notice some odd bugs, Their are two versions of obj_map_icon and obj_inventory being drawn when the game runs, One set I think is from rm_init and is just being displayed where I placed it in that room and another, much smaller sized version in the correct location at the bottom middle of the screen. The inventory still works and the expanded inventory behaves as expected.
+
+Thought for
+12s
+Expand for details
+It seems that when your game runs, you're seeing two versions of obj_map_icon and obj_inventory being drawn on the screen: one set appears where you placed them in rm_init, and another smaller set is drawn in the correct location at the bottom middle of the screen. This duplication is likely causing confusion, even though the inventory functionality itself still works as expected. Let’s resolve this issue step-by-step to ensure only one set of these objects appears in the intended location.
+Why This Is Happening
+The presence of two sets of obj_map_icon and obj_inventory suggests that there are multiple instances of these objects active at the same time. Here’s what’s likely occurring:
+Manually Placed Instances: The set displayed where you placed them in rm_init (in the room editor) is being drawn in the room at their assigned coordinates.
+Code-Created Instances: The smaller set at the bottom middle of the screen is likely being drawn via code, possibly in the Draw GUI event, which positions them correctly relative to the screen rather than the room.
+This duplication happens because the game is rendering both the instances you manually placed in the room editor and the ones created or drawn through code.
+How to Fix It
+To eliminate the duplicates and ensure only the correctly positioned (smaller) set appears at the bottom middle of the screen, we need to take control of how these objects are created and drawn. Here’s how to do it:
+1. Remove Manually Placed Instances
+Since you mentioned that one set is appearing where you placed it in rm_init, these are likely instances you added directly in the room editor. Let’s remove them:
+Open the room editor for rm_init.
+Locate and delete any instances of obj_inventory and obj_map_icon that you manually placed in the room.
+By removing these, we eliminate the extra instances that are being drawn in their room-specific positions.
+2. Control Instance Creation with Code
+Instead of relying on the room editor, let’s ensure these objects are created programmatically exactly once. This gives us full control over their existence and prevents duplicates. You can use a persistent controller object (e.g., obj_controller) to manage this:
+Create a Controller Object (if you don’t already have one):
+Create a new object called obj_controller.
+In the object properties, check the "Persistent" box so it remains active across all rooms.
+Add Creation Code:
+In the Create event of obj_controller, add the following GameMaker Language (GML) code:
+gml
+if (!instance_exists(obj_inventory)) {
+    instance_create_layer(0, 0, "Instances", obj_inventory);
+}
+if (!instance_exists(obj_map_icon)) {
+    instance_create_layer(0, 0, "Instances", obj_map_icon);
+}
+This checks if an instance of each object already exists before creating one, ensuring no duplicates.
+The (0, 0) coordinates don’t matter much here if you’re repositioning them in the Draw GUI event (more on that below).
+Place the Controller:
+Add obj_controller to rm_init in the room editor, or ensure it’s created at game start via the game’s initialization logic.
+3. Handle Drawing in the GUI Layer
+Since you mentioned the correctly positioned set is smaller and at the bottom middle of the screen, it’s likely being drawn in the Draw GUI event, which is tied to screen coordinates rather than room coordinates. Let’s make sure this is set up properly:
+Open obj_inventory and obj_map_icon in the object editor.
+Remove any code in the regular Draw event (if it exists), as this event draws objects at their room coordinates.
+Add or modify the Draw GUI event for each object with code like this:
+For obj_inventory:
+gml
+draw_sprite(sprite_index, image_index, display_get_gui_width() / 2, display_get_gui_height() - 50);
+For obj_map_icon:
+gml
+draw_sprite(sprite_index, image_index, display_get_gui_width() / 2 - 50, display_get_gui_height() - 50);
+Adjust the x and y values (e.g., display_get_gui_width() / 2 for centering, -50 for positioning near the bottom) to match your desired layout. The smaller size might be due to GUI scaling, which we’ll verify next.
+4. Verify GUI Scaling
+If the GUI-drawn versions appear smaller, it could be due to the GUI layer’s resolution differing from the room’s. To ensure consistent sizing:
+Check your game’s GUI setup in a global script or the controller’s Create event:
+gml
+display_set_gui_size(1280, 720); // Set to your intended GUI resolution
+Replace 1280, 720 with your game’s target resolution to match the sprite sizes you expect.
+Ensure your sprites (obj_inventory and obj_map_icon) are designed for this resolution, or scale them in the Draw GUI event using draw_sprite_ext if needed:
+gml
+draw_sprite_ext(sprite_index, image_index, display_get_gui_width() / 2, display_get_gui_height() - 50, 1, 1, 0, c_white, 1);
+The 1, 1 parameters are the xscale and yscale; adjust these if the size still isn’t correct.
+5. Make Objects Persistent (Optional)
+If obj_inventory and obj_map_icon need to stay active across all rooms (e.g., as part of a HUD):
+In their object properties, check the "Persistent" box.
+This ensures they don’t get destroyed when switching rooms, but since they’re now created by obj_controller, duplicates won’t occur.
+Test the Changes
+Run the Game: Start in rm_init and confirm that only one set of obj_inventory and obj_map_icon appears at the bottom middle of the screen.
+Switch Rooms: If your game has multiple rooms, test transitions to ensure the objects persist without duplicating.
+Check Functionality: Verify that the inventory still works as expected.
+If the Issue Persists
+If you still see duplicates after these steps:
+Search for Additional Creation Code: Check all scripts, room creation codes, and other objects for any calls to instance_create_layer or instance_create_depth that might be spawning extra copies.
+Debug with Show Debug Message:
+Add this to the Step event of obj_controller:
+gml
+show_debug_message("Inventory instances: " + string(instance_number(obj_inventory)));
+show_debug_message("Map icon instances: " + string(instance_number(obj_map_icon)));
+If the output shows more than one instance of either object, trace where the extras are being created.
+Final Result
+By removing the manually placed instances from rm_init, creating the objects via a persistent controller, and ensuring they’re drawn only in the Draw GUI event, you should now see only one set of obj_inventory and obj_map_icon in the correct location at the bottom middle of the screen. This should resolve the duplication while keeping your inventory functionality intact. Let me know if you need further assistance!
