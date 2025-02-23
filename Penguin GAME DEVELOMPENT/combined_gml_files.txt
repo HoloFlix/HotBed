@@ -1,78 +1,37 @@
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_battery
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Battery");
-        if (added) {
-            show_debug_message("Battery added to inventory.");
-            instance_destroy();
-        } //else {
-            //show_debug_message("Inventory full.");
-        //}
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Battery";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_beta_hat
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        // Check if the player already has the party hat in their inventory OR if it is visible
-        if (!obj_inventory.has_item("Beta Hat") && !global.party_hat_visible) {
-            var added = obj_inventory.add_to_inventory("Beta Hat");
-            if (added) {
-                show_debug_message("Beta Hat added to inventory.");
-                instance_destroy(); // Destroy the instance after pickup
-            } else {
-                show_debug_message("Inventory full.");
-            }
-        } else {
-            show_debug_message("You already have the Beta Hat in your inventory or it is currently visible.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
-
+File: Create_0.gml
+event_inherited();
+item_name = "Beta Hat";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_big_bush
 File: Create_0.gml
 //depth
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_boxpuffleo_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Box Puffle O");
-        if (added) {
-            show_debug_message("Box Puffle O added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Box Puffle O";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_bulletin_board
 File: Create_0.gml
 //depth
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Alarm_0.gml
-// obj_camera: Alarm[0] Event (Handles delayed camera setup after room transition)
+/// obj_camera: Alarm[0] Event (Handles delayed camera setup after room transition)
 if (instance_exists(global.player_instance)) {
     camera_set_view_target(global.camera, global.player_instance);  // Attach camera to player
-    camera_set_view_pos(global.camera, global.player_instance.x - (camera_get_view_width(global.camera) / 2),
-                        global.player_instance.y - (camera_get_view_height(global.camera) / 2));
+    camera_set_view_pos(global.camera, 
+        global.player_instance.x - (camera_get_view_width(global.camera) / 2),
+        global.player_instance.y - (camera_get_view_height(global.camera) / 2));
     camera_set_view_size(global.camera, view_wview[0], view_hview[0]);  // Reset zoom
+    show_debug_message("DEBUG: Camera attached to player at (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
 } else {
     show_debug_message("ERROR: Player instance still not found. Retrying...");
     alarm[0] = 2;  // Retry after 2 frames if player instance is not found yet
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Create_0.gml
 // Create Event for obj_camera
@@ -87,16 +46,15 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Other_4.gml
 /// obj_camera - Room Start Event
 if (global.camera_reset) {
-    if (instance_exists(global.player_instance)) {
-        camera_set_view_target(global.camera, global.player_instance);
-        camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Restore default zoom
-    }
+    alarm[0] = 2; // Delay camera setup by 2 frames
     global.camera_reset = false;
+} else {
+    alarm[0] = 2; // Always delay on room start to ensure player exists
 }
 
-show_debug_message("DEBUG: Restoring camera settings after room transition...");
+show_debug_message("DEBUG: Room Start - Camera setup delayed by 2 frames.");
 
-// Ensure the camera is correctly set up
+// Ensure the camera is valid
 if (!variable_global_exists("camera") || !is_real(global.camera)) {
     global.camera = camera_create();
     view_set_camera(0, global.camera);
@@ -107,35 +65,21 @@ if (!variable_global_exists("camera") || !is_real(global.camera)) {
     view_set_camera(0, global.camera);
     show_debug_message("DEBUG: Reattached to existing global camera. ID: " + string(global.camera));
 }
-
-// Ensure player exists before setting camera target
-if (instance_exists(global.player_instance)) {
-    camera_set_view_target(view_camera[0], global.player_instance);
-    show_debug_message("Camera now follows: " + string(global.player_instance));
-} else {
-    show_debug_message("WARNING: Camera reattachment failed.");
-}
-
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Step_0.gml
-// Ensure the player instance exists
+// obj_camera Step Event
 if (instance_exists(global.player_instance)) {
     var target_x = global.player_instance.x - (camera_get_view_width(global.camera) / 2);
-	var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
-
-    // Ensure the camera doesn't go out of bounds
+    var target_y = global.player_instance.y - (camera_get_view_height(global.camera) / 2);
     target_x = clamp(target_x, 0, room_width - camera_get_view_width(global.camera));
     target_y = clamp(target_y, 0, room_height - camera_get_view_height(global.camera));
-
-    // Smooth interpolation (adjust 0.1 for more/less easing)
-	camera_set_view_pos(global.camera, lerp(camera_get_view_x(global.camera), target_x, 0.9),
-									   lerp(camera_get_view_y(global.camera), target_y, 0.9));
-} else {
-    show_debug_message("WARNING: Player instance missing. Trying again...");
-    alarm[0] = 2; // Retry in 2 frames
+    camera_set_view_pos(global.camera, 
+        lerp(camera_get_view_x(global.camera), target_x, 0.9),
+        lerp(camera_get_view_y(global.camera), target_y, 0.9));
+} else if (alarm[0] == -1) { // Only retry if alarm isn’t already set
+    show_debug_message("WARNING: Player instance missing. Trying again in 2 frames...");
+    alarm[0] = 2;
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_chat_window
 File: Create_0.gml
 // Create Event for Unified Chat System
@@ -436,6 +380,8 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Create_0.gml
 /// Create Event for obj_controller
 global.player_controls_enabled = true;
+persistent = true; // Ensure persistence across rooms
+
 // Initialize global variables early to avoid undefined references
 global.dialogue_active = false; // Dialogue system starts inactive
 
@@ -464,6 +410,13 @@ global.player_instance = noone; // Initialize player instance
 global.icetruck_destroyed = false; // Initialize icetruck_destroyed
 starting_sled_racing_game = false; // Initialize the sled racing game flag
 
+// Room state management
+if (!variable_global_exists("room_states")) {
+    global.room_states = ds_map_create();
+}
+global.current_room = room; // Track current room
+
+
 // Ensure player instance exists
 if (global.player_instance == noone) {
     if (global.current_skin == "player") {
@@ -474,7 +427,7 @@ if (global.player_instance == noone) {
         global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
     } else if (global.current_skin == "sled_player") {
         global.player_instance = instance_create_layer(x, y, "Instances", obj_sled_player);
-    } else if (global.current_skin == "ninja") {  // Add Ninja case
+    } else if (global.current_skin == "ninja") {
         global.player_instance = instance_create_layer(x, y, "Instances", obj_player_ninja);
     }
 }
@@ -491,22 +444,19 @@ if (instance_exists(global.player_instance)) {
     show_debug_message("Error: Failed to create player instance.");
 }
 
-//show_debug_message("Create Event: global.game_started initialized as " + string(global.game_started));
-//show_debug_message("Create Event: countdown_timer initialized as " + string(global.countdown_timer));
-//show_debug_message("Instance of obj_controller created with ID: " + string(id));
+// Add debug message to confirm Create event runs
+show_debug_message("obj_controller Create event executed");
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Other_4.gml
 /// Room Start Event for obj_controller
-
+load_room_state(room);
 show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
 
-// Check if we are in a UI room (where the player should be hidden)
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || 
                   room == rm_pause_menu || room == rm_settings_menu);
 
 if (is_ui_room) {
     show_debug_message("DEBUG: UI Room detected. Removing player instance.");
-    
     if (instance_exists(global.player_instance)) {
         global.last_player_x = global.player_instance.x;
         global.last_player_y = global.player_instance.y;
@@ -514,12 +464,9 @@ if (is_ui_room) {
         global.player_instance = noone;
     }
 } else {
-    // Ensure the player instance is recreated when returning from rm_map
     if (!instance_exists(global.player_instance)) {
         var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
         var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
-
-        // Ensure the correct skin is used
         var new_skin = obj_player; // Default
         for (var i = 0; i < array_length(global.skins); i++) {
             if (global.skins[i].name == global.current_skin) {
@@ -527,13 +474,11 @@ if (is_ui_room) {
                 break;
             }
         }
-
         global.player_instance = instance_create_layer(player_x, player_y, "Instances", new_skin);
+        show_debug_message("DEBUG: Player recreated at (" + string(player_x) + ", " + string(player_y) + ")");
     }
-
-    // ✅ Reattach the camera to the new player instance
     if (instance_exists(global.player_instance)) {
-        camera_set_view_target(view_camera[0], global.player_instance);
+        camera_set_view_target(global.camera, global.player_instance);
         show_debug_message("DEBUG: Camera now follows player.");
     } else {
         show_debug_message("ERROR: Camera could not follow new player instance.");
@@ -620,6 +565,10 @@ if (instance_exists(obj_skinpicker)) {
 show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
 show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
+File: Other_5.gml
+save_room_state(room);
+show_debug_message("Saved state for room: " + room_get_name(room));
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Step_0.gml
 /// Step Event for obj_controller
 
@@ -640,7 +589,6 @@ if (keyboard_check_pressed(vk_escape)) {
 }
 // If the game is paused, prevent player movement
 if (global.is_pause_menu_active) exit;
-
 
 // Hide inventory in UI rooms
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
@@ -731,6 +679,10 @@ function switch_skin(new_skin) {
     global.skin_switching = false;
 }
 
+if (room == rm_sled_racing) {
+    global.current_skin = "sled_player";
+}
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_crates
 File: Create_0.gml
 //depth
@@ -740,7 +692,7 @@ File: Create_0.gml
 // Set item properties
 item_type = ""; // Set when the object is created
 sprite_index = spr_inventory_items;
-
+is_savable = true; // Mark as savable
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
 File: Draw_0.gml
 // Draw the dropped item
@@ -755,21 +707,9 @@ if (distance_to_object(global.player_instance) < 16 && keyboard_check_pressed(or
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_epfphone_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("EPF Phone");
-        if (added) {
-            show_debug_message("EPF Phone added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "EPF Phone";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishbarrel1
 File: Create_0.gml
 //depth
@@ -787,36 +727,20 @@ File: Create_0.gml
 //depth
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishing_rod
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Fishing Rod");
-        if (added) {
-            show_debug_message("Fishing Rod added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Fishing Rod";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
 File: Create_0.gml
 // The ice truck starts as repaired and driveable
 repair_required = false;
 is_driveable = true;
-
-// Assign fixed ice truck sprite (facing down by default)
 sprite_index = spr_icetruck_facedown;
-
-// Store directional sprites
 sprite_fixed[RIGHT] = spr_icetruck_faceright;
 sprite_fixed[UP] = spr_icetruck_faceup;
 sprite_fixed[LEFT] = spr_icetruck_faceleft;
 sprite_fixed[DOWN] = spr_icetruck_facedown;
-
+is_savable = true; // Mark as savable
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
 File: Destroy_0.gml
 instance_destroy(); // Destroy the current ice truck instance
@@ -860,7 +784,7 @@ if (!repair_required) {
 }
 
 // Ensure correct depth
-depth = -bbox_bottom;
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
 File: Alarm_0.gml
 global.repair_cooldown = false;
@@ -883,7 +807,7 @@ alarm[1] = 5; // Keep the flag active for 5 frames
 
 // Assign broken ice truck sprite (facing down by default)
 sprite_index = spr_icetruck_facedown;
-
+is_savable = true;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck_broken
 File: Destroy_0.gml
 instance_destroy(); // Destroy the current ice truck instance
@@ -931,7 +855,7 @@ if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
 }
 
 // Ensure correct depth
-depth = -bbox_bottom;
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_initializer
 File: Create_0.gml
 /// Create Event for obj_initializer
@@ -973,9 +897,19 @@ if (!variable_global_exists("item_object_map")) {
     show_debug_message("DEBUG: global.item_object_map already exists.");
 }
 
+//initialize expanded inventory
+if (!variable_global_exists("inventory_expanded")) {
+    global.inventory_expanded = false;
+}
+
 // Ensure party_hat_visible is set (default to false)
 if (!variable_global_exists("party_hat_visible")) {
     global.party_hat_visible = false;
+}
+
+// Ensure beta_hat_visible is set (default to false)
+if (!variable_global_exists("beta_hat_visible")) {
+    global.beta_hat_visible = false;
 }
 
 // Initialize the global camera
@@ -1029,8 +963,6 @@ inventory_size = 8; // Number of slots
 inventory = array_create(inventory_size, -1); // Store item indices instead of strings
 active_slot = 0; // Currently selected inventory slot
 
-global.inventory_expanded = false;
-
 // Track special items (auto-remove when used)
 auto_remove_items = ["Party Hat", "Tube"];
 
@@ -1046,7 +978,6 @@ if (is_undefined(global.item_index_map)) {
 } else {
     show_debug_message("DEBUG: global.item_index_map is valid in obj_inventory Create Event.");
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Draw_0.gml
 // Draw inventory UI
@@ -1054,8 +985,8 @@ draw_sprite(spr_inventory_ui, 0, x, y);
 depth = -5000;
 
 var slot_positions = [
-    [x + 5, y + 5], [x + 25, y + 5], [x + 45, y + 5], [x + 65, y + 5],
-    [x + 85, y + 5], [x + 105, y + 5], [x + 125, y + 5], [x + 145, y + 5]
+    [x + 5, y + 14], [x + 25, y + 14], [x + 45, y + 14], [x + 65, y + 14],
+    [x + 85, y + 14], [x + 105, y + 14], [x + 125, y + 14], [x + 145, y + 14]
 ];
 
 // Draw items
@@ -1068,22 +999,18 @@ for (var i = 0; i < inventory_size; i++) {
 
         // Highlight the active slot
         if (i == active_slot) {
-            draw_sprite(spr_inventory_highlight, 0,  slot_x - 1, slot_y - 1);
+            draw_sprite(spr_inventory_highlight, 0, slot_x - 1, slot_y - 1);
         }
     }
 }
 
-// Draw expanded inventory if active
-if (global.inventory_expanded) {
+// Draw expanded inventory if active and variable exists
+if (variable_global_exists("inventory_expanded") && global.inventory_expanded) {
     draw_sprite(spr_inventory_expanded, 0, 61, display_get_gui_height() - 102);
 }
 
-// Draw clothing menu
-draw_sprite(spr_clothing_menu, 0, x + 202, y - 107);
-
 // Draw outfit menu
-draw_sprite(spr_outfit_menu, 0, x + 202, y - 129);
-
+draw_sprite(spr_outfit_menu, 0, x + 190, y + 12);
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Step_0.gml
 /// Step Event for obj_inventory
@@ -1158,6 +1085,26 @@ if (keyboard_check_pressed(ord("P"))) {
     }
 }
 
+// Toggle Beta Hat when pressing "P"
+if (keyboard_check_pressed(ord("P"))) {
+    if (has_item("Beta Hat") || global.beta_hat_visible) { 
+        // Allow toggling only if the hat is in inventory or already visible
+        global.beta_hat_visible = !global.beta_hat_visible; // Toggle visibility state
+
+        if (global.beta_hat_visible) {
+            remove_item("Beta Hat"); // Always remove from inventory when toggled on
+            show_debug_message("Beta Hat is now ON and removed from inventory.");
+        } else {
+            add_to_inventory("Beta Hat"); // Re-add to inventory when toggled off
+            show_debug_message("Beta Hat is now OFF and added back to inventory.");
+        }
+
+        show_debug_message("Beta Hat toggled: " + string(global.beta_hat_visible));
+    } else {
+        show_debug_message("Cannot toggle Beta Hat. It is not in your inventory.");
+    }
+}
+
 // Press "I" to open expanded inventory
 if (keyboard_check_pressed(ord("I"))) {
     global.inventory_expanded = !global.inventory_expanded;
@@ -1223,53 +1170,49 @@ function remove_item(item_name) {
     return false;
 }
 
-// Check if drop_active_item exists before calling
-if (variable_instance_exists(id, "drop_active_item")) {
-    drop_active_item();
-} else {
-    //show_debug_message("WARNING: drop_active_item does not exist, skipping drop.");
-}
-
 // Function: Drop the active item
-function drop_item(item_name) {
-    if (!has_item(item_name)) {
-        show_debug_message("ERROR: Tried to drop '" + item_name + "', but it is not in the inventory.");
-        return; // Prevent crashing if item isn't found
-    }
-
-    var item_index = get_item_index(item_name);
+function drop_active_item() {
+    var item_index = inventory[active_slot];
     if (item_index == -1) {
-        show_debug_message("ERROR: Invalid item index for '" + item_name + "'.");
+        show_debug_message("No item in active slot to drop.");
         return;
     }
 
-    var item_sprite = spr_inventory_items;
-    var frame_index = item_index; // Get correct frame for the item
-
-    var dropped_item = instance_create_layer(x, y, "Instances", obj_dropped_item);
-    dropped_item.sprite_index = item_sprite;
-    dropped_item.image_index = frame_index;
-
-    remove_from_inventory(item_name);
-}
-
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_Jackhammer_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Jackhammer");
-        if (added) {
-            show_debug_message("Jackhammer added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
+    // Find the item name from the index
+    var item_name = "";
+    var keys = ds_map_keys_to_array(global.item_index_map);
+    for (var i = 0; i < array_length(keys); i++) {
+        if (ds_map_find_value(global.item_index_map, keys[i]) == item_index) {
+            item_name = keys[i];
+            break;
         }
     }
-}
 
-// Ensure correct depth
-depth = -bbox_bottom;
+    if (item_name != "") {
+        // Get the corresponding object from item_object_map
+        var dropped_object = ds_map_find_value(global.item_object_map, item_name);
+        if (!is_undefined(dropped_object) && object_exists(dropped_object)) {
+            // Create the specific object instance at the player's position
+            var dropped_item = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", dropped_object);
+            show_debug_message("Dropped " + item_name + " as " + object_get_name(dropped_object) + " at (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+        } else {
+            show_debug_message("ERROR: No valid object mapped for item " + item_name + ". Dropping as generic obj_dropped_item.");
+            var dropped_item = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_dropped_item);
+            dropped_item.item_type = item_name; // Fallback to generic item
+        }
+    } else {
+        show_debug_message("ERROR: Could not find item name for index " + string(item_index));
+        return;
+    }
+
+    // Remove the item from the inventory
+    inventory[active_slot] = -1;
+    show_debug_message("Removed " + item_name + " from inventory slot " + string(active_slot));
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_Jackhammer_item
+File: Create_0.gml
+event_inherited();
+item_name = "Jackhammer";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_lamp
 File: Create_0.gml
 //depth
@@ -1605,6 +1548,7 @@ else if (variable_global_exists("last_room") && global.last_room != noone) {
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map_icon
 File: Step_0.gml
 //Step event
+obj_map_icon.visible = false;
 // Prevent map interaction when chat is active
 if (global.chat_active) {
     exit;
@@ -1638,21 +1582,9 @@ if (is_ui_room) {
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_map_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Map");
-        if (added) {
-            show_debug_message("Map added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Map";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
 File: Create_0.gml
 btn_action = ""; // This will define what the button does (e.g., "play", "exit")
@@ -1660,7 +1592,7 @@ btn_text = "";   // Text to display on the button
 btn_font = -1;   // Default font (-1 means no custom font used)
 text_color = c_white; // Default text color
 hover = false;   // To detect mouse hover
-btn_font = fnt_bumbastika_sml;
+btn_font = fnt_bonkfatty;
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_menu_button
 File: Draw_0.gml
@@ -1676,7 +1608,7 @@ var text_x = x + sprite_width / 2; // Center horizontally
 var text_y = y + sprite_height / 2; // Center vertically
 
 // Draw the button text with wrapping
-draw_set_color(c_black);
+draw_set_color(c_white);
 draw_set_font(btn_font);
 draw_text_ext(text_x, text_y, btn_text, -1, sprite_width - 100);
 
@@ -1904,7 +1836,7 @@ if (current_dialogue_index >= 0) {
     var text_scale = 0.50; // Scale the text smaller
 
     // Calculate text dimensions
-	draw_set_font(fnt_earlygb);
+	draw_set_font(fnt_acme_secretagent_bold);
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     var text_width = string_width(dialogue[current_dialogue_index]) * text_scale;
@@ -2164,10 +2096,10 @@ show_debug_message("NPC Position: " + string(x) + ", " + string(y));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
 File: Create_0.gml
 // Create Event for obj_obstacle
-vspd = -4; // Speed at which obstacles move upwards
+move_speed = 5; // Speed at which obstacles move upwards
 
 // Step Event for obj_obstacle
-y += vspd;
+y += move_speed;
 
 // Destroy the obstacle if it goes off the top of the screen
 if (y < -sprite_height) {
@@ -2178,27 +2110,22 @@ if (y < -sprite_height) {
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
 File: Step_0.gml
-// Step Event for obj_obstacle
-
 if (global.game_started) {
-    // Move the obstacle upwards
-    y -= 5; // Adjust speed as needed
+    y -= move_speed; // Move upwards
 
-    // Reset the obstacle's position if it moves out of the camera viewport
+    // Reset position if off-screen
     if (y < -sprite_height) {
-        y = room_height + sprite_height; // Reset to below the viewport
+        y = room_height + sprite_height; // Reset to below the room
         x = irandom_range(0, room_width - sprite_width); // Randomize horizontal position
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
 File: Alarm_0.gml
-// Alarm[0] Event for obj_obstacle_controller
-instance_create_layer(random(room_width), room_height, "Instances", obj_obstacle);
-alarm[0] = 30; // Reset the alarm
+instance_create_layer(irandom_range(0, room_width - sprite_get_width(spr_long_bush)), room_height, "Instances", obj_obstacle);
+alarm[0] = 30; // Reset alarm
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
 File: Create_0.gml
-// Create Event for obj_obstacle_controller
-alarm[0] = 30; // Spawn an obstacle every 30 steps
+alarm[0] = 30; // Spawn obstacle every 30 steps (adjust for difficulty)
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_parallax_background
 File: Create_0.gml
 depth = 10000;
@@ -2216,27 +2143,9 @@ if (sprite_exists(bg_sky)) {
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_party_hat
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        // Check if the player already has the party hat in their inventory OR if it is visible
-        if (!obj_inventory.has_item("Party Hat") && !global.party_hat_visible) {
-            var added = obj_inventory.add_to_inventory("Party Hat");
-            if (added) {
-                show_debug_message("Party Hat added to inventory.");
-                instance_destroy(); // Destroy the instance after pickup
-            } else {
-                show_debug_message("Inventory full.");
-            }
-        } else {
-            show_debug_message("You already have the Party Hat in your inventory or it is currently visible.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
-
+File: Create_0.gml
+event_inherited();
+item_name = "Party Hat";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pause_menu
 File: Create_0.gml
 depth = -99990; // Ensure pause menu is drawn on top
@@ -2365,41 +2274,40 @@ if (mouse_check_button_pressed(mb_left) && pos >= 0) {
     }
 }
 
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pizzaslice_item
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pickup_item
+File: Create_0.gml
+// obj_pickup_item Create Event
+is_savable = true;
+item_name = ""; // Set in creation code or instance variables
+
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pickup_item
 File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
+// obj_pickup_item Step Event
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 24) {
     if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Pizza Slice");
+        var added = obj_inventory.add_to_inventory(item_name);
         if (added) {
-            show_debug_message("Pizza Slice added to inventory.");
+            show_debug_message(item_name + " added to inventory.");
             instance_destroy();
         } else {
             show_debug_message("Inventory full.");
         }
     }
 }
-
-// Ensure correct depth
-depth = -bbox_bottom;
+set_depth();
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pizzaslice_item
+File: Create_0.gml
+event_inherited();
+item_name = "Pizza Slice";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Create_0.gml
-// Create Event for obj_player
 // Core variables
 xspd = 0;
 yspd = 0;
-move_spd = 2;
+move_spd = 1;
 state = "walking";
-
-// Ensure player color is properly initialized
-if (!variable_global_exists("player_color")) {
-    global.player_color = c_white; // Default color if not set
-}
-
-if (variable_global_exists("last_player_color")) {
-    global.player_color = global.last_player_color;
-} else {
-    global.player_color = c_white; // Default color
-}
+if (!variable_global_exists("player_color")) { global.player_color = c_white; }
+if (variable_global_exists("last_player_color")) { global.player_color = global.last_player_color; } else { global.player_color = c_white; }
 
 // Sliding variables
 sliding = false;
@@ -2413,298 +2321,325 @@ original_sprite = sprite_index;
 
 // Set direction and sprites
 face = DOWN;
-sprite_body = spr_player_body;
+init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
+sprite_body = spr_player_body; // Default sprite
 sprite_color = spr_player_colour;
-
-// Collision mask setup
 mask_index = spr_player_body;
+
+// Frame data for walking (192x72 sprite sheet: 3 frames per direction)
+frame_data = array_create(8);
+frame_data[DOWN] = [0, 0, 24, 24, 0, 24, 24, 24, 0, 48, 24, 24];
+frame_data[UP] = [24, 0, 24, 24, 24, 24, 24, 24, 24, 48, 24, 24];
+frame_data[DOWN_LEFT] = [48, 0, 24, 24, 48, 24, 24, 24, 48, 48, 24, 24];
+frame_data[DOWN_RIGHT] = [72, 0, 24, 24, 72, 24, 24, 24, 72, 48, 24, 24];
+frame_data[LEFT] = [96, 0, 24, 24, 96, 24, 24, 24, 96, 48, 24, 24];
+frame_data[RIGHT] = [120, 0, 24, 24, 120, 24, 24, 24, 120, 48, 24, 24];
+frame_data[UP_RIGHT] = [144, 0, 24, 24, 144, 24, 24, 24, 144, 48, 24, 24];
+frame_data[UP_LEFT] = [168, 0, 24, 24, 168, 24, 24, 24, 168, 48, 24, 24];
+
+// Special actions system
+action_state = "none";  // "none", "dance", "wave", "sit", "jackhammer", "snowshovel"
+action_timer = 0;
+action_duration = 0;
+
+// Frame data and sprite maps for special actions
+action_frame_data = ds_map_create();
+action_sprite_body = ds_map_create();
+action_sprite_color = ds_map_create();
+action_anim_speed = ds_map_create();
+
+// Sit (8 frames, 24x24, y=72 in spr_player_body)
+ds_map_add(action_frame_data, "sit", [
+    [0, 72, 24, 24], [24, 72, 24, 24], [48, 72, 24, 24], [72, 72, 24, 24],
+    [96, 72, 24, 24], [120, 72, 24, 24], [144, 72, 24, 24], [168, 72, 24, 24]
+]);
+ds_map_add(action_sprite_body, "sit", spr_player_body);
+ds_map_add(action_sprite_color, "sit", spr_player_colour);
+ds_map_add(action_anim_speed, "sit", 0); // Static
+
+// Wave (16 frames, 24x24, y=96-120 in spr_player_body)
+ds_map_add(action_frame_data, "wave", [
+    [0, 96, 24, 24], [24, 96, 24, 24], [48, 96, 24, 24], [72, 96, 24, 24],
+    [96, 96, 24, 24], [120, 96, 24, 24], [144, 96, 24, 24], [168, 96, 24, 24],
+    [0, 120, 24, 24], [24, 120, 24, 24], [48, 120, 24, 24], [72, 120, 24, 24],
+    [96, 120, 24, 24], [120, 120, 24, 24], [144, 120, 24, 24], [168, 120, 24, 24]
+]);
+ds_map_add(action_sprite_body, "wave", spr_player_body);
+ds_map_add(action_sprite_color, "wave", spr_player_colour);
+ds_map_add(action_anim_speed, "wave", 0.2); // ~5 FPS
+
+// Dance (56 frames, 24x24, y=144-288 in spr_player_body)
+ds_map_add(action_frame_data, "dance", [
+    [0, 144, 24, 24], [24, 144, 24, 24], [48, 144, 24, 24], [72, 144, 24, 24], [96, 144, 24, 24], [120, 144, 24, 24], [144, 144, 24, 24], [168, 144, 24, 24],
+    [0, 168, 24, 24], [24, 168, 24, 24], [48, 168, 24, 24], [72, 168, 24, 24], [96, 168, 24, 24], [120, 168, 24, 24], [144, 168, 24, 24], [168, 168, 24, 24],
+    [0, 192, 24, 24], [24, 192, 24, 24], [48, 192, 24, 24], [72, 192, 24, 24], [96, 192, 24, 24], [120, 192, 24, 24], [144, 192, 24, 24], [168, 192, 24, 24],
+    [0, 216, 24, 24], [24, 216, 24, 24], [48, 216, 24, 24], [72, 216, 24, 24], [96, 216, 24, 24], [120, 216, 24, 24], [144, 216, 24, 24], [168, 216, 24, 24],
+    [0, 240, 24, 24], [24, 240, 24, 24], [48, 240, 24, 24], [72, 240, 24, 24], [96, 240, 24, 24], [120, 240, 24, 24], [144, 240, 24, 24], [168, 240, 24, 24],
+    [0, 264, 24, 24], [24, 264, 24, 24], [48, 264, 24, 24], [72, 264, 24, 24], [96, 264, 24, 24], [120, 264, 24, 24], [144, 264, 24, 24], [168, 264, 24, 24],
+    [0, 288, 24, 24], [24, 288, 24, 24], [48, 288, 24, 24], [72, 288, 24, 24], [96, 288, 24, 24], [120, 288, 24, 24], [144, 288, 24, 24], [168, 288, 24, 24]
+]);
+ds_map_add(action_sprite_body, "dance", spr_player_body);
+ds_map_add(action_sprite_color, "dance", spr_player_colour);
+ds_map_add(action_anim_speed, "dance", 0.25); // ~4 FPS
+
+// Jackhammer (50 frames, 32x24, spr_player_body_jackhammer)
+ds_map_add(action_frame_data, "jackhammer", [
+    [0, 0, 32, 24], [32, 0, 32, 24], [64, 0, 32, 24], [96, 0, 32, 24], [128, 0, 32, 24], [160, 0, 32, 24],
+    [0, 24, 32, 24], [32, 24, 32, 24], [64, 24, 32, 24], [96, 24, 32, 24], [128, 24, 32, 24], [160, 24, 32, 24],
+    [0, 48, 32, 24], [32, 48, 32, 24], [64, 48, 32, 24], [96, 48, 32, 24], [128, 48, 32, 24], [160, 48, 32, 24],
+    [0, 72, 32, 24], [32, 72, 32, 24], [64, 72, 32, 24], [96, 72, 32, 24], [128, 72, 32, 24], [160, 72, 32, 24],
+    [0, 96, 32, 24], [32, 96, 32, 24], [64, 96, 32, 24], [96, 96, 32, 24], [128, 96, 32, 24], [160, 96, 32, 24],
+    [0, 120, 32, 24], [32, 120, 32, 24], [64, 120, 32, 24], [96, 120, 32, 24], [128, 120, 32, 24], [160, 120, 32, 24],
+    [0, 144, 32, 24], [32, 144, 32, 24], [64, 144, 32, 24], [96, 144, 32, 24], [128, 144, 32, 24], [160, 144, 32, 24],
+    [0, 168, 32, 24], [32, 168, 32, 24], [64, 168, 32, 24], [96, 168, 32, 24], [128, 168, 32, 24], [160, 168, 32, 24],
+    [0, 192, 32, 24], [32, 192, 32, 24], [64, 192, 32, 24], [96, 192, 32, 24], [128, 192, 32, 24], [160, 192, 32, 24]
+]);
+ds_map_add(action_sprite_body, "jackhammer", spr_player_body_jackhammer);
+ds_map_add(action_sprite_color, "jackhammer", spr_player_colour_jackhammer);
+ds_map_add(action_anim_speed, "jackhammer", 0.3); // ~3.33 FPS
+
+// Snow Shovel (16 frames, 24x48, spr_player_body_snowshovel)
+ds_map_add(action_frame_data, "snowshovel", [
+    [0, 0, 24, 48], [24, 0, 24, 48], [48, 0, 24, 48], [72, 0, 24, 48], [96, 0, 24, 48], [120, 0, 24, 48], [144, 0, 24, 48], [168, 0, 24, 48],
+    [0, 48, 24, 48], [24, 48, 24, 48], [48, 48, 24, 48], [72, 48, 24, 48], [96, 48, 24, 48], [120, 48, 24, 48], [144, 48, 24, 48], [168, 48, 24, 48]
+]);
+ds_map_add(action_sprite_body, "snowshovel", spr_player_body_snowshovel);
+ds_map_add(action_sprite_color, "snowshovel", spr_player_colour_snowshovel);
+ds_map_add(action_anim_speed, "snowshovel", 0.2); // ~5 FPS
 
 // Debugging
 show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
-
-// Animation Frame Data (192x72 sprite sheet, 24x24 grid)
-frame_data = array_create(8);
-
-// Down (Facing Forward)
-frame_data[DOWN] = [
-    0, 0, 24, 24,   // Frame 1
-    0, 24, 24, 24,  // Frame 2
-    0, 48, 24, 24   // Frame 3
-];
-
-// Up (Facing Back)
-frame_data[UP] = [
-    24, 0, 24, 24,  
-    24, 24, 24, 24,  
-    24, 48, 24, 24  
-];
-
-// Down-Left
-frame_data[DOWN_LEFT] = [
-    48, 0, 24, 24,  
-    48, 24, 24, 24,  
-    48, 48, 24, 24  
-];
-
-// Down-Right
-frame_data[DOWN_RIGHT] = [
-    72, 0, 24, 24,  
-    72, 24, 24, 24,  
-    72, 48, 24, 24  
-];
-
-// Left
-frame_data[LEFT] = [
-    96, 0, 24, 24,  
-    96, 24, 24, 24,  
-    96, 48, 24, 24  
-];
-
-// Right
-frame_data[RIGHT] = [
-    120, 0, 24, 24,  
-    120, 24, 24, 24,  
-    120, 48, 24, 24  
-];
-
-// Up-Right
-frame_data[UP_RIGHT] = [
-    144, 0, 24, 24,  
-    144, 24, 24, 24,  
-    144, 48, 24, 24  
-];
-
-// Up-Left
-frame_data[UP_LEFT] = [
-    168, 0, 24, 24,  
-    168, 24, 24, 24,  
-    168, 48, 24, 24  
-];
-
-// ========== SPECIAL ACTION FRAME DATA ==========
-frame_data_waving = array_create(16);
-for (var i = 0; i < 16; i++) {
-    frame_data_waving[i] = [ (i % 8) * 24, (i div 8) * 24 + 96, 24, 24 ];
-}
-
-frame_data_dancing = array_create(53);
-for (var i = 0; i < 53; i++) {
-    frame_data_dancing[i] = [ (i % 8) * 24, (i div 8) * 24 + 144, 24, 24 ];
-}
-
-frame_data_jackhammer = array_create(50);
-for (var i = 0; i < 50; i++) {
-    frame_data_jackhammer[i] = [ (i % 6) * 32, (i div 6) * 24, 32, 24 ];
-}
-
-frame_data_snow_shovel = array_create(16);
-for (var i = 0; i < 16; i++) {
-    frame_data_snow_shovel[i] = [ (i % 8) * 24, (i div 8) * 48, 24, 48 ];
-}
-
-// Variable to track special action state
-action_active = false;
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Draw_0.gml
-// Ensure valid frame selection
-var frame_index = floor(image_index) mod (array_length(frame_data[face]) / 4);
+var draw_x = x;
+var draw_y = y;
+var frame_x, frame_y, frame_width, frame_height;
+var current_sprite_body = sprite_body; // Default
+var current_sprite_color = sprite_color;
 
-// Extract frame data
-var frame_x = frame_data[face][frame_index * 4];
-var frame_y = frame_data[face][frame_index * 4 + 1];
-var frame_width = frame_data[face][frame_index * 4 + 2];
-var frame_height = frame_data[face][frame_index * 4 + 3];
-
-// Draw the body layer
-draw_sprite_part_ext(
-    spr_player_body, 0,  
-    frame_x, frame_y,  
-    frame_width, frame_height,  
-    x, y,  
-    1, 1,  
-    c_white, 1  
-);
-
-// Apply color overlay blending
-gpu_set_blendmode(bm_normal); // Use additive blending for better overlay effect
-draw_sprite_part_ext(
-    spr_player_colour, 0,  
-    frame_x, frame_y,  
-    frame_width, frame_height,  
-    x, y,  
-    1, 1,  
-    global.player_color, 1  
-);
-
-// Draw the Party Hat if the player does not currently have it in their inventory and it's toggled on
-if (global.party_hat_visible) {
-    draw_sprite_part_ext(
-        spr_player_partyhat, 0,  
-        frame_x, frame_y,  
-        frame_width, frame_height,  
-        x, y,  
-        1, 1,  
-        c_white, 1  
-    );
+if (action_state == "none") {
+    // Walking animation
+    var frame_index = floor(image_index) mod 3;  // 3 frames per direction
+    frame_x = frame_data[face][frame_index * 4];
+    frame_y = frame_data[face][frame_index * 4 + 1];
+    frame_width = frame_data[face][frame_index * 4 + 2];
+    frame_height = frame_data[face][frame_index * 4 + 3];
+    draw_x -= frame_width / 2; // Center 24x24
+    draw_y -= frame_height / 2;
+} else {
+    // Special actions
+    var frames = ds_map_find_value(action_frame_data, action_state);
+    var frame_count = array_length(frames);  // Number of sub-arrays (frames)
+    var frame_index;
+    if (action_state == "sit") {
+        // Static sitting frame based on direction
+        // Map face to match sprite order: DOWN=0, DOWN_LEFT=1, LEFT=2, UP_LEFT=3, UP=4, UP_RIGHT=5, RIGHT=6, DOWN_RIGHT=7
+        var sit_frame_map = [6, 4, 2, 0, 7, 5, 1, 3]; // RIGHT=0 maps to RIGHT=6, etc.
+        frame_index = clamp(sit_frame_map[face], 0, frame_count - 1);
+        show_debug_message("Face: " + string(face) + ", Sitting Frame: " + string(frame_index));
+    } else {
+        // Animated actions (dance, wave, jackhammer, snowshovel)
+        frame_index = floor(image_index) mod frame_count;
+    }
+    // Access the sub-array for the current frame
+    var frame_data_array = frames[frame_index];
+    frame_x = frame_data_array[0];
+    frame_y = frame_data_array[1];
+    frame_width = frame_data_array[2];
+    frame_height = frame_data_array[3];
+    
+    // Set action-specific sprites
+    current_sprite_body = ds_map_find_value(action_sprite_body, action_state);
+    current_sprite_color = ds_map_find_value(action_sprite_color, action_state);
+    draw_x -= frame_width / 2; // Dynamic centering
+    draw_y -= frame_height / 2;
 }
 
-
-if (action_active) {
-draw_sprite_part_ext(
-    special_sprite, 0,  
-    frame_x, frame_y,  
-    frame_width, frame_height,  
-    x, y,  
-    1, 1,  
-    c_white, 1  
-);
- 
-// Apply color overlay blending
-gpu_set_blendmode(bm_normal); // Use additive blending for better overlay effect
-draw_sprite_part_ext(
-    special_colour_sprite, 0,  
-    frame_x, frame_y,  
-    frame_width, frame_height,  
-    x, y,  
-    1, 1,  
-    global.player_color, 1  
-);
+// Draw the sprite parts
+draw_sprite_part_ext(current_sprite_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, 1, 1, c_white, 1);
+gpu_set_blendmode(bm_normal);
+draw_sprite_part_ext(current_sprite_color, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, 1, 1, global.player_color, 1);
+if (global.party_hat_visible) {
+    draw_sprite_part_ext(spr_player_partyhat, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, 1, 1, c_white, 1);
+}
+if (global.beta_hat_visible) {
+    draw_sprite_part_ext(spr_player_betahat, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, 1, 1, c_white, 1);
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Step_0.gml
 // Ensure `obj_inventory` exists before accessing it
-if (instance_exists(obj_inventory)) {
-    if (obj_inventory.has_item("Wrench")) {
+if (instance_exists(obj_inventory)) { if (obj_inventory.has_item("Wrench")) {} }
+
+// Prevent updates when paused
+if (global.is_pause_menu_active) { exit; }
+
+// Handle special actions (only when not driving)
+if (!driving && action_state == "none") {
+    if (keyboard_check_pressed(ord("H"))) {  // H for Dance
+        action_state = "dance";
+        action_timer = 0;
+        action_duration = 224;  // 56 frames * 4 steps per frame (at 0.25 speed)
+        image_index = 0;
+        show_debug_message("Starting dance");
+    }
+    else if (keyboard_check_pressed(ord("J"))) {  // J for Wave
+        action_state = "wave";
+        action_timer = 0;
+        action_duration = 80;  // 16 frames * 5 steps per frame (at 0.2 speed)
+        image_index = 0;
+        show_debug_message("Starting wave");
+    }
+    else if (keyboard_check_pressed(ord("K"))) {  // K for Sit
+        action_state = "sit";
+        action_timer = 0;
+        action_duration = -1;  // Infinite until toggled off
+        image_index = 0;
+        show_debug_message("Starting sit");
+    }
+    else if (keyboard_check_pressed(ord("B"))) {  // B for Jackhammer
+        if (instance_exists(obj_inventory) && obj_inventory.has_item("Jackhammer")) {
+            action_state = "jackhammer";
+            action_timer = 0;
+            action_duration = 150;  // 50 frames * 3 steps per frame (at 0.3 speed)
+            image_index = 0;
+            show_debug_message("Starting jackhammer");
+        } else {
+            show_debug_message("Cannot start jackhammer: Jackhammer not in inventory.");
+        }
+    }
+    else if (keyboard_check_pressed(ord("N"))) {  // N for Snow Shovel
+        if (instance_exists(obj_inventory) && obj_inventory.has_item("Snow Shovel")) {
+            action_state = "snowshovel";
+            action_timer = 0;
+            action_duration = 80;  // 16 frames * 5 steps per frame (at 0.2 speed)
+            image_index = 0;
+            show_debug_message("Starting snow shovel");
+        } else {
+            show_debug_message("Cannot start snow shovel: Snow Shovel not in inventory.");
+        }
+    }
+}
+else if (action_state != "none") {
+    image_speed = ds_map_find_value(action_anim_speed, action_state);
+    action_timer += 1;
+    if (action_state == "sit" && keyboard_check_pressed(ord("K"))) {
+        action_state = "none";
+        image_index = 0;
+        show_debug_message("Stopped sitting");
+    }
+    else if (action_timer >= action_duration && action_duration != -1) {
+        action_state = "none";
+        image_index = 0;  // Reset to first walking frame
+        // Keep last direction instead of resetting
+        show_debug_message("Action " + action_state + " completed");
     }
 }
 
-// Prevent player movement and interactions when paused
-if (global.is_pause_menu_active) {
-    exit; // This prevents the player from updating while paused
-}
-
-
-// 🎿 **Handle Player Interactions**
-if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
-     if (place_meeting(x, y, obj_icetruck_broken) && 
-        (obj_inventory.has_item("Wrench") || obj_inventory.has_item("Battery"))) {
-        show_debug_message("Repairing ice truck...");
-        if (obj_inventory.has_item("Battery")) {
-        show_debug_message("DEBUG: Battery detected in inventory. Attempting to remove...");
-        obj_inventory.remove_item("Battery");
-		}
-        show_debug_message("Battery removed after repair.");
-        with (instance_place(x, y, obj_icetruck_broken)) instance_destroy();
-        instance_create_layer(x, y, "Instances", obj_icetruck);
-
-        show_debug_message("Ice truck repaired!");
+// Handle existing interactions (only when not in an action)
+if (action_state == "none") {
+    if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
+        if (place_meeting(x, y, obj_icetruck_broken) && 
+            (obj_inventory.has_item("Wrench") || obj_inventory.has_item("Battery"))) {
+            show_debug_message("Repairing ice truck...");
+            if (obj_inventory.has_item("Battery")) {
+                show_debug_message("DEBUG: Battery detected in inventory. Attempting to remove...");
+                obj_inventory.remove_item("Battery");
+            }
+            show_debug_message("Battery removed after repair.");
+            with (instance_place(x, y, obj_icetruck_broken)) instance_destroy();
+            instance_create_layer(x, y, "Instances", obj_icetruck);
+            show_debug_message("Ice truck repaired!");
+        }
     }
-}
 
-if (keyboard_check_pressed(ord("T"))) { // Enter/Exit Tube
-    if (global.current_skin == "player" && obj_inventory.has_item("Tube")) {
-        obj_controller.switch_skin("tube");
-        show_debug_message("Entered tube mode.");
-    } else if (global.current_skin == "tube") {
-        obj_controller.switch_skin("player");
-        show_debug_message("Exited tube mode.");
+    if (keyboard_check_pressed(ord("T"))) { // Enter/Exit Tube
+        if (instance_exists(obj_controller)) {
+            if (global.current_skin == "player" && obj_inventory.has_item("Tube")) {
+                obj_controller.switch_skin("tube");
+                show_debug_message("Entered tube mode.");
+            } else if (global.current_skin == "tube") {
+                obj_controller.switch_skin("player");
+                show_debug_message("Exited tube mode.");
+            }
+        } else {
+            show_debug_message("ERROR: obj_controller not found for tube switch.");
+        }
     }
-}
 
-if (keyboard_check_pressed(ord("E"))) { // Enter/Exit Ice Truck
-    var truck_nearby = instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16;
-
-    if (truck_nearby && global.current_skin == "player") {
-        obj_controller.switch_skin("icetruck");
-    } else if (global.current_skin == "icetruck") {
-        obj_controller.switch_skin("player");
+    if (keyboard_check_pressed(ord("E"))) { // Enter/Exit Ice Truck
+        var truck_nearby = instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16;
+        if (instance_exists(obj_controller)) {
+            if (truck_nearby && global.current_skin == "player") {
+                obj_controller.switch_skin("icetruck");
+            } else if (global.current_skin == "icetruck") {
+                obj_controller.switch_skin("player");
+            }
+        } else {
+            show_debug_message("ERROR: obj_controller not found for ice truck switch.");
+        }
     }
+
+    if (instance_exists(obj_inventory)) { if (obj_inventory.has_item("Fishing Rod")) {} }
 }
 
-// Check for key presses to toggle special actions on/off
-if (keyboard_check_pressed(ord("H"))) {
-    start_special_action("dancing");
-}
-if (keyboard_check_pressed(ord("J"))) {
-    start_special_action("waving");
-}
-if (keyboard_check_pressed(ord("K"))) {
-    start_special_action("jackhammer");
-}
-if (keyboard_check_pressed(ord("L")) && obj_inventory.has_item("Snow Shovel")) {
-    start_special_action("snow_shovel");
-}
+// Handle movement (only when not in an action)
+if (action_state == "none") {
+    var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+    var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+    var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+    var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
 
-// Loop animation indefinitely while active
-if (action_active) {
-    if (image_index >= frame_count - 1) {
-        image_index = 0; // Loop animation
+    if (!sliding) {
+        xspd = (right_key - left_key) * move_spd;
+        yspd = (down_key - up_key) * move_spd;
+    } else {
+        xspd = slide_dir_x * slide_speed;
+        yspd = slide_dir_y * slide_speed;
+        slide_speed *= 0.98;
+        if (abs(slide_speed) < 0.1) { sliding = false; xspd = 0; yspd = 0; }
     }
-}
 
+    if (instance_exists(obj_pauser)) { xspd = 0; yspd = 0; }
 
-// 🎮 **Handle Movement**
-var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
-var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
-var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
-var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+    if (yspd < 0) {
+        if (xspd < 0) { face = UP_LEFT; } else if (xspd > 0) { face = UP_RIGHT; } else { face = UP; }
+    } else if (yspd > 0) {
+        if (xspd < 0) { face = DOWN_LEFT; } else if (xspd > 0) { face = DOWN_RIGHT; } else { face = DOWN; }
+    } else {
+        if (xspd > 0) { face = RIGHT; } else if (xspd < 0) { face = LEFT; }
+    }
 
-if (!sliding) {
-    xspd = (right_key - left_key) * move_spd;
-    yspd = (down_key - up_key) * move_spd;
+    xspd = handle_collision("x", xspd);
+    yspd = handle_collision("y", yspd);
+    if (irandom(1) == 0) {
+    x += handle_collision("x", xspd * move_spd);
+    y += handle_collision("y", yspd * move_spd);
 } else {
-    xspd = slide_dir_x * slide_speed;
-    yspd = slide_dir_y * slide_speed;
-    slide_speed *= 0.98;
-    if (abs(slide_speed) < 0.1) {
-        sliding = false;
-        xspd = 0;
-        yspd = 0;
+    y += handle_collision("y", yspd * move_spd);
+    x += handle_collision("x", xspd * move_spd);
+}
+
+    if (xspd != 0 || yspd != 0) { image_speed = 0.15; } else { image_speed = 0; image_index = 0; }
+    if (image_index >= 3) { image_index = 0; }
+}
+
+set_depth();
+
+var is_sled_room = (room == rm_sled_racing);
+if (is_sled_room) {
+    if (instance_exists(obj_player)) {
+        with (obj_player) {
+            visible = false; // Hide the inventory
+        }
+        show_debug_message("DEBUG: Player hidden in Sled Racing room.");
+    }
+} else {
+    if (instance_exists(obj_player)) {
+        with (obj_player) {
+            visible = true; // Show the inventory
+        }
     }
 }
-
-// Prevent movement if paused
-if (instance_exists(obj_pauser)) {
-    xspd = 0;
-    yspd = 0;
-}
-
-// Set movement direction
-if (yspd < 0) {
-    if (xspd < 0) { face = UP_LEFT; }
-    else if (xspd > 0) { face = UP_RIGHT; }
-    else { face = UP; }
-} else if (yspd > 0) {
-    if (xspd < 0) { face = DOWN_LEFT; }
-    else if (xspd > 0) { face = DOWN_RIGHT; }
-    else { face = DOWN; }
-} else {
-    if (xspd > 0) { face = RIGHT; }
-    else if (xspd < 0) { face = LEFT; }
-}
-
-// Handle movement
-xspd = handle_collision("x", xspd);
-yspd = handle_collision("y", yspd);
-x += xspd;
-y += yspd;
-
-// 🎞️ **Animation Handling**
-if (xspd != 0 || yspd != 0) {
-    image_speed = 0.15;
-} else {
-    image_speed = 0;
-    image_index = 0;
-}
-
-if (image_index >= 3) {
-    image_index = 0;
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_icetruck
 File: Create_0.gml
 // Ice truck driving player instance
@@ -2714,7 +2649,7 @@ global.current_skin = "icetruck";
 // Core movement variables
 xspd = 0;
 yspd = 0;
-move_spd = 4;
+move_spd = 2;
 
 // Set direction and sprites
 face = DOWN;
@@ -2788,11 +2723,16 @@ if (place_meeting(x + xspd, y, obj_wall)) xspd = 0;
 if (place_meeting(x, y + yspd, obj_wall)) yspd = 0;
 
 // Apply movement
-x += xspd;
-y += yspd;
+if (irandom(1) == 0) {
+    x += handle_collision("x", xspd * move_spd);
+    y += handle_collision("y", yspd * move_spd);
+} else {
+    y += handle_collision("y", yspd * move_spd);
+    x += handle_collision("x", xspd * move_spd);
+}
 
 // Ensure proper depth sorting
-depth = -bbox_bottom;
+set_depth();
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_ninja
 File: Create_0.gml
@@ -2913,7 +2853,7 @@ if (xspd == 0 && yspd == 0) {
 }
 
 // Depth
-depth = -bbox_bottom;
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_tube
 File: Create_0.gml
 // Create Event for obj_player_tube
@@ -2921,7 +2861,7 @@ File: Create_0.gml
 // Core variables
 xspd = 0;
 yspd = 0;
-move_spd = 3;
+move_spd = 1.5;
 sliding = true;
 slide_dir_x = 0;
 slide_dir_y = 0;
@@ -2951,6 +2891,7 @@ mask_index = spr_tube_sheet; // Ensure collision works
 // Set global player instance
 global.player_instance = id;
 global.current_skin = "tube";
+is_savable = true;
 
 // Debugging
 show_debug_message("obj_player_tube: Initialized. Player instance ID: " + string(id));
@@ -3048,44 +2989,41 @@ if (place_meeting(x + xspd, y, obj_wall)) xspd = 0;
 if (place_meeting(x, y + yspd, obj_wall)) yspd = 0;
 
 // Apply movement
-x += xspd;
-y += yspd;
+if (irandom(1) == 0) {
+    x += handle_collision("x", xspd * move_spd);
+    y += handle_collision("y", yspd * move_spd);
+} else {
+    y += handle_collision("y", yspd * move_spd);
+    x += handle_collision("x", xspd * move_spd);
+}
 
 // Ensure proper depth sorting
-depth = -bbox_bottom;
+set_depth();
+
+var is_sled_room = (room == rm_sled_racing);
+if (is_sled_room) {
+    if (instance_exists(obj_player_tube)) {
+        with (obj_player_tube) {
+            visible = false; // Hide the inventory
+        }
+        show_debug_message("DEBUG: Player Tube hidden in Sled Racing room.");
+    }
+} else {
+    if (instance_exists(obj_player_tube)) {
+        with (obj_player_tube) {
+            visible = true; // Show the inventory
+        }
+    }
+}
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_puffleo_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Puffle O");
-        if (added) {
-            show_debug_message("Puffle O added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Puffle O";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pufflewhistle_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Puffle Whistle");
-        if (added) {
-            show_debug_message("Puffle Whistle added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Puffle Whistle";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_repair_ui
 File: Create_0.gml
 // Create Event for obj_repair_ui
@@ -3286,26 +3224,25 @@ if (skin_object != noone) {
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Create_0.gml
-// Create Event for obj_sled_player
 xspd = 0;
-yspd = 0;
-move_spd = 4;
-lives = 3;
+yspd = 0; // No vertical movement
+move_spd = 5; // Adjust speed as needed
+lives = 3; // Start with 3 lives
 global.game_started = true; // Game starts immediately
-game_timer = 10 * 60; // 10 seconds game timer (assuming 60 FPS)
-collision_cooldown = 30; // Initialize collision cooldown
+game_timer = 10 * 60; // 10 seconds timer (assuming 60 FPS)
+collision_cooldown = 0; // To prevent multiple hits quickly
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Draw_0.gml
 // Draw Event for obj_sled_player
 
 draw_self(); // Draw the player sprite
 
-if (!global.game_started) {
-    var countdown_seconds = global.countdown_timer div 60;
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
+if (global.game_started) {
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
     draw_set_color(c_black);
-    draw_text(room_width / 2, room_height / 2, string(countdown_seconds));
+    draw_text(10, 10, "Lives: " + string(lives));
+    draw_text(10, 30, "Time: " + string(ceil(game_timer / 60))); // Display in seconds
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Other_4.gml
@@ -3316,77 +3253,101 @@ File: Step_0.gml
 // Step Event for obj_sled_player
 
 if (global.game_started) {
-    game_timer -= 1; // Decrement game timer
+    game_timer -= 1; // Decrement timer each frame
 
-    // Horizontal movement using 'A', 'D' keys and arrow keys
+    // Horizontal movement
     if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
-        x -= 5; // Move left
+        x -= move_spd; // Move left
     } 
     if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
-        x += 5; // Move right
+        x += move_spd; // Move right
     }
 
-    // Prevent movement outside the room boundaries
+    // Prevent movement outside room boundaries
     x = clamp(x, 0, room_width - sprite_width);
-
+}
     // Check for collision with obstacles
+if (global.game_started) {
+    // Collision detection with cooldown
     if (collision_cooldown <= 0 && place_meeting(x, y, obj_obstacle)) {
-        // Handle collision (e.g., stop movement, end game, etc.)
         show_debug_message("Collision with obstacle!");
-        lives -= 1; // Reduce lives on collision
-        collision_cooldown = 30; // Reset cooldown
-        if (lives <= 0) {
-            switch_skin("player");
-            room_goto(rm_ski_mountaintop);
-        }
+        lives -= 1; // Deduct one life
+        collision_cooldown = 30; // Set cooldown (0.5 seconds at 60 FPS)
+        // Optional: Add sound effect or visual feedback here
     } else {
         collision_cooldown -= 1; // Decrement cooldown
     }
 
-    // Game win condition
+    // Win condition: Survive 10 seconds with lives remaining
     if (game_timer <= 0 && lives > 0) {
-        switch_skin("player");
+        global.last_player_x = 55; // Set position for rm_ski_village
+        global.last_player_y = 235;
+        switch_skin("player"); // Switch back to obj_player
         room_goto(rm_ski_village); // Transition to rm_ski_village
     }
+
+    // Lose condition: No lives remaining
+    if (lives <= 0) {
+        global.last_player_x = 245; // Set position for rm_ski_mountaintop
+        global.last_player_y = 120;
+        switch_skin("player"); // Switch back to obj_player
+        room_goto(rm_ski_mountaintop); // Transition to rm_ski_mountaintop
+    }
 }
+
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_slippery
 File: Create_0.gml
-xspd = 5;
-yspd = 5;
+xspd = 0;
+yspd = 0;
 
-sliding = true;
+sliding = false;
 slide_dir_x = 0;
 slide_dir_y = 0;
-slide_speed = 4;
-move_spd = 0;
+slide_speed = 0;
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_slippery
 File: Step_0.gml
-if (!sliding) {
-    sliding = true;
-    slide_dir_x = sign(xspd);
-    slide_dir_y = sign(yspd);
-     slide_speed = max(abs(xspd), abs(yspd)); // Start with current speed
+if (place_meeting(x, y, obj_player) || place_meeting(x, y, obj_player_tube)) {
+    if (!sliding) {
+        sliding = true;
+        
+        // Get the player's last movement direction
+        var player = instance_nearest(x, y, obj_player); // Get closest player
+        if (!instance_exists(player)) player = instance_nearest(x, y, obj_player_tube);
+
+        if (instance_exists(player)) {
+            slide_dir_x = sign(player.xspd);
+            slide_dir_y = sign(player.yspd);
+            slide_speed = max(abs(player.xspd), abs(player.yspd)); // Carry over momentum
+        }
+    }
 }
 
- // Deceleration logic for sliding
-    xspd += -slide_dir_x * 0.2; // Adjust the "0.2" for more/less deceleration
-    yspd += -slide_dir_y * 0.2;
+// **Sliding Deceleration Logic**
+if (sliding) {
+    x += slide_dir_x * slide_speed;
+    y += slide_dir_y * slide_speed;
 
-    // Add a rubber-band effect by reversing the sliding direction slightly
-    if (abs(xspd) < 0.1) slide_dir_x = -slide_dir_x;
-    if (abs(yspd) < 0.1) slide_dir_y = -slide_dir_y;
+    // Reduce speed gradually
+    slide_speed *= 0.95; 
 
-    // Clamp speed to avoid infinite sliding
-    slide_speed *= 0.95; // Reduce speed gradually
-	if (slide_speed < 0.1) {
-		sliding = false;
-		
-	if (place_meeting(x + slide_dir_x * slide_speed, y, obj_wall)) {
-    slide_dir_x = -slide_dir_x; // Bounce back
-	}
-	if (place_meeting(x, y + slide_dir_y * slide_speed, obj_wall)) {
-    slide_dir_y = -slide_dir_y;
-	}
+    // Stop sliding when slow enough
+    if (slide_speed < 0.1) {
+        sliding = false;
+        slide_speed = 0;
+    }
+
+    // **Collision Handling (Bounce Effect)**
+    if (place_meeting(x + slide_dir_x * slide_speed, y, obj_wall)) {
+        slide_dir_x = -slide_dir_x; // Reverse direction on X collision
+        slide_speed *= 0.7; // Reduce speed slightly when bouncing
+    }
+    
+    if (place_meeting(x, y + slide_dir_y * slide_speed, obj_wall)) {
+        slide_dir_y = -slide_dir_y; // Reverse direction on Y collision
+        slide_speed *= 0.7;
+    }
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_small_bushes
@@ -3402,85 +3363,25 @@ File: Create_0.gml
 //depth
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowshovel_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Snow Shovel");
-        if (added) {
-            show_debug_message("Snow Shovel added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Snow Shovel";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snow_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Snow");
-        if (added) {
-            show_debug_message("Snow added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Snow";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_spyphone_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Spy Phone");
-        if (added) {
-            show_debug_message("Spy Phone added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Spy Phone";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_stampbook_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Stamp Book");
-        if (added) {
-            show_debug_message("Stamp Book added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Stamp Book";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_starterdeck_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Starter Deck");
-        if (added) {
-            show_debug_message("Starter Deck added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Starter Deck";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tall_bush
 File: Create_0.gml
 //depth
@@ -3491,6 +3392,8 @@ File: Create_0.gml
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
 File: Create_0.gml
+item_name = "Tube";
+
 // Core variables
 face = DOWN;
 
@@ -3504,7 +3407,7 @@ tube_sprites[UP_LEFT] = [48, 0];  // UP_LEFT, DOWN_RIGHT
 tube_sprites[DOWN_RIGHT] = [48, 0];
 tube_sprites[DOWN_LEFT] = [72, 0]; // DOWN_LEFT, UP_RIGHT
 tube_sprites[UP_RIGHT] = [72, 0];
-
+is_savable = true;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
 File: Destroy_0.gml
 instance_destroy(); // Destroy the current ice truck instance
@@ -3532,19 +3435,10 @@ var sit_x = sitting_sprites[face][0];
 var sit_y = sitting_sprites[face][1];
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tube
 File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 32) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Tube");
-        if (added) {
-            show_debug_message("Tube added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full. Cannot pick up tube.");
-        }
-    }
-}
+event_inherited();
+item_name = "Tube";
 
-depth = -bbox_bottom;
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_ui
 File: Create_0.gml
 // obj_ui_create.txt
@@ -3619,13 +3513,12 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
 File: Other_7.gml
 /// Animation End Event for obj_warp
 show_debug_message("DEBUG: obj_warp transition initiated. Moving player before room transition.");
-
+global.player_instance = target_instance; // Update global instance
 // Ensure the player moves before switching rooms
 if (target_instance != noone) {
     target_instance.x = target_x;
     target_instance.y = target_y;
     target_instance.face = target_face;
-    global.player_instance = target_instance; // Update global instance
     show_debug_message("Player successfully moved to new position.");
 } else {
     show_debug_message("ERROR: Target instance not found during warp.");
@@ -3792,34 +3685,10 @@ if (target_rm != noone) {
 }
 
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_wood_item
-File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Wood");
-        if (added) {
-            show_debug_message("Wood added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+File: Create_0.gml
+event_inherited();
+item_name = "Wood";
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_wrench_item
 File: Step_0.gml
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
-    if (instance_exists(obj_inventory)) {
-        var added = obj_inventory.add_to_inventory("Wrench");
-        if (added) {
-            show_debug_message("Wrench added to inventory.");
-            instance_destroy();
-        } else {
-            show_debug_message("Inventory full.");
-        }
-    }
-}
-
-// Ensure correct depth
-depth = -bbox_bottom;
+event_inherited();
+item_name = "Wrench";
