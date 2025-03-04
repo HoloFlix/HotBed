@@ -1,3 +1,62 @@
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\get_puffle_sprite_data
+File: get_puffle_sprite_data.gml
+/// get_puffle_sprite_data(direction)
+/// @param direction
+/// Returns the base subimage for the specified direction.
+function get_puffle_sprite_data(direction) {
+    switch (direction) {
+        case DOWN: return 0;
+        case LEFT: return 8;
+        case RIGHT: return 16;
+        case UP: return 24;
+        default: return 0;
+    }
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\get_throw_animation_data
+File: get_throw_animation_data.gml
+function get_throw_animation_data(direction) {
+    var frame_offset = 0;
+    var flip = false;
+    switch (direction) {
+        case DOWN:
+        case DOWN_RIGHT:
+        case RIGHT:
+            frame_offset = 0; // Frames 0–27
+            flip = false;
+            break;
+        case UP:
+        case UP_RIGHT:
+            frame_offset = 28; // Frames 28–55
+            flip = false;
+            break;
+        case DOWN_LEFT:
+        case LEFT:
+            frame_offset = 0;
+            flip = true;
+            break;
+        case UP_LEFT:
+            frame_offset = 28;
+            flip = true;
+            break;
+    }
+    return [frame_offset, flip];
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\get_throw_direction
+File: get_throw_direction.gml
+function get_throw_direction(face) {
+    switch (face) {
+        case RIGHT: return 0;
+        case UP_RIGHT: return 45;
+        case UP: return 90;
+        case UP_LEFT: return 135;
+        case LEFT: return 180;
+        case DOWN_LEFT: return 225;
+        case DOWN: return 270;
+        case DOWN_RIGHT: return 315;
+        default: return 0;
+    }
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
 File: scr_camera_easing.gml
 /// Easing function for smooth camera transitions
@@ -21,34 +80,35 @@ File: scr_handle_collision.gml
 /// @returns - the adjusted speed after collision check
 
 function handle_collision(axis, speed) {
-    var sign_speed = sign(speed); // Get direction (1 = right/down, -1 = left/up)
-    var abs_speed = abs(speed);   // Get absolute movement amount
-    var step_size; // Used for progressive movement
+    var sign_speed = sign(speed);
+    var abs_speed = abs(speed);
 
-    while (abs_speed > 0) {
-        step_size = min(abs_speed, 1); // Move in small steps (pixel by pixel)
+    if (abs_speed == 0) return 0; // No movement needed
 
-        // Check collision at next sub-step
-        if (axis == "x") {
-            if (!place_meeting(x + step_size * sign_speed, y, obj_wall)) {
-                x += step_size * sign_speed;
-            } else {
-                return 0; // Stop movement on collision
-            }
-        } else if (axis == "y") {
-            if (!place_meeting(x, y + step_size * sign_speed, obj_wall)) {
-                y += step_size * sign_speed;
-            } else {
-                return 0; // Stop movement on collision
-            }
-        }
-
-        abs_speed -= step_size; // Reduce remaining movement
+    // **Bounding Box Pre-check**
+    if (axis == "x" && !place_meeting(x + speed, y, obj_wall)) {
+        x += speed;
+        return speed;
+    } else if (axis == "y" && !place_meeting(x, y + speed, obj_wall)) {
+        y += speed;
+        return speed;
     }
 
-    return speed; // Return remaining movement
-}
+    // **Fine-Grained Collision Check**
+    while (abs_speed > 0) {
+        var step_size = min(abs_speed, 1);
+        if (axis == "x" && !place_meeting(x + step_size * sign_speed, y, obj_wall)) {
+            x += step_size * sign_speed;
+        } else if (axis == "y" && !place_meeting(x, y + step_size * sign_speed, obj_wall)) {
+            y += step_size * sign_speed;
+        } else {
+            return 0;
+        }
+        abs_speed -= step_size;
+    }
 
+    return speed;
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
 File: scr_init_sprites.gml
 function init_sprites(right, up, left, down, up_right, up_left, down_right, down_left) {
@@ -86,6 +146,39 @@ function set_song_ingame( _song, _fadeOutCurrentSong = 0, _fadeIn = 0 )
 		startFadeInTime = _fadeIn;
 	}
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_puffle_adoption
+File: scr_puffle_adoption.gml
+function start_naming_puffle() {
+    naming_active = true; // Enable naming
+    naming_text = "";     // Initialize empty name
+}
+
+function handle_naming_input() {
+    if (keyboard_check_pressed(vk_backspace)) {
+        naming_text = string_delete(naming_text, string_length(naming_text), 1); // Remove last character
+    } else if (keyboard_check_pressed(vk_enter)) {
+        finalize_puffle_name();
+    } else {
+        var key = keyboard_lastkey;
+        if (string_length(naming_text) < 12 && key >= 32 && key <= 126) { // Limit to 12 characters
+            naming_text += chr(key);
+        }
+    }
+}
+
+function finalize_puffle_name() {
+    naming_active = false; // Exit naming mode
+    if (obj_inventory.has_item("Puffle O")) {
+        obj_inventory.remove_item("Puffle O");
+    } else if (obj_inventory.has_item("Box Puffle O")) {
+        obj_inventory.remove_item("Box Puffle O");
+    }
+
+    assigned_puffle_name = naming_text; // Assign name
+    following_player = true; // Enable following behavior
+    show_debug_message("Puffle adopted and named: " + assigned_puffle_name);
+}
+
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_room_state
 File: scr_room_state.gml
 // Define save_room_state function
@@ -99,7 +192,7 @@ function save_room_state(room_id) {
     ds_map_replace(global.room_states, room_id, state_list);
 
     with (all) {
-    if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube /* add other player objects */) {
+    if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube && object_index != obj_player_toboggan && object_index != obj_player_ninja /* add other player objects */) {
         // Save state as before
         var state = {
             object_index: object_index,
@@ -134,7 +227,7 @@ function load_room_state(room_id) {
         var state_list = ds_map_find_value(global.room_states, room_id);
         // Destroy existing savable objects
         with (all) {
-			if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube /* add others */) {
+			if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube && object_index != obj_player_toboggan && object_index != obj_player_ninja /* add others */) {
 			instance_destroy();
 		    }
 		}
