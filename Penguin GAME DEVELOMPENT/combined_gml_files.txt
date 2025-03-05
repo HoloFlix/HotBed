@@ -375,47 +375,32 @@ if (global.skin_to_spawn != noone) {
     // Ensure camera follows the new player
     if (instance_exists(global.player_instance)) {
         camera_set_view_target(global.camera, global.player_instance);
-        if (global.debug) show_debug_message("Skin switched to: " + global.current_skin + ". New instance ID: " + string(global.player_instance));
+        show_debug_message("Skin switched to: " + global.current_skin + ". New instance ID: " + string(global.player_instance));
     } else {
-        if (global.debug) show_debug_message("ERROR: Failed to create player instance.");
+        show_debug_message("ERROR: Failed to create player instance.");
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Create_0.gml
 /// Create Event for obj_controller
-global.debug = true; // Set to false for release builds
 global.player_controls_enabled = true;
-persistent = true;
+persistent = true; // Ensure persistence across rooms
 
-// Initialize global variables early
-global.dialogue_active = false;
-global.countdown_timer = 5 * room_speed; // 5 seconds countdown
+// Initialize global variables early to avoid undefined references
+global.dialogue_active = false; // Dialogue system starts inactive
+
+// Get the FPS value for the room
+var room_fps = game_get_speed(gamespeed_fps);
+
+// Initialize countdown_timer with the desired duration in seconds multiplied by room_fps
+global.countdown_timer = 5 * room_fps; // 5 seconds countdown 
 global.is_pause_menu_active = false;
-global.game_started = false;
-global.lives = 3;
-game_timer = 0;
-global.skin_switching = false;
-global.high_scores = [0, 0, 0];  // Top 3 scores
+global.game_started = false; // Flag to check if the game has started
+global.lives = 3; // Initialize player lives
+game_timer = 0; // Initialize game timer
+global.skin_switching = false; // Initialize the skin switching flag
 
-// Sled racing globals
-if (!variable_global_exists("sled_difficulty")) {
-    global.sled_difficulty = "easy"; // Default difficulty
-}
-if (!variable_global_exists("selected_sled")) {
-    global.selected_sled = "standard"; // Default sled
-}
-if (!variable_global_exists("sled_score")) {
-    global.sled_score = 0;
-}
-if (!variable_global_exists("high_scores")) {
-    global.high_scores = []; // Array for top 5 scores
-}
-
-if (!variable_global_exists("selected_sled_type")) {
-    global.selected_sled_type = "Tube"; // Default
-}
-
-// Skins array
+// Initialize global variables
 global.skins = [
     { name: "player", object: obj_player },
     { name: "icetruck", object: obj_player_icetruck },
@@ -425,38 +410,59 @@ global.skins = [
     { name: "ninja", object: obj_player_ninja }
 ];
 
-global.current_skin = "player";
-global.player_instance = noone;
-global.icetruck_destroyed = false;
+global.current_skin = "player"; // Starting skin
+global.player_instance = noone; // Initialize player instance
+global.icetruck_destroyed = false; // Initialize icetruck_destroyed
+starting_sled_racing_game = false; // Initialize the sled racing game flag
 
 // Room state management
 if (!variable_global_exists("room_states")) {
     global.room_states = ds_map_create();
 }
-global.current_room = room;
+global.current_room = room; // Track current room
 
-// Spawn player if none exists
+// Ensure player instance exists
 if (global.player_instance == noone) {
-    global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    if (global.current_skin == "player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player);
+    } else if (global.current_skin == "icetruck") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_icetruck);
+    } else if (global.current_skin == "tube") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_tube);
+    } else if (global.current_skin == "sled_player") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_sled_player);
+    } else if (global.current_skin == "ninja") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_ninja);
+    } else if (global.current_skin == "Toboggan") {
+        global.player_instance = instance_create_layer(x, y, "Instances", obj_player_toboggan);
+	}
 }
 
 if (instance_exists(global.player_instance)) {
     global.player_instance.image_blend = global.player_color;
-    if (global.debug) show_debug_message("Restored player color: " + string(global.player_color));
+    show_debug_message("Restored player color: " + string(global.player_color));
+} 
+
+// Debugging
+if (instance_exists(global.player_instance)) {
+    show_debug_message("Player instance created: " + string(global.player_instance));
+} else {
+    show_debug_message("Error: Failed to create player instance.");
 }
 
-if (global.debug) show_debug_message("obj_controller Create event executed");
+// Add debug message to confirm Create event runs
+show_debug_message("obj_controller Create event executed");
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Other_4.gml
 /// Room Start Event for obj_controller
 load_room_state(room);
-if (global.debug) show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
 
 var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || 
-                  room == rm_pause_menu || room == rm_sled_menu || room == rm_settings_menu);
+                  room == rm_pause_menu || room == rm_settings_menu);
 
 if (is_ui_room) {
-    if (global.debug) show_debug_message("DEBUG: UI Room detected. Removing player instance.");
+    show_debug_message("DEBUG: UI Room detected. Removing player instance.");
     if (instance_exists(global.player_instance)) {
         global.last_player_x = global.player_instance.x;
         global.last_player_y = global.player_instance.y;
@@ -475,13 +481,13 @@ if (is_ui_room) {
             }
         }
         global.player_instance = instance_create_layer(player_x, player_y, "Instances", new_skin);
-        if (global.debug) show_debug_message("DEBUG: Player recreated at (" + string(player_x) + ", " + string(player_y) + ")");
+        show_debug_message("DEBUG: Player recreated at (" + string(player_x) + ", " + string(player_y) + ")");
     }
     if (instance_exists(global.player_instance)) {
         camera_set_view_target(global.camera, global.player_instance);
-        if (global.debug) show_debug_message("DEBUG: Camera now follows player.");
+        show_debug_message("DEBUG: Camera now follows player.");
     } else {
-        if (global.debug) show_debug_message("ERROR: Camera could not follow new player instance.");
+        show_debug_message("ERROR: Camera could not follow new player instance.");
     }
 }
 
@@ -496,9 +502,9 @@ if (instance_exists(global.player_instance) && is_real(global.camera)) {
 // Ensure a "UI" layer exists for GUI elements
 if (!layer_exists("UI")) {
     layer_create(0, "UI");
-    if (global.debug) show_debug_message("DEBUG: UI layer created.");
+    show_debug_message("DEBUG: UI layer created.");
 } else {
-    if (global.debug) show_debug_message("DEBUG: UI layer already exists.");
+    show_debug_message("DEBUG: UI layer already exists.");
 }
 
 // Pause system
@@ -513,18 +519,18 @@ if (global.dialogue_active) {
 }
 
 //Hide Inventory in the Pause Menu
-if (room == rm_pause_menu || room == rm_sled_menu || rm_sled_racing) {
+if (room == rm_pause_menu) {
     // Hide inventory
     with (obj_inventory) {
         visible = false;
     }
-    if (global.debug) show_debug_message("DEBUG: Inventory hidden in pause menu.");
+    show_debug_message("DEBUG: Inventory hidden in pause menu.");
 } else {
     // Restore inventory visibility
     with (obj_inventory) {
         visible = true;
     }
-    if (global.debug) show_debug_message("DEBUG: Inventory restored after pause menu.");
+    show_debug_message("DEBUG: Inventory restored after pause menu.");
 }
 
 // Handle player instance and skin on room transition
@@ -545,29 +551,29 @@ if (global.icetruck_destroyed && instance_exists(obj_icetruck)) {
     }
 }
 
-if (global.debug) show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
+show_debug_message("DEBUG: Room Start Event triggered in obj_controller.");
 
 // Check and create the "UI" layer if it doesn't exist
 if (!layer_exists("UI")) {
     layer_create(0, "UI");
-    if (global.debug) show_debug_message("UI layer created successfully.");
+    show_debug_message("UI layer created successfully.");
 } else {
-    if (global.debug) show_debug_message("UI layer already exists.");
+    show_debug_message("UI layer already exists.");
 }
 
-if (global.debug) show_debug_message("Pause menu closed.");
+show_debug_message("Pause menu closed.");
 if (instance_exists(obj_skinpicker)) {
-    if (global.debug) show_debug_message("Skin picker opened successfully.");
+    show_debug_message("Skin picker opened successfully.");
 } else if (instance_exists(obj_color_wheel)) {
-    if (global.debug) show_debug_message("Color wheel opened successfully.");
+    show_debug_message("Color wheel opened successfully.");
 }
 
-if (global.debug) show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
-if (global.debug) show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
+show_debug_message("DEBUG: Room Start Event completed. Current skin: " + global.current_skin);
+show_debug_message("DEBUG: Player instance ID: " + string(global.player_instance));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Other_5.gml
 save_room_state(room);
-if (global.debug) show_debug_message("Saved state for room: " + room_get_name(room));
+show_debug_message("Saved state for room: " + room_get_name(room));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_controller
 File: Step_0.gml
 /// Step Event for obj_controller
@@ -608,7 +614,7 @@ if (keyboard_check_pressed(ord("C")) && global.current_skin == "icetruck") {
 }
 
 // Hide inventory in UI rooms
-var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_sled_menu || room == rm_sled_racing || room == rm_settings_menu);
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
 if (is_ui_room) {
     if (instance_exists(obj_inventory)) {
         with (obj_inventory) {
@@ -624,20 +630,23 @@ if (is_ui_room) {
     }
 }
 
-// Hide Player in UI rooms
-var is_playerui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_sled_menu  || room == rm_settings_menu);
-if (is_playerui_room) {
-    if (instance_exists(obj_controller)) {
-        with (obj_controller) {
-            visible = false;
-        }
-        show_debug_message("DEBUG: Inventory hidden in UI room.");
+// Hide or show the player in UI rooms
+if (is_ui_room) {
+    if (instance_exists(global.player_instance)) {
+        global.player_instance.visible = false;
+        show_debug_message("DEBUG: UI Room detected. Player instance hidden.");
     }
 } else {
-    if (instance_exists(obj_controller)) {
-        with (obj_controller) {
-            visible = true;
-        }
+    if (!instance_exists(global.player_instance)) {
+        show_debug_message("WARNING: No player instance found. Recreating...");
+        global.player_instance = instance_create_layer(global.player_x, global.player_y, "Instances", obj_player);
+    } else {
+        global.player_instance.visible = true;
+    }
+    if (instance_exists(global.player_instance)) {
+        camera_set_view_target(global.camera, global.player_instance);
+    } else {
+        show_debug_message("ERROR: Camera could not follow player instance.");
     }
 }
 
@@ -694,19 +703,8 @@ function switch_skin(new_skin) {
     global.skin_switching = false;
 }
 
-// In Step_0.gml, under the rm_sled_racing block:
 if (room == rm_sled_racing) {
-    if (!instance_exists(obj_sled_player)) {
-        var sled_x, sled_y;
-        switch (irandom_range(1, 4)) {
-            case 1: sled_x = 90; sled_y = 41; break;
-            case 2: sled_x = 118; sled_y = 41; break;
-            case 3: sled_x = 146; sled_y = 41; break;
-            case 4: sled_x = 174; sled_y = 41; break;
-        }
-        global.player_instance = instance_create_layer(sled_x, sled_y, "Instances", obj_sled_player);
-        show_debug_message("Spawning obj_sled_player at (" + string(sled_x) + ", " + string(sled_y) + ")");
-    }
+    switch_skin("sled_player");
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_crates
 File: Create_0.gml
@@ -755,22 +753,6 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_fishing_rod
 File: Create_0.gml
 event_inherited();
 item_name = "Fishing Rod";
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icepath
-File: Step_0.gml
-if (global.obstacles_moving) {
-    y -= global.scroll_speed;
-    if (y < -sprite_height) {
-        y = room_height + sprite_height;
-        x = irandom_range(0, room_width - sprite_width);
-    }
-    if (place_meeting(x, y, obj_sled_player)) {
-        with (obj_sled_player) move_spd = 7;
-    } else {
-        with (obj_sled_player) move_spd = (global.selected_sled_type == "Tube") ? 4 : 4;
-		with (obj_sled_player) move_spd = (global.selected_sled_type == "Toboggan") ? 4 : 4;
-    }
-}
-set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_icetruck
 File: Create_0.gml
 // Sprite definitions
@@ -1074,7 +1056,6 @@ if (!variable_global_exists("item_object_map")) {
     ds_map_add(global.item_object_map, "Wood", obj_wood_item);
     ds_map_add(global.item_object_map, "Tube", obj_tube);
 	ds_map_add(global.item_object_map, "Toboggan", obj_toboggan);
-	ds_map_add(global.item_object_map, "Wrench", obj_wrench_item);
     show_debug_message("DEBUG: global.item_object_map initialized in obj_initializer.");
 } else {
     show_debug_message("DEBUG: global.item_object_map already exists.");
@@ -1425,7 +1406,6 @@ function drop_active_item() {
     inventory[active_slot] = -1;
     show_debug_message("Removed " + item_name + " from inventory slot " + string(active_slot));
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
 File: Create_0.gml
 // obj_inventory_expanded: Create Event
@@ -2022,7 +2002,7 @@ if (position_meeting(mouse_x, mouse_y, id)) {
 }
 
 // Hide player instead of destroying in UI rooms
-var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_sled_menu || room == rm_sled_racing || room == rm_settings_menu);
+var is_ui_room = (room == rm_init || room == rm_main_menu || room == rm_map || room == rm_pause_menu || room == rm_settings_menu);
 
 if (is_ui_room) {
     if (instance_exists(obj_map_icon)) {
@@ -2149,52 +2129,6 @@ if (global.menu_state == "name_puffle") {
             global.selected_puffle = noone;
         }
     }
-}
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_minigame_warp_block
-File: Alarm_0.gml
-/// @description Alarm[0] Event for obj_minigame_warp_block
-global.warp_cooldown = false;
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_minigame_warp_block
-File: Create_0.gml
-target_rm = 0;
-target_x = 0;
-target_y = 0;
-target_face = 0;
-// Create Event for obj_warp
-if (!variable_global_exists("warp_cooldown")) {
-    global.warp_cooldown = false;
-}
-
-
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_minigame_warp_block
-File: Other_4.gml
-// Check if a warp instance exists
-if (instance_exists(obj_warp)) {
-    var warp_inst = instance_find(obj_warp, 0);
-    if (warp_inst != noone) {
-        // Move the player instance to the target coordinates
-        global.player_instance.x = warp_inst.target_x;
-        global.player_instance.y = warp_inst.target_y;
-
-        // Optional: Adjust the player's facing direction
-        if (is_real(warp_inst.target_face)) {
-            global.player_instance.face = warp_inst.target_face;
-        }
-
-        // Destroy the warp instance once used
-        instance_destroy(warp_inst);
-    }
-}
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_minigame_warp_block
-File: Step_0.gml
-/// @description Temporary Step Event for obj_minigame_warp_block
-if (place_meeting(x, y, global.player_instance)) {
-    room_goto(rm_sled_menu);
-    global.player_instance.x = 129;
-    global.player_instance.y = 29;
-    global.sled_difficulty = "easy";
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_musicmanager
 File: Create_0.gml
@@ -2655,85 +2589,37 @@ show_debug_message("NPC Face: " + string(face));
 show_debug_message("NPC Position: " + string(x) + ", " + string(y));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
 File: Create_0.gml
-/// Create Event for obj_obstacle
-global.game_started = false;
-countdown = 5;
-type = choose("log", "snow_log", "rock");
-switch (type) {
-    case "log": sprite_index = spr_sled_log; break;
-    case "snow_log": sprite_index = spr_sled_log_snowcovered; break;
-    case "rock": sprite_index = spr_sled_rock; break; // Add spr_rock if desired
-}
-x = random_range(0, room_width - sprite_width);
-y = room_height + sprite_height;
-speed = 5; // Base speed
-direction = 90;
+// Create Event for obj_obstacle
+move_speed = 5; // Speed at which obstacles move upwards
 
-// Adjust speed by difficulty
-switch (global.sled_difficulty) {
-    case "medium": speed = 6; break;
-    case "hard": speed = 7; break;
+// Step Event for obj_obstacle
+y += move_speed;
+
+// Destroy the obstacle if it goes off the top of the screen
+if (y < -sprite_height) {
+    instance_destroy();
 }
+
+//depth
+depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle
 File: Step_0.gml
-/// Step Event for obj_obstacle
-if (countdown > 0) {
-    countdown -= 1;
-    if (countdown == 0) {
-        race_started = true;
-        global.game_started = true;
-    }
-    exit;
-}
-
 if (global.game_started) {
-    y -= 5;
+    y -= move_speed; // Move upwards
+
+    // Reset position if off-screen
     if (y < -sprite_height) {
-        y = room_height + sprite_height;
-        x = irandom_range(0, room_width - sprite_width);
-    }
-    if (!obj_sled_player.invincible && place_meeting(x, y, obj_sled_player)) {
-        with (obj_sled_player) {
-            lives -= 1;
-            invincible = true;
-            invincible_timer = room_speed * 2;
-        }
+        y = room_height + sprite_height; // Reset to below the room
+        x = irandom_range(0, room_width - sprite_width); // Randomize horizontal position
     }
 }
-
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
 File: Alarm_0.gml
 instance_create_layer(irandom_range(0, room_width - sprite_get_width(spr_long_bush)), room_height, "Instances", obj_obstacle);
 alarm[0] = 30; // Reset alarm
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
 File: Create_0.gml
-/// Create Event for obj_obstacle_controller
-spawn_timer = 5;
-spawn_interval = room_speed * 2; // Base interval
-difficulty = global.sled_difficulty;
-race_finished = false;
-
-switch (difficulty) {
-    case "medium": spawn_interval = room_speed * 1.5; break;
-    case "hard": spawn_interval = room_speed * 1; break;
-}
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_obstacle_controller
-File: Step_0.gml
-/// Step Event for obj_obstacle_controller
-if (!global.game_started || !instance_exists(obj_sled_player) || obj_sled_player.race_finished) exit;
-
-spawn_timer += 1;
-if (spawn_timer >= spawn_interval) {
-    spawn_timer = 0;
-    if (random(1) < 0.2) {
-        instance_create_layer(0, 0, "Instances", obj_powerup);
-    } else {
-        instance_create_layer(0, 0, "Instances", obj_obstacle);
-    }
-    if (global.sled_difficulty == "hard") spawn_interval = max(spawn_interval - 0.1, room_speed * 0.5);
-}
+alarm[0] = 30; // Spawn obstacle every 30 steps (adjust for difficulty)
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_parallax_background
 File: Create_0.gml
 depth = 10000;
@@ -2899,7 +2785,7 @@ item_name = ""; // Set in creation code or instance variables
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_pickup_item
 File: Step_0.gml
 // obj_pickup_item Step Event
-if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 20) {
+if (keyboard_check_pressed(ord("E")) && distance_to_object(global.player_instance) < 16) {
     if (instance_exists(obj_inventory)) {
         var added = obj_inventory.add_to_inventory(item_name);
         if (added) {
@@ -2936,19 +2822,12 @@ slide_speed = 0;
 driving = false;
 original_sprite = sprite_index;
 
-// Snowball throw variables
-is_throwing = false;
-throw_frame = 0;
-throw_direction = -1;
-throw_animation_length = 28; // 28 frames per animation
-snowball_release_frame = 15; // Snowball spawns mid-animation
-
 // Set direction and sprites
 face = DOWN;
 //init_sprites(spr_player_right, spr_player_up, spr_player_left, spr_player_down, spr_player_up_right, spr_player_up_left, spr_player_down_right, spr_player_down_left);
 sprite_body = spr_player_body; // Default sprite
 sprite_color = spr_player_colour;
-mask_index = spr_player_down;
+mask_index = spr_player_body;
 
 // Frame data for walking (192x72 sprite sheet: 3 frames per direction)
 frame_data = array_create(8);
@@ -3033,21 +2912,6 @@ ds_map_add(action_anim_speed, "snowshovel", 0.2); // ~5 FPS
 
 // Debugging
 show_debug_message("obj_player: Initialized. Driving state: " + string(driving));
-
-// Throw Snowball (28 frames, 24x24, assuming spr_throwsnowball_body at y=0-96)
-ds_map_add(action_frame_data, "throw", [
-    [0, 0, 24, 24], [24, 0, 24, 24], [48, 0, 24, 24], [72, 0, 24, 24], 
-    [96, 0, 24, 24], [120, 0, 24, 24], [144, 0, 24, 24], [168, 0, 24, 24],
-    [0, 24, 24, 24], [24, 24, 24, 24], [48, 24, 24, 24], [72, 24, 24, 24], 
-    [96, 24, 24, 24], [120, 24, 24, 24], [144, 24, 24, 24], [168, 24, 24, 24],
-    [0, 48, 24, 24], [24, 48, 24, 24], [48, 48, 24, 24], [72, 48, 24, 24], 
-    [96, 48, 24, 24], [120, 48, 24, 24], [144, 48, 24, 24], [168, 48, 24, 24],
-    [0, 72, 24, 24], [24, 72, 24, 24], [48, 72, 24, 24], [72, 72, 24, 24]
-]);
-ds_map_add(action_sprite_body, "throw", spr_throwsnowball_body);
-ds_map_add(action_sprite_color, "throw", spr_throwsnowball_colour);
-action_anim_speed = ds_map_create();
-ds_map_add(action_anim_speed, "throw", 0.5); // Reduced from 1.0 to 0.5 (half speed)
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Draw_0.gml
 var draw_x = x;
@@ -3094,72 +2958,6 @@ if (action_state == "none") {
     draw_y -= frame_height / 2;
 }
 
-if (action_state == "throw") {
-    // Variables to determine animation and flip
-    var use_up_right = false; // False = "Throw Face Down Right", True = "Throw Face Up Right"
-    var flip = false;         // False = normal, True = flipped horizontally
-
-    // Determine animation and flip based on throw direction
-    switch (throw_direction) {
-        case DOWN_RIGHT:
-            use_up_right = false;
-            flip = false;
-            break;
-        case UP_RIGHT:
-            use_up_right = true;
-            flip = false;
-            break;
-        case DOWN_LEFT:
-            use_up_right = false;
-            flip = true;
-            break;
-        case UP_LEFT:
-            use_up_right = true;
-            flip = true;
-            break;
-        case RIGHT:
-            use_up_right = choose(false, true); // 50% chance for each animation
-            flip = false;
-            break;
-        case LEFT:
-            use_up_right = choose(false, true); // 50% chance for each animation
-            flip = true;
-            break;
-        case UP:
-            use_up_right = true; // Always use "Throw Face Up Right"
-            flip = choose(false, true); // 50% chance to flip
-            break;
-        case DOWN:
-            use_up_right = false; // Always use "Throw Face Down Right"
-            flip = choose(false, true); // 50% chance to flip
-            break;
-    }
-
-    // Set frame offset based on animation
-    var frame_offset = use_up_right ? 28 : 0; // Adjust if your sprite sheet layout differs
-
-    // Calculate frame index
-    var frames_per_animation = 28; // Number of frames per animation
-    var frame_index = floor(action_timer * ds_map_find_value(action_anim_speed, "throw")) mod frames_per_animation;
-    frame_index += frame_offset; // Shift to the correct animation set
-
-    // Calculate sprite sheet coordinates (assuming 24x24 sprites, 8 columns)
-    var col = frame_index mod 8;
-    var row = floor(frame_index / 8);
-    var spr_x = col * 24;
-    var spr_y = row * 24;
-
-    // Adjust draw position for flipping
-    var throwsprite_width = 24; // Assuming 24-pixel width
-    var draw_x = x;
-    if (flip) {
-        draw_x = x + throwsprite_width; // Shift position for flipped sprite
-    }
-
-    // Draw the sprite once with correct scaling and positioning
-    draw_sprite_part_ext(spr_throwsnowball_body, 0, spr_x, spr_y, 24, 24, draw_x - 12, y - 12, flip ? -1 : 1, 1, c_white, 1);
-    draw_sprite_part_ext(spr_throwsnowball_colour, 0, spr_x, spr_y, 24, 24, draw_x - 12, y - 12, flip ? -1 : 1, 1, global.player_color, 1);
-}
 // Draw the sprite parts
 draw_sprite_part_ext(current_sprite_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, 1, 1, c_white, 1);
 gpu_set_blendmode(bm_normal);
@@ -3180,203 +2978,100 @@ if (global.equipped_items.head != -1) {
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player
 File: Step_0.gml
-if (global.game_paused || global.is_pause_menu_active) {
-    exit; // Prevent updates when paused
+if (global.game_paused) {
+    exit;
 }
 
-// Always define movement inputs at the start
-var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
-var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
-var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
-var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+if (global.game_paused && instance_exists(obj_inventory_expanded)) {
+    if (action_state != "none") {
+        var frames = ds_map_find_value(action_frame_data, action_state);
+        if (!is_undefined(frames)) {
+            image_speed = ds_map_find_value(action_anim_speed, action_state);
+            image_index += image_speed;
+            var frame_count = array_length(frames);  // Number of frames
+            if (image_index >= frame_count) image_index = 0;
+        } else {
+            show_debug_message("Error: No frame data for action_state " + action_state);
+            action_state = "none";  // Reset to avoid repeated errors
+        }
+    } else {
+        image_index += 0.15;  // Walking animation
+        if (image_index >= 3) image_index = 0;
+    }
+} else if (global.game_paused) {
+    exit;
+}
+// Ensure `obj_inventory` exists before accessing it
+if (instance_exists(obj_inventory)) { if (obj_inventory.has_item("Wrench")) {} }
+
+// Prevent updates when paused
+if (global.is_pause_menu_active) { exit; }
 
 // Handle special actions (only when not driving)
 if (!driving && action_state == "none") {
-    if (keyboard_check_pressed(ord("H"))) { // Dance
+    if (keyboard_check_pressed(ord("H"))) {  // H for Dance
         action_state = "dance";
         action_timer = 0;
-        action_duration = 224; // 56 frames * 4 steps
+        action_duration = 224;  // 56 frames * 4 steps per frame (at 0.25 speed)
         image_index = 0;
         show_debug_message("Starting dance");
-    } else if (keyboard_check_pressed(ord("J"))) { // Wave
+    }
+    else if (keyboard_check_pressed(ord("J"))) {  // J for Wave
         action_state = "wave";
         action_timer = 0;
-        action_duration = 80; // 16 frames * 5 steps
+        action_duration = 80;  // 16 frames * 5 steps per frame (at 0.2 speed)
         image_index = 0;
         show_debug_message("Starting wave");
-    } else if (keyboard_check_pressed(ord("K"))) { // Sit
+    }
+    else if (keyboard_check_pressed(ord("K"))) {  // K for Sit
         action_state = "sit";
         action_timer = 0;
-        action_duration = -1; // Infinite until toggled
+        action_duration = -1;  // Infinite until toggled off
         image_index = 0;
         show_debug_message("Starting sit");
-    } else if (keyboard_check_pressed(ord("B"))) { // Jackhammer
+    }
+    else if (keyboard_check_pressed(ord("B"))) {  // B for Jackhammer
         if (instance_exists(obj_inventory) && obj_inventory.has_item("Jackhammer")) {
             action_state = "jackhammer";
             action_timer = 0;
-            action_duration = 150; // 50 frames * 3 steps
+            action_duration = 150;  // 50 frames * 3 steps per frame (at 0.3 speed)
             image_index = 0;
             show_debug_message("Starting jackhammer");
+        } else {
+            show_debug_message("Cannot start jackhammer: Jackhammer not in inventory.");
         }
-    } else if (keyboard_check_pressed(ord("N"))) { // Snow Shovel
+    }
+    else if (keyboard_check_pressed(ord("N"))) {  // N for Snow Shovel
         if (instance_exists(obj_inventory) && obj_inventory.has_item("Snow Shovel")) {
             action_state = "snowshovel";
             action_timer = 0;
-            action_duration = 80; // 16 frames * 5 steps
+            action_duration = 80;  // 16 frames * 5 steps per frame (at 0.2 speed)
             image_index = 0;
             show_debug_message("Starting snow shovel");
+        } else {
+            show_debug_message("Cannot start snow shovel: Snow Shovel not in inventory.");
         }
-    } else if (keyboard_check_pressed(ord("O"))) { // Throw Snowball
-        action_state = "throw";
-        action_timer = 0;
-        action_duration = throw_animation_length; // 28 frames
-        throw_direction = face; // Capture current facing direction
-        image_index = 0;
-        xspd = 0; // Stop movement
-        yspd = 0;
-        show_debug_message("Starting snowball throw");
     }
-} else if (action_state != "none") {
+}
+else if (action_state != "none") {
     image_speed = ds_map_find_value(action_anim_speed, action_state);
     action_timer += 1;
-
-    // Handle snowball throwing specifics
-    if (action_state == "throw" && action_timer == snowball_release_frame) {
-        // Define offsets based on throw direction
-        var offset_x = 0;
-        var offset_y = 0;
-        switch (throw_direction) {
-            case RIGHT: 
-                offset_x = 12; 
-                break;
-            case LEFT: 
-                offset_x = -12; 
-                break;
-            case UP: 
-                offset_y = -12; 
-                break;
-            case DOWN: 
-                offset_y = 12; 
-                break;
-            case UP_RIGHT: 
-                offset_x = 8; 
-                offset_y = -8; 
-                break;
-            case UP_LEFT: 
-                offset_x = -8; 
-                offset_y = -8; 
-                break;
-            case DOWN_RIGHT: 
-                offset_x = 8; 
-                offset_y = 8; 
-                break;
-            case DOWN_LEFT: 
-                offset_x = -8; 
-                offset_y = 8; 
-                break;
-        }
-        // Create the snowball with the calculated offsets
-        var snowball = instance_create_layer(x + offset_x, y + offset_y, "Instances", obj_snowball);
-        snowball.direction = get_throw_direction(throw_direction);
-        snowball.speed = 3; // Reduced from 5 to 3 to slow it down
-        // Timer is incremented in the outer block, so no need to increment here
-    }
-
-    // End special action
     if (action_state == "sit" && keyboard_check_pressed(ord("K"))) {
         action_state = "none";
         image_index = 0;
         show_debug_message("Stopped sitting");
-    } else if (action_timer >= action_duration && action_duration != -1) {
+    }
+    else if (action_timer >= action_duration && action_duration != -1) {
         action_state = "none";
-        image_index = 0;
+        image_index = 0;  // Reset to first walking frame
+        // Keep last direction instead of resetting
         show_debug_message("Action " + action_state + " completed");
     }
 }
 
-// Handle movement (only when not in an action or throwing)
-if (action_state == "none") {
-    if (!sliding) {
-        xspd = (right_key - left_key) * move_spd;
-        yspd = (down_key - up_key) * move_spd;
-    } else {
-        xspd = slide_dir_x * slide_speed;
-        yspd = slide_dir_y * slide_speed;
-        slide_speed *= 0.98;
-        if (abs(slide_speed) < 0.1) { sliding = false; xspd = 0; yspd = 0; }
-    }
-
-    if (instance_exists(obj_pauser)) { xspd = 0; yspd = 0; }
-
-    // Update facing direction
-    if (yspd < 0) {
-        if (xspd < 0) { face = UP_LEFT; } else if (xspd > 0) { face = UP_RIGHT; } else { face = UP; }
-    } else if (yspd > 0) {
-        if (xspd < 0) { face = DOWN_LEFT; } else if (xspd > 0) { face = DOWN_RIGHT; } else { face = DOWN; }
-    } else {
-        if (xspd > 0) { face = RIGHT; } else if (xspd < 0) { face = LEFT; }
-    }
-
-    // Apply collision and movement
-    xspd = handle_collision("x", xspd);
-    yspd = handle_collision("y", yspd);
-    if (irandom(1) == 0) {
-        x += handle_collision("x", xspd * move_spd);
-        y += handle_collision("y", yspd * move_spd);
-    } else {
-        y += handle_collision("y", yspd * move_spd);
-        x += handle_collision("x", xspd * move_spd);
-    }
-
-    if (xspd != 0 || yspd != 0) { image_speed = 0.15; } else { image_speed = 0; image_index = 0; }
-    if (image_index >= 3) { image_index = 0; }
-}
-
 // Handle existing interactions (only when not in an action)
 if (action_state == "none") {
-	// Enter/Exit Tube
-    if (keyboard_check_pressed(ord("T"))) {
-        if (instance_exists(obj_controller)) {
-            if (global.current_skin == "player" && obj_inventory.has_item("Tube")) {
-                obj_controller.switch_skin("tube");
-                show_debug_message("Entered tube mode.");
-            } else if (global.current_skin == "tube") {
-                obj_controller.switch_skin("player");
-                show_debug_message("Exited tube mode.");
-            }
-        } else {
-            show_debug_message("ERROR: obj_controller not found for tube switch.");
-        }
-    }
-	// Enter/Exit Toboggan
-	if (keyboard_check_pressed(ord("T"))) {
-        if (instance_exists(obj_controller)) {
-            if (global.current_skin == "player" && obj_inventory.has_item("Toboggan")) {
-                obj_controller.switch_skin("toboggan");
-                show_debug_message("Entered toboggan mode.");
-            } else if (global.current_skin == "toboggan") {
-                obj_controller.switch_skin("player");
-                show_debug_message("Exited tube mode.");
-            }
-        } else {
-            show_debug_message("ERROR: obj_controller not found for tube switch.");
-        }
-    }
-	// Enter/Exit Ice Truck
-    if (keyboard_check_pressed(ord("E"))) {
-        var truck_nearby = instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16;
-        if (instance_exists(obj_controller)) {
-            if (truck_nearby && global.current_skin == "player") {
-                obj_controller.switch_skin("icetruck");
-            } else if (global.current_skin == "icetruck") {
-                obj_controller.switch_skin("player");
-            }
-        } else {
-            show_debug_message("ERROR: obj_controller not found for ice truck switch.");
-        }
-    }
-	// Repair Ice Truck
-    if (keyboard_check_pressed(ord("R"))) {
+    if (keyboard_check_pressed(ord("R"))) { // Repair Ice Truck
         if (place_meeting(x, y, obj_icetruck_broken) && 
             (obj_inventory.has_item("Wrench") || obj_inventory.has_item("Battery"))) {
             show_debug_message("Repairing ice truck...");
@@ -3390,6 +3085,48 @@ if (action_state == "none") {
             show_debug_message("Ice truck repaired!");
         }
     }
+
+    if (keyboard_check_pressed(ord("T"))) { // Enter/Exit Tube
+        if (instance_exists(obj_controller)) {
+            if (global.current_skin == "player" && obj_inventory.has_item("Tube")) {
+                obj_controller.switch_skin("tube");
+                show_debug_message("Entered tube mode.");
+            } else if (global.current_skin == "tube") {
+                obj_controller.switch_skin("player");
+                show_debug_message("Exited tube mode.");
+            }
+        } else {
+            show_debug_message("ERROR: obj_controller not found for tube switch.");
+        }
+    }
+	
+	if (keyboard_check_pressed(ord("T"))) { // Enter/Exit Toboggan
+        if (instance_exists(obj_controller)) {
+            if (global.current_skin == "player" && obj_inventory.has_item("Toboggan")) {
+                obj_controller.switch_skin("Toboggan");
+                show_debug_message("Entered Toboggan mode.");
+            } else if (global.current_skin == "Toboggan") {
+                obj_controller.switch_skin("player");
+                show_debug_message("Exited Toboggan mode.");
+            }
+        } else {
+            show_debug_message("ERROR: obj_controller not found for Toboggan switch.");
+        }
+    }
+
+    if (keyboard_check_pressed(ord("E"))) { // Enter/Exit Ice Truck
+        var truck_nearby = instance_exists(obj_icetruck) && distance_to_object(obj_icetruck) < 16;
+        if (instance_exists(obj_controller)) {
+            if (truck_nearby && global.current_skin == "player") {
+                obj_controller.switch_skin("icetruck");
+            } else if (global.current_skin == "icetruck") {
+                obj_controller.switch_skin("player");
+            }
+        } else {
+            show_debug_message("ERROR: obj_controller not found for ice truck switch.");
+        }
+    }
+
     if (instance_exists(obj_inventory)) { if (obj_inventory.has_item("Fishing Rod")) {} }
 }
 
@@ -3406,8 +3143,64 @@ if (keyboard_check_pressed(ord("E"))) {
     }
 }
 
+// Handle movement (only when not in an action)
+if (action_state == "none") {
+    var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
+    var left_key = keyboard_check(ord("A")) || keyboard_check(vk_left);
+    var up_key = keyboard_check(ord("W")) || keyboard_check(vk_up);
+    var down_key = keyboard_check(ord("S")) || keyboard_check(vk_down);
+
+    if (!sliding) {
+        xspd = (right_key - left_key) * move_spd;
+        yspd = (down_key - up_key) * move_spd;
+    } else {
+        xspd = slide_dir_x * slide_speed;
+        yspd = slide_dir_y * slide_speed;
+        slide_speed *= 0.98;
+        if (abs(slide_speed) < 0.1) { sliding = false; xspd = 0; yspd = 0; }
+    }
+
+    if (instance_exists(obj_pauser)) { xspd = 0; yspd = 0; }
+
+    if (yspd < 0) {
+        if (xspd < 0) { face = UP_LEFT; } else if (xspd > 0) { face = UP_RIGHT; } else { face = UP; }
+    } else if (yspd > 0) {
+        if (xspd < 0) { face = DOWN_LEFT; } else if (xspd > 0) { face = DOWN_RIGHT; } else { face = DOWN; }
+    } else {
+        if (xspd > 0) { face = RIGHT; } else if (xspd < 0) { face = LEFT; }
+    }
+
+    xspd = handle_collision("x", xspd);
+    yspd = handle_collision("y", yspd);
+    if (irandom(1) == 0) {
+        x += handle_collision("x", xspd * move_spd);
+        y += handle_collision("y", yspd * move_spd);
+    } else {
+        y += handle_collision("y", yspd * move_spd);
+        x += handle_collision("x", xspd * move_spd);
+    }
+
+    if (xspd != 0 || yspd != 0) { image_speed = 0.15; } else { image_speed = 0; image_index = 0; }
+    if (image_index >= 3) { image_index = 0; }
+}
+
 set_depth();
 
+var is_sled_room = (room == rm_sled_racing);
+if (is_sled_room) {
+    if (instance_exists(obj_player)) {
+        with (obj_player) {
+            visible = false; // Hide the inventory
+        }
+        show_debug_message("DEBUG: Player hidden in Sled Racing room.");
+    }
+} else {
+    if (instance_exists(obj_player)) {
+        with (obj_player) {
+            visible = true; // Show the inventory
+        }
+    }
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_icetruck
 File: Create_0.gml
 // Core variables
@@ -3546,7 +3339,6 @@ if (instance_exists(obj_wall)) {
 }
 
 set_depth();
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_ninja
 File: Create_0.gml
 // Create Event for obj_player_ninja
@@ -3667,14 +3459,11 @@ if (xspd == 0 && yspd == 0) {
 
 // Depth
 set_depth();
-
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_toboggan
 File: Create_0.gml
-// Create Event for obj_player_tube
-// Core variables
 xspd = 0;
 yspd = 0;
-move_spd = 2; // Same as tube, adjust if desired
+move_spd = 1.5; // Same as tube, adjust if desired
 sliding = true;
 slide_dir_x = 0;
 slide_dir_y = 0;
@@ -3690,18 +3479,21 @@ toboggan_sprites[DOWN_RIGHT] = [48, 0];
 toboggan_sprites[UP_LEFT] = [72, 0];
 toboggan_sprites[LEFT] = [96, 0];
 toboggan_sprites[RIGHT] = [120, 0];
-toboggan_sprites[UP_RIGHT] = [144, 0];
-toboggan_sprites[DOWN_LEFT] = [168, 0];
+toboggan_sprites[DOWN_LEFT] = [48, 0]; // Flipped DOWN_RIGHT
+toboggan_sprites[UP_RIGHT] = [72, 0];  // Flipped UP_LEFT
 
-mask_index = spr_toboggan; // Create this sprite if not already present
+mask_index = spr_tube_down; // Create this sprite if not already present
 global.player_instance = id;
 global.current_skin = "toboggan";
 show_debug_message("obj_player_toboggan: Initialized. Player instance ID: " + string(id));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_toboggan
 File: Draw_0.gml
+// Draw toboggan
 var toboggan_x = toboggan_sprites[face][0];
 var toboggan_y = toboggan_sprites[face][1];
-draw_sprite_part(spr_toboggan_sheet, 0, toboggan_x, toboggan_y, 24, 24, x - 12, y - 12);
+var flip = (face == DOWN_LEFT || face == UP_RIGHT) ? -1 : 1;
+var draw_x = (flip == 1) ? x - 12 : x + 12;
+draw_sprite_part_ext(spr_toboggan_sheet, 0, toboggan_x, toboggan_y, 24, 24, draw_x, y - 12, flip, 1, c_white, 1);
 
 // Draw player sitting (reusing tube positions)
 var sitting_sprites = array_create(8);
@@ -3717,20 +3509,6 @@ var sit_x = sitting_sprites[face][0];
 var sit_y = sitting_sprites[face][1];
 draw_sprite_part_ext(spr_player_body, 0, sit_x, sit_y, 24, 24, x - 12, y - 12, 1, 1, c_white, 1);
 draw_sprite_part_ext(spr_player_colour, 0, sit_x, sit_y, 24, 24, x - 12, y - 12, 1, 1, global.player_color, 1);
-
-// Draw the Party Hat if toggled on
-if (global.equipped_items.head != -1) {
-    var item_index = global.equipped_items.head; // e.g., 0 for Beta Hat, 1 for Party Hat
-    var head_sprite = ds_map_find_value(global.item_player_sprites, item_index);
-    if (!is_undefined(head_sprite)) {
-        show_debug_message("Drawing head item sprite: " + sprite_get_name(head_sprite) + " for item index: " + string(item_index));
-        var offset_x = -12; // Adjust this if the hat is misaligned
-        var offset_y = -13;
-        draw_sprite_part_ext(head_sprite, 0, sit_x, sit_y, 24, 24, x + offset_x, y + offset_y, 1, 1, c_white, 1);
-    } else {
-        show_debug_message("ERROR: No player sprite found for item index: " + string(item_index));
-    }
-}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_player_toboggan
 File: Step_0.gml
 if (global.is_pause_menu_active) exit;
@@ -3812,7 +3590,7 @@ if (!array_length(tube_sprites[face])) {
     face = DOWN; // Default if invalid
 }
 
-mask_index = spr_tube; // Ensure collision works
+mask_index = spr_tube_sheet; // Ensure collision works
 
 // Set global player instance
 global.player_instance = id;
@@ -3855,9 +3633,9 @@ if (global.equipped_items.head != -1) {
     var head_sprite = ds_map_find_value(global.item_player_sprites, item_index);
     if (!is_undefined(head_sprite)) {
         show_debug_message("Drawing head item sprite: " + sprite_get_name(head_sprite) + " for item index: " + string(item_index));
-        var offset_x = 0; // Adjust this if the hat is misaligned
-        var offset_y = -1;
-        draw_sprite_part_ext(head_sprite, 0, sit_x, sit_y, 24, 24, x + offset_x, y + offset_y, 1, 1, c_white, 1);
+        var offset_x = -12; // Adjust this if the hat is misaligned
+        var offset_y = -12;
+        draw_sprite_part_ext(head_sprite, 0, sit_x, sit_y, 24, 24, x, y, 1, 1, c_white, 1);
     } else {
         show_debug_message("ERROR: No player sprite found for item index: " + string(item_index));
     }
@@ -3882,6 +3660,7 @@ if (keyboard_check_pressed(ord("T"))) {
         }
     }
 }
+
 
 // Handle movement input
 var right_key = keyboard_check(ord("D")) || keyboard_check(vk_right);
@@ -3926,82 +3705,22 @@ if (irandom(1) == 0) {
 // Ensure proper depth sorting
 set_depth();
 
-
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_post_race_menu
-File: Create_0.gml
-// Initialize menu properties
-depth = -99990; // Ensure it draws on top of other objects
-image_speed = 0.5; // Animation speed for the background
-score_text = "Your Score: " + string(global.sled_score); // Display the player’s score
-button_text = "Return to Ski Village"; // Button label
-
-// Calculate menu position in GUI coordinates
-width = 300; // Menu background width
-height = 100; // Menu background height
-x_pos = (display_get_gui_width() - width) / 2; // Center horizontally
-y_pos = (display_get_gui_height() - height) / 2; // Center vertically
-
-// Calculate button position within the menu
-button_width = 100;
-button_height = 30;
-button_x = x_pos + (width - button_width) / 2; // Center horizontally
-button_y = y_pos + height - button_height - 10; // Near the bottom
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_post_race_menu
-File: Draw_0.gml
-// Draw GUI Event for obj_post_race_menu
-draw_set_font(fnt_bumbastika_sml); // Set your font
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_set_color(c_black);
-
-// Draw the menu background
-draw_sprite_ext(spr_pause_menu, floor(image_index), x_pos, y_pos, width / sprite_get_width(spr_pause_menu), height / sprite_get_height(spr_pause_menu), 0, c_white, 1);
-
-// Draw score and button
-draw_text(x_pos + width / 2, y_pos + 20, score_text);
-draw_rectangle(button_x, button_y, button_x + button_width, button_y + button_height, false);
-draw_text(button_x + button_width / 2, button_y + button_height / 2, button_text);
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_post_race_menu
-File: Mouse_4.gml
-// Mouse Left Pressed Event for obj_post_race_menu
-var mx = device_mouse_x_to_gui(0);
-var my = device_mouse_y_to_gui(0);
-
-// Check if the mouse is clicking the button
-if (point_in_rectangle(mx, my, button_x, button_y, button_x + button_width, button_y + button_height)) {
-    room_goto(rm_ski_village); // Go back to the ski village
-    instance_destroy(); // Remove the post-race menu
-}
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_powerup
-File: Create_0.gml
-/// Create Event for obj_powerup
-type = choose("coin", "shield");
-switch (type) {
-    case "coin": sprite_index = spr_coin; break; // Add spr_coin
-    case "shield": sprite_index = spr_shield; break; // Add spr_shield
-}
-x = random_range(0, room_width - sprite_width);
-y = room_height + sprite_height;
-speed = 5;
-direction = 90;
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_powerup
-File: Step_0.gml
-/// Step Event for obj_powerup
-if (!global.game_started) exit;
-y -= speed;
-if (y < -sprite_height) instance_destroy();
-
-if (place_meeting(x, y, obj_sled_player)) {
-    with (obj_sled_player) {
-        if (other.type == "coin") score += 100;
-        else if (other.type == "shield") {
-            invincible = true;
-            invincible_timer = room_speed * 5;
+var is_sled_room = (room == rm_sled_racing);
+if (is_sled_room) {
+    if (instance_exists(obj_player_tube)) {
+        with (obj_player_tube) {
+            visible = false; // Hide the inventory
+        }
+        show_debug_message("DEBUG: Player Tube hidden in Sled Racing room.");
+    }
+} else {
+    if (instance_exists(obj_player_tube)) {
+        with (obj_player_tube) {
+            visible = true; // Show the inventory
         }
     }
-    instance_destroy();
 }
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_puffle
 File: Create_0.gml
 // Movement variables (adapted from obj_npc_old for wandering)
@@ -4327,239 +4046,27 @@ if (skin_object != noone) {
     }
 }
 
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_finishline
-File: Step_0.gml
-/// Step Event for obj_sled_finishline
-if (global.game_started) {
-    y -= global.scroll_speed;
-    if (place_meeting(x, y, obj_sled_player)) {
-        with (obj_sled_player) {
-            global.sled_score = score;
-            race_finished = true;
-        }
-        instance_create_layer(0, 0, "Instances", obj_post_race_menu);
-        instance_destroy();
-    }
-}
-set_depth();
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_log
-File: Collision_obj_sled_player.gml
-if (other == obj_sled_player) {
-        global.player_lives -= 1; // Player loses a life
-    }
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_log
-File: Create_0.gml
-image_index = irandom(1); // Randomly pick frame 0 or 1 ONCE
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_log
-File: Step_0.gml
-/// Step Event for obj_sled_log
-if (global.obstacles_moving) {
-    y -= global.scroll_speed;
-    if (y < -sprite_height) {
-        y = room_height + sprite_height; // Reset position
-        x = irandom_range(0, room_width - sprite_width);
-    }
-}
-set_depth();
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_log_snowcovered
-File: Create_0.gml
-image_index = irandom(1); // Randomly pick frame 0 or 1 ONCE
-
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_log_snowcovered
-File: Step_0.gml
-if (global.obstacles_moving) {
-    y -= global.scroll_speed;
-    if (y < -sprite_height) {
-        y = room_height + sprite_height;
-        x = irandom_range(0, room_width - sprite_width);
-    }
-}
-set_depth();
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_menu
-File: Create_0.gml
-/// Create Event for obj_sled_menu
-depth = -1000;
-
-sleds = [
-    { name: "Tube", speed: 4, lives: 3, desc: "Balanced Ride" },
-    { name: "Toboggan", speed: 4, lives: 3, desc: "Fast & Tricky" }
-];
-
-button_width = 150;
-button_height = 50;
-button_spacing = 20;
-start_y = 200;
-for (var i = 0; i < array_length(sleds); i++) {
-    var btn = instance_create_layer(room_width / 2 - button_width / 2, start_y + i * (button_height + button_spacing), "Instances", obj_sled_menu_button);
-    btn.sled_name = sleds[i].name;
-    btn.desc = sleds[i].desc;
-    btn.sled_image = (sleds[i].name == "Tube") ? spr_tube : spr_toboggan;
-}
-
-if (instance_exists(obj_inventory)) obj_inventory.visible = false;
-if (instance_exists(global.player_instance)) {
-    global.player_instance.visible = false;
-    global.player_controls_enabled = false;
-}
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_menu
-File: Draw_0.gml
-/// Draw Event for obj_sled_menu
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_set_color(c_black); // High score text in black
-draw_text(room_width / 2, 50, "Choose Your Sled");
-draw_text(room_width / 2, 100, "High Score: " + string(global.high_scores[0]));
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_menu_button
-File: Create_0.gml
-/// Create Event for obj_sled_menu_button
-sled_name = "";
-desc = "";
-sled_image = noone; // Add sprite for sled image
-sprite_index = spr_button;
-image_xscale = 150 / sprite_get_width(spr_button);
-image_yscale = 50 / sprite_get_height(spr_button);
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_menu_button
-File: Draw_0.gml
-/// Draw Event for obj_sled_menu_button
-draw_self();
-if (sled_image != noone) {
-    draw_sprite(sled_image, 0, x - 50, y); // Position image to the left of the button
-}
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_text(x + sprite_width / 2, y + sprite_height / 2, sled_name + "\n" + desc);
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_menu_button
-File: Mouse_4.gml
-/// Mouse Left Pressed Event for obj_sled_menu_button
-global.selected_sled_type = sled_name; // Update to use sled_type
-room_goto(rm_sled_racing);
-show_debug_message("Selected sled: " + sled_name);
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Create_0.gml
-/// Create Event for obj_sled_player
-global.scroll_speed = 1; // Reduced from 2 to slow down movement (adjust as needed)
-race_timer = 10 * room_speed; // e.g., 90 seconds at 60 FPS
-countdown = 3 * room_speed; // 3-second countdown
-race_started = false;
-global.game_started = false;
-obstacles_delay = 1 * room_speed; // Delay before obstacles move
-global.obstacles_moving = false;
 xspd = 0;
-acceleration = 0.25;
-deceleration = 0.15;
-max_spd = 5;
-lives = 3;
-invincible = false;
-invincible_timer = 0;
-score = 0;
-global.player_instance = id;
-face = DOWN;
-race_finished = false;
-is_savable = true;
-
-sled_type = global.selected_sled_type;
-if (global.current_skin == "icetruck") {
-    sled_type = "icetruck";
-    invincible = true;
-    icetruck_tint = instance_exists(obj_player_icetruck) ? obj_player_icetruck.icetruck_tint : c_white;
-}
-
-tube_sprites = array_create(8);
-tube_sprites[UP] = [0, 0];
-tube_sprites[LEFT] = [0, 0];
-tube_sprites[DOWN] = [24, 0];
-tube_sprites[RIGHT] = [24, 0];
-tube_sprites[UP_LEFT] = [48, 0];
-tube_sprites[DOWN_RIGHT] = [48, 0];
-tube_sprites[DOWN_LEFT] = [72, 0];
-tube_sprites[UP_RIGHT] = [72, 0];
-
-toboggan_sprites = array_create(8);
-toboggan_sprites[DOWN] = [0, 0];
-toboggan_sprites[UP] = [24, 0];
-toboggan_sprites[DOWN_RIGHT] = [48, 0];
-toboggan_sprites[UP_LEFT] = [72, 0];
-toboggan_sprites[LEFT] = [96, 0];
-toboggan_sprites[RIGHT] = [120, 0];
-toboggan_sprites[UP_RIGHT] = [144, 0];
-toboggan_sprites[DOWN_LEFT] = [168, 0];
-
-sitting_sprites = array_create(8);
-sitting_sprites[DOWN] = [0, 72];
-sitting_sprites[DOWN_LEFT] = [24, 72];
-sitting_sprites[LEFT] = [48, 72];
-sitting_sprites[UP_LEFT] = [72, 72];
-sitting_sprites[UP] = [96, 72];
-sitting_sprites[UP_RIGHT] = [120, 72];
-sitting_sprites[RIGHT] = [144, 72];
-sitting_sprites[DOWN_RIGHT] = [168, 72];
-
-switch (sled_type) {
-    case "Tube":
-        move_spd = 4;
-        lives = 3;
-        mask_index = spr_tube;
-        break;
-    case "Toboggan":
-        move_spd = 4;
-        lives = 3;
-        mask_index = spr_toboggan;
-        break;
-    case "icetruck":
-        move_spd = 5;
-        lives = 3;
-        mask_index = spr_icetruck_down;
-        break;
-    default:
-        move_spd = 4;
-        lives = 3;
-        mask_index = spr_tube;
-}
-global.player_instance = id;
-show_debug_message("obj_sled_player initialized with sled type: " + string(sled_type));
+yspd = 0; // No vertical movement
+move_spd = 5; // Adjust speed as needed
+lives = 3; // Start with 3 lives
+global.game_started = true; // Game starts immediately
+game_timer = 10 * 60; // 10 seconds timer (assuming 60 FPS)
+collision_cooldown = 0; // To prevent multiple hits quickly
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Draw_0.gml
-/// Draw Event for obj_sled_player
-var base_x, base_y, flip = 1;
+// Draw Event for obj_sled_player
 
-// Draw base sprite (tube, toboggan, or icetruck)
-if (sled_type == "icetruck") {
-    draw_sprite_part(spr_icetruck_base, 0, 0, 0, 48, 48, x - 24, y - 24);
-    draw_sprite_part_ext(spr_icetruck_colour, 0, 0, 0, 48, 48, x - 24, y - 24, 1, 1, icetruck_tint, 1);
-    draw_sprite_part(spr_icetruck_window, 0, 0, 0, 48, 48, x - 24, y - 24);
-} else if (global.selected_sled_type == "Tube") {
-    base_x = tube_sprites[face][0];
-    base_y = tube_sprites[face][1];
-    draw_sprite_part(spr_tube_sheet, 0, base_x, base_y, 24, 24, x - 12, y - 12);
-} else if (global.selected_sled_type == "Toboggan") {
-    base_x = toboggan_sprites[face][0];
-    base_y = toboggan_sprites[face][1];
-    draw_sprite_part(spr_toboggan_sheet, 0, base_x, base_y, 24, 24, x - 12, y - 12);
-}
+draw_self(); // Draw the player sprite
 
-// Draw player sitting
-var sit_x = sitting_sprites[face][0];
-var sit_y = sitting_sprites[face][1];
-if (sled_type != "icetruck") {
-    draw_sprite_part_ext(spr_player_body, 0, sit_x, sit_y, 24, 24, x - 12, y - 12, 1, 1, c_white, image_alpha);
-    draw_sprite_part_ext(spr_player_colour, 0, sit_x, sit_y, 24, 24, x - 12, y - 12, 1, 1, global.player_color, image_alpha);
-}
-
-// Ensure font is set for readability
-draw_set_font(fnt_bumbastika_sml); // Use a defined font from your project
-if (countdown > 0) {
-    draw_set_halign(fa_center);
-    draw_set_valign(fa_middle);
-    draw_set_color(c_black);
-    draw_text(room_width / 2, room_height / 2, "Starting in " + string(ceil(countdown / room_speed)));
-} else if (race_started) {
+if (global.game_started) {
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);
     draw_set_color(c_black);
     draw_text(10, 10, "Lives: " + string(lives));
-    draw_text(10, 30, "Score: " + string(score));
-    draw_text(10, 50, "Time: " + string(ceil(race_timer / room_speed)));
+    draw_text(10, 30, "Time: " + string(ceil(game_timer / 60))); // Display in seconds
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Other_4.gml
@@ -4567,62 +4074,52 @@ File: Other_4.gml
 global.player_instance = id;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sled_player
 File: Step_0.gml
-/// Step Event for obj_sled_player
-if (instance_exists(obj_post_race_menu)) exit;
+// Step Event for obj_sled_player
 
-if (countdown > 0) {
-    countdown -= 1;
-    if (countdown == 0) {
-        race_started = true;
-        global.game_started = true;
-        // Spawn finish line based on race_timer and scroll speed
-        instance_create_layer(room_width / 2 - 16, y + race_timer * global.scroll_speed, "Instances", obj_sled_finishline);
+if (global.game_started) {
+    game_timer -= 1; // Decrement timer each frame
+
+    // Horizontal movement
+    if (keyboard_check(vk_left) || keyboard_check(ord("A"))) {
+        x -= move_spd; // Move left
+    } 
+    if (keyboard_check(vk_right) || keyboard_check(ord("D"))) {
+        x += move_spd; // Move right
     }
-    exit;
+
+    // Prevent movement outside room boundaries
+    x = clamp(x, 0, room_width - sprite_width);
 }
+    // Check for collision with obstacles
+if (global.game_started) {
+    // Collision detection with cooldown
+    if (collision_cooldown <= 0 && place_meeting(x, y, obj_obstacle)) {
+        show_debug_message("Collision with obstacle!");
+        lives -= 1; // Deduct one life
+        collision_cooldown = 30; // Set cooldown (0.5 seconds at 60 FPS)
+        // Optional: Add sound effect or visual feedback here
+    } else {
+        collision_cooldown -= 1; // Decrement cooldown
+    }
 
-if (!race_started) exit;
+    // Win condition: Survive 10 seconds with lives remaining
+    if (game_timer <= 0 && lives > 0) {
+        global.last_player_x = 55; // Set position for rm_ski_village
+        global.last_player_y = 235;
+        switch_skin("player"); // Switch back to obj_player
+        room_goto(rm_ski_village); // Transition to rm_ski_village
+    }
 
-if (obstacles_delay > 0) {
-    obstacles_delay -= 1;
-    if (obstacles_delay == 0) {
-        global.obstacles_moving = true;
+    // Lose condition: No lives remaining
+    if (lives <= 0) {
+        global.last_player_x = 245; // Set position for rm_ski_mountaintop
+        global.last_player_y = 120;
+        switch_skin("player"); // Switch back to obj_player
+        room_goto(rm_ski_mountaintop); // Transition to rm_ski_mountaintop
     }
 }
 
-var left_key = keyboard_check(vk_left) || keyboard_check(ord("A"));
-var right_key = keyboard_check(vk_right) || keyboard_check(ord("D"));
-if (left_key) xspd -= acceleration;
-else if (right_key) xspd += acceleration;
-else {
-    xspd = (xspd > 0) ? max(xspd - deceleration, 0) : min(xspd + deceleration, 0);
-}
-xspd = clamp(xspd, -max_spd, max_spd);
-x += xspd;
-x = clamp(x, 0, room_width - sprite_width);
 
-if (invincible) {
-    invincible_timer -= 1;
-    if (invincible_timer <= 0) invincible = false;
-    image_alpha = 0.5 + 0.5 * sin(current_time * 0.01);
-} else {
-    image_alpha = 1;
-}
-
-race_timer -= 1;
-if (lives <= 0 || race_timer <= 0) {
-    race_finished = true;
-    global.sled_score = score;
-    instance_create_layer(0, 0, "Instances", obj_post_race_menu);
-    instance_destroy();
-}
-score += 1;
-
-if (xspd > 0) face = RIGHT;
-else if (xspd < 0) face = LEFT;
-else face = DOWN;
-
-set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_slippery
 File: Create_0.gml
 xspd = 0;
@@ -4691,19 +4188,23 @@ File: Create_0.gml
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowball
 File: Create_0.gml
-direction = 0; // Set by player
-speed = 0;     // Set by player
-sprite_index = spr_snowball; // Placeholder; create a 16x16 sprite
+direction = 0;
+speed = 5;
+sprite_index = spr_snowball; // Assign a 16x16 sprite
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowball
 File: Draw_0.gml
 draw_self();
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowball
 File: Step_0.gml
 x += lengthdir_x(speed, direction);
 y += lengthdir_y(speed, direction);
+
 if (place_meeting(x, y, obj_wall) || x < 0 || x > room_width || y < 0 || y > room_height) {
     instance_destroy();
 }
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowshovel_item
 File: Create_0.gml
 event_inherited();
@@ -4724,15 +4225,6 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_starterdeck_item
 File: Create_0.gml
 event_inherited();
 item_name = "Starter Deck";
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_startpoles
-File: Step_0.gml
-if (global.game_started) {
-    y -= global.scroll_speed;
-    if (y < -sprite_height) {
-        y = room_height + sprite_height;
-        x = room_width / 2 - sprite_width / 2;
-    }
-}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_tall_bush
 File: Create_0.gml
 //depth
@@ -4749,23 +4241,23 @@ is_savable = true;
 
 // Define sprite positions for spr_toboggan_sheet
 toboggan_sprites = array_create(8);
-toboggan_sprites[DOWN] = [0, 0];
-toboggan_sprites[UP] = [24, 0];
-toboggan_sprites[DOWN_RIGHT] = [48, 0];
-toboggan_sprites[UP_LEFT] = [72, 0];
-toboggan_sprites[LEFT] = [96, 0];
-toboggan_sprites[RIGHT] = [120, 0];
-toboggan_sprites[UP_RIGHT] = [144, 0];
-toboggan_sprites[DOWN_LEFT] = [168, 0];
+toboggan_sprites[DOWN] = [0, 0];         // DOWN
+toboggan_sprites[UP] = [24, 0];          // UP
+toboggan_sprites[DOWN_RIGHT] = [48, 0];  // DOWN_RIGHT
+toboggan_sprites[UP_LEFT] = [72, 0];     // UP_LEFT
+toboggan_sprites[LEFT] = [96, 0];        // LEFT
+toboggan_sprites[RIGHT] = [120, 0];      // RIGHT
+toboggan_sprites[DOWN_LEFT] = [48, 0];   // Same as DOWN_RIGHT, flipped in Draw
+toboggan_sprites[UP_RIGHT] = [72, 0];    // Same as UP_LEFT, flipped in Draw
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_toboggan
 File: Destroy_0.gml
 instance_destroy(); // Destroy the current ice truck instance
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_toboggan
 File: Draw_0.gml
-// Get tube sprite position
 var base_x = toboggan_sprites[face][0];
 var base_y = toboggan_sprites[face][1];
-draw_sprite_part(spr_toboggan_sheet, 0, base_x, base_y, 24, 24, x - 12, y - 12);
+var flip = (face == DOWN_LEFT || face == UP_RIGHT) ? -1 : 1;
+draw_sprite_part_ext(spr_toboggan_sheet, 0, base_x, base_y, 24, 24, x - 12, y - 12, flip, 1, c_white, 1);
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_toboggan
 File: Step_0.gml
 event_inherited();
@@ -4924,7 +4416,6 @@ if (instance_exists(global.camera)) {
     show_debug_message("DEBUG: Camera viewport restored after room transition.");
 }
 
-show_debug_message("obj_warp reached Animation End, going to " + room_get_name(target_rm));
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp
 File: Step_0.gml
 // Step Event for obj_warp
@@ -4967,6 +4458,7 @@ if (instance_exists(obj_warp)) {
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_warp_block
 File: Step_0.gml
 /// Step Event for obj_warp_block
+
 // Handle Player Warping
 if (instance_exists(global.player_instance) && place_meeting(x, y, global.player_instance) && !instance_exists(obj_warp)) 
 {
@@ -4980,6 +4472,39 @@ if (instance_exists(global.player_instance) && place_meeting(x, y, global.player
     inst.target_instance = global.player_instance; // Use global instance of player
 	
 }
+
+// Handle Ice Truck Warping
+if (instance_exists(obj_player_icetruck) && place_meeting(x, y, obj_player_icetruck) && !instance_exists(obj_warp)) 
+{
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = obj_player_icetruck.face;
+    inst.target_instance = instance_find(obj_player_icetruck, 0);
+
+}
+
+/// Step Event for obj_warp_block
+
+// Handle Player Warping
+if (instance_exists(global.player_instance) && place_meeting(global.player_instance.x, global.player_instance.y, id) && !instance_exists(obj_warp)) 
+{
+    show_debug_message("DEBUG: obj_player_tube detected on obj_warp_block. Warping...");
+
+    var inst = instance_create_depth(0, 0, -9999, obj_warp);
+    inst.target_x = self.target_x;   // Correctly assign the warp block's values
+    inst.target_y = self.target_y;
+    inst.target_rm = self.target_rm;
+    inst.target_face = self.target_face;
+    inst.target_instance = global.player_instance;
+
+    // Debugging output to confirm correct values are passed
+    show_debug_message("Warping obj_player_tube to Room: " + string(inst.target_rm) +
+        " Position: (" + string(inst.target_x) + ", " + string(inst.target_y) + ") Facing: " + string(inst.target_face));
+}
+
+
 
 // Handle NPC Warping
 if (instance_exists(obj_npc_old) && place_meeting(x, y, obj_npc_old) && !instance_exists(obj_warp)) 
