@@ -13,22 +13,6 @@ function get_puffle_sprite_data(direction) {
     }
 }
 
-Folder: D:\PenguinIsleProject\Penguin Isles\scripts\get_throw_direction
-File: get_throw_direction.gml
-function get_throw_direction(face) {
-    switch (face) {
-        case RIGHT: return 0;
-        case UP_RIGHT: return 45;
-        case UP: return 90;
-        case UP_LEFT: return 135;
-        case LEFT: return 180;
-        case DOWN_LEFT: return 225;
-        case DOWN: return 270;
-        case DOWN_RIGHT: return 315;
-        default: return 0;
-    }
-}
-
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
 File: scr_camera_easing.gml
 /// Easing function for smooth camera transitions
@@ -264,18 +248,13 @@ function switch_skin(new_skin) {
     if (global.skin_switching) return;
     global.skin_switching = true;
 
-    var player_x = variable_global_exists("last_player_x") ? global.last_player_x : 170;
-    var player_y = variable_global_exists("last_player_y") ? global.last_player_y : 154;
-    var player_face = DOWN; // Default face direction
+    var player_x = global.player_instance != noone ? global.player_instance.x : global.last_player_x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : global.last_player_y;
+    var player_face = DOWN;
 
     if (instance_exists(global.player_instance)) {
-        player_x = global.player_instance.x;
-        player_y = global.player_instance.y;
-        // Check if the face variable exists before accessing it
         if (variable_instance_exists(global.player_instance, "face")) {
             player_face = global.player_instance.face;
-        } else {
-            show_debug_message("WARNING: No face variable found for current player instance. Using default.");
         }
         instance_destroy(global.player_instance);
     }
@@ -284,25 +263,21 @@ function switch_skin(new_skin) {
     for (var i = 0; i < array_length(global.skins); i++) {
         if (global.skins[i].name == new_skin) {
             new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
+            global.current_skin = new_skin;
             break;
         }
     }
+
     if (new_instance == noone) {
         new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
-        new_skin = "player";
+        global.current_skin = "player";
     }
 
-    // Set face if the new instance has the face variable
     if (variable_instance_exists(new_instance, "face")) {
         new_instance.face = player_face;
-    } else {
-        show_debug_message("WARNING: New player instance does not have a face variable.");
     }
 
     global.player_instance = new_instance;
-    global.current_skin = new_skin;
     camera_set_view_target(global.camera, global.player_instance);
-    show_debug_message("Switched to skin: " + new_skin + " at (" + string(player_x) + ", " + string(player_y) + ")");
-
     global.skin_switching = false;
 }
