@@ -1272,6 +1272,25 @@ if (keyboard_check_pressed(ord("T")) && global.current_skin == "tube") {
     }
 }
 
+// Auto-remove Toboggan when switching to obj_player_toboggan
+if (keyboard_check_pressed(ord("T")) && global.current_skin == "toboggan") {
+    show_debug_message("Switching from toboggan to player");
+    obj_controller.switch_skin("player");
+    if (!has_item("Toboggan")) {
+        add_to_inventory("Toboggan");
+    }
+    show_debug_message("Exited toboggan. Switched back to player. Toboggan added back to inventory.");
+} else if (keyboard_check_pressed(ord("T")) && global.current_skin == "player" && has_item("Toboggan")) {
+    show_debug_message("Switching from player to tube");
+    obj_controller.switch_skin("toboggan");
+    if (has_item("Toboggan")) {
+        show_debug_message("Removing Toboggan from inventory...");
+        remove_item("Toboggan");
+    } else {
+        show_debug_message("ERROR: Toboggan not found in inventory!");
+    }
+}
+
 // Toggle Party Hat when pressing "P"
 if (keyboard_check_pressed(ord("P"))) {
     var item_index = inventory[active_slot];
@@ -1506,6 +1525,14 @@ if (global.inventory_visible) {
 	        draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
 	        draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, global.player_color, 1);
 	        break;
+			
+		case "toboggan":
+	        // Draw sitting pose for tube
+	        var frame_y = 72; // Sitting pose from spr_player_body
+			draw_sprite_part_ext(spr_toboggan_sheet, 0, 24, 0, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, global.player_color, 1);
+	        break;	
     
 	    case "icetruck":
 	        // Draw icetruck with penguin inside (simplified preview)
