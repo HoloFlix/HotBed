@@ -1,0 +1,498 @@
+obj_inventory:
+// obj_inventory: Create Event
+inventory_size = 42;
+inventory = array_create(inventory_size, -1);
+active_slot = 0;
+global.active_item_index = active_slot;
+persistent = true;
+// obj_inventory: Step Event
+// Existing logic (scroll, drop, Tube, Party Hat, Beta Hat)
+if (mouse_wheel_up()) {
+    active_slot = min(active_slot + 1, 7);
+    global.active_item_index = inventory[active_slot];
+}
+if (mouse_wheel_down()) {
+    active_slot = max(active_slot - 1, 0);
+    global.active_item_index = inventory[active_slot];
+}
+if (keyboard_check_pressed(ord("F"))) {
+    drop_active_item();
+}
+
+// Remove the used item from inventory
+if (keyboard_check_pressed(ord("R")) && global.repair_complete) { 
+    show_debug_message("DEBUG: Repair complete flag detected in inventory."); 
+    if (has_item("Battery")) {
+        show_debug_message("DEBUG: Battery detected in inventory. Attempting to remove...");
+        remove_item("Battery");
+        show_debug_message("Battery removed after repair.");
+    } else {
+        show_debug_message("ERROR: Neither Battery nor Wrench found in inventory!");
+    }
+}
+
+// Auto-remove Tube when switching to obj_player_tube
+if (keyboard_check_pressed(ord("T")) && global.current_skin == "tube") {
+    show_debug_message("Switching from tube to player");
+    obj_controller.switch_skin("player");
+    if (!has_item("Tube")) {
+        add_to_inventory("Tube");
+    }
+    show_debug_message("Exited tube. Switched back to player. Tube added back to inventory.");
+} else if (keyboard_check_pressed(ord("T")) && global.current_skin == "player" && has_item("Tube")) {
+    show_debug_message("Switching from player to tube");
+    obj_controller.switch_skin("tube");
+    if (has_item("Tube")) {
+        show_debug_message("Removing Tube from inventory...");
+        remove_item("Tube");
+    } else {
+        show_debug_message("ERROR: Tube not found in inventory!");
+    }
+}
+
+// Auto-remove Toboggan when switching to obj_player_toboggan
+if (keyboard_check_pressed(ord("T")) && global.current_skin == "toboggan") {
+    show_debug_message("Switching from toboggan to player");
+    obj_controller.switch_skin("player");
+    if (!has_item("Toboggan")) {
+        add_to_inventory("Toboggan");
+    }
+    show_debug_message("Exited toboggan. Switched back to player. Toboggan added back to inventory.");
+} else if (keyboard_check_pressed(ord("T")) && global.current_skin == "player" && has_item("Toboggan")) {
+    show_debug_message("Switching from player to tube");
+    obj_controller.switch_skin("toboggan");
+    if (has_item("Toboggan")) {
+        show_debug_message("Removing Toboggan from inventory...");
+        remove_item("Toboggan");
+    } else {
+        show_debug_message("ERROR: Toboggan not found in inventory!");
+    }
+}
+
+// Toggle Party Hat when pressing "P"
+if (keyboard_check_pressed(ord("P"))) {
+    var item_index = inventory[active_slot];
+    if (item_index != -1) {
+        var item_type = ds_map_find_value(global.item_type_map, item_index);
+        if (!is_undefined(item_type) && variable_struct_exists(global.equipped_items, item_type)) {
+            var equipped_item = global.equipped_items[$ item_type];
+            if (equipped_item != -1) {
+                // Swap back to inventory
+                var empty_slot = array_find_index(inventory, function(val) { return val == -1; });
+                if (empty_slot != -1) {
+                    inventory[empty_slot] = equipped_item;
+                } else {
+                    show_debug_message("Inventory full, cannot swap out equipped item.");
+                    exit;
+                }
+            }
+            // Equip new item
+            global.equipped_items[$ item_type] = item_index;
+            inventory[active_slot] = -1;
+            show_debug_message("Equipped " + item_type + " item: " + string(item_index));
+        } else {
+            show_debug_message("Cannot equip this item.");
+        }
+    } else {
+        // Unequip logic (only unequip head if no item in active slot)
+        var category = "head"; // Adjust if needed to support other categories
+        if (global.equipped_items[$ category] != -1) {
+            var empty_slot = array_find_index(inventory, function(val) { return val == -1; });
+            if (empty_slot != -1) {
+                inventory[empty_slot] = global.equipped_items[$ category];
+                global.equipped_items[$ category] = -1;
+                show_debug_message("Unequipped " + category + " item to slot " + string(empty_slot));
+            } else {
+                show_debug_message("Inventory full, cannot unequip " + category + " item.");
+            }
+        } else {
+            show_debug_message("No equipped item in " + category + " to unequip.");
+        }
+    }
+}
+
+// Depth setting for UI layering
+depth = -1000;
+
+// Function: Check if player has an item
+function has_item(item_name) {
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
+    if (is_undefined(item_index)) return false;
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == item_index) return true;
+    }
+    return false;
+}
+
+// Function: Add an item to the inventory
+function add_to_inventory(item_name) {
+    if (has_item(item_name)) {
+        show_debug_message("WARNING: " + item_name + " is already in the inventory.");
+        return false;
+    }
+
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
+    if (is_undefined(item_index)) {
+        show_debug_message("ERROR: Invalid item name - " + string(item_name));
+        return false;
+    }
+
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == -1) { // Empty slot
+            inventory[i] = item_index;
+            show_debug_message("Added " + item_name + " to inventory in slot " + string(i));
+            return true;
+        }
+    }
+
+    show_debug_message("Inventory full!");
+    return false;
+}
+
+// Function: Remove an item from the inventory
+function remove_item(item_name) {
+    var item_index = ds_map_find_value(global.item_index_map, item_name);
+    if (is_undefined(item_index)) {
+        show_debug_message("ERROR: Invalid item name - " + string(item_name));
+        return false;
+    }
+
+    for (var i = 0; i < inventory_size; i++) {
+        if (inventory[i] == item_index) {
+            inventory[i] = -1;
+            show_debug_message("Removed " + item_name + " from inventory slot " + string(i));
+            return true;
+        }
+    }
+
+    show_debug_message("ERROR: Item " + item_name + " not found in inventory!");
+    return false;
+}
+
+// Function: Drop the active item
+function drop_active_item() {
+    var item_index = inventory[active_slot];
+    if (item_index == -1) {
+        show_debug_message("No item in active slot to drop.");
+        return;
+    }
+
+    // Find the item name from the index
+    var item_name = "";
+    var keys = ds_map_keys_to_array(global.item_index_map);
+    for (var i = 0; i < array_length(keys); i++) {
+        if (ds_map_find_value(global.item_index_map, keys[i]) == item_index) {
+            item_name = keys[i];
+            break;
+        }
+    }
+
+    if (item_name != "") {
+        // Get the corresponding object from item_object_map
+        var dropped_object = ds_map_find_value(global.item_object_map, item_name);
+        if (!is_undefined(dropped_object) && object_exists(dropped_object)) {
+            // Create the specific object instance at the player's position
+            var dropped_item = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", dropped_object);
+            show_debug_message("Dropped " + item_name + " as " + object_get_name(dropped_object) + " at (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
+        } else {
+            show_debug_message("ERROR: No valid object mapped for item " + item_name + ". Dropping as generic obj_dropped_item.");
+            var dropped_item = instance_create_layer(global.player_instance.x, global.player_instance.y, "Instances", obj_dropped_item);
+            dropped_item.item_type = item_name; // Fallback to generic item
+        }
+    } else {
+        show_debug_message("ERROR: Could not find item name for index " + string(item_index));
+        return;
+    }
+
+    // Remove the item from the inventory
+    inventory[active_slot] = -1;
+    show_debug_message("Removed " + item_name + " from inventory slot " + string(active_slot));
+}
+// In obj_inventory Draw GUI Event
+var ui_scale = 3; // Adjust to match obj_map_icon size
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+var inv_width = sprite_get_width(spr_inventory_ui) * ui_scale;
+var inv_height = sprite_get_height(spr_inventory_ui) * ui_scale;
+var inv_x = (gui_width - inv_width) / 2;
+var inv_y = gui_height - inv_height + 0 * ui_scale;
+draw_sprite_ext(spr_inventory_ui, 0, inv_x, inv_y, ui_scale, ui_scale, 0, c_white, 1);
+
+// Update slot positions
+var slot_positions = [
+    [inv_x + 5 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 25 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 45 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 65 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 85 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 105 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 125 * ui_scale, inv_y + 14 * ui_scale],
+    [inv_x + 145 * ui_scale, inv_y + 14 * ui_scale]
+];
+for (var i = 0; i < 8; i++) {
+    if (inventory[i] != -1) {
+        var slot_x = slot_positions[i][0];
+        var slot_y = slot_positions[i][1];
+        draw_sprite_part_ext(spr_inventory_items, 0, inventory[i] * 18, 0, 18, 18, slot_x, slot_y, ui_scale, ui_scale, c_white, 1);
+        if (i == active_slot) {
+            draw_sprite_ext(spr_inventory_highlight, 0, slot_x - 1 * ui_scale, slot_y - 1 * ui_scale, ui_scale, ui_scale, 0, c_white, 1);
+        }
+    }
+}
+
+// Update click area for opening expanded inventory
+var click_area_left = inv_x + 55 * ui_scale;
+var click_area_top = inv_y + 3 * ui_scale;
+var click_area_right = inv_x + 111 * ui_scale;
+var click_area_bottom = inv_y + 9 * ui_scale;
+var gui_mouse_x = device_mouse_x_to_gui(0);
+var gui_mouse_y = device_mouse_y_to_gui(0);
+if (mouse_check_button_pressed(mb_left) &&
+    gui_mouse_x >= click_area_left && gui_mouse_x <= click_area_right &&
+    gui_mouse_y >= click_area_top && gui_mouse_y <= click_area_bottom &&
+    !instance_exists(obj_inventory_expanded)) {
+    instance_create_layer(0, 0, "Instances", obj_inventory_expanded);
+}
+
+obj_inventory_expanded:
+// obj_inventory_expanded: Create Event
+global.game_paused = true;
+depth = -10000;
+
+// Default inventory states
+global.inventory_open_state = "closed"; // Inventory starts in the closed state
+global.inventory_visible = true; // Both sprites are visible by default
+
+// Character variables
+character_face = DOWN; // Default direction
+character_action = "none"; // Default no action
+character_image_index = 0; // Default animation frame
+// obj_inventory_expanded: Destroy Event
+global.game_paused = false;
+// obj_inventory_expanded: Step Event
+var ui_scale = 2.2;
+var gui_mouse_x = device_mouse_x_to_gui(0);
+var gui_mouse_y = device_mouse_y_to_gui(0);
+
+// Closed inventory positioning
+var closed_width = sprite_get_width(spr_inventory_closed) * ui_scale;
+var closed_height = sprite_get_height(spr_inventory_closed) * ui_scale;
+var closed_x = (display_get_gui_width() / 2) - closed_width - 0;
+var closed_y = (display_get_gui_height() - closed_height) / 2;
+
+// Open inventory positioning
+var open_width = sprite_get_width(spr_inventory_open) * ui_scale;
+var open_height = sprite_get_height(spr_inventory_open) * ui_scale;
+var open_x = closed_x + closed_width - 35;
+var open_y = closed_y;
+
+if (global.inventory_visible) {
+    if (global.inventory_open_state == "closed") {
+        // Define "Open Expanded Inventory" button area
+        var open_left = closed_x + 117 * ui_scale;
+        var open_top = closed_y + 61 * ui_scale;
+        var open_right = closed_x + 125 * ui_scale;
+        var open_bottom = closed_y + 93 * ui_scale;
+
+        if (mouse_check_button_pressed(mb_left) &&
+            gui_mouse_x >= open_left && gui_mouse_x <= open_right &&
+            gui_mouse_y >= open_top && gui_mouse_y <= open_bottom) {
+            show_debug_message("DEBUG: Opening expanded inventory.");
+            global.inventory_open_state = "open";
+        }
+    } else if (global.inventory_open_state == "open") {
+        // Define "Close Expanded Inventory" button area
+        var close_left = open_x + 144 * ui_scale;
+        var close_top = open_y + 47 * ui_scale;
+        var close_right = open_x + 152 * ui_scale;
+        var close_bottom = open_y + 79 * ui_scale;
+
+        if (mouse_check_button_pressed(mb_left) &&
+            gui_mouse_x >= close_left && gui_mouse_x <= close_right) {
+            show_debug_message("DEBUG: Closing expanded inventory.");
+            global.inventory_open_state = "closed";
+        }
+    }
+
+    // Define "Close All Expanded Inventory" button
+    var close_all_left = closed_x + 47 * ui_scale;
+    var close_all_top = closed_y + 3 * ui_scale;
+    var close_all_right = closed_x + 89 * ui_scale;
+    var close_all_bottom = closed_y + 11 * ui_scale;
+
+    if (mouse_check_button_pressed(mb_left) &&
+        gui_mouse_x >= close_all_left && gui_mouse_x <= close_all_right) {
+        show_debug_message("DEBUG: Closing all inventory.");
+        global.inventory_visible = false;
+        global.inventory_open_state = "closed";
+        global.game_paused = false; // Unpause the game
+        instance_destroy();
+        exit;
+    }
+}
+
+// Close inventory with "I" key
+if (keyboard_check_pressed(ord("I"))) {
+    show_debug_message("DEBUG: Closing inventory with 'I'.");
+    global.game_paused = false;
+    instance_destroy();
+}
+
+// Special actions and animation logic (unchanged)
+if (keyboard_check_pressed(ord("H"))) {
+    character_action = "dance";
+    character_image_index = 0;
+} else if (keyboard_check_pressed(ord("J"))) {
+    character_action = "wave";
+    character_image_index = 0;
+} else if (keyboard_check_pressed(ord("K"))) {
+    character_action = "none";
+    character_image_index = 0;
+} else if (keyboard_check_pressed(ord("B")) && obj_inventory.has_item("Jackhammer")) {
+    character_action = "jackhammer";
+    character_image_index = 0;
+} else if (keyboard_check_pressed(ord("N")) && obj_inventory.has_item("Snow Shovel")) {
+    character_action = "snowshovel";
+    character_image_index = 0;
+}
+
+// Animate the character
+if (character_action != "none") {
+    var anim_speed = ds_map_find_value(global.player_instance.action_anim_speed, character_action);
+    character_image_index += anim_speed;
+    var frames = ds_map_find_value(global.player_instance.action_frame_data, character_action);
+    if (character_image_index >= array_length(frames)) character_image_index = 0;
+} else {
+    character_image_index += 0.15; // Idle animation speed
+    if (character_image_index >= 3) character_image_index = 0;
+}
+//obj_inventory_expanded Draw GUI
+var ui_scale = 2.2;
+
+// GUI dimensions
+var gui_width = display_get_gui_width();
+var gui_height = display_get_gui_height();
+
+// Closed inventory positioning
+var closed_width = sprite_get_width(spr_inventory_closed) * ui_scale;
+var closed_height = sprite_get_height(spr_inventory_closed) * ui_scale;
+var closed_x = (gui_width / 2) - closed_width - 0; // Slightly shifted right
+var closed_y = (gui_height - closed_height) / 2;
+
+// Open inventory positioning
+var open_width = sprite_get_width(spr_inventory_open) * ui_scale;
+var open_height = sprite_get_height(spr_inventory_open) * ui_scale;
+var open_x = closed_x + closed_width - 35; // Overlaps slightly with the closed inventory
+var open_y = (gui_height - open_height) / 2;
+
+// Draw sprites based on inventory state
+if (global.inventory_visible) {
+    // Draw the closed inventory sprite
+    draw_sprite_ext(spr_inventory_closed, 0, closed_x, closed_y, ui_scale, ui_scale, 0, c_white, 1);
+    
+    // Draw equipped items in clothing slots
+    var clothing_slots = [
+        [9, 20], [9, 40], [9, 60], [9, 80], [9, 100], [9, 120]
+    ];
+    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+    for (var i = 0; i < array_length(slots); i++) {
+        var item_index = global.equipped_items[$ slots[i]];
+        if (item_index != -1) {
+            var slot_x = closed_x + clothing_slots[i][0] * ui_scale;
+            var slot_y = closed_y + clothing_slots[i][1] * ui_scale;
+            draw_sprite_part_ext(
+                spr_inventory_items, 0,
+                item_index * 18, 0, 18, 18,
+                slot_x, slot_y,
+                ui_scale, ui_scale, c_white, 1
+            );
+        }
+    }
+    
+    // Character viewer positioning
+    var viewer_x = closed_x + 29 * ui_scale; // Relative to closed inventory
+    var viewer_y = closed_y + 40 * ui_scale;
+    var viewer_width = 75 * ui_scale; // Width based on provided dimensions
+    var viewer_height = 115 * ui_scale; // Height based on provided dimensions
+
+	// Define drawing position and scale (adjust as needed)
+	var draw_x = x + viewer_x; // Example: viewer_x = 50
+	var draw_y = y + viewer_y; // Example: viewer_y = 50
+	var char_scale = 7; // Scale for visibility
+
+    // Default frame settings
+	var frame_x = 0; // DOWN direction
+	var frame_width = 24;
+	var frame_height = 24;
+
+	switch (global.current_skin) {
+	    case "player":
+	        // Draw walking pose for regular player
+	        var frame_y = 0; // Walking pose from spr_player_body
+	        draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, global.player_color, 1);
+	        break;
+    
+	    case "tube":
+	        // Draw sitting pose for tube
+	        var frame_y = 72; // Sitting pose from spr_player_body
+			draw_sprite_part_ext(spr_tube_sheet, 0, 24, 0, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, global.player_color, 1);
+	        break;
+			
+		case "toboggan":
+	        // Draw sitting pose for tube
+	        var frame_y = 72; // Sitting pose from spr_player_body
+			draw_sprite_part_ext(spr_toboggan_sheet, 0, 24, 0, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_body, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, c_white, 1);
+	        draw_sprite_part_ext(spr_player_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x, draw_y, char_scale, char_scale, global.player_color, 1);
+	        break;	
+    
+	    case "icetruck":
+	        // Draw icetruck with penguin inside (simplified preview)
+	        frame_width = 48; // Icetruck sprite size
+	        frame_height = 48;
+	        var frame_y = 0; // DOWN direction frame
+	        draw_sprite_part_ext(spr_icetruck_base, 0, frame_x, frame_y, frame_width, frame_height, draw_x - 40, draw_y - 25, char_scale - 2, char_scale - 2, c_white, 1);
+	        draw_sprite_part_ext(spr_icetruck_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x - 40, draw_y - 25, char_scale - 2, char_scale - 2, obj_player_icetruck.icetruck_tint, 1);
+	        draw_sprite_part_ext(spr_icetruck_penguin_colour, 0, frame_x, frame_y, frame_width, frame_height, draw_x - 40, draw_y - 20, char_scale - 2, char_scale - 2, global.player_color, 1);
+			draw_sprite_part_ext(spr_icetruck_window, 0, frame_x, frame_y, frame_width, frame_height, draw_x - 40, draw_y - 25, char_scale - 2, char_scale - 2, c_white, 1);
+	        break;
+	}
+    // Draw equipped items with slight offset for head items
+    for (var i = 0; i < array_length(slots); i++) {
+        var item_index = global.equipped_items[$ slots[i]];
+        if (item_index != -1) {
+            var item_sprite = ds_map_find_value(global.item_player_sprites, item_index);
+            if (!is_undefined(item_sprite)) {
+                var offset_x = (slots[i] == "head") ? 2 * char_scale : 0; // Adjust head item to the right
+                draw_sprite_part_ext(item_sprite, 0, frame_x, frame_y, frame_width, frame_height, draw_x + offset_x - 10, draw_y, char_scale, char_scale, c_white, 1);
+            }
+        }
+    }
+
+    if (global.inventory_open_state == "open") {
+        // Draw the open inventory sprite
+        draw_sprite_ext(spr_inventory_open, 0, open_x, open_y, ui_scale, ui_scale, 0, c_white, 1);
+
+        // Draw inventory grid
+        var grid_start = [3, 6];
+        var grid_size = [7, 6];
+        for (var row = 0; row < grid_size[1]; row++) {
+            for (var col = 0; col < grid_size[0]; col++) {
+                var slot_index = row * grid_size[0] + col;
+                if (slot_index < 42 && obj_inventory.inventory[slot_index] != -1) {
+                    var item_index = obj_inventory.inventory[slot_index];
+                    draw_sprite_part_ext(
+                        spr_inventory_items, 0,
+                        item_index * 18, 0, 18, 18,
+                        open_x + (grid_start[0] + col * 20) * ui_scale,
+                        open_y + (grid_start[1] + row * 20) * ui_scale,
+                        ui_scale, ui_scale, c_white, 1
+                    );
+                }
+            }
+        }
+    }
+}
