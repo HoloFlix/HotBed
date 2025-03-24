@@ -1,0 +1,545 @@
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_apply_equipped_items
+File: scr_apply_equipped_items.gml
+function apply_equipped_items() {
+    if (!ds_exists(global.equipped_items, ds_type_map)) {
+        show_debug_message("WARNING: global.equipped_items not initialized.");
+        return;
+    }
+
+    var head_item = ds_map_find_value(global.equipped_items, "head");
+    if (head_item != -1 && head_item != undefined) {
+        skeleton_attachment_set("head_slot", ds_map_find_value(global.item_index_map, head_item));
+        show_debug_message("Equipped head item: " + string(head_item));
+    } else {
+        skeleton_attachment_set("head_slot", -1); // Remove head item
+        show_debug_message("No head item equipped.");
+    }
+
+    // Repeat for other item slots as needed...
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
+File: scr_camera_easing.gml
+/// Easing function for smooth camera transitions
+function easing_out_quad(t) {
+    return t * (2 - t);
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_convert_gui_to_world
+File: scr_convert_gui_to_world.gml
+/// scr_convert_gui_to_world()
+/// Converts GUI mouse coordinates to world coordinates
+var world_x = camera_get_view_x(view_camera[0]) + (mouse_x / display_get_gui_width()) * camera_get_view_width(view_camera[0]);
+var world_y = camera_get_view_y(view_camera[0]) + (mouse_y / display_get_gui_height()) * camera_get_view_height(view_camera[0]);
+
+return [world_x, world_y];
+
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_handle_collision
+File: scr_handle_collision.gml
+function handle_collision(axis, speed) {
+    var sign_speed = sign(speed);
+    var abs_speed = abs(speed);
+    var move_dist = 0;
+    var step = abs_speed;
+    
+    if (abs_speed == 0) return 0;
+    
+    while (step > 0.5) {  // Precision threshold
+        if (axis == "x") {
+            if (!place_meeting(x + (move_dist + step) * sign_speed, y, obj_wall)) {
+                move_dist += step;
+            }
+        } else {
+            if (!place_meeting(x, y + (move_dist + step) * sign_speed, obj_wall)) {
+                move_dist += step;
+            }
+        }
+        step /= 2;
+    }
+    
+    if (axis == "x") x += move_dist * sign_speed;
+    else y += move_dist * sign_speed;
+    
+    return move_dist * sign_speed;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_has_item
+File: scr_has_item.gml
+function has_item(item_name) {
+    if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
+        show_debug_message("Warning: global.inventory is not initialized or not an array.");
+        global.inventory = []; // Reinitialize if invalid
+        return false;
+    }
+    for (var i = 0; i < array_length(global.inventory); i++) {
+        if (global.inventory[i] == item_name) {
+            return true;
+        }
+    }
+    return false;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_globals
+File: scr_init_globals.gml
+function init_globals() {
+	global.player_x = 170;
+	global.player_y = 154;
+	global.warp_target_x = undefined;
+	global.warp_target_y = undefined;
+	global.warp_target_face = undefined;
+    global.is_pause_menu_active = false;
+    global.player_instance = noone;
+    global.player_health = 100;
+    global.score = 0;
+    global.is_game_paused = false;
+    global.inventory_open = false;
+    global.repair_complete = false;
+    global.is_loading_game = false;
+	global.expanded_hud_open = false;
+    
+    if (!variable_global_exists("following_puffles")) {
+        global.following_puffles = ds_list_create();
+    }
+    if (!variable_global_exists("room_states")) {
+        global.room_states = ds_map_create();
+    }
+    if (!variable_global_exists("active_quests")) {
+        global.active_quests = ds_list_create();
+    }
+    if (!variable_global_exists("completed_quests")) {
+        global.completed_quests = ds_list_create();
+    }
+
+	global.player_instance = noone; // Reset to noone, set later
+    global.camera = instance_exists(obj_camera) ? obj_camera : instance_create_layer(0, 0, "Instances", obj_camera);
+    show_debug_message("Initialized global.camera with ID: " + string(global.camera));
+	
+    // Initialize global.item_index_map if it doesn’t exist
+    if (!variable_global_exists("item_index_map") || !ds_exists(global.item_index_map, ds_type_map)) {
+        global.item_index_map = ds_map_create();
+        // Populate with item names and their indices (based on spr_inventory_items)
+        ds_map_add(global.item_index_map, "Beta Hat", 0);
+        ds_map_add(global.item_index_map, "Party Hat", 1);
+        ds_map_add(global.item_index_map, "Wrench", 2);
+        ds_map_add(global.item_index_map, "Tube", 3);
+        ds_map_add(global.item_index_map, "Toboggan", 4);
+        ds_map_add(global.item_index_map, "Battery", 5);
+        ds_map_add(global.item_index_map, "Spy Phone", 6);
+        ds_map_add(global.item_index_map, "Broken Spy Phone", 7);
+        ds_map_add(global.item_index_map, "EPF Phone", 8);
+        ds_map_add(global.item_index_map, "Fishing Rod", 9);
+        ds_map_add(global.item_index_map, "Jackhammer", 10);
+        ds_map_add(global.item_index_map, "Snow Shovel", 11);
+        ds_map_add(global.item_index_map, "Pizza Slice", 12);
+        ds_map_add(global.item_index_map, "Puffle O", 13);
+        ds_map_add(global.item_index_map, "Box Puffle O", 14);
+        ds_map_add(global.item_index_map, "Fish", 15);
+        ds_map_add(global.item_index_map, "Mullet", 16);
+        ds_map_add(global.item_index_map, "Wood", 17);
+        ds_map_add(global.item_index_map, "Snow", 18);
+        show_debug_message("Initialized global.item_index_map with item mappings.");
+    }
+
+	global.equipped_items = ds_map_create();
+    show_debug_message("Initialized global.equipped_items.");
+    
+    if (!variable_global_exists("item_type_map") || !ds_exists(global.item_type_map, ds_type_map)) {
+        global.item_type_map = ds_map_create();
+        ds_map_add(global.item_type_map, 0, "head"); // Beta Hat
+        ds_map_add(global.item_type_map, 1, "head"); // Party Hat
+        // Add other items as needed
+        show_debug_message("Initialized global.item_type_map.");
+    }
+    if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
+        global.inventory = array_create(42, -1); // Assuming inventory size is 42
+        show_debug_message("Initialized global.inventory as an array of size 42.");
+    }
+    if (!variable_global_exists("equipped_items") || !ds_exists(global.equipped_items, ds_type_map)) {
+        global.equipped_items = ds_map_create();
+        ds_map_add(global.equipped_items, "head", -1);
+        ds_map_add(global.equipped_items, "face", -1);
+        ds_map_add(global.equipped_items, "neck", -1);
+        ds_map_add(global.equipped_items, "body", -1);
+        ds_map_add(global.equipped_items, "hand", -1);
+        ds_map_add(global.equipped_items, "feet", -1);
+        show_debug_message("Initialized global.equipped_items as ds_map.");
+    }
+    
+    show_debug_message("Global variables initialized via init_globals.");
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
+File: scr_init_sprites.gml
+function init_sprites(right, up, left, down, up_right, up_left, down_right, down_left) {
+    sprite[RIGHT] = right;
+    sprite[UP] = up;
+    sprite[LEFT] = left;
+    sprite[DOWN] = down;
+    sprite[UP_RIGHT] = up_right;
+    sprite[UP_LEFT] = up_left;
+    sprite[DOWN_RIGHT] = down_right;
+    sprite[DOWN_LEFT] = down_left;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_load_game
+File: scr_load_game.gml
+function load_game() {
+    init_globals();
+    
+    if (!file_exists("savegame.sav")) {
+        show_debug_message("No save file found.");
+        return;
+    }
+
+    var file = file_text_open_read("savegame.sav");
+    if (file == -1) {
+        show_debug_message("Error: Failed to open save file.");
+        return;
+    }
+
+    var json = file_text_read_string(file);
+    file_text_close(file);
+    var save_data = json_parse(json);
+
+    if (is_struct(save_data)) {
+        global.is_loading_game = true;
+        global.target_room = save_data.current_room;
+        show_debug_message("Set global.is_loading_game to true. Target room: " + string(global.target_room));
+
+        if (variable_struct_exists(save_data, "player")) {
+            var player_data = save_data.player;
+            if (is_struct(player_data)) {
+                global.player_x = player_data.x;
+                global.player_y = player_data.y;
+                global.current_skin = player_data.skin;
+                global.player_color = player_data.color;
+                global.last_player_face = player_data.face;
+                global.expanded_hud_open = player_data.expanded_hud_open;
+
+                if (variable_struct_exists(player_data, "inventory")) {
+                    global.inventory = player_data.inventory;
+                    if (!is_array(global.inventory)) {
+                        show_debug_message("WARNING: Loaded inventory is not an array. Resetting.");
+                        global.inventory = array_create(42, -1);
+                    }
+                }
+
+                if (variable_struct_exists(player_data, "equipped_items")) {
+                    var equipped_data = player_data.equipped_items;
+                    if (is_string(equipped_data)) {
+                        var equipped_items = buffer_create(8, buffer_fixed, 1);
+                        buffer_write(equipped_items, buffer_string, equipped_data);
+                        ds_map_clear(global.equipped_items);
+                        ds_map_add(global.equipped_items, "head", buffer_read(equipped_items, buffer_u8));
+                        ds_map_add(global.equipped_items, "face", buffer_read(equipped_items, buffer_u8));
+                        ds_map_add(global.equipped_items, "neck", buffer_read(equipped_items, buffer_u8));
+                        ds_map_add(global.equipped_items, "body", buffer_read(equipped_items, buffer_u8));
+                        ds_map_add(global.equipped_items, "hand", buffer_read(equipped_items, buffer_u8));
+                        ds_map_add(global.equipped_items, "feet", buffer_read(equipped_items, buffer_u8));
+                        buffer_delete(equipped_items);
+                        show_debug_message("Restored equipped items successfully.");
+                    } else {
+                        show_debug_message("WARNING: equipped_items format invalid.");
+                    }
+                }
+            }
+        }
+        
+        // Transition to the target room immediately
+        room_goto(rm_init);
+    }
+
+    show_debug_message("Game loaded successfully.");
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_macros
+File: scr_macros.gml
+#macro RIGHT 0
+#macro UP 1
+#macro LEFT 2
+#macro DOWN 3
+#macro UP_RIGHT 4
+#macro UP_LEFT 5
+#macro DOWN_RIGHT 6
+#macro DOWN_LEFT 7
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_music_function
+File: scr_music_function.gml
+function set_song_ingame( _song, _fadeOutCurrentSong = 0, _fadeIn = 0 )
+{
+	//_song = set to any song (including "noone" to stop or fade the track out)
+	//_fadeOutCurrentSong = time (in frames) the current song (if playing) will take to fade out
+	//_fadeIn = time (in frames) the target song (if not "noone" will take to fade in
+
+	with ( obj_musicmanager )
+	{
+		targetSongAsset = _song;
+		endFadeOutTime = _fadeOutCurrentSong;
+		startFadeInTime = _fadeIn;
+	}
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_puffle
+File: scr_puffle.gml
+/// @function get_puffle_sprite_data(direction)
+/// @param direction - The facing direction (e.g., DOWN, LEFT)
+/// @returns Array [base_subimage, xscale]
+function get_puffle_sprite_data(direction) {
+    switch (direction) {
+        case DOWN: return [0, 1];       // Row 1: Subimages 0-7
+        case DOWN_LEFT: return [8, 1];  // Row 2: Subimages 8-15
+        case LEFT: return [16, 1];      // Row 3: Subimages 16-23
+        case UP_LEFT: return [24, 1];   // Row 4: Subimages 24-31
+        case UP: return [32, 1];        // Row 5: Subimages 32-39
+        case DOWN_RIGHT: return [8, -1]; // Use Down-Left, flipped
+        case RIGHT: return [16, -1];    // Use Left, flipped
+        case UP_RIGHT: return [24, -1]; // Use Up-Left, flipped
+        default: return [0, 1];         // Default to Down
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_room_state
+File: scr_room_state.gml
+function save_room_state(room_id) {
+    show_debug_message("Saving state for room: " + room_get_name(room_id));
+    var room_name = room_get_name(room_id);
+    if (ds_map_exists(global.room_states, room_name)) {
+        var old_list = ds_map_find_value(global.room_states, room_name);
+        if (ds_exists(old_list, ds_type_list)) {
+            ds_list_destroy(old_list);
+        }
+    }
+    var state_list = ds_list_create();
+    ds_map_replace(global.room_states, room_name, state_list);
+
+    with (all) {
+        if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube) {
+            if (object_index == obj_puffle && variable_instance_get(id, "following_player") == true) {
+                continue;
+            }
+            var state = {
+                object_index: object_index,
+                x: x,
+                y: y,
+                direction: variable_instance_exists(id, "face") ? variable_instance_get(id, "face") : 0
+            };
+            if (object_index == obj_icetruck || object_index == obj_icetruck_broken) {
+                state.repair_required = variable_instance_exists(id, "repair_required") ? variable_instance_get(id, "repair_required") : false;
+                state.is_driveable = variable_instance_exists(id, "is_driveable") ? variable_instance_get(id, "is_driveable") : false;
+            } else if (object_index == obj_dropped_item) {
+                var item_type = variable_instance_get(id, "item_type");
+                state.item_type = (item_type != undefined) ? item_type : "";
+            } else if (object_index == obj_puffle) {
+                state.following_player = variable_instance_exists(id, "following_player") ? variable_instance_get(id, "following_player") : false;
+                var color = variable_instance_get(id, "color");
+                state.color = (color != undefined) ? color : "";
+                var puffle_state = variable_instance_get(id, "state");
+                state.state = (puffle_state != undefined) ? puffle_state : "";
+            }
+            ds_list_add(state_list, state);
+        }
+    }
+    show_debug_message("Saved state for room: " + room_name + " with " + string(ds_list_size(state_list)) + " objects.");
+}
+
+function load_room_state(room_id) {
+    var room_name = room_get_name(room_id);
+    if (ds_map_exists(global.room_states, room_name)) {
+        var state_list = ds_map_find_value(global.room_states, room_name);
+        if (ds_exists(state_list, ds_type_list)) {
+            with (all) {
+                if (variable_instance_exists(id, "is_savable") && is_savable && object_index != obj_player && object_index != obj_player_tube) {
+                    if (object_index == obj_puffle && variable_instance_get(id, "following_player") == true) {
+                        continue;
+                    }
+                    instance_destroy();
+                }
+            }
+            for (var i = 0; i < ds_list_size(state_list); i++) {
+                var state = state_list[| i];
+                var inst;
+                if (state.object_index == obj_puffle && state.following_player) {
+                    if (ds_list_find_index(global.following_puffles, id) == -1) {
+                        inst = instance_create_layer(state.x, state.y, "Instances", state.object_index);
+                        ds_list_add(global.following_puffles, inst);
+                    } else {
+                        continue;
+                    }
+                } else {
+                    inst = instance_create_layer(state.x, state.y, "Instances", state.object_index);
+                }
+                if (variable_instance_exists(inst, "face")) {
+                    inst.face = state.direction;
+                }
+                if (state.object_index == obj_icetruck || state.object_index == obj_icetruck_broken) {
+                    inst.repair_required = state.repair_required;
+                    inst.is_driveable = state.is_driveable;
+                } else if (state.object_index == obj_dropped_item) {
+                    inst.item_type = state.item_type;
+                } else if (state.object_index == obj_puffle) {
+                    inst.following_player = state.following_player;
+                    inst.color = state.color;
+                    inst.state = state.state;
+                    switch (inst.color) {
+                        case "red": inst.image_blend = make_color_rgb(255, 0, 0); break;
+                        case "blue": inst.image_blend = make_color_rgb(0, 0, 255); break;
+                        case "green": inst.image_blend = make_color_rgb(0, 255, 0); break;
+                        case "yellow": inst.image_blend = make_color_rgb(255, 255, 0); break;
+                        default: inst.image_blend = c_white;
+                    }
+                    if (inst.following_player) {
+                        inst.state = PuffleState.FOLLOWING;
+                        inst.persistent = true;
+                    }
+                }
+                show_debug_message("Loaded " + object_get_name(state.object_index) + " at (" + string(state.x) + ", " + string(state.y) + ")");
+            }
+            show_debug_message("Loaded state for room: " + room_name);
+        }
+    } else {
+        show_debug_message("No saved state found for room: " + room_name);
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_save_game
+File: scr_save_game.gml
+function save_game() {
+    if (!instance_exists(global.player_instance)) {
+        show_debug_message("Error: Cannot save - player instance not found.");
+        return;
+    }
+
+    if (!variable_global_exists("inventory")) {
+        global.inventory = [];
+        show_debug_message("Warning: global.inventory was not initialized. Set to empty array.");
+    }
+    
+    if (!ds_exists(global.equipped_items, ds_type_map)) {
+        show_debug_message("ERROR: global.equipped_items is not a DS map. Reinitializing.");
+        global.equipped_items = ds_map_create();
+        ds_map_add(global.equipped_items, "head", -1);
+        ds_map_add(global.equipped_items, "body", -1);
+        ds_map_add(global.equipped_items, "feet", -1);
+    }
+
+    var save_data = {
+        player: {
+            x: global.player_x,
+            y: global.player_y,
+            skin: global.current_skin,
+            color: global.player_color,
+            face: global.player_instance.face,
+            inventory: global.inventory,
+            expanded_hud_open: global.expanded_hud_open,
+            equipped_items: ds_map_write(global.equipped_items)
+        },
+        current_room: room,
+        room_states: ds_map_write(global.room_states),
+        following_puffles: [],
+        quests: {
+            active: ds_list_write(global.active_quests),
+            completed: ds_list_write(global.completed_quests)
+        },
+        objects: {}
+    };
+
+    // Populate objects with existence checks
+    if (instance_exists(obj_icetruck)) {
+        var icetruck_inst = instance_find(obj_icetruck, 0);
+        save_data.objects.icetruck = {
+            x: icetruck_inst.x,
+            y: icetruck_inst.y,
+            exists: true
+        };
+    } else {
+        save_data.objects.icetruck = {
+            exists: false
+        };
+    }
+
+    if (instance_exists(obj_tube)) {
+        var tube_inst = instance_find(obj_tube, 0);
+        save_data.objects.tube = {
+            x: tube_inst.x,
+            y: tube_inst.y,
+            exists: true
+        };
+    } else {
+        save_data.objects.tube = {
+            exists: false
+        };
+    }
+
+    if (instance_exists(obj_toboggan)) {
+        var toboggan_inst = instance_find(obj_toboggan, 0);
+        save_data.objects.toboggan = {
+            x: toboggan_inst.x,
+            y: toboggan_inst.y,
+            exists: true
+        };
+    } else {
+        save_data.objects.toboggan = {
+            exists: false
+        };
+    }
+
+    // Handle following puffles
+    for (var i = 0; i < ds_list_size(global.following_puffles); i++) {
+        var puffle = global.following_puffles[| i];
+        if (instance_exists(puffle)) {
+            var puffle_state = {
+                x: puffle.x,
+                y: puffle.y,
+                color: puffle.color,
+                state: puffle.state
+            };
+            array_push(save_data.following_puffles, puffle_state);
+        }
+    }
+
+    // Convert to JSON and save
+    var json = json_stringify(save_data);
+    var file = file_text_open_write("savegame.sav");
+    if (file != -1) {
+        file_text_write_string(file, json);
+        file_text_close(file);
+        show_debug_message("Game saved successfully.");
+    } else {
+        show_debug_message("Error: Failed to save game.");
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_set_depth
+File: scr_set_depth.gml
+// scr_set_depth.gml
+function set_depth() {
+    depth = -bbox_bottom;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_skin_switch
+File: scr_skin_switch.gml
+function switch_skin(new_skin) {
+    if (global.skin_switching) return;
+    global.skin_switching = true;
+
+    var player_x = global.player_instance != noone ? global.player_instance.x : global.last_player_x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : global.last_player_y;
+    var player_face = DOWN;
+
+    if (instance_exists(global.player_instance)) {
+        if (variable_instance_exists(global.player_instance, "face")) {
+            player_face = global.player_instance.face;
+        }
+        instance_destroy(global.player_instance);
+    }
+
+    var new_instance = noone;
+    for (var i = 0; i < array_length(global.skins); i++) {
+        if (global.skins[i].name == new_skin) {
+            new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
+            global.current_skin = new_skin;
+            break;
+        }
+    }
+
+    if (new_instance == noone) {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+    }
+
+    if (variable_instance_exists(new_instance, "face")) {
+        new_instance.face = player_face;
+    }
+
+    global.player_instance = new_instance;
+    camera_set_view_target(global.camera, global.player_instance);
+    global.skin_switching = false;
+}

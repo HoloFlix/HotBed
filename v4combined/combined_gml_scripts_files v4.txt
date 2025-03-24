@@ -1,0 +1,4767 @@
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\draw_item_card
+File: draw_item_card.gml
+/// @function draw_item_card(item, x, y)
+/// @description Draws an item card with sprite, name, price, and description
+/// @param {struct} item The item data to draw
+/// @param {real} x The x position to draw at
+/// @param {real} y The y position to draw at
+
+function draw_item_card(item, card_x, card_y) {
+    // Draw card background
+    draw_set_color(c_dkgray);
+    draw_rectangle(card_x, card_y, card_x + item_width, card_y + item_height, false);
+    
+    // Draw item sprite
+    var sprite_scale = min((item_width - 20) / sprite_get_width(item.sprite),
+                          (item_height * 0.6) / sprite_get_height(item.sprite));
+    
+    var sprite_x = card_x + item_width/2;
+    var sprite_y = card_y + (item_height * 0.3);
+    
+    draw_sprite_ext(item.sprite, 0,
+                   sprite_x, sprite_y,
+                   sprite_scale, sprite_scale,
+                   0, c_white, 1);
+    
+    // Draw item name
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_top);
+    draw_set_font(fnt_shop_item);
+    draw_text(card_x + item_width/2, card_y + item_height * 0.65, item.name);
+    
+    // Draw price
+    var price_color = global.player_coins >= item.price ? c_lime : c_red;
+    draw_set_color(price_color);
+    draw_text(card_x + item_width/2, card_y + item_height * 0.8,
+             string(item.price) + " coins");
+    
+    // Draw stock info if limited
+    if (variable_struct_exists(item, "stock") && item.stock >= 0) {
+        draw_set_color(c_yellow);
+        draw_text(card_x + item_width/2, card_y + item_height * 0.9,
+                 "Stock: " + string(item.stock));
+    }
+    
+    // Draw seasonal tag if applicable
+    if (variable_struct_exists(item, "seasonal") && item.seasonal) {
+        draw_set_color(c_aqua);
+        draw_text(card_x + item_width/2, card_y + 10, "Seasonal!");
+    }
+    
+    // Reset draw properties
+    draw_set_color(c_white);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_font(-1);
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_apply_equipped_items
+File: scr_apply_equipped_items.gml
+function apply_equipped_items() {
+    if (!ds_exists(global.equipped_items, ds_type_map)) {
+        show_debug_message("WARNING: global.equipped_items not initialized.");
+        return;
+    }
+
+    var head_item = ds_map_find_value(global.equipped_items, "head");
+    if (head_item != -1 && head_item != undefined) {
+        skeleton_attachment_set("head_slot", ds_map_find_value(global.item_index_map, head_item));
+        show_debug_message("Equipped head item: " + string(head_item));
+    } else {
+        skeleton_attachment_set("head_slot", -1); // Remove head item
+        show_debug_message("No head item equipped.");
+    }
+
+    // Repeat for other item slots as needed...
+}
+
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
+File: scr_camera_easing.gml
+/// Easing function for smooth camera transitions
+function easing_out_quad(t) {
+    return t * (2 - t);
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_collision_system
+File: scr_collision_system.gml
+/// @description Standardized Collision System
+/// @function CollisionSystem
+function CollisionSystem() constructor {
+    // Handle basic collision checking and resolution
+    static handle_collision = function(instance, axis, speed) {
+        var original_pos = (axis == "x") ? instance.x : instance.y;
+        var test_pos = original_pos + speed;
+        
+        if (place_meeting(
+            (axis == "x") ? test_pos : instance.x,
+            (axis == "x") ? instance.y : test_pos,
+            obj_wall
+        )) {
+            while (!place_meeting(
+                (axis == "x") ? original_pos + sign(speed) : instance.x,
+                (axis == "x") ? instance.y : original_pos + sign(speed),
+                obj_wall
+            )) {
+                original_pos += sign(speed);
+            }
+            return 0;
+        }
+        return speed;
+    }
+    
+    // Handle sliding collision (for ice/slippery surfaces)
+    static handle_sliding_collision = function(instance, xspd, yspd) {
+        // Handle X collision first
+        if (place_meeting(instance.x + xspd, instance.y, obj_wall)) {
+            while (!place_meeting(instance.x + sign(xspd), instance.y, obj_wall)) {
+                instance.x += sign(xspd);
+            }
+            xspd = 0;
+        }
+        
+        // Then handle Y collision
+        if (place_meeting(instance.x, instance.y + yspd, obj_wall)) {
+            while (!place_meeting(instance.x, instance.y + sign(yspd), obj_wall)) {
+                instance.y += sign(yspd);
+            }
+            yspd = 0;
+        }
+        
+        return { xspd: xspd, yspd: yspd };
+    }
+    
+    // Check if movement is possible
+    static can_move = function(instance, x_offset, y_offset) {
+        return !place_meeting(
+            instance.x + x_offset,
+            instance.y + y_offset,
+            obj_wall
+        );
+    }
+    
+    // Find nearest free position
+    static find_nearest_free_position = function(instance, max_distance) {
+        var start_x = instance.x;
+        var start_y = instance.y;
+        
+        for (var dist = 0; dist <= max_distance; dist++) {
+            for (var angle = 0; angle < 360; angle += 45) {
+                var test_x = start_x + lengthdir_x(dist, angle);
+                var test_y = start_y + lengthdir_y(dist, angle);
+                
+                if (!place_meeting(test_x, test_y, obj_wall)) {
+                    return { x: test_x, y: test_y };
+                }
+            }
+        }
+        
+        return { x: start_x, y: start_y }; // Return original position if no free spot found
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_convert_gui_to_world
+File: scr_convert_gui_to_world.gml
+/// scr_convert_gui_to_world()
+/// Converts GUI mouse coordinates to world coordinates
+var world_x = camera_get_view_x(view_camera[0]) + (mouse_x / display_get_gui_width()) * camera_get_view_width(view_camera[0]);
+var world_y = camera_get_view_y(view_camera[0]) + (mouse_y / display_get_gui_height()) * camera_get_view_height(view_camera[0]);
+
+return [world_x, world_y];
+
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_debug_actions
+File: scr_debug_actions.gml
+/// @function handle_action(action_name)
+/// @param {string} action_name The name of the action to execute
+function handle_action(action_name) {
+    switch(action_name) {
+        case "complete_current_quest":
+            with(obj_quest_manager) {
+                if (current_quest != noone) {
+                    complete_quest(current_quest.id);
+                }
+            }
+            break;
+            
+        case "give_all_items":
+            with(obj_inventory) {
+                // Add all available items
+                var items = get_all_item_definitions();
+                for (var i = 0; i < array_length(items); i++) {
+                    add_item(items[i].id, 1);
+                }
+            }
+            break;
+            
+        case "reset_player":
+            with(global.player_instance) {
+                x = xstart;
+                y = ystart;
+                state = PlayerState.IDLE;
+                move_spd = base_move_spd;
+                image_index = 0;
+                image_speed = 1;
+            }
+            break;
+            
+        case "toggle_debug_overlay":
+            global.debug_overlay = !global.debug_overlay;
+            break;
+            
+        case "reload_room":
+            room_restart();
+            break;
+            
+        case "next_room":
+            if (room_next(room) != -1) {
+                room_goto_next();
+            }
+            break;
+            
+        case "previous_room":
+            if (room_previous(room) != -1) {
+                room_goto_previous();
+            }
+            break;
+            
+        case "save_game":
+            with(obj_game_manager) {
+                save_game();
+            }
+            break;
+            
+        case "load_game":
+            with(obj_game_manager) {
+                load_game();
+            }
+            break;
+            
+        case "toggle_grid":
+            global.show_room_grid = !global.show_room_grid;
+            break;
+            
+        case "spawn_test_npc":
+            var _x = global.player_instance.x + 64;
+            var _y = global.player_instance.y;
+            instance_create_layer(_x, _y, "Instances", obj_npc, {
+                npc_type: "test",
+                npc_name: "Test NPC",
+                dialogue: ["This is a test NPC.", "Created by the debug menu."],
+                quest_id: noone
+            });
+            break;
+            
+        case "clear_inventory":
+            with(obj_inventory) {
+                clear_inventory();
+            }
+            break;
+            
+        case "toggle_collision_view":
+            global.show_collisions = !global.show_collisions;
+            break;
+            
+        case "toggle_quest_areas":
+            global.show_quest_areas = !global.show_quest_areas;
+            break;
+            
+        case "toggle_npc_paths":
+            global.show_npc_paths = !global.show_npc_paths;
+            break;
+            
+        case "toggle_hitboxes":
+            global.show_hitbox = !global.show_hitbox;
+            break;
+    }
+}
+
+/// @function draw_debug_overlay()
+function draw_debug_overlay() {
+    if (!global.debug_mode) return;
+    
+    var debug_x = 10;
+    var debug_y = 10;
+    var line_height = 20;
+    
+    draw_set_font(get_font("debug"));
+    draw_set_color(c_black);
+    draw_set_alpha(0.7);
+    
+    // Draw debug info background
+    draw_rectangle(5, 5, 200, 200, false);
+    
+    draw_set_color(c_white);
+    draw_set_alpha(1);
+    
+    // Draw FPS
+    draw_text(debug_x, debug_y, "FPS: " + string(fps) + "/" + string(room_speed));
+    debug_y += line_height;
+    
+    // Draw player info
+    with(global.player_instance) {
+        draw_text(debug_x, debug_y, "Player State: " + string(state));
+        debug_y += line_height;
+        draw_text(debug_x, debug_y, "Position: " + string(x) + ", " + string(y));
+        debug_y += line_height;
+        draw_text(debug_x, debug_y, "Speed: " + string(move_spd));
+        debug_y += line_height;
+    }
+    
+    // Draw quest info
+    with(obj_quest_manager) {
+        if (current_quest != noone) {
+            draw_text(debug_x, debug_y, "Current Quest: " + string(current_quest.title));
+            debug_y += line_height;
+            draw_text(debug_x, debug_y, "Progress: " + string(current_quest.progress) + "/" + string(current_quest.target));
+            debug_y += line_height;
+        }
+    }
+    
+    // Draw instance count
+    draw_text(debug_x, debug_y, "Instances: " + string(instance_count));
+    debug_y += line_height;
+    
+    // Draw room info
+    draw_text(debug_x, debug_y, "Room: " + room_get_name(room));
+    
+    // Draw missing assets warning if any
+    var asset_status = verify_required_assets();
+    if (!asset_status.success) {
+        debug_y += line_height * 2;
+        draw_set_color(c_red);
+        draw_text(debug_x, debug_y, "Missing Assets:");
+        debug_y += line_height;
+        
+        if (array_length(asset_status.missing_sprites) > 0) {
+            draw_text(debug_x, debug_y, "Sprites: " + string(array_length(asset_status.missing_sprites)));
+            debug_y += line_height;
+        }
+        
+        if (array_length(asset_status.missing_sounds) > 0) {
+            draw_text(debug_x, debug_y, "Sounds: " + string(array_length(asset_status.missing_sounds)));
+        }
+    }
+    
+    // Reset draw properties
+    draw_set_font(-1);
+    draw_set_color(c_white);
+    draw_set_alpha(1);
+}
+
+/// @function draw_collision_view()
+function draw_collision_view() {
+    if (!global.show_collisions) return;
+    
+    // Draw solid objects
+    with(all) {
+        if (solid) {
+            draw_set_alpha(0.5);
+            draw_set_color(c_red);
+            draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
+            draw_set_alpha(1);
+            draw_set_color(c_white);
+            draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+        }
+    }
+}
+
+/// @function draw_quest_areas()
+function draw_quest_areas() {
+    if (!global.show_quest_areas) return;
+    
+    with(obj_quest_area) {
+        draw_set_alpha(0.3);
+        draw_set_color(active ? c_yellow : c_blue);
+        draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, true);
+        draw_text(x, y - 20, quest_id);
+    }
+}
+
+/// @function draw_npc_paths()
+function draw_npc_paths() {
+    if (!global.show_npc_paths) return;
+    
+    with(obj_npc) {
+        if (path_exists(path)) {
+            draw_set_color(c_lime);
+            draw_path(path, x, y, true);
+        }
+        
+        // Draw NPC info
+        draw_set_color(c_white);
+        draw_text(x, y - 30, npc_name);
+        draw_text(x, y - 15, "State: " + string(state));
+    }
+}
+
+/// @function draw_hitboxes()
+function draw_hitboxes() {
+    if (!global.show_hitbox) return;
+    
+    with(all) {
+        if (variable_instance_exists(id, "hitbox")) {
+            draw_set_alpha(0.3);
+            draw_set_color(c_purple);
+            draw_rectangle(x + hitbox.left, y + hitbox.top, 
+                         x + hitbox.right, y + hitbox.bottom, false);
+            draw_set_alpha(1);
+            draw_set_color(c_white);
+            draw_rectangle(x + hitbox.left, y + hitbox.top, 
+                         x + hitbox.right, y + hitbox.bottom, true);
+        }
+    }
+}
+
+/// @function draw_room_grid()
+function draw_room_grid() {
+    if (!global.show_room_grid) return;
+    
+    var grid_size = 32; // Adjust based on your game's grid size
+    var room_width = room_width;
+    var room_height = room_height;
+    
+    draw_set_alpha(0.2);
+    draw_set_color(c_gray);
+    
+    // Draw vertical lines
+    for (var i = 0; i < room_width; i += grid_size) {
+        draw_line(i, 0, i, room_height);
+    }
+    
+    // Draw horizontal lines
+    for (var i = 0; i < room_height; i += grid_size) {
+        draw_line(0, i, room_width, i);
+    }
+    
+    draw_set_alpha(1);
+}
+
+/// @description Enhanced Debug System
+
+// Debug levels
+enum DEBUG_LEVEL {
+    INFO,
+    WARNING,
+    ERROR,
+    CRITICAL
+}
+
+// Debug categories
+enum DEBUG_CATEGORY {
+    GENERAL,
+    INVENTORY,
+    NETWORK,
+    QUEST,
+    ANIMATION,
+    ASSET,
+    ROOM
+}
+
+// Initialize debug system
+function init_debug_system() {
+    global.debug_enabled = true;
+    global.debug_log = ds_list_create();
+    global.debug_file = "debug_log.txt";
+    global.max_log_entries = 1000;
+    
+    // Clear previous log file
+    if (file_exists(global.debug_file)) {
+        file_delete(global.debug_file);
+    }
+    
+    log_debug("Debug system initialized", DEBUG_LEVEL.INFO, DEBUG_CATEGORY.GENERAL);
+}
+
+// Enhanced logging function
+function log_debug(message, level = DEBUG_LEVEL.INFO, category = DEBUG_CATEGORY.GENERAL) {
+    if (!global.debug_enabled) return;
+    
+    var timestamp = string(current_time);
+    var level_str = get_debug_level_string(level);
+    var category_str = get_debug_category_string(category);
+    
+    var log_entry = {
+        timestamp: timestamp,
+        level: level,
+        category: category,
+        message: message,
+        stack_trace: debug_get_callstack()
+    };
+    
+    // Add to memory log
+    ds_list_add(global.debug_log, log_entry);
+    
+    // Trim log if too large
+    while (ds_list_size(global.debug_log) > global.max_log_entries) {
+        ds_list_delete(global.debug_log, 0);
+    }
+    
+    // Format message for output
+    var formatted_message = "[" + timestamp + "] " + level_str + " [" + category_str + "] " + message;
+    
+    // Output to console
+    show_debug_message(formatted_message);
+    
+    // Write to file
+    var file = file_text_open_append(global.debug_file);
+    file_text_write_string(file, formatted_message + "\n");
+    
+    // Write stack trace for errors
+    if (level >= DEBUG_LEVEL.ERROR) {
+        file_text_write_string(file, "Stack Trace:\n");
+        for (var i = 0; i < array_length(log_entry.stack_trace); i++) {
+            file_text_write_string(file, "  " + log_entry.stack_trace[i] + "\n");
+        }
+    }
+    
+    file_text_close(file);
+    
+    // Show in-game notification for critical errors
+    if (level == DEBUG_LEVEL.CRITICAL && instance_exists(obj_notification_manager)) {
+        obj_notification_manager.show_notification("Critical Error: Check debug log", c_red);
+    }
+}
+
+// Get string representation of debug level
+function get_debug_level_string(level) {
+    switch(level) {
+        case DEBUG_LEVEL.INFO: return "INFO";
+        case DEBUG_LEVEL.WARNING: return "WARNING";
+        case DEBUG_LEVEL.ERROR: return "ERROR";
+        case DEBUG_LEVEL.CRITICAL: return "CRITICAL";
+        default: return "UNKNOWN";
+    }
+}
+
+// Get string representation of debug category
+function get_debug_category_string(category) {
+    switch(category) {
+        case DEBUG_CATEGORY.GENERAL: return "GENERAL";
+        case DEBUG_CATEGORY.INVENTORY: return "INVENTORY";
+        case DEBUG_CATEGORY.NETWORK: return "NETWORK";
+        case DEBUG_CATEGORY.QUEST: return "QUEST";
+        case DEBUG_CATEGORY.ANIMATION: return "ANIMATION";
+        case DEBUG_CATEGORY.ASSET: return "ASSET";
+        case DEBUG_CATEGORY.ROOM: return "ROOM";
+        default: return "UNKNOWN";
+    }
+}
+
+// Export debug log
+function export_debug_log() {
+    var export_file = "debug_export_" + string(current_time) + ".txt";
+    var file = file_text_open_write(export_file);
+    
+    file_text_write_string(file, "Debug Log Export\n");
+    file_text_write_string(file, "Timestamp: " + date_datetime_string(date_current_datetime()) + "\n");
+    file_text_write_string(file, "----------------------------------------\n\n");
+    
+    for (var i = 0; i < ds_list_size(global.debug_log); i++) {
+        var entry = global.debug_log[| i];
+        var level_str = get_debug_level_string(entry.level);
+        var category_str = get_debug_category_string(entry.category);
+        
+        file_text_write_string(file, "[" + entry.timestamp + "] " + 
+                             level_str + " [" + category_str + "] " + 
+                             entry.message + "\n");
+                             
+        if (entry.level >= DEBUG_LEVEL.ERROR) {
+            file_text_write_string(file, "Stack Trace:\n");
+            for (var j = 0; j < array_length(entry.stack_trace); j++) {
+                file_text_write_string(file, "  " + entry.stack_trace[j] + "\n");
+            }
+        }
+        
+        file_text_write_string(file, "\n");
+    }
+    
+    file_text_close(file);
+    return export_file;
+}
+
+// Clean up debug system
+function cleanup_debug_system() {
+    if (ds_exists(global.debug_log, ds_type_list)) {
+        ds_list_destroy(global.debug_log);
+    }
+}
+
+// Example usage:
+// log_debug("Player position updated", DEBUG_LEVEL.INFO, DEBUG_CATEGORY.GENERAL);
+// log_debug("Failed to load asset", DEBUG_LEVEL.ERROR, DEBUG_CATEGORY.ASSET);
+// log_debug("Network connection lost", DEBUG_LEVEL.CRITICAL, DEBUG_CATEGORY.NETWORK); 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_game_state
+File: scr_game_state.gml
+/// @description Game State Management System
+/// @function GameState
+function GameState() constructor {
+    // Core game state
+    static init = function() {
+        // Player state
+        player = {
+            x: 170,
+            y: 154,
+            instance: noone,
+            color: c_white,
+            skin: "player",
+            health: 100,
+            controls_enabled: true,
+            face: DOWN,
+            move_spd: 1
+        };
+        
+        // Game flags
+        flags = {
+            is_paused: false,
+            is_loading: false,
+            dialogue_active: false,
+            inventory_open: false,
+            expanded_hud_open: false,
+            debug_mode: false,
+            game_started: false
+        };
+        
+        // Room state
+        room_state = {
+            current_room: room_first,
+            last_player_x: undefined,
+            last_player_y: undefined,
+            last_player_face: DOWN
+        };
+        
+        // Initialize existing global variables for compatibility
+        global.player_instance = noone;
+        global.player_color = c_white;
+        global.current_skin = "player";
+        
+        show_debug_message("GameState initialized successfully");
+        return self;
+    }
+    
+    // Update global references
+    static sync_globals = function() {
+        if (instance_exists(player.instance)) {
+            global.player_instance = player.instance;
+            global.player_x = player.x;
+            global.player_y = player.y;
+            global.player_color = player.color;
+            global.current_skin = player.skin;
+            global.player_controls_enabled = player.controls_enabled;
+        }
+        
+        // Sync game flags
+        global.is_pause_menu_active = flags.is_paused;
+        global.dialogue_active = flags.dialogue_active;
+        global.inventory_open = flags.inventory_open;
+        global.expanded_hud_open = flags.expanded_hud_open;
+        global.debug_mode = flags.debug_mode;
+        global.game_started = flags.game_started;
+        
+        // Sync room state
+        global.last_player_x = room_state.last_player_x;
+        global.last_player_y = room_state.last_player_y;
+        global.last_player_face = room_state.last_player_face;
+    }
+    
+    // Update state from player instance
+    static update_from_player = function() {
+        if (instance_exists(player.instance)) {
+            player.x = player.instance.x;
+            player.y = player.instance.y;
+            player.color = player.instance.image_blend;
+            player.face = player.instance.face;
+            player.move_spd = player.instance.move_spd;
+        }
+    }
+    
+    // Save current room state
+    static save_room_state = function() {
+        room_state.last_player_x = player.x;
+        room_state.last_player_y = player.y;
+        room_state.last_player_face = player.face;
+        room_state.current_room = room;
+    }
+    
+    // Load room state
+    static load_room_state = function() {
+        if (room_state.last_player_x != undefined) {
+            player.x = room_state.last_player_x;
+            player.y = room_state.last_player_y;
+            player.face = room_state.last_player_face;
+        }
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_handle_collision
+File: scr_handle_collision.gml
+function handle_collision(axis, speed) {
+    var sign_speed = sign(speed);
+    var abs_speed = abs(speed);
+    var move_dist = 0;
+    var step = abs_speed;
+    
+    if (abs_speed == 0) return 0;
+    
+    while (step > 0.5) {  // Precision threshold
+        if (axis == "x") {
+            if (!place_meeting(x + (move_dist + step) * sign_speed, y, obj_wall)) {
+                move_dist += step;
+            }
+        } else {
+            if (!place_meeting(x, y + (move_dist + step) * sign_speed, obj_wall)) {
+                move_dist += step;
+            }
+        }
+        step /= 2;
+    }
+    
+    if (axis == "x") x += move_dist * sign_speed;
+    else y += move_dist * sign_speed;
+    
+    return move_dist * sign_speed;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_has_item
+File: scr_has_item.gml
+function has_item(item_name) {
+    if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
+        show_debug_message("Warning: global.inventory is not initialized or not an array.");
+        global.inventory = []; // Reinitialize if invalid
+        return false;
+    }
+    for (var i = 0; i < array_length(global.inventory); i++) {
+        if (global.inventory[i] == item_name) {
+            return true;
+        }
+    }
+    return false;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_globals
+File: scr_init_globals.gml
+function init_globals() {
+	// Asset verification first
+	if (!verify_required_assets()) {
+		show_error("Critical assets missing. Please check the game files.", true);
+		return false;
+	}
+	
+	// Initialize global variables
+	global.player_x = 170;
+	global.player_y = 154;
+	global.warp_target_x = undefined;
+	global.warp_target_y = undefined;
+	global.warp_target_face = undefined;
+	global.is_pause_menu_active = false;
+	global.player_instance = noone;
+	global.player_health = 100;
+	global.score = 0;
+	global.is_game_paused = false;
+	global.inventory_open = false;
+	global.repair_complete = false;
+	global.is_loading_game = false;
+	global.expanded_hud_open = false;
+	
+	// Initialize data structures safely
+	init_data_structures();
+	
+	show_debug_message("Global variables initialized successfully");
+	return true;
+}
+
+function verify_required_assets() {
+	// Initialize font system first
+	init_font_system();
+	
+	var required_sprites = [
+		// UI Elements
+		"spr_npc_dialouge_full_window",
+		"spr_npc_dialouge_full_colour_portrait",
+		"spr_npc_dialouge_full_outline_portrait",
+		"spr_button",
+		"spr_chat",
+		"spr_inventory_highlight",
+		"spr_hud_expanded",
+		"spr_hud_special_actions",
+		"spr_inventory_closed",
+		"spr_inventory_open",
+		"spr_blue_square_panel",
+		"spr_pause_menu",
+		
+		// Player Related
+		"spr_player_base",
+		"spr_player_body",
+		"spr_player_colour",
+		"spr_player_tube",
+		"spr_player_toboggan",
+		"spr_tube_sheet",
+		"spr_toboggan_sheet",
+		
+		// Vehicle Related
+		"spr_icetruck_base",
+		"spr_icetruck_colour",
+		"spr_icetruck_window",
+		"spr_icetruck_down",
+		"spr_icetruck_base_empty",
+		"spr_icetruck_penguin_colour",
+		
+		// Items and UI
+		"spr_inventory_items",
+		"spr_emote_happy",
+		"spr_emote_sad"
+	];
+	
+	var required_sounds = [
+		"snd_purchase",
+		"snd_quest_notification",
+		"snd_achievement_notification"
+	];
+	
+	// Check sprites
+	var missing_sprites = [];
+	for (var i = 0; i < array_length(required_sprites); i++) {
+		var sprite = asset_get_index(required_sprites[i]);
+		if (sprite == -1 || !sprite_exists(sprite)) {
+			array_push(missing_sprites, required_sprites[i]);
+			log_debug("Missing required sprite: " + required_sprites[i], 
+					 DEBUG_LEVEL.ERROR, DEBUG_CATEGORY.ASSET);
+		}
+	}
+	
+	// Check sounds
+	var missing_sounds = [];
+	for (var i = 0; i < array_length(required_sounds); i++) {
+		var sound = asset_get_index(required_sounds[i]);
+		if (sound == -1 || !audio_exists(sound)) {
+			array_push(missing_sounds, required_sounds[i]);
+			log_debug("Missing required sound: " + required_sounds[i], 
+					 DEBUG_LEVEL.ERROR, DEBUG_CATEGORY.ASSET);
+		}
+	}
+	
+	// Return detailed result
+	return {
+		success: array_length(missing_sprites) == 0 && array_length(missing_sounds) == 0,
+		missing_sprites: missing_sprites,
+		missing_sounds: missing_sounds
+	};
+}
+
+function init_data_structures() {
+	// Initialize lists
+	if (!ds_exists(global.following_puffles, ds_type_list)) {
+		global.following_puffles = ds_list_create();
+	}
+	if (!ds_exists(global.active_quests, ds_type_list)) {
+		global.active_quests = ds_list_create();
+	}
+	if (!ds_exists(global.completed_quests, ds_type_list)) {
+		global.completed_quests = ds_list_create();
+	}
+	
+	// Initialize maps
+	if (!ds_exists(global.room_states, ds_type_map)) {
+		global.room_states = ds_map_create();
+	}
+	if (!ds_exists(global.item_index_map, ds_type_map)) {
+		global.item_index_map = ds_map_create();
+		populate_item_index_map();
+	}
+	if (!ds_exists(global.equipped_items, ds_type_map)) {
+		global.equipped_items = ds_map_create();
+		init_equipped_items();
+	}
+	
+	// Initialize inventory with proper size
+	if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
+		global.inventory = array_create(42, -1); // Using larger size for expanded inventory
+	}
+	
+	show_debug_message("Data structures initialized successfully");
+}
+
+function populate_item_index_map() {
+	var items = [
+		["Beta Hat", 0],
+		["Party Hat", 1],
+		["Wrench", 2],
+		["Tube", 3],
+		["Toboggan", 4],
+		["Battery", 5],
+		["Spy Phone", 6],
+		["Broken Spy Phone", 7],
+		["EPF Phone", 8],
+		["Fishing Rod", 9],
+		["Jackhammer", 10],
+		["Snow Shovel", 11],
+		["Pizza Slice", 12],
+		["Puffle O", 13],
+		["Box Puffle O", 14],
+		["Fish", 15],
+		["Mullet", 16],
+		["Wood", 17],
+		["Snow", 18]
+	];
+	
+	for (var i = 0; i < array_length(items); i++) {
+		ds_map_add(global.item_index_map, items[i][0], items[i][1]);
+	}
+}
+
+function init_equipped_items() {
+	var slots = ["head", "face", "neck", "body", "hand", "feet"];
+	for (var i = 0; i < array_length(slots); i++) {
+		ds_map_add(global.equipped_items, slots[i], -1);
+	}
+}
+
+function init_font_system() {
+	// Define font mappings with fallbacks
+	global.font_mappings = {
+		// UI Fonts
+		ui_large: {
+			primary: "fnt_bonkfatty",
+			fallback: "fnt_gui",
+			default: fnt_arial_12
+		},
+		ui_normal: {
+			primary: "fnt_bumbastika_sml",
+			fallback: "fnt_normal",
+			default: fnt_arial_12
+		},
+		ui_small: {
+			primary: "fnt_small",
+			fallback: "fnt_gui",
+			default: fnt_arial_10
+		},
+		
+		// Special Fonts
+		title: {
+			primary: "fnt_acme_explosive",
+			fallback: "fnt_title",
+			default: fnt_arial_14
+		},
+		dialogue: {
+			primary: "fnt_dialogue",
+			fallback: "fnt_normal",
+			default: fnt_arial_12
+		},
+		
+		// System Fonts
+		debug: {
+			primary: "fnt_debug",
+			fallback: "fnt_small",
+			default: fnt_arial_10
+		},
+		notification: {
+			primary: "fnt_notification",
+			fallback: "fnt_normal",
+			default: fnt_arial_12
+		}
+	};
+	
+	// Initialize font references
+	global.fonts = {};
+	var font_names = variable_struct_get_names(global.font_mappings);
+	
+	for (var i = 0; i < array_length(font_names); i++) {
+		var font_name = font_names[i];
+		var font_data = global.font_mappings[$ font_name];
+		
+		// Try primary font
+		var font = asset_get_index(font_data.primary);
+		if (font != -1 && font_exists(font)) {
+			global.fonts[$ font_name] = font;
+			continue;
+		}
+		
+		// Try fallback font
+		font = asset_get_index(font_data.fallback);
+		if (font != -1 && font_exists(font)) {
+			global.fonts[$ font_name] = font;
+			log_debug("Using fallback font for " + font_name, DEBUG_LEVEL.WARNING, DEBUG_CATEGORY.ASSET);
+			continue;
+		}
+		
+		// Use default font
+		global.fonts[$ font_name] = font_data.default;
+		log_debug("Using default font for " + font_name, DEBUG_LEVEL.WARNING, DEBUG_CATEGORY.ASSET);
+	}
+}
+
+// Helper function to get the appropriate font
+function get_font(font_type) {
+	if (variable_struct_exists(global.fonts, font_type)) {
+		return global.fonts[$ font_type];
+	}
+	return fnt_arial_12; // Default system font
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
+File: scr_init_sprites.gml
+function init_sprites(right, up, left, down, up_right, up_left, down_right, down_left) {
+    sprite[RIGHT] = right;
+    sprite[UP] = up;
+    sprite[LEFT] = left;
+    sprite[DOWN] = down;
+    sprite[UP_RIGHT] = up_right;
+    sprite[UP_LEFT] = up_left;
+    sprite[DOWN_RIGHT] = down_right;
+    sprite[DOWN_LEFT] = down_left;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_load_game
+File: scr_load_game.gml
+function load_game() {
+    init_globals();
+    
+    // Check for save file
+    if (!file_exists("savegame.sav")) {
+        show_debug_message("No save file found.");
+        return false;
+    }
+
+    // Read save file
+    var file = file_text_open_read("savegame.sav");
+    if (file == -1) {
+        show_debug_message("ERROR: Failed to open save file.");
+        return false;
+    }
+
+    var json = file_text_read_string(file);
+    file_text_close(file);
+    
+    try {
+        var save_data = json_parse(json);
+        
+        // Validate save data version
+        if (!variable_struct_exists(save_data, "version")) {
+            throw "Save file missing version information";
+        }
+        
+        // Version compatibility check (can be expanded for future versions)
+        if (save_data.version != "1.0.0") {
+            show_debug_message("WARNING: Save file version mismatch. Attempting to load anyway.");
+        }
+
+        global.is_loading_game = true;
+        
+        // Load player data
+        if (variable_struct_exists(save_data, "player")) {
+            var player_data = save_data.player;
+            
+            // Load basic player properties
+            global.player_x = player_data.x;
+            global.player_y = player_data.y;
+            global.current_skin = player_data.skin;
+            global.player_color = player_data.color;
+            global.last_player_face = player_data.face;
+            global.expanded_hud_open = player_data.expanded_hud_open;
+            
+            // Load inventory
+            if (variable_struct_exists(player_data, "inventory")) {
+                if (is_array(player_data.inventory)) {
+                    global.inventory = player_data.inventory;
+                } else {
+                    show_debug_message("WARNING: Invalid inventory data format");
+                    global.inventory = array_create(42, -1);
+                }
+            }
+            
+            // Load equipped items
+            if (variable_struct_exists(player_data, "equipped_items")) {
+                var equipped_string = player_data.equipped_items;
+                if (is_string(equipped_string)) {
+                    var equipped_buffer = buffer_create(32, buffer_grow, 1);
+                    buffer_base64_decode_ext(equipped_buffer, equipped_string, 0);
+                    buffer_seek(equipped_buffer, buffer_seek_start, 0);
+                    
+                    // Clear and repopulate equipped items
+                    ds_map_clear(global.equipped_items);
+                    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+                    for (var i = 0; i < array_length(slots); i++) {
+                        var item = buffer_read(equipped_buffer, buffer_s32);
+                        ds_map_add(global.equipped_items, slots[i], item);
+                    }
+                    
+                    buffer_delete(equipped_buffer);
+                } else {
+                    show_debug_message("WARNING: Invalid equipped_items format");
+                }
+            }
+        }
+        
+        // Load game state
+        if (variable_struct_exists(save_data, "game_state")) {
+            var game_state = save_data.game_state;
+            
+            // Load room states
+            if (variable_struct_exists(game_state, "room_states")) {
+                ds_map_clear(global.room_states);
+                var room_states = game_state.room_states;
+                var keys = variable_struct_get_names(room_states);
+                for (var i = 0; i < array_length(keys); i++) {
+                    ds_map_add(global.room_states, keys[i], room_states[$ keys[i]]);
+                }
+            }
+            
+            // Load quests
+            if (variable_struct_exists(game_state, "active_quests")) {
+                ds_list_clear(global.active_quests);
+                array_copy_to_list(game_state.active_quests, global.active_quests);
+            }
+            if (variable_struct_exists(game_state, "completed_quests")) {
+                ds_list_clear(global.completed_quests);
+                array_copy_to_list(game_state.completed_quests, global.completed_quests);
+            }
+            
+            // Set target room for loading
+            global.target_room = game_state.current_room;
+        }
+        
+        // Transition to initialization room
+        room_goto(rm_init);
+        show_debug_message("Game loaded successfully.");
+        return true;
+        
+    } catch (error) {
+        show_debug_message("ERROR loading save file: " + string(error));
+        
+        // Try to load backup if available
+        if (file_exists("savegame.bak")) {
+            show_debug_message("Attempting to load backup save file...");
+            file = file_text_open_read("savegame.bak");
+            if (file != -1) {
+                json = file_text_read_string(file);
+                file_text_close(file);
+                save_data = json_parse(json);
+                // ... (same loading logic as above)
+                show_debug_message("Backup save file loaded successfully.");
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+// Helper function to copy array to ds_list
+function array_copy_to_list(arr, list) {
+    if (!is_array(arr) || !ds_exists(list, ds_type_list)) return;
+    for (var i = 0; i < array_length(arr); i++) {
+        ds_list_add(list, arr[i]);
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_macros
+File: scr_macros.gml
+#macro RIGHT 0
+#macro UP 1
+#macro LEFT 2
+#macro DOWN 3
+#macro UP_RIGHT 4
+#macro UP_LEFT 5
+#macro DOWN_RIGHT 6
+#macro DOWN_LEFT 7
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_music_function
+File: scr_music_function.gml
+function set_song_ingame( _song, _fadeOutCurrentSong = 0, _fadeIn = 0 )
+{
+	//_song = set to any song (including "noone" to stop or fade the track out)
+	//_fadeOutCurrentSong = time (in frames) the current song (if playing) will take to fade out
+	//_fadeIn = time (in frames) the target song (if not "noone" will take to fade in
+
+	with ( obj_musicmanager )
+	{
+		targetSongAsset = _song;
+		endFadeOutTime = _fadeOutCurrentSong;
+		startFadeInTime = _fadeIn;
+	}
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_network_manager
+File: scr_network_manager.gml
+/// @description Network Manager System
+/// @function NetworkManager
+function NetworkManager() constructor {
+    // Network configuration
+    network_config = {
+        max_players: 8,
+        tick_rate: 60,
+        buffer_size: 1024,
+        timeout: 5000, // ms
+        interpolation_delay: 100 // ms
+    };
+    
+    // Connection states
+    enum NETWORK_STATE {
+        DISCONNECTED,
+        CONNECTING,
+        CONNECTED,
+        HOST,
+        ERROR
+    }
+    
+    // Message types
+    enum NET_MESSAGE {
+        CONNECT,
+        DISCONNECT,
+        PLAYER_STATE,
+        ROOM_STATE,
+        CHAT,
+        SYNC_REQUEST,
+        SYNC_RESPONSE,
+        INVENTORY_UPDATE,
+        QUEST_UPDATE,
+        PING,
+        PONG,
+        START_GAME,
+        ROOM_CHANGE,
+        EMOTE,
+        INTERACTION,
+        WORLD_STATE
+    }
+    
+    // Network state
+    current_state = NETWORK_STATE.DISCONNECTED;
+    is_host = false;
+    connected_players = ds_map_create();
+    local_player_id = undefined;
+    last_ping_time = current_time;
+    ping = 0;
+    error_message = "";
+    
+    // Room synchronization
+    current_room_data = undefined;
+    pending_room_change = false;
+    room_change_data = undefined;
+    
+    // Add chat configuration
+    chat_config = {
+        max_message_length: 128,
+        rate_limit: 500, // ms between messages
+        last_message_time: 0
+    };
+    
+    // Add synchronization configuration
+    sync_config = {
+        world_sync_interval: 1000, // ms between world state updates
+        last_world_sync: 0,
+        interpolation_delay: 100, // ms
+        snapshot_history: ds_list_create(),
+        snapshot_buffer_size: 10 // Number of snapshots to keep
+    };
+    
+    // Initialize network system
+    static initialize = function() {
+        network_set_config(network_type_udp, 32767);
+        show_debug_message("Network Manager initialized");
+        return true;
+    }
+    
+    // Host a game
+    static host_game = function(port) {
+        if (current_state != NETWORK_STATE.DISCONNECTED) {
+            error_message = "Already in a network session";
+            return false;
+        }
+        
+        var server = network_create_server(network_socket_udp, port, network_config.max_players);
+        if (server < 0) {
+            error_message = "Failed to create server";
+            current_state = NETWORK_STATE.ERROR;
+            return false;
+        }
+        
+        current_state = NETWORK_STATE.HOST;
+        is_host = true;
+        local_player_id = 1;
+        
+        // Add host to connected players
+        var host_data = {
+            player_id: local_player_id,
+            name: "Host",
+            room: room,
+            x: global.player_instance.x,
+            y: global.player_instance.y,
+            skin: global.current_skin,
+            color: global.player_color
+        };
+        ds_map_add(connected_players, local_player_id, host_data);
+        
+        show_debug_message("Game hosted successfully on port " + string(port));
+        return true;
+    }
+    
+    // Join a game
+    static join_game = function(ip, port) {
+        if (current_state != NETWORK_STATE.DISCONNECTED) {
+            error_message = "Already in a network session";
+            return false;
+        }
+        
+        var client = network_create_socket(network_socket_udp);
+        if (client < 0) {
+            error_message = "Failed to create client socket";
+            current_state = NETWORK_STATE.ERROR;
+            return false;
+        }
+        
+        var success = network_connect(client, ip, port);
+        if (success < 0) {
+            error_message = "Failed to connect to host";
+            current_state = NETWORK_STATE.ERROR;
+            return false;
+        }
+        
+        current_state = NETWORK_STATE.CONNECTING;
+        show_debug_message("Connecting to " + ip + ":" + string(port));
+        return true;
+    }
+    
+    // Send player state
+    static send_player_state = function() {
+        if (!instance_exists(global.player_instance)) return;
+        
+        var buffer = buffer_create(network_config.buffer_size, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        
+        // Write message header
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.PLAYER_STATE);
+        buffer_write(buffer, buffer_u32, local_player_id);
+        
+        // Write player state
+        buffer_write(buffer, buffer_string, global.current_skin);
+        buffer_write(buffer, buffer_u32, global.player_color);
+        buffer_write(buffer, buffer_f32, global.player_instance.x);
+        buffer_write(buffer, buffer_f32, global.player_instance.y);
+        buffer_write(buffer, buffer_u8, global.player_instance.face);
+        
+        // Send to all or host
+        if (is_host) {
+            network_send_broadcast(buffer, network_config.port);
+        } else {
+            network_send_packet(network_config.socket, buffer, buffer_tell(buffer));
+        }
+        
+        buffer_delete(buffer);
+    }
+    
+    // Start multiplayer game
+    static start_game = function() {
+        if (!is_host) return false;
+        
+        var buffer = buffer_create(32, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.START_GAME);
+        network_send_broadcast(buffer, network_config.port);
+        buffer_delete(buffer);
+        
+        // Start game for host
+        room_goto(rm_multiplayer_start);
+        return true;
+    }
+    
+    // Send room change
+    static send_room_change = function(target_room) {
+        if (!is_host) return;
+        
+        var buffer = buffer_create(32, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.ROOM_CHANGE);
+        buffer_write(buffer, buffer_string, room_get_name(target_room));
+        network_send_broadcast(buffer, network_config.port);
+        buffer_delete(buffer);
+    }
+    
+    // Send inventory update
+    static send_inventory_update = function() {
+        if (!instance_exists(global.player_instance)) return;
+        
+        var buffer = buffer_create(network_config.buffer_size, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        
+        // Write message header
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.INVENTORY_UPDATE);
+        buffer_write(buffer, buffer_u32, local_player_id);
+        
+        // Write inventory data
+        var inv_size = array_length(global.inventory);
+        buffer_write(buffer, buffer_u16, inv_size);
+        for (var i = 0; i < inv_size; i++) {
+            buffer_write(buffer, buffer_s32, global.inventory[i]);
+        }
+        
+        // Write equipped items
+        var equipped_slots = ds_map_size(global.equipped_items);
+        buffer_write(buffer, buffer_u8, equipped_slots);
+        var key = ds_map_find_first(global.equipped_items);
+        while (key != undefined) {
+            buffer_write(buffer, buffer_string, key);
+            buffer_write(buffer, buffer_s32, global.equipped_items[? key]);
+            key = ds_map_find_next(global.equipped_items, key);
+        }
+        
+        // Send to all or host
+        if (is_host) {
+            network_send_broadcast(buffer, network_config.port);
+        } else {
+            network_send_packet(network_config.socket, buffer, buffer_tell(buffer));
+        }
+        
+        buffer_delete(buffer);
+    }
+    
+    // Send quest update
+    static send_quest_update = function() {
+        if (!instance_exists(global.player_instance)) return;
+        
+        var buffer = buffer_create(network_config.buffer_size, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        
+        // Write message header
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.QUEST_UPDATE);
+        buffer_write(buffer, buffer_u32, local_player_id);
+        
+        // Write active quests
+        var active_quests = global.resource_manager.get_structure("active_quests");
+        var quest_count = ds_list_size(active_quests);
+        buffer_write(buffer, buffer_u16, quest_count);
+        for (var i = 0; i < quest_count; i++) {
+            buffer_write(buffer, buffer_string, active_quests[| i]);
+        }
+        
+        // Write quest progress
+        var quest_progress = global.resource_manager.get_structure("quest_progress");
+        var progress_count = ds_map_size(quest_progress);
+        buffer_write(buffer, buffer_u16, progress_count);
+        var key = ds_map_find_first(quest_progress);
+        while (key != undefined) {
+            buffer_write(buffer, buffer_string, key);
+            buffer_write(buffer, buffer_u32, quest_progress[? key]);
+            key = ds_map_find_next(quest_progress, key);
+        }
+        
+        // Send to all or host
+        if (is_host) {
+            network_send_broadcast(buffer, network_config.port);
+        } else {
+            network_send_packet(network_config.socket, buffer, buffer_tell(buffer));
+        }
+        
+        buffer_delete(buffer);
+    }
+    
+    // Send chat message
+    static send_chat_message = function(text) {
+        if (current_time - chat_config.last_message_time < chat_config.rate_limit) {
+            return false;
+        }
+        
+        var buffer = buffer_create(chat_config.max_message_length + 32, buffer_fixed, 1);
+        buffer_seek(buffer, buffer_seek_start, 0);
+        buffer_write(buffer, buffer_u8, NET_MESSAGE.CHAT);
+        buffer_write(buffer, buffer_u32, local_player_id);
+        buffer_write(buffer, buffer_string, text);
+        
+        if (is_host) {
+            network_send_broadcast(buffer, network_config.port);
+        } else {
+            network_send_packet(network_config.socket, buffer, buffer_tell(buffer));
+        }
+        
+        buffer_delete(buffer);
+        chat_config.last_message_time = current_time;
+        return true;
+    }
+    
+    // Send world state (host only)
+    static send_world_state = function() {
+        if (!is_host || !instance_exists(global.player_instance)) return;
+        
+        try {
+            var buffer = buffer_create(network_config.buffer_size, buffer_fixed, 1);
+            buffer_seek(buffer, buffer_seek_start, 0);
+            buffer_write(buffer, buffer_u8, NET_MESSAGE.WORLD_STATE);
+            
+            // Write timestamp
+            buffer_write(buffer, buffer_u32, current_time);
+            
+            // Write number of objects
+            var object_count = 0;
+            with(all) {
+                if (variable_instance_exists(id, "network_synced") && network_synced) {
+                    object_count++;
+                }
+            }
+            buffer_write(buffer, buffer_u16, object_count);
+            
+            // Write object states
+            with(all) {
+                if (variable_instance_exists(id, "network_synced") && network_synced) {
+                    buffer_write(buffer, buffer_u32, id);
+                    buffer_write(buffer, buffer_u32, object_index);
+                    buffer_write(buffer, buffer_f32, x);
+                    buffer_write(buffer, buffer_f32, y);
+                    buffer_write(buffer, buffer_f32, image_angle);
+                    buffer_write(buffer, buffer_u32, image_blend);
+                    buffer_write(buffer, buffer_f32, image_xscale);
+                    buffer_write(buffer, buffer_f32, image_yscale);
+                    
+                    // Write custom variables if they exist
+                    if (variable_instance_exists(id, "network_variables")) {
+                        var var_count = array_length(network_variables);
+                        buffer_write(buffer, buffer_u8, var_count);
+                        for (var i = 0; i < var_count; i++) {
+                            var var_name = network_variables[i];
+                            var var_value = variable_instance_get(id, var_name);
+                            buffer_write(buffer, buffer_string, var_name);
+                            buffer_write(buffer, buffer_string, json_stringify(var_value));
+                        }
+                    } else {
+                        buffer_write(buffer, buffer_u8, 0);
+                    }
+                }
+            }
+            
+            network_send_broadcast(buffer, network_config.port);
+            buffer_delete(buffer);
+        } catch(error) {
+            show_debug_message("Error sending world state: " + string(error));
+        }
+    }
+    
+    // Handle incoming network messages (updated)
+    static handle_network_message = function(buffer, sender) {
+        if (buffer_get_size(buffer) < 1) return;
+        
+        try {
+            var message_type = buffer_read(buffer, buffer_u8);
+            if (message_type >= NET_MESSAGE.LAST) return;
+            
+            var player_id = buffer_read(buffer, buffer_u32);
+            if (!ds_map_exists(connected_players, player_id) && message_type != NET_MESSAGE.CONNECT) return;
+            
+            switch(message_type) {
+                case NET_MESSAGE.CONNECT:
+                    handle_connect(buffer, sender, player_id);
+                    break;
+                    
+                case NET_MESSAGE.DISCONNECT:
+                    handle_disconnect(player_id);
+                    break;
+                    
+                case NET_MESSAGE.PLAYER_STATE:
+                    handle_player_state(buffer, player_id);
+                    break;
+                    
+                case NET_MESSAGE.INVENTORY_UPDATE:
+                    handle_inventory_update(buffer, player_id);
+                    break;
+                    
+                case NET_MESSAGE.QUEST_UPDATE:
+                    handle_quest_update(buffer, player_id);
+                    break;
+                    
+                case NET_MESSAGE.START_GAME:
+                    if (!is_host) room_goto(rm_multiplayer_start);
+                    break;
+                    
+                case NET_MESSAGE.ROOM_CHANGE:
+                    var room_name = buffer_read(buffer, buffer_string);
+                    var target_room = asset_get_index(room_name);
+                    if (room_exists(target_room)) {
+                        room_goto(target_room);
+                    }
+                    break;
+                    
+                case NET_MESSAGE.PING:
+                    send_pong(sender);
+                    break;
+                    
+                case NET_MESSAGE.PONG:
+                    ping = current_time - last_ping_time;
+                    break;
+                    
+                case NET_MESSAGE.CHAT:
+                    var text = buffer_read(buffer, buffer_string);
+                    var player_data = connected_players[? player_id];
+                    if (player_data != undefined) {
+                        with(obj_multiplayer_hud) {
+                            add_chat_message(text, player_data.name);
+                        }
+                    }
+                    break;
+                    
+                case NET_MESSAGE.WORLD_STATE:
+                    handle_world_state(buffer);
+                    break;
+            }
+        } catch(error) {
+            show_debug_message("Error handling network message: " + string(error));
+        }
+    }
+    
+    // Handle player connection
+    static handle_connect = function(buffer, sender, player_id) {
+        if (!is_host) return;
+        
+        var player_name = buffer_read(buffer, buffer_string);
+        var player_data = {
+            player_id: player_id,
+            name: player_name,
+            socket: sender,
+            room: room,
+            x: 0,
+            y: 0,
+            skin: "player",
+            color: c_white
+        };
+        
+        ds_map_add(connected_players, player_id, player_data);
+        send_connection_accepted(sender, player_id);
+        broadcast_player_joined(player_id, player_name);
+        
+        show_debug_message("Player " + player_name + " connected with ID: " + string(player_id));
+    }
+    
+    // Handle player disconnection
+    static handle_disconnect = function(player_id) {
+        if (ds_map_exists(connected_players, player_id)) {
+            ds_map_delete(connected_players, player_id);
+            broadcast_player_left(player_id);
+            show_debug_message("Player " + string(player_id) + " disconnected");
+        }
+    }
+    
+    // Handle player state update
+    static handle_player_state = function(buffer, player_id) {
+        if (!ds_map_exists(connected_players, player_id)) return;
+        
+        var player_data = connected_players[? player_id];
+        player_data.skin = buffer_read(buffer, buffer_string);
+        player_data.color = buffer_read(buffer, buffer_u32);
+        player_data.x = buffer_read(buffer, buffer_f32);
+        player_data.y = buffer_read(buffer, buffer_f32);
+        player_data.face = buffer_read(buffer, buffer_u8);
+        
+        // Update or create network player instance
+        update_network_player(player_id, player_data);
+    }
+    
+    // Handle inventory update
+    static handle_inventory_update = function(buffer, player_id) {
+        if (!ds_map_exists(connected_players, player_id)) return;
+        
+        var player_data = connected_players[? player_id];
+        
+        // Read inventory
+        var inv_size = buffer_read(buffer, buffer_u16);
+        player_data.inventory = array_create(inv_size);
+        for (var i = 0; i < inv_size; i++) {
+            player_data.inventory[i] = buffer_read(buffer, buffer_s32);
+        }
+        
+        // Read equipped items
+        var equipped_slots = buffer_read(buffer, buffer_u8);
+        player_data.equipped_items = ds_map_create();
+        for (var i = 0; i < equipped_slots; i++) {
+            var slot = buffer_read(buffer, buffer_string);
+            var item = buffer_read(buffer, buffer_s32);
+            ds_map_add(player_data.equipped_items, slot, item);
+        }
+        
+        // Update network player instance if it exists
+        update_network_player(player_id, player_data);
+    }
+    
+    // Handle quest update
+    static handle_quest_update = function(buffer, player_id) {
+        if (!ds_map_exists(connected_players, player_id)) return;
+        
+        var player_data = connected_players[? player_id];
+        
+        // Read active quests
+        var quest_count = buffer_read(buffer, buffer_u16);
+        player_data.active_quests = ds_list_create();
+        for (var i = 0; i < quest_count; i++) {
+            ds_list_add(player_data.active_quests, buffer_read(buffer, buffer_string));
+        }
+        
+        // Read quest progress
+        var progress_count = buffer_read(buffer, buffer_u16);
+        player_data.quest_progress = ds_map_create();
+        for (var i = 0; i < progress_count; i++) {
+            var quest_id = buffer_read(buffer, buffer_string);
+            var progress = buffer_read(buffer, buffer_u32);
+            ds_map_add(player_data.quest_progress, quest_id, progress);
+        }
+        
+        // Update network player instance if it exists
+        update_network_player(player_id, player_data);
+    }
+    
+    // Update network player instance
+    static update_network_player = function(player_id, player_data) {
+        var inst = noone;
+        
+        // Find existing network player instance
+        with(obj_network_player) {
+            if (network_id == player_id) {
+                inst = id;
+                break;
+            }
+        }
+        
+        // Create new instance if needed
+        if (!instance_exists(inst)) {
+            inst = instance_create_layer(player_data.x, player_data.y, "Instances", obj_network_player);
+            inst.network_id = player_id;
+        }
+        
+        // Update instance
+        with(inst) {
+            target_x = player_data.x;
+            target_y = player_data.y;
+            face = player_data.face;
+            network_skin = player_data.skin;
+            image_blend = player_data.color;
+        }
+    }
+    
+    // Handle world state update
+    static handle_world_state = function(buffer) {
+        var timestamp = buffer_read(buffer, buffer_u32);
+        var object_count = buffer_read(buffer, buffer_u16);
+        
+        // Create snapshot
+        var snapshot = {
+            timestamp: timestamp,
+            objects: ds_map_create()
+        };
+        
+        // Read object states
+        for (var i = 0; i < object_count; i++) {
+            var obj_id = buffer_read(buffer, buffer_u32);
+            var obj_index = buffer_read(buffer, buffer_u32);
+            var obj_x = buffer_read(buffer, buffer_f32);
+            var obj_y = buffer_read(buffer, buffer_f32);
+            var obj_angle = buffer_read(buffer, buffer_f32);
+            var obj_blend = buffer_read(buffer, buffer_u32);
+            var obj_xscale = buffer_read(buffer, buffer_f32);
+            var obj_yscale = buffer_read(buffer, buffer_f32);
+            
+            var obj_data = {
+                object_index: obj_index,
+                x: obj_x,
+                y: obj_y,
+                image_angle: obj_angle,
+                image_blend: obj_blend,
+                image_xscale: obj_xscale,
+                image_yscale: obj_yscale,
+                variables: ds_map_create()
+            };
+            
+            // Read custom variables
+            var var_count = buffer_read(buffer, buffer_u8);
+            for (var j = 0; j < var_count; j++) {
+                var var_name = buffer_read(buffer, buffer_string);
+                var var_value = json_parse(buffer_read(buffer, buffer_string));
+                ds_map_add(obj_data.variables, var_name, var_value);
+            }
+            
+            ds_map_add(snapshot.objects, obj_id, obj_data);
+        }
+        
+        // Add snapshot to history
+        ds_list_add(sync_config.snapshot_history, snapshot);
+        
+        // Trim old snapshots
+        while (ds_list_size(sync_config.snapshot_history) > sync_config.snapshot_buffer_size) {
+            var old_snapshot = sync_config.snapshot_history[| 0];
+            ds_map_destroy(old_snapshot.objects);
+            ds_list_delete(sync_config.snapshot_history, 0);
+        }
+    }
+    
+    // Update network objects from snapshots
+    static interpolate_objects = function() {
+        if (ds_list_size(sync_config.snapshot_history) < 2) return;
+        
+        var render_timestamp = current_time - sync_config.interpolation_delay;
+        var snapshot1 = undefined;
+        var snapshot2 = undefined;
+        
+        // Find surrounding snapshots
+        for (var i = 0; i < ds_list_size(sync_config.snapshot_history) - 1; i++) {
+            var s1 = sync_config.snapshot_history[| i];
+            var s2 = sync_config.snapshot_history[| i + 1];
+            
+            if (s1.timestamp <= render_timestamp && s2.timestamp >= render_timestamp) {
+                snapshot1 = s1;
+                snapshot2 = s2;
+                break;
+            }
+        }
+        
+        if (snapshot1 == undefined || snapshot2 == undefined) return;
+        
+        // Calculate interpolation alpha
+        var alpha = (render_timestamp - snapshot1.timestamp) / (snapshot2.timestamp - snapshot1.timestamp);
+        
+        // Update objects
+        var key = ds_map_find_first(snapshot2.objects);
+        while (key != undefined) {
+            var obj2 = snapshot2.objects[? key];
+            var obj1 = snapshot1.objects[? key];
+            
+            if (obj1 != undefined) {
+                var inst = noone;
+                
+                // Find or create instance
+                with(obj2.object_index) {
+                    if (id == key) {
+                        inst = id;
+                        break;
+                    }
+                }
+                
+                if (!instance_exists(inst)) {
+                    inst = instance_create_layer(obj2.x, obj2.y, "Instances", obj2.object_index);
+                }
+                
+                // Interpolate properties
+                with(inst) {
+                    x = lerp(obj1.x, obj2.x, alpha);
+                    y = lerp(obj1.y, obj2.y, alpha);
+                    image_angle = lerp(obj1.image_angle, obj2.image_angle, alpha);
+                    image_blend = obj2.image_blend;
+                    image_xscale = lerp(obj1.image_xscale, obj2.image_xscale, alpha);
+                    image_yscale = lerp(obj1.image_yscale, obj2.image_yscale, alpha);
+                    
+                    // Update custom variables
+                    var var_key = ds_map_find_first(obj2.variables);
+                    while (var_key != undefined) {
+                        variable_instance_set(id, var_key, obj2.variables[? var_key]);
+                        var_key = ds_map_find_next(obj2.variables, var_key);
+                    }
+                }
+            }
+            
+            key = ds_map_find_next(snapshot2.objects, key);
+        }
+    }
+    
+    // Cleanup
+    static cleanup = function() {
+        if (ds_exists(connected_players, ds_type_map)) ds_map_destroy(connected_players);
+        if (ds_exists(sync_config.snapshot_history, ds_type_list)) ds_list_destroy(sync_config.snapshot_history);
+        // Clean up any remaining buffers
+        buffer_delete(network_buffer);
+    }
+}
+
+function cleanup_globals() {
+    if (ds_exists(global.following_puffles, ds_type_list)) ds_list_destroy(global.following_puffles);
+    if (ds_exists(global.room_states, ds_type_map)) ds_map_destroy(global.room_states);
+    if (ds_exists(global.active_quests, ds_type_list)) ds_list_destroy(global.active_quests);
+    if (ds_exists(global.completed_quests, ds_type_list)) ds_list_destroy(global.completed_quests);
+    if (ds_exists(global.item_index_map, ds_type_map)) ds_map_destroy(global.item_index_map);
+    if (ds_exists(global.equipped_items, ds_type_map)) ds_map_destroy(global.equipped_items);
+}
+
+// Add to player object Create event
+if (instance_number(object_index) > 1) {
+    show_debug_message("Warning: Multiple player instances detected");
+    instance_destroy();
+    exit;
+}
+
+// In room state management
+static save_room_state = function(room_id) {
+    if (!room_exists(room_id)) return false;
+    
+    try {
+        var state = {
+            objects: ds_list_create(),
+            persistent: ds_list_create()
+        };
+        // ... save state
+        return true;
+    } catch(error) {
+        show_debug_message("Error saving room state: " + string(error));
+        return false;
+    }
+}
+
+// In game manager Step event
+if (global.game_state.flags.debug_mode) {
+    try {
+        update_debug_info();
+    } catch(error) {
+        show_debug_message("Error updating debug info: " + string(error));
+        global.game_state.flags.debug_mode = false;
+    }
+}
+
+// Create a verification script to run at game start
+function verify_required_assets() {
+    var required_sprites = [
+        "spr_npc_dialouge_full_window",
+        "spr_button",
+        "spr_chat",
+        // Add all required sprites
+    ];
+    
+    for (var i = 0; i < array_length(required_sprites); i++) {
+        if (!sprite_exists(asset_get_index(required_sprites[i]))) {
+            show_debug_message("ERROR: Missing required sprite: " + required_sprites[i]);
+            return false;
+        }
+    }
+    return true;
+}
+
+// Add to obj_initializer Create Event
+if (!variable_global_exists("game_initialized")) {
+    global.game_initialized = false;
+    global.player_instance = noone;
+    global.camera = noone;
+    // Add other critical globals
+    
+    // Initialize systems in correct order
+    init_camera_system();
+    init_player_system();
+    init_network_system();
+    
+    global.game_initialized = true;
+}
+
+// Add to a new script file scr_error_handling
+function log_error(system_name, error_message) {
+    var timestamp = date_datetime_string(date_current_datetime());
+    show_debug_message(timestamp + " ERROR in " + system_name + ": " + error_message);
+    // Add to error log file if needed
+}
+
+function handle_missing_dependency(dependency_name) {
+    log_error("Dependency Check", "Missing: " + dependency_name);
+    // Handle gracefully - maybe load fallback assets
+}
+
+// In a new testing script
+function run_basic_tests() {
+    test_player_systems();
+    test_camera_systems();
+    test_network_systems();
+    // Add more test functions
+}
+
+function test_player_systems() {
+    // Test player creation
+    var test_player = instance_create_layer(0, 0, "Instances", obj_player);
+    assert_not_equals(test_player, noone, "Player creation failed");
+    
+    // Test player movement
+    with(test_player) {
+        x += 10;
+        assert_equals(x, 10, "Player movement failed");
+    }
+    
+    // Cleanup
+    instance_destroy(test_player);
+}
+
+// In obj_game_manager
+function test_room_transitions() {
+    var current_room = room;
+    var test_rooms = [rm_plaza, rm_town, rm_snow_fort];
+    
+    for (var i = 0; i < array_length(test_rooms); i++) {
+        room_goto(test_rooms[i]);
+        // Wait for transition
+        if (room != test_rooms[i]) {
+            log_error("Room Transition", "Failed to transition to " + room_get_name(test_rooms[i]));
+        }
+    }
+    
+    room_goto(current_room);
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_network_object
+File: scr_network_object.gml
+ 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_notification_system
+File: scr_notification_system.gml
+/// @description Enhanced Notification System for displaying messages to the player
+function NotificationSystem() constructor {
+    notifications = ds_list_create();
+    stacked_notifications = ds_map_create();
+    
+    // Notification settings
+    notification_lifetime = 5; // seconds
+    notification_fade_time = 0.5; // seconds
+    max_notifications = 5;
+    stack_similar = true;
+    enable_sounds = true;
+    enable_animations = true;
+    
+    // Animation settings
+    animation_speed = 0.2;
+    slide_distance = 50;
+    
+    /// @function init()
+    static init = function() {
+        show_debug_message("Initializing Enhanced Notification System");
+        return self;
+    }
+    
+    /// @function cleanup()
+    static cleanup = function() {
+        ds_list_destroy(notifications);
+        ds_map_destroy(stacked_notifications);
+    }
+    
+    /// @function add_notification(text, [type="info"], [priority=1], [stackable=true])
+    static add_notification = function(_text, _type = "info", _priority = 1, _stackable = true) {
+        // Check for stacking if enabled and notification is stackable
+        if (stack_similar && _stackable) {
+            var stack_key = _text + "_" + _type;
+            if (ds_map_exists(stacked_notifications, stack_key)) {
+                var stacked = stacked_notifications[? stack_key];
+                stacked.count++;
+                stacked.creation_time = current_time;
+                stacked.alpha = 1;
+                play_notification_sound(_type);
+                return;
+            }
+        }
+        
+        // Create new notification
+        var notification = {
+            text: _text,
+            type: _type,
+            priority: _priority,
+            creation_time: current_time,
+            alpha: 0, // Start invisible for fade-in
+            y_offset: slide_distance, // Start offset for slide animation
+            count: 1,
+            stackable: _stackable,
+            clicked: false
+        };
+        
+        // Add to list and sort by priority
+        ds_list_add(notifications, notification);
+        sort_notifications();
+        
+        // Add to stacked notifications if stackable
+        if (stack_similar && _stackable) {
+            ds_map_add(stacked_notifications, _text + "_" + _type, notification);
+        }
+        
+        // Remove oldest if we exceed max
+        while (ds_list_size(notifications) > max_notifications) {
+            var oldest = notifications[| 0];
+            if (oldest.stackable) {
+                ds_map_delete(stacked_notifications, oldest.text + "_" + oldest.type);
+            }
+            ds_list_delete(notifications, 0);
+        }
+        
+        play_notification_sound(_type);
+        show_debug_message("Notification added: " + _text + " (Priority: " + string(_priority) + ")");
+    }
+    
+    /// @function play_notification_sound(type)
+    static play_notification_sound = function(_type) {
+        if (!enable_sounds) return;
+        
+        switch(_type) {
+            case "quest":
+                audio_play_sound(snd_quest_notification, 10, false);
+                break;
+            case "achievement":
+                audio_play_sound(snd_achievement_notification, 10, false);
+                break;
+            case "warning":
+                audio_play_sound(snd_warning_notification, 10, false);
+                break;
+            default: // info
+                audio_play_sound(snd_info_notification, 10, false);
+                break;
+        }
+    }
+    
+    /// @function sort_notifications()
+    static sort_notifications = function() {
+        var size = ds_list_size(notifications);
+        for (var i = 0; i < size - 1; i++) {
+            for (var j = i + 1; j < size; j++) {
+                if (notifications[| i].priority < notifications[| j].priority) {
+                    var temp = notifications[| i];
+                    notifications[| i] = notifications[| j];
+                    notifications[| j] = temp;
+                }
+            }
+        }
+    }
+    
+    /// @function update()
+    static update = function() {
+        var current_notifications = ds_list_size(notifications);
+        var i = 0;
+        
+        while (i < current_notifications) {
+            var notification = notifications[| i];
+            var age = (current_time - notification.creation_time) / 1000; // Convert to seconds
+            
+            // Handle animations
+            if (enable_animations) {
+                // Fade in
+                notification.alpha = min(1, notification.alpha + animation_speed);
+                
+                // Slide in
+                notification.y_offset = max(0, notification.y_offset - (slide_distance * animation_speed));
+            } else {
+                notification.alpha = 1;
+                notification.y_offset = 0;
+            }
+            
+            // Check for removal conditions
+            var should_remove = false;
+            
+            // Remove if clicked
+            if (notification.clicked) {
+                should_remove = true;
+            }
+            // Remove if lifetime exceeded
+            else if (age >= notification_lifetime) {
+                // Start fading out
+                var fade_progress = (age - notification_lifetime) / notification_fade_time;
+                notification.alpha = max(0, 1 - fade_progress);
+                
+                // Remove if completely faded
+                if (notification.alpha <= 0) {
+                    should_remove = true;
+                }
+            }
+            
+            // Remove notification if needed
+            if (should_remove) {
+                if (notification.stackable) {
+                    ds_map_delete(stacked_notifications, notification.text + "_" + notification.type);
+                }
+                ds_list_delete(notifications, i);
+                current_notifications--;
+                continue;
+            }
+            i++;
+        }
+    }
+    
+    /// @function check_notification_click()
+    static check_notification_click = function() {
+        if (!mouse_check_button_pressed(mb_left)) return;
+        
+        var gui_width = display_get_gui_width();
+        var gui_height = display_get_gui_height();
+        var margin = 20;
+        var notification_height = 40;
+        var spacing = 5;
+        var mouse_gui_x = device_mouse_x_to_gui(0);
+        var mouse_gui_y = device_mouse_y_to_gui(0);
+        
+        for (var i = 0; i < ds_list_size(notifications); i++) {
+            var notification = notifications[| i];
+            var y_pos = gui_height - margin - ((notification_height + spacing) * (i + 1)) + notification.y_offset;
+            
+            // Check if mouse is within notification bounds
+            if (point_in_rectangle(mouse_gui_x, mouse_gui_y,
+                margin, y_pos,
+                gui_width - margin, y_pos + notification_height)) {
+                notification.clicked = true;
+                break;
+            }
+        }
+    }
+    
+    /// @function draw()
+    static draw = function() {
+        check_notification_click();
+        
+        var gui_width = display_get_gui_width();
+        var gui_height = display_get_gui_height();
+        var margin = 20;
+        var padding = 10;
+        var notification_height = 40;
+        var spacing = 5;
+        
+        draw_set_font(fnt_notification);
+        
+        for (var i = 0; i < ds_list_size(notifications); i++) {
+            var notification = notifications[| i];
+            var y_pos = gui_height - margin - ((notification_height + spacing) * (i + 1)) + notification.y_offset;
+            
+            // Set color based on type
+            var bg_color, text_color, border_color;
+            switch(notification.type) {
+                case "quest":
+                    bg_color = make_color_rgb(0, 100, 200);
+                    border_color = make_color_rgb(50, 150, 255);
+                    text_color = c_white;
+                    break;
+                case "achievement":
+                    bg_color = make_color_rgb(255, 215, 0);
+                    border_color = make_color_rgb(255, 235, 100);
+                    text_color = c_black;
+                    break;
+                case "warning":
+                    bg_color = make_color_rgb(200, 0, 0);
+                    border_color = make_color_rgb(255, 50, 50);
+                    text_color = c_white;
+                    break;
+                default: // info
+                    bg_color = make_color_rgb(50, 50, 50);
+                    border_color = make_color_rgb(100, 100, 100);
+                    text_color = c_white;
+                    break;
+            }
+            
+            // Draw background with priority indicator
+            draw_set_alpha(notification.alpha * 0.9);
+            draw_set_color(bg_color);
+            draw_rectangle(margin, y_pos, 
+                gui_width - margin, y_pos + notification_height, false);
+            
+            // Draw priority indicator
+            var indicator_width = 3;
+            draw_set_color(border_color);
+            draw_rectangle(margin, y_pos, 
+                margin + indicator_width, y_pos + notification_height, false);
+            
+            // Draw border
+            draw_set_alpha(notification.alpha);
+            draw_set_color(border_color);
+            draw_rectangle(margin, y_pos, 
+                gui_width - margin, y_pos + notification_height, true);
+            
+            // Draw text
+            draw_set_color(text_color);
+            draw_set_valign(fa_middle);
+            draw_set_halign(fa_left);
+            var display_text = notification.text;
+            if (notification.count > 1) {
+                display_text += " (x" + string(notification.count) + ")";
+            }
+            draw_text(margin + padding + indicator_width, y_pos + notification_height/2, display_text);
+            
+            // Draw close button
+            var close_x = gui_width - margin - padding - 16;
+            var close_y = y_pos + notification_height/2 - 8;
+            draw_set_color(text_color);
+            draw_set_alpha(notification.alpha * 0.7);
+            draw_line_width(close_x, close_y, close_x + 16, close_y + 16, 2);
+            draw_line_width(close_x + 16, close_y, close_x, close_y + 16, 2);
+        }
+        
+        // Reset drawing properties
+        draw_set_alpha(1);
+        draw_set_color(c_white);
+        draw_set_valign(fa_top);
+        draw_set_halign(fa_left);
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_puffle
+File: scr_puffle.gml
+/// @function get_puffle_sprite_data(direction)
+/// @param direction - The facing direction (e.g., DOWN, LEFT)
+/// @returns Array [base_subimage, xscale]
+function get_puffle_sprite_data(direction) {
+    switch (direction) {
+        case DOWN: return [0, 1];       // Row 1: Subimages 0-7
+        case DOWN_LEFT: return [8, 1];  // Row 2: Subimages 8-15
+        case LEFT: return [16, 1];      // Row 3: Subimages 16-23
+        case UP_LEFT: return [24, 1];   // Row 4: Subimages 24-31
+        case UP: return [32, 1];        // Row 5: Subimages 32-39
+        case DOWN_RIGHT: return [8, -1]; // Use Down-Left, flipped
+        case RIGHT: return [16, -1];    // Use Left, flipped
+        case UP_RIGHT: return [24, -1]; // Use Up-Left, flipped
+        default: return [0, 1];         // Default to Down
+    }
+}
+
+/// @description Puffle system functions
+
+function Puffle() constructor {
+    // Puffle properties
+    color = c_white;
+    name = "";
+    happiness = 100;
+    energy = 100;
+    health = 100;
+    following = false;
+    tricks_known = ds_list_create();
+    last_fed_time = current_time;
+    last_pet_time = current_time;
+    
+    // Following behavior
+    follow_distance = 32;
+    follow_speed = 2;
+    path_points = ds_list_create();
+    max_path_points = 10;
+    update_interval = 2;
+    update_timer = 0;
+    
+    // State tracking
+    state = "idle";
+    state_timer = 0;
+    animation_frame = 0;
+    direction_facing = 0;
+    
+    // Initialize function
+    static init = function(_color, _name) {
+        color = _color;
+        name = _name;
+        return self;
+    }
+    
+    // Update puffle state and position
+    static update = function() {
+        update_timer--;
+        if (update_timer <= 0) {
+            update_timer = update_interval;
+            
+            // Update stats
+            if (current_time - last_fed_time > 300000) { // 5 minutes
+                happiness = max(0, happiness - 1);
+                energy = max(0, energy - 1);
+            }
+            
+            // Update state
+            switch(state) {
+                case "idle":
+                    idle_behavior();
+                    break;
+                case "following":
+                    following_behavior();
+                    break;
+                case "playing":
+                    playing_behavior();
+                    break;
+            }
+        }
+    }
+    
+    // Following behavior
+    static following_behavior = function() {
+        if (!instance_exists(global.player_instance)) return;
+        
+        // Update path points
+        if (ds_list_size(path_points) >= max_path_points) {
+            ds_list_delete(path_points, 0);
+        }
+        ds_list_add(path_points, {
+            x: global.player_instance.x,
+            y: global.player_instance.y
+        });
+        
+        // Follow path with delay
+        if (ds_list_size(path_points) > 0) {
+            var target_point = path_points[| 0];
+            var dx = target_point.x - x;
+            var dy = target_point.y - y;
+            var dist = point_distance(x, y, target_point.x, target_point.y);
+            
+            if (dist > follow_distance) {
+                // Move towards target point
+                var move_angle = point_direction(x, y, target_point.x, target_point.y);
+                x += lengthdir_x(follow_speed, move_angle);
+                y += lengthdir_y(follow_speed, move_angle);
+                
+                // Update facing direction
+                direction_facing = move_angle;
+                
+                // Update animation
+                animation_frame = (animation_frame + 0.2) % 4;
+            } else {
+                ds_list_delete(path_points, 0);
+            }
+        }
+    }
+    
+    // Idle behavior
+    static idle_behavior = function() {
+        state_timer--;
+        if (state_timer <= 0) {
+            // Random chance to play
+            if (random(1) < 0.2 && energy > 20) {
+                state = "playing";
+                state_timer = irandom_range(60, 180);
+                energy -= 5;
+            } else {
+                // Reset idle timer
+                state_timer = irandom_range(120, 240);
+            }
+        }
+    }
+    
+    // Playing behavior
+    static playing_behavior = function() {
+        state_timer--;
+        if (state_timer <= 0) {
+            state = "idle";
+            state_timer = irandom_range(120, 240);
+            happiness = min(100, happiness + 10);
+        }
+        
+        // Play animation
+        animation_frame = (animation_frame + 0.1) % 4;
+    }
+    
+    // Interaction functions
+    static feed = function() {
+        happiness = min(100, happiness + 20);
+        energy = min(100, energy + 30);
+        health = min(100, health + 10);
+        last_fed_time = current_time;
+    }
+    
+    static pet = function() {
+        happiness = min(100, happiness + 15);
+        last_pet_time = current_time;
+    }
+    
+    static start_following = function() {
+        if (!following) {
+            following = true;
+            state = "following";
+            ds_list_clear(path_points);
+        }
+    }
+    
+    static stop_following = function() {
+        if (following) {
+            following = false;
+            state = "idle";
+            ds_list_clear(path_points);
+        }
+    }
+    
+    // Trick system
+    static learn_trick = function(trick_name) {
+        if (!ds_list_find_index(tricks_known, trick_name)) {
+            ds_list_add(tricks_known, trick_name);
+            happiness = min(100, happiness + 25);
+            return true;
+        }
+        return false;
+    }
+    
+    static perform_trick = function(trick_name) {
+        if (ds_list_find_index(tricks_known, trick_name) != -1) {
+            energy = max(0, energy - 10);
+            happiness = min(100, happiness + 5);
+            return true;
+        }
+        return false;
+    }
+    
+    // Cleanup
+    static cleanup = function() {
+        ds_list_destroy(tricks_known);
+        ds_list_destroy(path_points);
+    }
+}
+
+// Create a new puffle
+function create_puffle(_color, _name) {
+    return new Puffle().init(_color, _name);
+}
+
+// Add puffle to following list
+function add_following_puffle(puffle) {
+    if (!ds_exists(global.following_puffles, ds_type_list)) {
+        global.following_puffles = ds_list_create();
+    }
+    if (ds_list_find_index(global.following_puffles, puffle) == -1) {
+        ds_list_add(global.following_puffles, puffle);
+        puffle.start_following();
+    }
+}
+
+// Remove puffle from following list
+function remove_following_puffle(puffle) {
+    if (ds_exists(global.following_puffles, ds_type_list)) {
+        var index = ds_list_find_index(global.following_puffles, puffle);
+        if (index != -1) {
+            ds_list_delete(global.following_puffles, index);
+            puffle.stop_following();
+        }
+    }
+}
+
+// Update all following puffles
+function update_following_puffles() {
+    if (ds_exists(global.following_puffles, ds_type_list)) {
+        for (var i = 0; i < ds_list_size(global.following_puffles); i++) {
+            var puffle = global.following_puffles[| i];
+            puffle.update();
+        }
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_puffle_tricks
+File: scr_puffle_tricks.gml
+/// @function perform_trick(trick_name)
+/// @description Makes the puffle perform a specific trick
+/// @param {string} trick_name The name of the trick to perform
+function perform_trick(trick_name) {
+    var original_state = state;
+    state = PuffleState.PLAYING;
+    
+    switch(trick_name) {
+        case "backflip":
+            // Perform backflip animation
+            image_angle = 0;
+            var flip_duration = 30;
+            var angle_per_step = 360 / flip_duration;
+            
+            for(var i = 0; i < flip_duration; i++) {
+                image_angle += angle_per_step;
+                if (i == flip_duration - 1) image_angle = 0;
+            }
+            break;
+            
+        case "spin":
+            // Perform spin animation
+            var spin_speed = 15;
+            var spin_duration = 60;
+            
+            for(var i = 0; i < spin_duration; i++) {
+                image_angle += spin_speed;
+                if (i == spin_duration - 1) image_angle = 0;
+            }
+            break;
+            
+        case "roll":
+            // Perform roll animation
+            var roll_distance = 32;
+            var roll_speed = 2;
+            var roll_direction = face;
+            
+            var move_x = lengthdir_x(roll_speed, roll_direction);
+            var move_y = lengthdir_y(roll_speed, roll_direction);
+            
+            for(var i = 0; i < roll_distance; i++) {
+                if (!place_meeting(x + move_x, y + move_y, obj_wall)) {
+                    x += move_x;
+                    y += move_y;
+                }
+                image_angle += 15;
+            }
+            image_angle = 0;
+            break;
+            
+        case "jump":
+            // Perform jump animation
+            var jump_height = 16;
+            var jump_duration = 30;
+            var original_y = y;
+            
+            for(var i = 0; i < jump_duration; i++) {
+                var t = i / jump_duration;
+                y = original_y - sin(t * pi) * jump_height;
+                if (i == jump_duration - 1) y = original_y;
+            }
+            break;
+            
+        case "wave":
+            // Perform wave animation
+            show_emote("wave");
+            break;
+            
+        case "dance":
+            // Perform dance animation
+            state = PuffleState.DANCING;
+            dance_timer = 120;
+            break;
+            
+        case "bounce":
+            // Perform bounce animation
+            var bounce_count = 3;
+            var bounce_height = 8;
+            var bounce_duration = 20;
+            var original_y = y;
+            
+            for(var b = 0; b < bounce_count; b++) {
+                for(var i = 0; i < bounce_duration; i++) {
+                    var t = i / bounce_duration;
+                    y = original_y - sin(t * pi) * bounce_height;
+                    if (i == bounce_duration - 1) y = original_y;
+                }
+            }
+            break;
+            
+        case "twirl":
+            // Perform twirl animation
+            var twirl_duration = 45;
+            var original_scale = image_xscale;
+            
+            for(var i = 0; i < twirl_duration; i++) {
+                var t = i / twirl_duration;
+                image_xscale = original_scale * cos(t * pi * 2);
+                if (i == twirl_duration - 1) image_xscale = original_scale;
+            }
+            break;
+    }
+    
+    // Return to original state after trick
+    state = original_state;
+}
+
+/// @function show_emote(emote_type)
+/// @description Shows an emote above the puffle
+/// @param {string} emote_type The type of emote to show
+function show_emote(emote_type) {
+    switch(emote_type) {
+        case "happy":
+            emote_sprite = spr_emote_happy;
+            break;
+        case "hungry":
+            emote_sprite = spr_emote_hungry;
+            break;
+        case "sleepy":
+            emote_sprite = spr_emote_sleepy;
+            break;
+        case "wave":
+            emote_sprite = spr_emote_wave;
+            break;
+        case "wake":
+            emote_sprite = spr_emote_wake;
+            break;
+    }
+    emote_timer = emote_duration;
+}
+
+/// @function learn_trick()
+/// @description Attempts to teach the puffle a new trick based on level and personality
+function learn_trick() {
+    var all_tricks = ["backflip", "spin", "roll", "jump", "wave", "dance", "bounce", "twirl"];
+    var learnable_tricks = [];
+    
+    // Filter out tricks the puffle already knows
+    for(var i = 0; i < array_length(all_tricks); i++) {
+        var trick = all_tricks[i];
+        if (ds_list_find_index(known_tricks, trick) == -1) {
+            array_push(learnable_tricks, trick);
+        }
+    }
+    
+    // Check if there are any tricks left to learn
+    if (array_length(learnable_tricks) > 0) {
+        // Higher playfulness increases chance of learning tricks
+        if (random(1) < 0.3 + (personality.playfulness * 0.2)) {
+            var new_trick = learnable_tricks[irandom(array_length(learnable_tricks) - 1)];
+            ds_list_add(known_tricks, new_trick);
+            show_emote("happy");
+            return true;
+        }
+    }
+    return false;
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_quest_system
+File: scr_quest_system.gml
+/// @description Quest System for managing game quests and objectives
+/// @function QuestSystem
+
+function QuestSystem() constructor {
+    static init = function() {
+        show_debug_message("Initializing Quest System");
+        return self;
+    }
+    
+    // Quest status enums
+    enum QuestStatus {
+        NOT_STARTED,
+        IN_PROGRESS,
+        COMPLETED,
+        FAILED
+    }
+    
+    // Quest objective types
+    enum QuestObjectiveType {
+        COLLECT,
+        TALK_TO,
+        VISIT_LOCATION,
+        PERFORM_ACTION,
+        MINI_GAME
+    }
+    
+    // Initialize quest data structures
+    static initialize = function() {
+        quest_definitions = ds_map_create();
+        active_quests = ds_list_create();
+        completed_quests = ds_list_create();
+        quest_progress = ds_map_create();
+        
+        // Register with resource manager
+        with(global.resource_manager) {
+            set_structure("quest_definitions", other.quest_definitions);
+            set_structure("active_quests", other.active_quests);
+            set_structure("completed_quests", other.completed_quests);
+            set_structure("quest_progress", other.quest_progress);
+        }
+    }
+    
+    // Define a new quest
+    static define_quest = function(quest_id, quest_data) {
+        ds_map_add(quest_definitions, quest_id, {
+            title: quest_data.title,
+            description: quest_data.description,
+            objectives: quest_data.objectives,
+            rewards: quest_data.rewards,
+            prerequisites: quest_data.prerequisites,
+            next_quests: quest_data.next_quests,
+            is_main_quest: quest_data.is_main_quest ?? false,
+            min_level: quest_data.min_level ?? 1,
+            time_limit: quest_data.time_limit ?? -1
+        });
+    }
+    
+    // Start a quest
+    static start_quest = function(quest_id) {
+        if (!ds_map_exists(quest_definitions, quest_id)) {
+            show_debug_message("Quest " + string(quest_id) + " does not exist!");
+            return false;
+        }
+        
+        var quest = quest_definitions[? quest_id];
+        
+        // Check prerequisites
+        if (array_length(quest.prerequisites) > 0) {
+            for (var i = 0; i < array_length(quest.prerequisites); i++) {
+                var prereq = quest.prerequisites[i];
+                if (!ds_list_find_index(completed_quests, prereq) != -1) {
+                    show_debug_message("Prerequisites not met for quest " + string(quest_id));
+                    return false;
+                }
+            }
+        }
+        
+        // Check level requirement
+        if (quest.min_level > global.game_state.player.level) {
+            show_debug_message("Player level too low for quest " + string(quest_id));
+            return false;
+        }
+        
+        // Initialize quest progress
+        var progress_data = {
+            status: QuestStatus.IN_PROGRESS,
+            start_time: current_time,
+            objectives_progress: array_create(array_length(quest.objectives), 0),
+            time_remaining: quest.time_limit
+        };
+        
+        ds_map_add(quest_progress, quest_id, progress_data);
+        ds_list_add(active_quests, quest_id);
+        
+        show_debug_message("Started quest: " + quest.title);
+        return true;
+    }
+    
+    // Update quest progress
+    static update_quest_progress = function(quest_id, objective_index, progress) {
+        if (!ds_map_exists(quest_progress, quest_id)) return false;
+        
+        var quest_data = quest_definitions[? quest_id];
+        var progress_data = quest_progress[? quest_id];
+        
+        if (objective_index >= array_length(quest_data.objectives)) return false;
+        
+        progress_data.objectives_progress[objective_index] = progress;
+        
+        // Check if quest is completed
+        var all_completed = true;
+        for (var i = 0; i < array_length(quest_data.objectives); i++) {
+            var objective = quest_data.objectives[i];
+            if (progress_data.objectives_progress[i] < objective.required_amount) {
+                all_completed = false;
+                break;
+            }
+        }
+        
+        if (all_completed) {
+            complete_quest(quest_id);
+        }
+        
+        return true;
+    }
+    
+    // Complete a quest
+    static complete_quest = function(quest_id) {
+        if (!ds_map_exists(quest_progress, quest_id)) return false;
+        
+        var quest_data = quest_definitions[? quest_id];
+        var progress_data = quest_progress[? quest_id];
+        
+        // Update status
+        progress_data.status = QuestStatus.COMPLETED;
+        
+        // Move from active to completed
+        var index = ds_list_find_index(active_quests, quest_id);
+        if (index != -1) {
+            ds_list_delete(active_quests, index);
+        }
+        ds_list_add(completed_quests, quest_id);
+        
+        // Grant rewards
+        grant_quest_rewards(quest_data.rewards);
+        
+        // Start next quests if any
+        if (array_length(quest_data.next_quests) > 0) {
+            for (var i = 0; i < array_length(quest_data.next_quests); i++) {
+                start_quest(quest_data.next_quests[i]);
+            }
+        }
+        
+        show_debug_message("Completed quest: " + quest_data.title);
+        return true;
+    }
+    
+    // Grant quest rewards
+    static grant_quest_rewards = function(rewards) {
+        with(global.game_state) {
+            // Add experience
+            if (variable_struct_exists(rewards, "experience")) {
+                player.experience += rewards.experience;
+            }
+            
+            // Add coins
+            if (variable_struct_exists(rewards, "coins")) {
+                player.coins += rewards.coins;
+            }
+            
+            // Add items
+            if (variable_struct_exists(rewards, "items")) {
+                for (var i = 0; i < array_length(rewards.items); i++) {
+                    var item = rewards.items[i];
+                    global.inventory.add_item(item.name, item.count);
+                }
+            }
+        }
+    }
+    
+    // Check quest status
+    static get_quest_status = function(quest_id) {
+        if (!ds_map_exists(quest_progress, quest_id)) {
+            return QuestStatus.NOT_STARTED;
+        }
+        return quest_progress[? quest_id].status;
+    }
+    
+    // Get active quest list
+    static get_active_quests = function() {
+        var quest_list = [];
+        for (var i = 0; i < ds_list_size(active_quests); i++) {
+            var quest_id = active_quests[| i];
+            var quest_data = quest_definitions[? quest_id];
+            var progress_data = quest_progress[? quest_id];
+            
+            array_push(quest_list, {
+                id: quest_id,
+                title: quest_data.title,
+                description: quest_data.description,
+                progress: progress_data.objectives_progress,
+                objectives: quest_data.objectives,
+                is_main_quest: quest_data.is_main_quest
+            });
+        }
+        return quest_list;
+    }
+    
+    // Update quest timers
+    static update = function() {
+        var current_timestamp = current_time;
+        
+        for (var i = 0; i < ds_list_size(active_quests); i++) {
+            var quest_id = active_quests[| i];
+            var quest_data = quest_definitions[? quest_id];
+            var progress_data = quest_progress[? quest_id];
+            
+            if (quest_data.time_limit > 0) {
+                var elapsed_time = (current_timestamp - progress_data.start_time) / 1000; // Convert to seconds
+                progress_data.time_remaining = max(0, quest_data.time_limit - elapsed_time);
+                
+                if (progress_data.time_remaining <= 0) {
+                    fail_quest(quest_id);
+                }
+            }
+        }
+    }
+    
+    // Fail a quest
+    static fail_quest = function(quest_id) {
+        if (!ds_map_exists(quest_progress, quest_id)) return false;
+        
+        var progress_data = quest_progress[? quest_id];
+        progress_data.status = QuestStatus.FAILED;
+        
+        var index = ds_list_find_index(active_quests, quest_id);
+        if (index != -1) {
+            ds_list_delete(active_quests, index);
+        }
+        
+        show_debug_message("Failed quest: " + quest_definitions[? quest_id].title);
+        return true;
+    }
+    
+    // Cleanup
+    static cleanup = function() {
+        ds_map_destroy(quest_definitions);
+        ds_list_destroy(active_quests);
+        ds_list_destroy(completed_quests);
+        ds_map_destroy(quest_progress);
+    }
+    
+    // Initialize on creation
+    initialize();
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_resource_manager
+File: scr_resource_manager.gml
+/// @description Resource Management System
+/// @function ResourceManager
+function ResourceManager() constructor {
+    static init = function() {
+        // Initialize data structures with compatibility layer
+        data_structures = {
+            following_puffles: undefined,
+            room_states: undefined,
+            active_quests: undefined,
+            completed_quests: undefined,
+            quest_progress: undefined,
+            quest_definitions: undefined,
+            equipped_items: undefined,
+            item_player_sprites: undefined,
+            item_object_map: undefined,
+            item_index_map: undefined
+        };
+        
+        // Initialize or preserve existing data structures
+        init_data_structure("following_puffles", ds_type_list);
+        init_data_structure("room_states", ds_type_map);
+        init_data_structure("active_quests", ds_type_list);
+        init_data_structure("completed_quests", ds_type_list);
+        init_data_structure("quest_progress", ds_type_map);
+        init_data_structure("quest_definitions", ds_type_map);
+        init_data_structure("equipped_items", ds_type_map);
+        init_data_structure("item_player_sprites", ds_type_map);
+        init_data_structure("item_object_map", ds_type_map);
+        init_data_structure("item_index_map", ds_type_map);
+        
+        show_debug_message("ResourceManager initialized successfully");
+        return self;
+    }
+    
+    // Initialize or preserve a single data structure
+    static init_data_structure = function(name, type) {
+        var global_name = "global." + name;
+        
+        if (variable_global_exists(name)) {
+            // Preserve existing structure if valid
+            var existing_struct = variable_global_get(name);
+            if (ds_exists(existing_struct, type)) {
+                data_structures[$ name] = existing_struct;
+                show_debug_message("Preserved existing " + name);
+                return;
+            }
+        }
+        
+        // Create new structure
+        switch(type) {
+            case ds_type_list:
+                data_structures[$ name] = ds_list_create();
+                break;
+            case ds_type_map:
+                data_structures[$ name] = ds_map_create();
+                break;
+        }
+        
+        // Set global reference
+        variable_global_set(name, data_structures[$ name]);
+        show_debug_message("Created new " + name);
+    }
+    
+    // Clean up all data structures
+    static cleanup = function() {
+        var names = variable_struct_get_names(data_structures);
+        for (var i = 0; i < array_length(names); i++) {
+            var name = names[i];
+            var structure = data_structures[$ name];
+            
+            if (structure != undefined) {
+                if (ds_exists(structure, ds_type_list)) {
+                    ds_list_destroy(structure);
+                    show_debug_message("Destroyed list: " + name);
+                }
+                else if (ds_exists(structure, ds_type_map)) {
+                    ds_map_destroy(structure);
+                    show_debug_message("Destroyed map: " + name);
+                }
+            }
+        }
+        show_debug_message("ResourceManager cleanup complete");
+    }
+    
+    // Get a data structure safely
+    static get_structure = function(name) {
+        return data_structures[$ name];
+    }
+    
+    // Check if a structure exists and is valid
+    static structure_exists = function(name, type) {
+        var structure = data_structures[$ name];
+        return (structure != undefined && ds_exists(structure, type));
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_room_state
+File: scr_room_state.gml
+/// @description Room State Management System
+function init_room_configurations() {
+    // Base room configurations
+    global.room_configs = {
+        // Existing rooms retain their original configurations
+        rm_plaza: {
+            name: "Plaza",
+            type: "hub",
+            music: "plaza_theme",
+            weather_enabled: true,
+            allow_multiplayer: true
+        },
+        rm_snow_fort: {
+            name: "Snow Fort",
+            type: "activity",
+            music: "snow_theme",
+            weather_enabled: true,
+            allow_multiplayer: true
+        },
+        rm_ski_village: {
+            name: "Ski Village",
+            type: "hub",
+            music: "ski_theme",
+            weather_enabled: true,
+            allow_multiplayer: true
+        },
+        
+        // Repurposed rooms for new features
+        rm_snow_fort_dojo: {
+            base_room: rm_snow_fort,
+            name: "Card-Jitsu Dojo",
+            type: "minigame",
+            music: "dojo_theme",
+            weather_enabled: false,
+            allow_multiplayer: true,
+            layout_modifications: {
+                background_color: c_black,
+                lighting: "dim",
+                decoration_theme: "ninja"
+            }
+        },
+        rm_plaza_arena: {
+            base_room: rm_plaza,
+            name: "Battle Arena",
+            type: "battle",
+            music: "battle_theme",
+            weather_enabled: false,
+            allow_multiplayer: true,
+            layout_modifications: {
+                clear_center: true,
+                add_barriers: true,
+                spectator_areas: true
+            }
+        },
+        rm_welcome_tutorial: {
+            base_room: rm_welcome_room,
+            name: "Tutorial Area",
+            type: "tutorial",
+            music: "tutorial_theme",
+            weather_enabled: false,
+            allow_multiplayer: false,
+            layout_modifications: {
+                add_markers: true,
+                simplified: true
+            }
+        },
+        rm_ski_village_hall: {
+            base_room: rm_ski_village,
+            name: "Achievement Hall",
+            type: "hub",
+            music: "celebration_theme",
+            weather_enabled: false,
+            allow_multiplayer: true,
+            layout_modifications: {
+                add_displays: true,
+                add_podium: true
+            }
+        }
+    };
+    
+    // Room state initialization
+    global.room_states = ds_map_create();
+    
+    // Initialize states for all rooms
+    var room_names = variable_struct_get_names(global.room_configs);
+    for (var i = 0; i < array_length(room_names); i++) {
+        var room_name = room_names[i];
+        var config = global.room_configs[$ room_name];
+        
+        if (!ds_map_exists(global.room_states, config.base_room ?? room_name)) {
+            global.room_states[? config.base_room ?? room_name] = {
+                visited: false,
+                state: {},
+                persistent_objects: ds_list_create(),
+                weather_state: "none",
+                modifications: config.layout_modifications ?? {}
+            };
+        }
+    }
+}
+
+/// @function apply_room_modifications
+/// @param {string} room_name The name of the room to modify
+function apply_room_modifications(room_name) {
+    var config = global.room_configs[$ room_name];
+    if (config == undefined) return;
+    
+    var base_room = config.base_room ?? room_name;
+    var state = global.room_states[? base_room];
+    if (state == undefined) return;
+    
+    var mods = state.modifications;
+    
+    // Apply visual modifications
+    if (variable_struct_exists(mods, "background_color")) {
+        layer_background_blend(layer_background_get_id(layer_get_id("Background")), mods.background_color);
+    }
+    
+    // Apply layout modifications
+    if (variable_struct_exists(mods, "clear_center")) {
+        // Clear objects from center of room
+        var center_x = room_width / 2;
+        var center_y = room_height / 2;
+        var clear_radius = 100;
+        
+        with(all) {
+            if (object_index != obj_player && object_index != obj_game_manager) {
+                var dist = point_distance(x, y, center_x, center_y);
+                if (dist < clear_radius) {
+                    instance_destroy();
+                }
+            }
+        }
+    }
+    
+    // Add new elements based on modifications
+    if (variable_struct_exists(mods, "add_displays")) {
+        // Add achievement displays using existing sprites
+        var display_count = 5;
+        for (var i = 0; i < display_count; i++) {
+            var xx = room_width * (i + 1) / (display_count + 1);
+            var yy = room_height * 0.7;
+            instance_create_layer(xx, yy, "Instances", obj_bulletin_board);
+        }
+    }
+    
+    // Apply weather settings
+    if (config.weather_enabled) {
+        if (!variable_global_exists("weather_manager")) {
+            global.weather_manager = instance_create_layer(0, 0, "Controllers", obj_game_manager);
+        }
+    }
+}
+
+/// @function save_room_state
+/// @param {string} room_name The name of the room to save
+function save_room_state(room_name) {
+    if (!ds_map_exists(global.room_states, room_name)) return;
+    
+    var state = global.room_states[? room_name];
+    state.visited = true;
+    
+    // Save object states
+    with(all) {
+        if (persistent) {
+            var obj_state = {
+                object_index: object_index,
+                x: x,
+                y: y,
+                variables: {}
+            };
+            
+            // Save custom variables if defined
+            if (variable_instance_exists(id, "save_variables")) {
+                for (var i = 0; i < array_length(save_variables); i++) {
+                    var var_name = save_variables[i];
+                    if (variable_instance_exists(id, var_name)) {
+                        obj_state.variables[$ var_name] = variable_instance_get(id, var_name);
+                    }
+                }
+            }
+            
+            ds_list_add(state.persistent_objects, obj_state);
+        }
+    }
+}
+
+/// @function load_room_state
+/// @param {string} room_name The name of the room to load
+function load_room_state(room_name) {
+    if (!ds_map_exists(global.room_states, room_name)) return;
+    
+    var state = global.room_states[? room_name];
+    
+    // Restore persistent objects
+    for (var i = 0; i < ds_list_size(state.persistent_objects); i++) {
+        var obj_state = state.persistent_objects[| i];
+        var inst = instance_create_layer(obj_state.x, obj_state.y, "Instances", obj_state.object_index);
+        
+        // Restore variables
+        var var_names = variable_struct_get_names(obj_state.variables);
+        for (var j = 0; j < array_length(var_names); j++) {
+            var var_name = var_names[j];
+            variable_instance_set(inst, var_name, obj_state.variables[$ var_name]);
+        }
+    }
+    
+    // Apply room modifications
+    apply_room_modifications(room_name);
+}
+
+/// @description Room state management system
+
+// Room state constructor
+function RoomState() constructor {
+    visited = false;
+    persistent_objects = ds_list_create();
+    collected_items = ds_list_create();
+    npc_states = ds_map_create();
+    weather_state = "none";
+    background_state = "default";
+    music_state = "default";
+    custom_data = ds_map_create();
+    
+    // Initialize room state
+    static init = function() {
+        return self;
+    }
+    
+    // Save room state
+    static save_state = function() {
+        var state_data = {
+            visited: visited,
+            persistent_objects: [],
+            collected_items: [],
+            npc_states: {},
+            weather_state: weather_state,
+            background_state: background_state,
+            music_state: music_state,
+            custom_data: {}
+        };
+        
+        // Save persistent objects
+        for (var i = 0; i < ds_list_size(persistent_objects); i++) {
+            var obj = persistent_objects[| i];
+            if (instance_exists(obj)) {
+                array_push(state_data.persistent_objects, {
+                    object_index: object_get_name(obj.object_index),
+                    x: obj.x,
+                    y: obj.y,
+                    variables: variable_instance_get_names(obj)
+                });
+            }
+        }
+        
+        // Save collected items
+        for (var i = 0; i < ds_list_size(collected_items); i++) {
+            array_push(state_data.collected_items, collected_items[| i]);
+        }
+        
+        // Save NPC states
+        var key = ds_map_find_first(npc_states);
+        while (key != undefined) {
+            state_data.npc_states[$ key] = npc_states[? key];
+            key = ds_map_find_next(npc_states, key);
+        }
+        
+        // Save custom data
+        key = ds_map_find_first(custom_data);
+        while (key != undefined) {
+            state_data.custom_data[$ key] = custom_data[? key];
+            key = ds_map_find_next(custom_data, key);
+        }
+        
+        return state_data;
+    }
+    
+    // Load room state
+    static load_state = function(state_data) {
+        if (state_data == undefined) return;
+        
+        visited = state_data.visited;
+        weather_state = state_data.weather_state;
+        background_state = state_data.background_state;
+        music_state = state_data.music_state;
+        
+        // Clear existing lists and maps
+        ds_list_clear(persistent_objects);
+        ds_list_clear(collected_items);
+        ds_map_clear(npc_states);
+        ds_map_clear(custom_data);
+        
+        // Load persistent objects
+        for (var i = 0; i < array_length(state_data.persistent_objects); i++) {
+            var obj_data = state_data.persistent_objects[i];
+            var obj = instance_create_layer(
+                obj_data.x,
+                obj_data.y,
+                "Instances",
+                asset_get_index(obj_data.object_index)
+            );
+            
+            // Restore object variables
+            var variables = obj_data.variables;
+            for (var j = 0; j < array_length(variables); j++) {
+                var var_name = variables[j];
+                if (variable_instance_exists(obj, var_name)) {
+                    variable_instance_set(obj, var_name, obj_data[$ var_name]);
+                }
+            }
+            
+            ds_list_add(persistent_objects, obj);
+        }
+        
+        // Load collected items
+        for (var i = 0; i < array_length(state_data.collected_items); i++) {
+            ds_list_add(collected_items, state_data.collected_items[i]);
+        }
+        
+        // Load NPC states
+        var npc_keys = variable_struct_get_names(state_data.npc_states);
+        for (var i = 0; i < array_length(npc_keys); i++) {
+            var key = npc_keys[i];
+            ds_map_add(npc_states, key, state_data.npc_states[$ key]);
+        }
+        
+        // Load custom data
+        var custom_keys = variable_struct_get_names(state_data.custom_data);
+        for (var i = 0; i < array_length(custom_keys); i++) {
+            var key = custom_keys[i];
+            ds_map_add(custom_data, key, state_data.custom_data[$ key]);
+        }
+    }
+    
+    // Add persistent object
+    static add_persistent_object = function(obj) {
+        if (instance_exists(obj) && ds_list_find_index(persistent_objects, obj) == -1) {
+            ds_list_add(persistent_objects, obj);
+            return true;
+        }
+        return false;
+    }
+    
+    // Remove persistent object
+    static remove_persistent_object = function(obj) {
+        var index = ds_list_find_index(persistent_objects, obj);
+        if (index != -1) {
+            ds_list_delete(persistent_objects, index);
+            return true;
+        }
+        return false;
+    }
+    
+    // Mark item as collected
+    static add_collected_item = function(item_id) {
+        if (ds_list_find_index(collected_items, item_id) == -1) {
+            ds_list_add(collected_items, item_id);
+            return true;
+        }
+        return false;
+    }
+    
+    // Check if item is collected
+    static is_item_collected = function(item_id) {
+        return ds_list_find_index(collected_items, item_id) != -1;
+    }
+    
+    // Set NPC state
+    static set_npc_state = function(npc_id, state) {
+        ds_map_set(npc_states, npc_id, state);
+    }
+    
+    // Get NPC state
+    static get_npc_state = function(npc_id) {
+        return ds_map_find_value(npc_states, npc_id);
+    }
+    
+    // Set custom data
+    static set_custom_data = function(key, value) {
+        ds_map_set(custom_data, key, value);
+    }
+    
+    // Get custom data
+    static get_custom_data = function(key) {
+        return ds_map_find_value(custom_data, key);
+    }
+    
+    // Cleanup
+    static cleanup = function() {
+        ds_list_destroy(persistent_objects);
+        ds_list_destroy(collected_items);
+        ds_map_destroy(npc_states);
+        ds_map_destroy(custom_data);
+    }
+}
+
+// Global room state management
+function init_room_state() {
+    if (!variable_global_exists("room_states")) {
+        global.room_states = ds_map_create();
+    }
+}
+
+// Get or create room state
+function get_room_state(room_id) {
+    if (!ds_map_exists(global.room_states, room_id)) {
+        ds_map_add(global.room_states, room_id, new RoomState().init());
+    }
+    return global.room_states[? room_id];
+}
+
+// Save all room states
+function save_all_room_states() {
+    var states = {};
+    var key = ds_map_find_first(global.room_states);
+    
+    while (key != undefined) {
+        states[$ room_get_name(key)] = global.room_states[? key].save_state();
+        key = ds_map_find_next(global.room_states, key);
+    }
+    
+    return states;
+}
+
+// Load all room states
+function load_all_room_states(states) {
+    if (states == undefined) return;
+    
+    ds_map_clear(global.room_states);
+    
+    var room_names = variable_struct_get_names(states);
+    for (var i = 0; i < array_length(room_names); i++) {
+        var room_name = room_names[i];
+        var room_id = asset_get_index(room_name);
+        
+        if (room_id != -1) {
+            var state = new RoomState().init();
+            state.load_state(states[$ room_name]);
+            ds_map_add(global.room_states, room_id, state);
+        }
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_room_transition
+File: scr_room_transition.gml
+/// @description Room Transition Management System
+/// @function RoomTransitionManager
+
+function RoomTransitionManager() constructor {
+    // Transition states
+    enum TRANSITION_STATE {
+        NONE,
+        FADING_OUT,
+        CHANGING_ROOM,
+        FADING_IN,
+        ERROR
+    }
+    
+    // Configuration
+    transition_speed = 0.05;
+    fade_alpha = 0;
+    current_state = TRANSITION_STATE.NONE;
+    error_message = "";
+    transition_color = c_black;
+    
+    // Transition data
+    transition_data = {
+        source_room: noone,
+        target_room: noone,
+        player_x: undefined,
+        player_y: undefined,
+        player_face: undefined,
+        callback: undefined
+    };
+    
+    /// @function start_transition
+    /// @param {room} target_room The room to transition to
+    /// @param {real} [target_x] Optional x position for the player
+    /// @param {real} [target_y] Optional y position for the player
+    /// @param {real} [target_face] Optional facing direction for the player
+    /// @param {function} [callback] Optional callback to run after transition
+    static start_transition = function(target_room, target_x = undefined, target_y = undefined, target_face = undefined, callback = undefined) {
+        try {
+            // Validate parameters
+            if (!room_exists(target_room)) {
+                throw "Invalid target room specified";
+            }
+            
+            // Store transition data
+            transition_data.source_room = room;
+            transition_data.target_room = target_room;
+            transition_data.player_x = target_x;
+            transition_data.player_y = target_y;
+            transition_data.player_face = target_face;
+            transition_data.callback = callback;
+            
+            // Start transition
+            current_state = TRANSITION_STATE.FADING_OUT;
+            show_debug_message("Starting room transition to: " + room_get_name(target_room));
+            
+            // Save current room state if not loading
+            if (!global.game_state.flags.is_loading) {
+                save_room_state(room);
+            }
+            
+            return true;
+        } catch (error) {
+            error_message = "Transition error: " + string(error);
+            current_state = TRANSITION_STATE.ERROR;
+            show_debug_message(error_message);
+            return false;
+        }
+    }
+    
+    /// @function update
+    /// @description Updates the transition state and handles room changes
+    static update = function() {
+        try {
+            switch(current_state) {
+                case TRANSITION_STATE.FADING_OUT:
+                    fade_alpha = min(fade_alpha + transition_speed, 1);
+                    if (fade_alpha >= 1) {
+                        current_state = TRANSITION_STATE.CHANGING_ROOM;
+                        perform_room_change();
+                    }
+                    break;
+                    
+                case TRANSITION_STATE.CHANGING_ROOM:
+                    // Room change is handled in perform_room_change()
+                    break;
+                    
+                case TRANSITION_STATE.FADING_IN:
+                    fade_alpha = max(fade_alpha - transition_speed, 0);
+                    if (fade_alpha <= 0) {
+                        current_state = TRANSITION_STATE.NONE;
+                        if (transition_data.callback != undefined) {
+                            transition_data.callback();
+                        }
+                    }
+                    break;
+                    
+                case TRANSITION_STATE.ERROR:
+                    // Handle error state (maybe show error message)
+                    fade_alpha = 0;
+                    break;
+            }
+        } catch (error) {
+            error_message = "Update error: " + string(error);
+            current_state = TRANSITION_STATE.ERROR;
+            show_debug_message(error_message);
+        }
+    }
+    
+    /// @function perform_room_change
+    /// @description Internal function to handle the actual room change
+    static perform_room_change = function() {
+        try {
+            // Update game state
+            with(global.game_state) {
+                room_state.current_room = other.transition_data.target_room;
+                if (other.transition_data.player_x != undefined) {
+                    player.x = other.transition_data.player_x;
+                    player.y = other.transition_data.player_y;
+                }
+                if (other.transition_data.player_face != undefined) {
+                    player.face = other.transition_data.player_face;
+                }
+            }
+            
+            // Perform room transition
+            room_goto(transition_data.target_room);
+            
+            // Update state
+            current_state = TRANSITION_STATE.FADING_IN;
+            
+        } catch (error) {
+            error_message = "Room change error: " + string(error);
+            current_state = TRANSITION_STATE.ERROR;
+            show_debug_message(error_message);
+        }
+    }
+    
+    /// @function draw_transition
+    /// @description Draws the transition effect
+    static draw_transition = function() {
+        if (current_state != TRANSITION_STATE.NONE) {
+            draw_set_alpha(fade_alpha);
+            draw_set_color(transition_color);
+            draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+            draw_set_alpha(1);
+            
+            // Draw error message if in error state
+            if (current_state == TRANSITION_STATE.ERROR) {
+                draw_set_color(c_red);
+                draw_set_halign(fa_center);
+                draw_set_valign(fa_middle);
+                draw_text(display_get_gui_width()/2, display_get_gui_height()/2, error_message);
+            }
+        }
+    }
+    
+    /// @function is_transitioning
+    /// @description Returns whether a transition is in progress
+    /// @returns {boolean}
+    static is_transitioning = function() {
+        return current_state != TRANSITION_STATE.NONE;
+    }
+    
+    show_debug_message("RoomTransitionManager initialized");
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_save_game
+File: scr_save_game.gml
+function save_game() {
+    // Create save data structure with version control
+    var save_data = {
+        version: "1.0.0",
+        timestamp: date_current_datetime(),
+        player: {
+            x: global.player_x,
+            y: global.player_y,
+            skin: global.current_skin,
+            color: global.player_color,
+            face: global.last_player_face,
+            expanded_hud_open: global.expanded_hud_open,
+            inventory: global.inventory,
+            equipped_items: undefined  // Will be set below
+        },
+        game_state: {
+            current_room: room,
+            active_quests: ds_list_to_array(global.active_quests),
+            completed_quests: ds_list_to_array(global.completed_quests),
+            room_states: ds_map_to_struct(global.room_states)
+        }
+    };
+
+    // Handle equipped items
+    if (ds_exists(global.equipped_items, ds_type_map)) {
+        var equipped_buffer = buffer_create(32, buffer_grow, 1);
+        buffer_seek(equipped_buffer, buffer_seek_start, 0);
+        
+        // Write equipped items to buffer
+        var slots = ["head", "face", "neck", "body", "hand", "feet"];
+        for (var i = 0; i < array_length(slots); i++) {
+            var item = ds_map_find_value(global.equipped_items, slots[i]);
+            buffer_write(equipped_buffer, buffer_s32, item ?? -1);
+        }
+        
+        // Convert buffer to base64 string for storage
+        buffer_seek(equipped_buffer, buffer_seek_start, 0);
+        var equipped_string = buffer_base64_encode(equipped_buffer, 0, buffer_tell(equipped_buffer));
+        buffer_delete(equipped_buffer);
+        
+        save_data.player.equipped_items = equipped_string;
+    }
+
+    // Create backup of previous save if it exists
+    if (file_exists("savegame.sav")) {
+        file_copy("savegame.sav", "savegame.bak");
+    }
+
+    // Save to file
+    var file = file_text_open_write("savegame.sav");
+    if (file != -1) {
+        var json_string = json_stringify(save_data);
+        file_text_write_string(file, json_string);
+        file_text_close(file);
+        show_debug_message("Game saved successfully with version " + save_data.version);
+        return true;
+    } else {
+        show_debug_message("ERROR: Failed to open save file for writing");
+        return false;
+    }
+}
+
+// Helper function to convert ds_list to array
+function ds_list_to_array(list) {
+    if (!ds_exists(list, ds_type_list)) return [];
+    var arr = array_create(ds_list_size(list));
+    for (var i = 0; i < ds_list_size(list); i++) {
+        arr[i] = list[| i];
+    }
+    return arr;
+}
+
+// Helper function to convert ds_map to struct
+function ds_map_to_struct(map) {
+    if (!ds_exists(map, ds_type_map)) return {};
+    var struct = {};
+    var key = ds_map_find_first(map);
+    while (!is_undefined(key)) {
+        variable_struct_set(struct, string(key), map[? key]);
+        key = ds_map_find_next(map, key);
+    }
+    return struct;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_save_load_system
+File: scr_save_load_system.gml
+/// @description Save/Load System for managing game state
+/// @function SaveLoadSystem
+
+function SaveLoadSystem() constructor {
+    static init = function() {
+        show_debug_message("Initializing Save/Load System");
+        return self;
+    }
+    
+    // Save game state to file
+    static save_game = function(slot_number) {
+        var save_data = {
+            // Player state
+            player: {
+                x: global.game_state.player.x,
+                y: global.game_state.player.y,
+                face: global.game_state.player.face,
+                color: global.game_state.player.color,
+                skin: global.game_state.player.skin,
+                health: global.game_state.player.health,
+                move_spd: global.game_state.player.move_spd
+            },
+            
+            // Game flags
+            flags: global.game_state.flags,
+            
+            // Room state
+            room_state: global.game_state.room_state,
+            
+            // Resource data
+            resources: {
+                following_puffles: ds_list_to_array(global.resource_manager.get_structure("following_puffles")),
+                room_states: ds_map_to_struct(global.resource_manager.get_structure("room_states")),
+                active_quests: ds_list_to_array(global.resource_manager.get_structure("active_quests")),
+                completed_quests: ds_list_to_array(global.resource_manager.get_structure("completed_quests")),
+                quest_progress: ds_map_to_struct(global.resource_manager.get_structure("quest_progress")),
+                equipped_items: ds_map_to_struct(global.resource_manager.get_structure("equipped_items"))
+            },
+            
+            // Save metadata
+            metadata: {
+                version: "1.0",
+                timestamp: date_current_datetime(),
+                play_time: global.play_time
+            }
+        };
+        
+        // Convert save data to string
+        var save_string = json_stringify(save_data);
+        
+        // Create save directory if it doesn't exist
+        var save_dir = "saves";
+        if (!directory_exists(save_dir)) {
+            directory_create(save_dir);
+        }
+        
+        // Save to file
+        var file = file_text_open_write(save_dir + "/save_" + string(slot_number) + ".sav");
+        if (file != -1) {
+            file_text_write_string(file, save_string);
+            file_text_close(file);
+            show_debug_message("Game saved successfully to slot " + string(slot_number));
+            return true;
+        }
+        
+        show_debug_message("Failed to save game to slot " + string(slot_number));
+        return false;
+    }
+    
+    // Load game state from file
+    static load_game = function(slot_number) {
+        var save_dir = "saves";
+        var file = file_text_open_read(save_dir + "/save_" + string(slot_number) + ".sav");
+        
+        if (file != -1) {
+            var save_string = file_text_read_string(file);
+            file_text_close(file);
+            
+            try {
+                var save_data = json_parse(save_string);
+                
+                // Verify save data version
+                if (save_data.metadata.version != "1.0") {
+                    show_debug_message("Warning: Save data version mismatch");
+                }
+                
+                // Update game state
+                with(global.game_state) {
+                    // Update player state
+                    player = save_data.player;
+                    
+                    // Update flags
+                    flags = save_data.flags;
+                    
+                    // Update room state
+                    room_state = save_data.room_state;
+                }
+                
+                // Update resource manager
+                with(global.resource_manager) {
+                    // Convert arrays back to lists
+                    array_to_ds_list(save_data.resources.following_puffles, get_structure("following_puffles"));
+                    array_to_ds_list(save_data.resources.active_quests, get_structure("active_quests"));
+                    array_to_ds_list(save_data.resources.completed_quests, get_structure("completed_quests"));
+                    
+                    // Convert structs back to maps
+                    struct_to_ds_map(save_data.resources.room_states, get_structure("room_states"));
+                    struct_to_ds_map(save_data.resources.quest_progress, get_structure("quest_progress"));
+                    struct_to_ds_map(save_data.resources.equipped_items, get_structure("equipped_items"));
+                }
+                
+                // Update global variables
+                global.play_time = save_data.metadata.play_time;
+                
+                show_debug_message("Game loaded successfully from slot " + string(slot_number));
+                return true;
+            } catch(e) {
+                show_debug_message("Error loading save data: " + string(e));
+            }
+        }
+        
+        show_debug_message("Failed to load game from slot " + string(slot_number));
+        return false;
+    }
+    
+    // Helper function to convert ds_list to array
+    static ds_list_to_array = function(list) {
+        var arr = array_create(ds_list_size(list));
+        for (var i = 0; i < ds_list_size(list); i++) {
+            arr[i] = list[| i];
+        }
+        return arr;
+    }
+    
+    // Helper function to convert array to ds_list
+    static array_to_ds_list = function(arr, list) {
+        ds_list_clear(list);
+        for (var i = 0; i < array_length(arr); i++) {
+            ds_list_add(list, arr[i]);
+        }
+    }
+    
+    // Helper function to convert ds_map to struct
+    static ds_map_to_struct = function(map) {
+        var struct = {};
+        var key = ds_map_find_first(map);
+        while (ds_map_exists(map, key)) {
+            variable_struct_set(struct, string(key), map[? key]);
+            key = ds_map_find_next(map, key);
+        }
+        return struct;
+    }
+    
+    // Helper function to convert struct to ds_map
+    static struct_to_ds_map = function(struct, map) {
+        ds_map_clear(map);
+        var names = variable_struct_get_names(struct);
+        for (var i = 0; i < array_length(names); i++) {
+            var name = names[i];
+            ds_map_add(map, name, variable_struct_get(struct, name));
+        }
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_set_depth
+File: scr_set_depth.gml
+// scr_set_depth.gml
+function set_depth() {
+    depth = -bbox_bottom;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_shop_management
+File: scr_shop_management.gml
+/// @function init_shop_system()
+/// @description Initialize the shop system and create item databases
+function init_shop_system() {
+    // Initialize global variables if they don't exist
+    if (!variable_global_exists("shop_items")) {
+        global.shop_items = ds_map_create();
+        global.shop_items[? SHOP_TYPE.CLOTHING] = ds_map_create();
+        global.shop_items[? SHOP_TYPE.FURNITURE] = ds_map_create();
+        global.shop_items[? SHOP_TYPE.SPECIAL] = ds_map_create();
+        global.shop_items[? SHOP_TYPE.SEASONAL] = ds_map_create();
+    }
+    
+    // Initialize currency if it doesn't exist
+    if (!variable_global_exists("player_coins")) {
+        global.player_coins = 500; // Starting coins
+    }
+    
+    // Initialize purchase history if it doesn't exist
+    if (!variable_global_exists("purchase_history")) {
+        global.purchase_history = ds_list_create();
+    }
+    
+    // Initialize default items
+    init_clothing_shop();
+    init_furniture_shop();
+    init_special_shop();
+    init_seasonal_shop();
+}
+
+/// @function init_clothing_shop()
+/// @description Initialize clothing shop items
+function init_clothing_shop() {
+    var shop = global.shop_items[? SHOP_TYPE.CLOTHING];
+    
+    // Add default clothing items
+    add_shop_item(shop, "basic_hat", {
+        name: "Basic Hat",
+        sprite: spr_basic_hat,
+        price: 100,
+        description: "A simple hat to keep you warm",
+        wearable: true,
+        slot: "head"
+    });
+    
+    add_shop_item(shop, "winter_coat", {
+        name: "Winter Coat",
+        sprite: spr_winter_coat,
+        price: 250,
+        description: "Cozy winter coat",
+        wearable: true,
+        slot: "body"
+    });
+    
+    // Add more clothing items as needed
+}
+
+/// @function init_furniture_shop()
+/// @description Initialize furniture shop items
+function init_furniture_shop() {
+    var shop = global.shop_items[? SHOP_TYPE.FURNITURE];
+    
+    add_shop_item(shop, "ice_chair", {
+        name: "Ice Chair",
+        sprite: spr_ice_chair,
+        price: 150,
+        description: "A chair made of ice",
+        placeable: true
+    });
+    
+    add_shop_item(shop, "snow_table", {
+        name: "Snow Table",
+        sprite: spr_snow_table,
+        price: 200,
+        description: "A table made of packed snow",
+        placeable: true
+    });
+    
+    // Add more furniture items as needed
+}
+
+/// @function init_special_shop()
+/// @description Initialize special shop items
+function init_special_shop() {
+    var shop = global.shop_items[? SHOP_TYPE.SPECIAL];
+    
+    add_shop_item(shop, "fishing_rod", {
+        name: "Fishing Rod",
+        sprite: spr_fishing_rod,
+        price: 500,
+        description: "For ice fishing",
+        usable: true
+    });
+    
+    add_shop_item(shop, "snowball_maker", {
+        name: "Snowball Maker",
+        sprite: spr_snowball_maker,
+        price: 300,
+        description: "Makes perfect snowballs",
+        usable: true
+    });
+    
+    // Add more special items as needed
+}
+
+/// @function init_seasonal_shop()
+/// @description Initialize seasonal shop items
+function init_seasonal_shop() {
+    var shop = global.shop_items[? SHOP_TYPE.SEASONAL];
+    
+    // Add seasonal items based on current month
+    var current_month = current_datetime_get_month();
+    
+    // Winter items (December - February)
+    if (current_month >= 12 || current_month <= 2) {
+        add_shop_item(shop, "christmas_hat", {
+            name: "Christmas Hat",
+            sprite: spr_christmas_hat,
+            price: 400,
+            description: "Festive hat for the holidays",
+            wearable: true,
+            slot: "head",
+            seasonal: true
+        });
+    }
+    
+    // Spring items (March - May)
+    if (current_month >= 3 && current_month <= 5) {
+        add_shop_item(shop, "spring_umbrella", {
+            name: "Spring Umbrella",
+            sprite: spr_spring_umbrella,
+            price: 350,
+            description: "Protection from spring showers",
+            wearable: true,
+            slot: "accessory",
+            seasonal: true
+        });
+    }
+    
+    // Add more seasonal items as needed
+}
+
+/// @function add_shop_item(shop_map, item_id, item_data)
+/// @description Add an item to a shop
+/// @param {ds_map} shop_map The shop to add the item to
+/// @param {string} item_id The unique identifier for the item
+/// @param {struct} item_data The item data structure
+function add_shop_item(shop_map, item_id, item_data) {
+    if (!ds_map_exists(shop_map, item_id)) {
+        shop_map[? item_id] = item_data;
+    }
+}
+
+/// @function get_shop_items(shop_type)
+/// @description Get all items from a specific shop type
+/// @param {real} shop_type The type of shop to get items from
+/// @returns {ds_map} Map of items in the shop
+function get_shop_items(shop_type) {
+    return global.shop_items[? shop_type];
+}
+
+/// @function update_seasonal_shop()
+/// @description Update seasonal shop items based on current month
+function update_seasonal_shop() {
+    var shop = global.shop_items[? SHOP_TYPE.SEASONAL];
+    ds_map_clear(shop);
+    init_seasonal_shop();
+}
+
+/// @function earn_coins(amount, source)
+/// @description Award coins to the player
+/// @param {real} amount The amount of coins to award
+/// @param {string} source The source of the coins (e.g., "quest", "minigame", "daily")
+function earn_coins(amount, source) {
+    if (!variable_global_exists("player_coins")) {
+        global.player_coins = 0;
+    }
+    
+    global.player_coins += amount;
+    
+    // Create notification
+    if (instance_exists(obj_notification_manager)) {
+        var msg = "+" + string(amount) + " coins";
+        obj_notification_manager.show_notification(msg, c_yellow);
+    }
+    
+    // Log transaction
+    var transaction = {
+        type: "earn",
+        amount: amount,
+        source: source,
+        timestamp: date_current_datetime()
+    };
+    ds_list_add(global.purchase_history, transaction);
+    
+    return true;
+}
+
+/// @function spend_coins(amount, item_id)
+/// @description Attempt to spend coins
+/// @param {real} amount The amount of coins to spend
+/// @param {string} item_id The ID of the item being purchased
+/// @returns {boolean} Whether the purchase was successful
+function spend_coins(amount, item_id) {
+    if (!variable_global_exists("player_coins")) {
+        return false;
+    }
+    
+    if (global.player_coins >= amount) {
+        global.player_coins -= amount;
+        
+        // Create notification
+        if (instance_exists(obj_notification_manager)) {
+            var msg = "-" + string(amount) + " coins";
+            obj_notification_manager.show_notification(msg, c_red);
+        }
+        
+        // Log transaction
+        var transaction = {
+            type: "spend",
+            amount: amount,
+            item_id: item_id,
+            timestamp: date_current_datetime()
+        };
+        ds_list_add(global.purchase_history, transaction);
+        
+        return true;
+    }
+    
+    return false;
+}
+
+/// @function get_player_coins()
+/// @description Get the player's current coin balance
+/// @returns {real} The current coin balance
+function get_player_coins() {
+    if (!variable_global_exists("player_coins")) {
+        global.player_coins = 0;
+    }
+    return global.player_coins;
+}
+
+/// @function can_afford_item(price)
+/// @description Check if the player can afford an item
+/// @param {real} price The price to check
+/// @returns {boolean} Whether the player can afford the item
+function can_afford_item(price) {
+    return get_player_coins() >= price;
+}
+
+/// @function get_purchase_history()
+/// @description Get the player's purchase history
+/// @returns {ds_list} List of purchase transactions
+function get_purchase_history() {
+    if (!variable_global_exists("purchase_history")) {
+        global.purchase_history = ds_list_create();
+    }
+    return global.purchase_history;
+}
+
+/// @function cleanup_shop_system()
+/// @description Clean up shop system resources
+function cleanup_shop_system() {
+    if (variable_global_exists("shop_items")) {
+        var shop_types = ds_map_keys_to_array(global.shop_items);
+        for (var i = 0; i < array_length(shop_types); i++) {
+            ds_map_destroy(global.shop_items[? shop_types[i]]);
+        }
+        ds_map_destroy(global.shop_items);
+    }
+    
+    if (variable_global_exists("purchase_history")) {
+        ds_list_destroy(global.purchase_history);
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_shop_system
+File: scr_shop_system.gml
+/// @description Shop System Scripts
+
+// Shop Types Enum
+enum ShopType {
+    CLOTHING,
+    FURNITURE,
+    SPECIAL,
+    SEASONAL
+}
+
+/// @function init_shop_system()
+function init_shop_system() {
+    // Initialize global shop variables
+    global.player_coins = 500; // Starting coins
+    global.shop_inventory = ds_map_create();
+    global.seasonal_items = ds_list_create();
+    
+    // Initialize different shop types
+    init_clothing_shop();
+    init_furniture_shop();
+    init_special_shop();
+    init_seasonal_shop();
+}
+
+/// @function init_clothing_shop()
+function init_clothing_shop() {
+    var clothing_items = ds_map_create();
+    
+    // Add clothing items with their properties
+    add_shop_item(clothing_items, "Beta Hat", 100, spr_beta_hat, "A rare beta tester hat", true);
+    add_shop_item(clothing_items, "Party Hat", 50, spr_party_hat, "Perfect for celebrations", true);
+    add_shop_item(clothing_items, "Snow Gear", 150, spr_snow_gear, "Keep warm in style", true);
+    add_shop_item(clothing_items, "Ninja Suit", 500, spr_ninja_suit, "Become one with the shadows", true);
+    
+    global.shop_inventory[? ShopType.CLOTHING] = clothing_items;
+}
+
+/// @function init_furniture_shop()
+function init_furniture_shop() {
+    var furniture_items = ds_map_create();
+    
+    // Add furniture items
+    add_shop_item(furniture_items, "Lamp", 75, spr_lamp, "A cozy lamp for your igloo", false);
+    add_shop_item(furniture_items, "Small Bush", 30, spr_small_bushes, "Add some greenery", false);
+    add_shop_item(furniture_items, "Crates", 45, spr_crates, "Storage with style", false);
+    
+    global.shop_inventory[? ShopType.FURNITURE] = furniture_items;
+}
+
+/// @function init_special_shop()
+function init_special_shop() {
+    var special_items = ds_map_create();
+    
+    // Add special items
+    add_shop_item(special_items, "EPF Phone", 1000, spr_epfphone_item, "Top secret gadget", true);
+    add_shop_item(special_items, "Puffle Whistle", 250, spr_pufflewhistle_item, "Call your puffle friends", true);
+    add_shop_item(special_items, "Starter Card Deck", 300, spr_starterdeck_item, "Begin your Card-Jitsu journey", true);
+    
+    global.shop_inventory[? ShopType.SPECIAL] = special_items;
+}
+
+/// @function init_seasonal_shop()
+function init_seasonal_shop() {
+    var seasonal_items = ds_map_create();
+    global.shop_inventory[? ShopType.SEASONAL] = seasonal_items;
+    
+    // Seasonal items will be updated through update_seasonal_shop()
+}
+
+/// @function add_shop_item(shop_inventory, name, price, sprite, description, is_wearable)
+function add_shop_item(shop_inventory, name, price, sprite, description, is_wearable) {
+    var item = {
+        name: name,
+        price: price,
+        sprite: sprite,
+        description: description,
+        is_wearable: is_wearable,
+        discount: 0,
+        stock: -1 // -1 means unlimited
+    };
+    
+    shop_inventory[? name] = item;
+}
+
+/// @function update_seasonal_shop()
+function update_seasonal_shop() {
+    var seasonal = global.shop_inventory[? ShopType.SEASONAL];
+    ds_map_clear(seasonal);
+    
+    var current_month = current_datetime_get_month();
+    
+    switch(current_month) {
+        case 12: // December - Winter
+        case 1:
+        case 2:
+            add_shop_item(seasonal, "Winter Scarf", 75, spr_winter_scarf, "Stay warm and stylish", true);
+            add_shop_item(seasonal, "Ice Crown", 200, spr_ice_crown, "Rule the winter wonderland", true);
+            break;
+            
+        case 3: // Spring
+        case 4:
+        case 5:
+            add_shop_item(seasonal, "Flower Crown", 100, spr_flower_crown, "Welcome spring!", true);
+            add_shop_item(seasonal, "Rain Boots", 80, spr_rain_boots, "Splash in style", true);
+            break;
+            
+        case 6: // Summer
+        case 7:
+        case 8:
+            add_shop_item(seasonal, "Sunglasses", 90, spr_sunglasses, "Cool shades for summer", true);
+            add_shop_item(seasonal, "Beach Hat", 70, spr_beach_hat, "Perfect for the beach", true);
+            break;
+            
+        case 9: // Fall
+        case 10:
+        case 11:
+            add_shop_item(seasonal, "Leaf Crown", 85, spr_leaf_crown, "Autumn royalty", true);
+            add_shop_item(seasonal, "Cozy Sweater", 120, spr_cozy_sweater, "Perfect for fall", true);
+            break;
+    }
+}
+
+/// @function purchase_item(shop_type, item_name)
+function purchase_item(shop_type, item_name) {
+    var shop = global.shop_inventory[? shop_type];
+    if (!ds_map_exists(shop, item_name)) {
+        show_debug_message("Item doesn't exist: " + item_name);
+        return false;
+    }
+    
+    var item = shop[? item_name];
+    var final_price = item.price * (1 - item.discount);
+    
+    if (global.player_coins >= final_price) {
+        // Check if item is in stock
+        if (item.stock != 0) {
+            // Deduct coins
+            global.player_coins -= final_price;
+            
+            // Add to inventory
+            with(obj_inventory) {
+                add_item(item_name);
+            }
+            
+            // Update stock if limited
+            if (item.stock > 0) {
+                item.stock--;
+            }
+            
+            // Play purchase sound
+            audio_play_sound(snd_purchase, 1, false);
+            
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+/// @function get_shop_items(shop_type)
+function get_shop_items(shop_type) {
+    if (ds_map_exists(global.shop_inventory, shop_type)) {
+        return global.shop_inventory[? shop_type];
+    }
+    return noone;
+}
+
+/// @function apply_discount(shop_type, item_name, discount_percent)
+function apply_discount(shop_type, item_name, discount_percent) {
+    var shop = global.shop_inventory[? shop_type];
+    if (ds_map_exists(shop, item_name)) {
+        var item = shop[? item_name];
+        item.discount = clamp(discount_percent / 100, 0, 1);
+    }
+}
+
+/// @function set_item_stock(shop_type, item_name, stock)
+function set_item_stock(shop_type, item_name, stock) {
+    var shop = global.shop_inventory[? shop_type];
+    if (ds_map_exists(shop, item_name)) {
+        var item = shop[? item_name];
+        item.stock = stock;
+    }
+}
+
+/// @function cleanup_shop_system()
+function cleanup_shop_system() {
+    // Clean up all shop data structures
+    var shop_types = ds_map_keys_to_array(global.shop_inventory);
+    for (var i = 0; i < array_length(shop_types); i++) {
+        var shop = global.shop_inventory[? shop_types[i]];
+        ds_map_destroy(shop);
+    }
+    
+    ds_map_destroy(global.shop_inventory);
+    ds_list_destroy(global.seasonal_items);
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_shop_types
+File: scr_shop_types.gml
+/// @description Enumeration for different shop types
+
+enum SHOP_TYPE {
+    CLOTHING,
+    FURNITURE,
+    SPECIAL,
+    SEASONAL
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_skin_switch
+File: scr_skin_switch.gml
+function switch_skin(new_skin) {
+    if (global.skin_switching) return;
+    global.skin_switching = true;
+
+    var player_x = global.player_instance != noone ? global.player_instance.x : global.last_player_x;
+    var player_y = global.player_instance != noone ? global.player_instance.y : global.last_player_y;
+    var player_face = DOWN;
+
+    if (instance_exists(global.player_instance)) {
+        if (variable_instance_exists(global.player_instance, "face")) {
+            player_face = global.player_instance.face;
+        }
+        instance_destroy(global.player_instance);
+    }
+
+    var new_instance = noone;
+    for (var i = 0; i < array_length(global.skins); i++) {
+        if (global.skins[i].name == new_skin) {
+            new_instance = instance_create_layer(player_x, player_y, "Instances", global.skins[i].object);
+            global.current_skin = new_skin;
+            break;
+        }
+    }
+
+    if (new_instance == noone) {
+        new_instance = instance_create_layer(player_x, player_y, "Instances", obj_player);
+        global.current_skin = "player";
+    }
+
+    if (variable_instance_exists(new_instance, "face")) {
+        new_instance.face = player_face;
+    }
+
+    global.player_instance = new_instance;
+    camera_set_view_target(global.camera, global.player_instance);
+    global.skin_switching = false;
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_testing_framework
+File: scr_testing_framework.gml
+/// @description Testing Framework
+/// @function TestManager
+
+function TestManager() constructor {
+    tests = [];
+    results = {
+        passed: 0,
+        failed: 0,
+        total: 0
+    };
+    
+    // Add a test case
+    static add_test = function(name, test_func) {
+        array_push(tests, {
+            name: name,
+            func: test_func
+        });
+    }
+    
+    // Run all tests
+    static run_all_tests = function() {
+        results.passed = 0;
+        results.failed = 0;
+        results.total = array_length(tests);
+        
+        show_debug_message("\n=== Starting Test Suite ===");
+        
+        for (var i = 0; i < array_length(tests); i++) {
+            var test = tests[i];
+            try {
+                test.func();
+                results.passed++;
+                show_debug_message("✓ PASS: " + test.name);
+            } catch(error) {
+                results.failed++;
+                show_debug_message("✗ FAIL: " + test.name + "\n  Error: " + string(error));
+            }
+        }
+        
+        show_debug_message("\n=== Test Results ===");
+        show_debug_message("Total Tests: " + string(results.total));
+        show_debug_message("Passed: " + string(results.passed));
+        show_debug_message("Failed: " + string(results.failed));
+        show_debug_message("==================\n");
+    }
+}
+
+// Assertion functions
+function assert_equals(actual, expected, message = "") {
+    if (actual != expected) {
+        throw "Assertion failed: Expected " + string(expected) + " but got " + string(actual) + 
+              (message != "" ? "\n" + message : "");
+    }
+}
+
+function assert_not_equals(actual, expected, message = "") {
+    if (actual == expected) {
+        throw "Assertion failed: Expected value to not equal " + string(expected) + 
+              (message != "" ? "\n" + message : "");
+    }
+}
+
+function assert_true(condition, message = "") {
+    if (!condition) {
+        throw "Assertion failed: Expected true but got false" + 
+              (message != "" ? "\n" + message : "");
+    }
+}
+
+function assert_false(condition, message = "") {
+    if (condition) {
+        throw "Assertion failed: Expected false but got true" + 
+              (message != "" ? "\n" + message : "");
+    }
+}
+
+function assert_exists(object_index, message = "") {
+    if (!instance_exists(object_index)) {
+        throw "Assertion failed: Expected instance to exist" + 
+              (message != "" ? "\n" + message : "");
+    }
+}
+
+function assert_not_exists(object_index, message = "") {
+    if (instance_exists(object_index)) {
+        throw "Assertion failed: Expected instance to not exist" + 
+              (message != "" ? "\n" + message : "");
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_test_suite
+File: scr_test_suite.gml
+/// @description Core System Test Suite
+
+// Initialize test manager
+global.test_manager = new TestManager();
+
+// Player System Tests
+function test_player_creation() {
+    var player = instance_create_layer(0, 0, "Instances", obj_player);
+    assert_exists(player, "Player instance should be created");
+    assert_equals(player.x, 0, "Player should be at x=0");
+    assert_equals(player.y, 0, "Player should be at y=0");
+    instance_destroy(player);
+}
+
+function test_player_movement() {
+    var player = instance_create_layer(100, 100, "Instances", obj_player);
+    with(player) {
+        // Test horizontal movement
+        x += 10;
+        assert_equals(x, 110, "Player should move right by 10 pixels");
+        
+        // Test vertical movement
+        y += 10;
+        assert_equals(y, 110, "Player should move down by 10 pixels");
+    }
+    instance_destroy(player);
+}
+
+// Camera System Tests
+function test_camera_creation() {
+    var camera = instance_create_layer(0, 0, "Instances", obj_camera);
+    assert_exists(camera, "Camera instance should be created");
+    assert_true(variable_global_exists("camera"), "Global camera variable should exist");
+    instance_destroy(camera);
+}
+
+// Network System Tests
+function test_network_manager() {
+    var network = new NetworkManager();
+    assert_equals(network.current_state, NETWORK_STATE.DISCONNECTED, "Network should start disconnected");
+    assert_equals(network.is_host, false, "Should not be host by default");
+}
+
+// Inventory System Tests
+function test_inventory_system() {
+    // Test inventory initialization
+    global.inventory = [];
+    assert_equals(array_length(global.inventory), 0, "Inventory should start empty");
+    
+    // Test adding items
+    array_push(global.inventory, "test_item");
+    assert_equals(array_length(global.inventory), 1, "Inventory should have one item");
+    assert_equals(global.inventory[0], "test_item", "Item should be added correctly");
+}
+
+function test_inventory_system_detailed() {
+    // Test grid vs array consistency
+    var inventory_grid = ds_grid_create(6, 4);  // 24 slots
+    var inventory_array = array_create(8);      // 8 slots for quick access
+    
+    // Test grid initialization
+    ds_grid_clear(inventory_grid, -1);
+    assert_equals(ds_grid_get(inventory_grid, 0, 0), -1, "Grid should initialize empty");
+    
+    // Test array initialization
+    for (var i = 0; i < array_length(inventory_array); i++) {
+        inventory_array[i] = -1;
+    }
+    assert_equals(inventory_array[0], -1, "Array should initialize empty");
+    
+    // Test item addition consistency
+    var test_item = "Beta Hat";
+    ds_grid_set(inventory_grid, 0, 0, test_item);
+    inventory_array[0] = test_item;
+    
+    assert_equals(ds_grid_get(inventory_grid, 0, 0), inventory_array[0], 
+                 "Grid and array should maintain consistency");
+                 
+    // Cleanup
+    ds_grid_destroy(inventory_grid);
+}
+
+// Animation Frame Data Tests
+function test_animation_system() {
+    // Test frame data initialization
+    var frame_data = ds_map_create();
+    ds_map_add(frame_data, "dance", {
+        frames: [0, 1, 2, 3],
+        speed: 0.2,
+        duration: 224
+    });
+    
+    assert_true(ds_map_exists(frame_data, "dance"), "Frame data should be initialized");
+    var dance_data = frame_data[? "dance"];
+    assert_equals(array_length(dance_data.frames), 4, "Dance animation should have 4 frames");
+    
+    // Cleanup
+    ds_map_destroy(frame_data);
+}
+
+// Key Binding Tests
+function test_key_bindings() {
+    // Test for key binding conflicts
+    var key_map = ds_map_create();
+    ds_map_add(key_map, "tube_switch", ord("T"));
+    ds_map_add(key_map, "toboggan_switch", ord("Y")); // Changed from T to Y
+    
+    assert_not_equals(key_map[? "tube_switch"], key_map[? "toboggan_switch"], 
+                     "Tube and Toboggan should have different key bindings");
+                     
+    // Cleanup
+    ds_map_destroy(key_map);
+}
+
+// Helper Function Tests
+function test_helper_functions() {
+    // Test item helper functions
+    var sprite = get_item_sprite("Beta Hat");
+    assert_not_equals(sprite, -1, "Item sprite should be valid");
+    
+    var description = get_item_description("Beta Hat");
+    assert_not_equals(description, "", "Item description should not be empty");
+}
+
+// Quest System Tests
+function test_quest_system() {
+    global.active_quests = ds_list_create();
+    global.completed_quests = ds_list_create();
+    
+    ds_list_add(global.active_quests, "test_quest");
+    assert_equals(ds_list_size(global.active_quests), 1, "Should have one active quest");
+    
+    ds_list_clear(global.active_quests);
+    ds_list_clear(global.completed_quests);
+    ds_list_destroy(global.active_quests);
+    ds_list_destroy(global.completed_quests);
+}
+
+// Quest System Integration Tests
+function test_quest_inventory_integration() {
+    // Test quest item counting
+    global.inventory = array_create(42, -1);
+    array_set(global.inventory, 0, "Quest Item");
+    
+    var count = get_inventory_item_count("Quest Item");
+    assert_equals(count, 1, "Quest item count should be accurate");
+}
+
+// Room State Tests
+function test_room_state() {
+    var state_saved = save_room_state(room);
+    assert_true(state_saved, "Room state should be saved successfully");
+}
+
+// Add tests to manager
+function initialize_test_suite() {
+    with(global.test_manager) {
+        add_test("Player Creation", test_player_creation);
+        add_test("Player Movement", test_player_movement);
+        add_test("Camera Creation", test_camera_creation);
+        add_test("Network Manager", test_network_manager);
+        add_test("Inventory System", test_inventory_system);
+        add_test("Detailed Inventory System", test_inventory_system_detailed);
+        add_test("Animation System", test_animation_system);
+        add_test("Key Bindings", test_key_bindings);
+        add_test("Helper Functions", test_helper_functions);
+        add_test("Quest System", test_quest_system);
+        add_test("Quest-Inventory Integration", test_quest_inventory_integration);
+        add_test("Room State", test_room_state);
+    }
+} 
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_throwable
+File: scr_throwable.gml
+/// @description Throwable object handling and physics
+function init_throwable(throw_speed = 8, gravity_force = 0.5, bounce_factor = 0.6) {
+    // Initialize throwing variables
+    throwing_speed = throw_speed;
+    throwing_gravity = gravity_force;
+    throwing_bounce = bounce_factor;
+    throwing_angle = 0;
+    throwing_vspeed = 0;
+    throwing_hspeed = 0;
+    is_thrown = false;
+    z = 0;  // Height above ground
+    
+    return {
+        speed: throwing_speed,
+        gravity: throwing_gravity,
+        bounce: throwing_bounce
+    };
+}
+
+function update_throwable() {
+    if (!is_thrown) return false;
+    
+    // Update position based on velocity
+    var next_x = x + throwing_hspeed;
+    var next_y = y + throwing_vspeed;
+    
+    // Check for wall collisions
+    if (place_meeting(next_x, y, obj_wall)) {
+        throwing_hspeed *= -throwing_bounce;
+        next_x = x + throwing_hspeed;
+    }
+    
+    if (place_meeting(x, next_y, obj_wall)) {
+        throwing_vspeed *= -throwing_bounce;
+        next_y = y + throwing_vspeed;
+    }
+    
+    // Update position
+    x = next_x;
+    y = next_y;
+    
+    // Update z position (height)
+    z += throwing_vspeed;
+    
+    // Apply gravity
+    throwing_vspeed += throwing_gravity;
+    
+    // Ground collision
+    if (z <= 0) {
+        z = 0;
+        throwing_vspeed *= -throwing_bounce;
+        
+        // Stop if moving very slowly
+        if (abs(throwing_vspeed) < 0.1 && abs(throwing_hspeed) < 0.1) {
+            is_thrown = false;
+            throwing_vspeed = 0;
+            throwing_hspeed = 0;
+            return true; // Indicates throw has ended
+        }
+    }
+    
+    // Apply air resistance
+    throwing_hspeed *= 0.99;
+    
+    return false; // Throw continues
+}
+
+function throw_object(direction, strength = 1) {
+    is_thrown = true;
+    throwing_angle = direction;
+    
+    // Calculate velocity components
+    var angle_rad = degtorad(direction);
+    throwing_hspeed = cos(angle_rad) * throwing_speed * strength;
+    throwing_vspeed = -sin(angle_rad) * throwing_speed * strength;
+    
+    // Initial upward velocity
+    z = 1; // Small initial height to ensure it's not stuck on ground
+}
+
+function draw_throwable() {
+    if (is_thrown && z > 0) {
+        // Draw shadow
+        var shadow_scale = max(0.5, 1 - (z / 100)); // Shadow gets smaller with height
+        draw_sprite_ext(sprite_index, image_index, x, y, 
+            shadow_scale, shadow_scale, image_angle, c_black, 0.3);
+        
+        // Draw object at height
+        draw_sprite_ext(sprite_index, image_index, x, y - z, 
+            image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+    } else {
+        // Normal draw when not thrown or on ground
+        draw_self();
+    }
+} 
