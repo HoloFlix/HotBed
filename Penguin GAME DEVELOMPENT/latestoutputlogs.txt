@@ -1,6 +1,7 @@
+Output Log saving the game:
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
-Collision Event time(microsecs)=8
+Collision Event time(microsecs)=11
 Variable_Global_Init()
 PrepareGame()
 Audio_Init()
@@ -15,113 +16,450 @@ Finished PrepareGame()
 Run_Start
 Done g_EffectsManager.Init()
 Done RenderStateManager
-CreateColPairs took 0.000000s 3 usecs for 76 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+CreateColPairs took 0.000000s 3 usecs for 115 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
 Done ObjectLists
 Done Extension_Initialize
 About to startroom
-Total memory used = 9093687 (0x008ac237) bytes 8.67MB
-Free memory = 6268400 (0x005fa5f0) bytes 5.98MB
-Peak memory used = 12072385 (0x00b835c1) bytes 11.51MB
+Number of buttons found: 3
+Total memory used = 11700495 (0x00b2890f) bytes 11.16MB
+Free memory = 6120776 (0x005d6548) bytes 5.84MB
+Peak memory used = 12750090 (0x00c28d0a) bytes 12.16MB
 **********************************.
 Entering main loop.
 **********************************.
-DEBUG: New global camera created. ID: 153
+DEBUG: New global camera created. ID: 185
+Initialized global.camera with ID: ref object 7
+Initialized global.item_index_map with item mappings.
+Initialized global.equipped_items.
+Initialized global.item_type_map.
+Initialized global.inventory as an array of size 42.
+Global variables initialized via init_globals.
+global.player_color before setting: 52479
+Applied player color: 52479
 obj_player: Initialized. Driving state: 0
-Restored player color: 3149266
-Player instance created: ref instance 100574
+Restored player color: 52479
+Player instance created: ref instance 100619
+obj_controller created with ID: ref instance 100013
 obj_controller Create event executed
-DEBUG: global.item_index_map initialized in obj_initializer.
+DEBUG: global.item_index_map already exists.
 DEBUG: global.item_object_map initialized in obj_initializer.
+DEBUG: New camera created.
 DEBUG: obj_initializer Create Event executed.
-DEBUG: global.item_index_map is valid in obj_inventory Create Event.
-Saved state for obj_pickup_item at (32, 0)
-Saved state for obj_dropped_item at (0, 64)
+Saving state for room: rm_init
+Saved state for room: rm_init with 2 objects.
 Saved state for room: rm_init
-Saved state for room: rm_init
-Saved state for obj_pickup_item at (32, 0)
-Saved state for obj_dropped_item at (0, 64)
-Saved state for room: rm_init
-Saved state for room: rm_init
-No saved state found for room: rm_welcome_room
-DEBUG: Room Start Event triggered in obj_controller.
+obj_controller Room Start event started in room: rm_welcome_room
+global.player_color before setting: 52479
+Applied player color: 52479
 obj_player: Initialized. Driving state: 0
-DEBUG: Player recreated at (170, 154)
-DEBUG: Camera now follows player.
-DEBUG: UI layer already exists.
-DEBUG: Inventory restored after pause menu.
-DEBUG: Room Start Event triggered in obj_controller.
-UI layer already exists.
-Pause menu closed.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100581
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 153
+DEBUG: Player created at (170, 154) with skin: player
 No saved state found for room: rm_welcome_room
 DEBUG: Room Start Event triggered in obj_controller.
 DEBUG: Camera now follows player.
-DEBUG: UI layer already exists.
+DEBUG: UI layer created.
 DEBUG: Inventory restored after pause menu.
-DEBUG: Room Start Event triggered in obj_controller.
-UI layer already exists.
+UI Manager initialized.
+DEBUG: Created obj_ui_manager in Room Start.
 Pause menu closed.
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100581
+DEBUG: Player instance ID: ref instance 100629
+obj_controller Room Start event for ID: ref instance 100013
+Room Start Event triggered in obj_controller.
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 186
 DEBUG: Camera attached to player at (170, 154)
 DEBUG: Resetting repair flag...
-Starting dance
-Action none completed
-Starting wave
-Action none completed
-Cannot start snow shovel: Snow Shovel not in inventory.
-Added Box Puffle O to inventory in slot 0
-Box Puffle O added to inventory.
-Added Jackhammer to inventory in slot 1
-Jackhammer added to inventory.
-Added Tube to inventory in slot 2
-Tube added to inventory.
-Starting jackhammer
-Action none completed
-Dropped Box Puffle O as obj_boxpuffleo_item at (382, 168)
-Removed Box Puffle O from inventory slot 0
-Inventory Expanded: 1
-Inventory Expanded: 0
-Added Snow Shovel to inventory in slot 0
-Snow Shovel added to inventory.
-Starting snow shovel
-Action none completed
-Added Battery to inventory in slot 3
+Added Battery to inventory in slot 0
 Battery added to inventory.
-You need a wrench or a battery to repair this!
-You need a wrench or a battery to repair this!
+Added Snow Shovel to inventory in slot 1
+Snow Shovel added to inventory.
 Repairing ice truck...
+DEBUG: Setting global.repair_complete = true
+Ice truck repaired! It is now driveable.
+DEBUG: Repair complete flag detected in inventory.
 DEBUG: Battery detected in inventory. Attempting to remove...
-Removed Battery from inventory slot 3
+Removed Battery from inventory slot 0
 Battery removed after repair.
-Ice truck repaired!
-Switching from player to tube
-Destroying current player instance: ref instance 100581
-obj_player_tube: Initialized. Player instance ID: ref instance 100584
-Switched to skin: tube. New instance ID: ref instance 100584
-Camera now follows player: ref instance 100584
-Removing Tube from inventory...
-Removed Tube from inventory slot 2
-Switching from tube to player
-Destroying current player instance: ref instance 100584
-obj_player: Initialized. Driving state: 0
-Switched to skin: player. New instance ID: ref instance 100585
-Camera now follows player: ref instance 100585
-Added Tube to inventory in slot 2
-Exited tube. Switched back to player. Tube added back to inventory.
-Starting snow shovel
-Action none completed
-Starting jackhammer
-Action none completed
-Starting jackhammer
-Action none completed
-Starting jackhammer
-Action none completed
+obj_player_icetruck: Initialized.
 Entered ice truck. Current skin: icetruck
+DEBUG: obj_player detected on obj_warp_block. Warping...
+obj_warp initialized. Target Room: 0
+DEBUG: obj_warp transition initiated. Moving player before room transition.
+Player successfully moved to new position.
+Saving state for room: rm_welcome_room
+Saved state for room: rm_welcome_room with 9 objects.
+Saved state for room: rm_welcome_room
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 186
+obj_controller Room Start event started in room: rm_plaza
+Icetruck colliding with wall at position (170, 154)
+obj_player_icetruck: Initialized.
+DEBUG: Player created at (170, 154) with skin: icetruck
+No saved state found for room: rm_plaza
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Camera now follows player.
+DEBUG: UI layer created.
+DEBUG: Inventory restored after pause menu.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: icetruck
+DEBUG: Player instance ID: ref instance 100634
+obj_controller Room Start event for ID: ref instance 100013
+Room Start Event triggered in obj_controller.
+DEBUG: Camera attached to player at (255, 354.75)
+global.player_color before setting: 52479
+Applied player color: 52479
 obj_player: Initialized. Driving state: 0
 Exited ice truck. Current skin: player
+Dropped Snow Shovel as obj_snowshovel_item at (207, 260.50)
+Removed Snow Shovel from inventory slot 1
 Game Paused
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Game saved successfully.
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Calling game_end from obj_pause_menu Quit Game button
+###game_end###0
+
+Output log loading save file:
+Setting scheduler resolution to 1
+DirectX11: Using hardware device
+Collision Event time(microsecs)=15
+Variable_Global_Init()
+PrepareGame()
+Audio_Init()
+Audio group 0 -> Loaded
+Attempting to set gamepadcount to 12
+Game_Prepare()
+Script_Prepare() 
+TimeLine_Prepare() 
+Object_Prepare() 
+Room_Prepare() 
+Finished PrepareGame() 
+Run_Start
+Done g_EffectsManager.Init()
+Done RenderStateManager
+CreateColPairs took 0.000000s 5 usecs for 115 object types obj_col_numb=0 physobjcount=0 resizes 0 final size 0
+Done ObjectLists
+Done Extension_Initialize
+About to startroom
+Number of buttons found: 3
+Total memory used = 11697044 (0x00b27b94) bytes 11.16MB
+Free memory = 6120776 (0x005d6548) bytes 5.84MB
+Peak memory used = 12750090 (0x00c28d0a) bytes 12.16MB
+**********************************.
+Entering main loop.
+**********************************.
+DEBUG: New global camera created. ID: 185
+Initialized global.camera with ID: ref instance 100604
+Initialized global.item_index_map with item mappings.
+Initialized global.equipped_items.
+Initialized global.item_type_map.
+Initialized global.inventory as an array of size 42.
+Global variables initialized via init_globals.
+Game loaded successfully.
+DEBUG: New global camera created. ID: 186
+Initialized global.camera with ID: ref object 7
+Initialized global.equipped_items.
+Global variables initialized via init_globals.
+global.player_color before setting: 16777215
+Applied player color: 16777215
+obj_player: Initialized. Driving state: 0
+Restored player color: 16777215
+Player instance created: ref instance 100605
+obj_controller created with ID: ref instance 100013
+obj_controller Create event executed
+DEBUG: global.item_index_map already exists.
+DEBUG: global.item_object_map initialized in obj_initializer.
+DEBUG: New camera created.
+DEBUG: obj_initializer Create Event executed.
+Saving state for room: rm_init
+Saved state for room: rm_init with 2 objects.
+Saved state for room: rm_init
+obj_controller Room Start event started in room: rm_welcome_room
+global.player_color before setting: 16777215
+Applied player color: 16777215
+obj_player: Initialized. Driving state: 0
+DEBUG: Player created at (170, 154) with skin: player
+No saved state found for room: rm_welcome_room
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Camera now follows player.
+DEBUG: UI layer created.
+DEBUG: Inventory restored after pause menu.
+UI Manager initialized.
+DEBUG: Created obj_ui_manager in Room Start.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100615
+obj_controller Room Start event for ID: ref instance 100013
+Room Start Event triggered in obj_controller.
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+DEBUG: Camera attached to player at (170, 154)
+DEBUG: Camera attached to player at (170, 154)
+DEBUG: Resetting repair flag...
+DEBUG: obj_player detected on obj_warp_block. Warping...
+obj_warp initialized. Target Room: 0
+DEBUG: obj_warp transition initiated. Moving player before room transition.
+Player successfully moved to new position.
+Saving state for room: rm_welcome_room
+Saved state for room: rm_welcome_room with 12 objects.
+Saved state for room: rm_welcome_room
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+obj_controller Room Start event started in room: rm_plaza
+No saved state found for room: rm_plaza
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Camera now follows player.
+DEBUG: UI layer created.
+DEBUG: Inventory restored after pause menu.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100615
+obj_controller Room Start event for ID: ref instance 100013
+Room Start Event triggered in obj_controller.
+DEBUG: Camera attached to player at (255, 360)
+DEBUG: Camera attached to player at (255, 360)
+DEBUG: obj_player detected on obj_warp_block. Warping...
+obj_warp initialized. Target Room: 0
+DEBUG: obj_warp transition initiated. Moving player before room transition.
+Player successfully moved to new position.
+Saving state for room: rm_plaza
+Saved state for room: rm_plaza with 2 objects.
+Saved state for room: rm_plaza
+obj_controller Room Start event started in room: rm_welcome_room
+Loaded obj_wrench_item at (180, 197)
+Loaded obj_puffle at (271, 171)
+Loaded obj_boxpuffleo_item at (260, 87)
+Loaded obj_toboggan at (282, 214)
+Loaded obj_Jackhammer_item at (397, 84)
+Loaded obj_snowshovel_item at (125, 128)
+Loaded obj_beta_hat at (371, 88)
+Loaded obj_battery at (203, 126)
+Loaded obj_wood_item at (111, 60)
+Loaded obj_snow_item at (131, 36)
+Loaded obj_icetruck_broken at (43, 139)
+Loaded obj_tube at (430, 88)
+Loaded state for room: rm_welcome_room
+DEBUG: Room Start Event triggered in obj_controller.
+DEBUG: Camera now follows player.
+DEBUG: UI layer created.
+DEBUG: Inventory restored after pause menu.
+Pause menu closed.
+DEBUG: Room Start Event completed. Current skin: player
+DEBUG: Player instance ID: ref instance 100615
+obj_controller Room Start event for ID: ref instance 100013
+Room Start Event triggered in obj_controller.
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+DEBUG: Room Start - Camera setup delayed by 2 frames.
+DEBUG: Reattached to existing global camera. ID: 187
+DEBUG: Camera attached to player at (255, 32)
+DEBUG: Camera attached to player at (255, 32)
+DEBUG: Resetting repair flag...
+Game Paused
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Game saved successfully.
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
+Calling game_end from obj_pause_menu Quit Game button
 ###game_end###0
