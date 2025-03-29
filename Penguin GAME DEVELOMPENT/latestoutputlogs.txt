@@ -1,8 +1,3 @@
-Output Log saving the game:
-depth = -1000;
-
-
-Output log loading save file:
 Setting scheduler resolution to 1
 DirectX11: Using hardware device
 Collision Event time(microsecs)=11
@@ -25,29 +20,24 @@ Done ObjectLists
 Done Extension_Initialize
 About to startroom
 Number of buttons found: 3
-Total memory used = 11717431 (0x00b2cb37) bytes 11.17MB
+Total memory used = 11719774 (0x00b2d45e) bytes 11.18MB
 Free memory = 6109960 (0x005d3b08) bytes 5.83MB
 Peak memory used = 12756786 (0x00c2a732) bytes 12.17MB
 **********************************.
 Entering main loop.
 **********************************.
 DEBUG: New global camera created. ID: 185
-Initialized global.camera with ID: ref instance 100604
+Initialized global.camera with ID: ref object 7
 Initialized global.item_index_map with item mappings.
 Initialized global.equipped_items.
 Initialized global.item_type_map.
 Initialized global.inventory as an array of size 42.
 Global variables initialized via init_globals.
-Game loaded successfully.
-DEBUG: New global camera created. ID: 186
-Initialized global.camera with ID: ref object 7
-Initialized global.equipped_items.
-Global variables initialized via init_globals.
-global.player_color before setting: 16777215
-Applied player color: 16777215
+global.player_color before setting: 52479
+Applied player color: 52479
 obj_player: Initialized. Driving state: 0
-Restored player color: 16777215
-Player instance created: ref instance 100605
+Restored player color: 52479
+Player instance created: ref instance 100619
 obj_controller created with ID: ref instance 100013
 obj_controller Create event executed
 DEBUG: global.item_index_map already exists.
@@ -58,8 +48,8 @@ Saving state for room: rm_init
 Saved state for room: rm_init with 2 objects.
 Saved state for room: rm_init
 obj_controller Room Start event started in room: rm_welcome_room
-global.player_color before setting: 16777215
-Applied player color: 16777215
+global.player_color before setting: 52479
+Applied player color: 52479
 obj_player: Initialized. Driving state: 0
 DEBUG: Player created at (170, 154) with skin: player
 No saved state found for room: rm_welcome_room
@@ -71,65 +61,24 @@ UI Manager initialized.
 DEBUG: Created obj_ui_manager in Room Start.
 Pause menu closed.
 DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100615
+DEBUG: Player instance ID: ref instance 100629
 obj_controller Room Start event for ID: ref instance 100013
 Room Start Event triggered in obj_controller.
 DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-DEBUG: Camera attached to player at (170, 154)
+DEBUG: Reattached to existing global camera. ID: 186
 DEBUG: Camera attached to player at (170, 154)
 DEBUG: Resetting repair flag...
-DEBUG: obj_player detected on obj_warp_block. Warping...
-obj_warp initialized. Target Room: 0
-DEBUG: obj_warp transition initiated. Moving player before room transition.
-Player successfully moved to new position.
-Saving state for room: rm_welcome_room
-Saved state for room: rm_welcome_room with 12 objects.
-Saved state for room: rm_welcome_room
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-obj_controller Room Start event started in room: rm_plaza
-No saved state found for room: rm_plaza
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Camera now follows player.
-DEBUG: UI layer created.
-DEBUG: Inventory restored after pause menu.
-Pause menu closed.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100615
-obj_controller Room Start event for ID: ref instance 100013
-Room Start Event triggered in obj_controller.
-DEBUG: Camera attached to player at (255, 358)
-DEBUG: Camera attached to player at (255, 358)
-DEBUG: obj_player detected on obj_warp_block. Warping...
-obj_warp initialized. Target Room: 0
-DEBUG: obj_warp transition initiated. Moving player before room transition.
-Player successfully moved to new position.
-Saving state for room: rm_plaza
-Saved state for room: rm_plaza with 2 objects.
-Saved state for room: rm_plaza
-obj_controller Room Start event started in room: rm_forest
-No saved state found for room: rm_forest
-DEBUG: Room Start Event triggered in obj_controller.
-DEBUG: Camera now follows player.
-DEBUG: UI layer created.
-DEBUG: Inventory restored after pause menu.
-Pause menu closed.
-DEBUG: Room Start Event completed. Current skin: player
-DEBUG: Player instance ID: ref instance 100615
-obj_controller Room Start event for ID: ref instance 100013
-Room Start Event triggered in obj_controller.
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-DEBUG: Room Start - Camera setup delayed by 2 frames.
-DEBUG: Reattached to existing global camera. ID: 187
-DEBUG: Camera attached to player at (22, 192)
-DEBUG: Camera attached to player at (22, 192)
+Added Beta Hat to inventory in slot 0
+Beta Hat added to inventory.
+Added Jackhammer to inventory in slot 1
+Jackhammer added to inventory.
+Cannot equip this item.
+Dropped Jackhammer as obj_Jackhammer_item at (370, 158)
+Removed Jackhammer from inventory slot 1
+Cannot equip this item.
 Game Paused
+Pause menu active: 1, Click handled: 0
+Pause menu active: 1, Click handled: 0
 Pause menu active: 1, Click handled: 0
 Pause menu active: 1, Click handled: 0
 Pause menu active: 1, Click handled: 0
