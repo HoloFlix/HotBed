@@ -28,28 +28,28 @@ File: Create_0.gml
 depth = -bbox_bottom;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Alarm_0.gml
-/// obj_camera: Alarm[0] Event (Handles delayed camera setup after room transition)
+// Alarm[0] Event (Handles delayed camera setup after room start)
+/// obj_camera: Alarm[0] Event (Handles delayed camera setup after room start)
 if (instance_exists(global.player_instance)) {
-    camera_set_view_target(global.camera, global.player_instance);  // Attach camera to player
-    camera_set_view_pos(global.camera, 
+    camera_set_view_target(global.camera, global.player_instance); // Attach camera to player
+    camera_set_view_pos(global.camera,
         global.player_instance.x - (camera_get_view_width(global.camera) / 2),
         global.player_instance.y - (camera_get_view_height(global.camera) / 2));
-    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);  // Reset zoom
+    camera_set_view_size(global.camera, view_wview[0], view_hview[0]); // Reset zoom
     show_debug_message("DEBUG: Camera attached to player at (" + string(global.player_instance.x) + ", " + string(global.player_instance.y) + ")");
 } else {
     show_debug_message("ERROR: Player instance still not found. Retrying...");
-    alarm[0] = 2;  // Retry after 2 frames if player instance is not found yet
+    alarm[0] = 2; // Retry after 2 frames if player instance is not found
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Create_0.gml
 // Create Event for obj_camera
-    global.camera = camera_create();
-    view_set_camera(0, global.camera);
-    camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
-    camera_set_view_pos(global.camera, 0, 0);
-    show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
-	
-	global.camera_reset = false;
+global.camera = camera_create();
+view_set_camera(0, global.camera);
+camera_set_view_size(global.camera, view_wview[0], view_hview[0]);
+camera_set_view_pos(global.camera, 0, 0);
+show_debug_message("DEBUG: New global camera created. ID: " + string(global.camera));
+global.camera_reset = false;
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_camera
 File: Other_4.gml
 /// obj_camera - Room Start Event
