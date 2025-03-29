@@ -1247,6 +1247,10 @@ Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_crates
 File: Create_0.gml
 //depth
 depth = -bbox_bottom;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dock
+File: Step_0.gml
+set_depth();
+
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_dropped_item
 File: Create_0.gml
 // Set item properties
@@ -5332,6 +5336,9 @@ File: CleanUp_0.gml
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_settings
 File: Create_0.gml
 global.font_main = fnt_bumbastika_sml;
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_sidewalk
+File: Step_0.gml
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_signpost
 File: Create_0.gml
 //depth
@@ -5628,6 +5635,9 @@ y += lengthdir_y(speed, direction);
 if (place_meeting(x, y, obj_wall) || x < 0 || x > room_width || y < 0 || y > room_height) {
     instance_destroy();
 }
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowforts
+File: Step_0.gml
+set_depth();
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_snowshovel_item
 File: Create_0.gml
 event_inherited();
