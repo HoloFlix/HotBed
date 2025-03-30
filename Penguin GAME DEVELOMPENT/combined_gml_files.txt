@@ -1369,6 +1369,7 @@ if (global.is_expanded) {
         var special_y = inv_y + 37 * ui_scale - sprite_get_height(spr_hud_special_actions) * ui_scale;
         draw_sprite_ext(spr_hud_special_actions, 0, special_x, special_y, ui_scale, ui_scale, 0, c_white, 1);
     }
+	update_equipped_items_display();
 }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_hud_expanded

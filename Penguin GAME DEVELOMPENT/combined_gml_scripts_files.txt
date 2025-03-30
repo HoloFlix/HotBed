@@ -30,7 +30,92 @@ function apply_equipped_items() {
         show_debug_message("No head item equipped.");
     }
 
-    // Repeat for other item slots as needed...
+    var face_item = ds_map_find_value(global.equipped_items, "face");
+    show_debug_message("Applying equipped items. Face item: " + string(face_item));
+    if (face_item != -1 && face_item != undefined) {
+        skeleton_attachment_set("face_slot", ds_map_find_value(global.item_index_map, face_item));
+        show_debug_message("Equipped face item: " + string(face_item));
+    } else {
+        skeleton_attachment_set("face_slot", -1); // Remove face item
+        show_debug_message("No face item equipped.");
+    }
+
+    var neck_item = ds_map_find_value(global.equipped_items, "neck");
+    show_debug_message("Applying equipped items. Neck item: " + string(neck_item));
+    if (neck_item != -1 && neck_item != undefined) {
+        skeleton_attachment_set("neck_slot", ds_map_find_value(global.item_index_map, neck_item));
+        show_debug_message("Equipped neck item: " + string(neck_item));
+    } else {
+        skeleton_attachment_set("neck_slot", -1); // Remove neck item
+        show_debug_message("No neck item equipped.");
+    }
+
+    var body_item = ds_map_find_value(global.equipped_items, "body");
+    show_debug_message("Applying equipped items. Body item: " + string(body_item));
+    if (body_item != -1 && body_item != undefined) {
+        skeleton_attachment_set("body_slot", ds_map_find_value(global.item_index_map, body_item));
+        show_debug_message("Equipped body item: " + string(body_item));
+    } else {
+        skeleton_attachment_set("body_slot", -1); // Remove body item
+        show_debug_message("No body item equipped.");
+    }
+
+    var hand_item = ds_map_find_value(global.equipped_items, "hand");
+    show_debug_message("Applying equipped items. Hand item: " + string(hand_item));
+    if (hand_item != -1 && hand_item != undefined) {
+        skeleton_attachment_set("hand_slot", ds_map_find_value(global.item_index_map, hand_item));
+        show_debug_message("Equipped hand item: " + string(hand_item));
+    } else {
+        skeleton_attachment_set("hand_slot", -1); // Remove hand item
+        show_debug_message("No hand item equipped.");
+    }
+
+    var feet_item = ds_map_find_value(global.equipped_items, "feet");
+    show_debug_message("Applying equipped items. Feet item: " + string(feet_item));
+    if (feet_item != -1 && feet_item != undefined) {
+        skeleton_attachment_set("feet_slot", ds_map_find_value(global.item_index_map, feet_item));
+        show_debug_message("Equipped feet item: " + string(feet_item));
+    } else {
+        skeleton_attachment_set("feet_slot", -1); // Remove feet item
+        show_debug_message("No feet item equipped.");
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\draw_equipped_items
+File: draw_equipped_items.gml
+/// @function update_equipped_items_display()
+/// @description Draws equipped items in their respective slots on the HUD.
+function update_equipped_items_display() {
+    if (!ds_exists(global.equipped_items, ds_type_map) || !ds_exists(global.item_sprite_map, ds_type_map)) {
+        show_debug_message("Error: Required global maps not initialized.");
+        return;
+    }
+
+    var gui_width = display_get_gui_width();
+    var gui_height = display_get_gui_height();
+    var slot_size = 32; // Size of each slot in pixels
+    var start_x = gui_width - (6 * slot_size) - 10; // Right side, 6 slots
+    var start_y = gui_height / 2 - (3 * slot_size); // Centered vertically
+
+    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+    for (var i = 0; i < array_length(slots); i++) {
+        var slot = slots[i];
+        var item_name = ds_map_find_value(global.equipped_items, slot);
+        var slot_x = start_x + (i mod 3) * slot_size;
+        var slot_y = start_y + (i div 3) * slot_size;
+
+        // Draw slot background
+        draw_set_color(c_gray);
+        draw_rectangle(slot_x, slot_y, slot_x + slot_size, slot_y + slot_size, false);
+
+        if (item_name != -1 && item_name != undefined) {
+            var sprite = ds_map_find_value(global.item_sprite_map, item_name);
+            if (sprite != undefined) {
+                draw_sprite_stretched(sprite, 0, slot_x, slot_y, slot_size, slot_size);
+            } else {
+                show_debug_message("Warning: No sprite defined for " + item_name);
+            }
+        }
+    }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\draw_item_card
 File: draw_item_card.gml
@@ -91,6 +176,7 @@ function equip_item(slot, item_name) {
     if (ds_map_exists(global.equipped_items, slot)) {
         global.equipped_items[? slot] = item_name;
         show_debug_message("Equipped " + item_name + " to " + slot);
+        apply_equipped_items(); // Apply immediately
     } else {
         show_debug_message("Invalid slot: " + slot);
     }
@@ -101,22 +187,25 @@ File: inventory_click_handle.gml
 /// @param {real} item_index The index of the item in the inventory array.
 function inventory_click_handler(item_index) {
     var item_name = global.inventory[item_index];
-    show_debug_message("Clicked item index: " + string(item_index) + ", item name: " + string(item_name));
     if (item_name != -1) {
-        // Determine the slot based on item type
         var item_type = ds_map_find_value(global.item_type_map, item_name);
-        show_debug_message("Item type for " + item_name + ": " + string(item_type));
         if (item_type != undefined) {
-            // Equip the item
+            // Check if the slot is occupied
+            var current_item = ds_map_find_value(global.equipped_items, item_type);
+            if (current_item != -1 && current_item != undefined) {
+                unequip_item(item_type);
+                add_to_inventory(current_item);
+                show_debug_message("Unequipped " + current_item + " from " + item_type + " and returned to inventory.");
+            }
+            // Equip the new item and remove from inventory
             equip_item(item_type, item_name);
-            // Remove the item from the inventory
             remove_from_inventory(item_name);
             show_debug_message("Equipped " + item_name + " to " + item_type + " slot.");
         } else {
             show_debug_message("Error: Item type for " + item_name + " is undefined.");
         }
     } else {
-        show_debug_message("Error: No item found in inventory slot " + string(item_index) + ".");
+        show_debug_message("Error: No item in slot " + string(item_index));
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\remove_from_inventory
@@ -283,13 +372,13 @@ function init_globals() {
     // Initialize item_type_map
     if (!variable_global_exists("item_type_map") || !ds_exists(global.item_type_map, ds_type_map)) {
         global.item_type_map = ds_map_create();
-        ds_map_add(global.item_type_map, 0, "head");   // Beta Hat
-        ds_map_add(global.item_type_map, 1, "head");   // Party Hat
-        ds_map_add(global.item_type_map, 20, "body");  // Ghost Costume
-        ds_map_add(global.item_type_map, 21, "face");  // Black Sun Glasses
-        ds_map_add(global.item_type_map, 22, "body");  // Black Hoodie
-        ds_map_add(global.item_type_map, 23, "head");  // Miners Hard Hat
-        ds_map_add(global.item_type_map, 24, "head");  // Tour Hat
+        ds_map_add(global.item_type_map, "Beta Hat", "head");
+        ds_map_add(global.item_type_map, "Party Hat", "head");
+        ds_map_add(global.item_type_map, "Black Sun Glasses", "face");
+        ds_map_add(global.item_type_map, "Black Hoodie", "body");
+        ds_map_add(global.item_type_map, "Miners Hard Hat", "head");
+        ds_map_add(global.item_type_map, "Tour Hat", "head");
+        ds_map_add(global.item_type_map, "Ghost Costume", "body");
         show_debug_message("Initialized global.item_type_map.");
     }
 
