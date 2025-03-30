@@ -2125,6 +2125,16 @@ if (instance_exists(id)) {
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
+File: Mouse_4.gml
+/// Mouse Left Pressed Event for obj_inventory
+var item_index = inventory_get_item_index_at_mouse();
+if (item_index != -1) {
+    show_debug_message("Mouse clicked on inventory item at index: " + string(item_index));
+    inventory_click_handler(item_index);
+} else {
+    show_debug_message("No item found at clicked inventory slot.");
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Step_0.gml
 // obj_inventory: Step Event
 if (global.chat_active) exit;
@@ -2465,6 +2475,16 @@ if (global.inventory_visible) {
             }
         }
     }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
+File: Mouse_4.gml
+/// Mouse Left Pressed Event for obj_inventory_expanded
+var item_index = inventory_get_item_index_at_mouse();
+if (item_index != -1) {
+    show_debug_message("Mouse clicked on expanded inventory item at index: " + string(item_index));
+    inventory_click_handler(item_index);
+} else {
+    show_debug_message("No item found at clicked expanded inventory slot.");
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
 File: Step_0.gml
