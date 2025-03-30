@@ -169,11 +169,11 @@ function has_item(item_name) {
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_globals
 File: scr_init_globals.gml
 function init_globals() {
-	global.player_x = 170;
-	global.player_y = 154;
-	global.warp_target_x = undefined;
-	global.warp_target_y = undefined;
-	global.warp_target_face = undefined;
+    global.player_x = 170;
+    global.player_y = 154;
+    global.warp_target_x = undefined;
+    global.warp_target_y = undefined;
+    global.warp_target_face = undefined;
     global.is_pause_menu_active = false;
     global.player_instance = noone;
     global.player_health = 100;
@@ -182,29 +182,51 @@ function init_globals() {
     global.inventory_open = false;
     global.repair_complete = false;
     global.is_loading_game = false;
-	global.expanded_hud_open = false;
-    
-    if (!variable_global_exists("following_puffles")) {
+    global.expanded_hud_open = false;
+
+    if (!variable_global_exists("following_puffles") || !ds_exists(global.following_puffles, ds_type_list)) {
         global.following_puffles = ds_list_create();
+        show_debug_message("Initialized global.following_puffles.");
     }
-    if (!variable_global_exists("room_states")) {
+    if (!variable_global_exists("room_states") || !ds_exists(global.room_states, ds_type_map)) {
         global.room_states = ds_map_create();
+        show_debug_message("Initialized global.room_states.");
     }
-    if (!variable_global_exists("active_quests")) {
+    if (!variable_global_exists("active_quests") || !ds_exists(global.active_quests, ds_type_list)) {
         global.active_quests = ds_list_create();
+        show_debug_message("Initialized global.active_quests.");
     }
-    if (!variable_global_exists("completed_quests")) {
+    if (!variable_global_exists("completed_quests") || !ds_exists(global.completed_quests, ds_type_list)) {
         global.completed_quests = ds_list_create();
+        show_debug_message("Initialized global.completed_quests.");
     }
 
-	global.player_instance = noone; // Reset to noone, set later
+    global.player_instance = noone; // Reset to noone, set later
     global.camera = instance_exists(obj_camera) ? obj_camera : instance_create_layer(0, 0, "Instances", obj_camera);
     show_debug_message("Initialized global.camera with ID: " + string(global.camera));
-	
-    // Initialize global.item_index_map if it doesn’t exist
+
+    if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
+        global.inventory = array_create(42, -1); // Assuming inventory size is 42
+        show_debug_message("Initialized global.inventory as an array of size 42.");
+    }
+
+    // Initialize equipped_items (Initialization Check Step)
+    if (!variable_global_exists("equipped_items") || !ds_exists(global.equipped_items, ds_type_map)) {
+        global.equipped_items = ds_map_create();
+        ds_map_add(global.equipped_items, "head", -1);
+        ds_map_add(global.equipped_items, "face", -1);
+        ds_map_add(global.equipped_items, "neck", -1);
+        ds_map_add(global.equipped_items, "body", -1);
+        ds_map_add(global.equipped_items, "hand", -1);
+        ds_map_add(global.equipped_items, "feet", -1);
+        show_debug_message("Initialized global.equipped_items as ds_map with slots set to -1.");
+    } else {
+        show_debug_message("global.equipped_items already initialized.");
+    }
+
+    // Initialize item_index_map
     if (!variable_global_exists("item_index_map") || !ds_exists(global.item_index_map, ds_type_map)) {
         global.item_index_map = ds_map_create();
-        // Populate with item names and their indices (based on spr_inventory_items)
         ds_map_add(global.item_index_map, "Beta Hat", 0);
         ds_map_add(global.item_index_map, "Party Hat", 1);
         ds_map_add(global.item_index_map, "Wrench", 2);
@@ -224,34 +246,41 @@ function init_globals() {
         ds_map_add(global.item_index_map, "Mullet", 16);
         ds_map_add(global.item_index_map, "Wood", 17);
         ds_map_add(global.item_index_map, "Snow", 18);
+        ds_map_add(global.item_index_map, "Snow Blaster", 19);
+        ds_map_add(global.item_index_map, "Ghost Costume", 20);
+        ds_map_add(global.item_index_map, "Black Sun Glasses", 21);
+        ds_map_add(global.item_index_map, "Black Hoodie", 22);
+        ds_map_add(global.item_index_map, "Miners Hard Hat", 23);
+        ds_map_add(global.item_index_map, "Tour Hat", 24);
         show_debug_message("Initialized global.item_index_map with item mappings.");
     }
 
-	global.equipped_items = ds_map_create();
-    show_debug_message("Initialized global.equipped_items.");
-    
+    // Initialize item_type_map
     if (!variable_global_exists("item_type_map") || !ds_exists(global.item_type_map, ds_type_map)) {
         global.item_type_map = ds_map_create();
-        ds_map_add(global.item_type_map, 0, "head"); // Beta Hat
-        ds_map_add(global.item_type_map, 1, "head"); // Party Hat
-        // Add other items as needed
+        ds_map_add(global.item_type_map, 0, "head");   // Beta Hat
+        ds_map_add(global.item_type_map, 1, "head");   // Party Hat
+        ds_map_add(global.item_type_map, 20, "body");  // Ghost Costume
+        ds_map_add(global.item_type_map, 21, "face");  // Black Sun Glasses
+        ds_map_add(global.item_type_map, 22, "body");  // Black Hoodie
+        ds_map_add(global.item_type_map, 23, "head");  // Miners Hard Hat
+        ds_map_add(global.item_type_map, 24, "head");  // Tour Hat
         show_debug_message("Initialized global.item_type_map.");
     }
-    if (!variable_global_exists("inventory") || !is_array(global.inventory)) {
-        global.inventory = array_create(42, -1); // Assuming inventory size is 42
-        show_debug_message("Initialized global.inventory as an array of size 42.");
+
+    // Initialize item_sprite_map
+    if (!variable_global_exists("item_sprite_map") || !ds_exists(global.item_sprite_map, ds_type_map)) {
+        global.item_sprite_map = ds_map_create();
+        ds_map_add(global.item_sprite_map, "Beta Hat", spr_player_betahat);
+        ds_map_add(global.item_sprite_map, "Party Hat", spr_player_partyhat);
+        //ds_map_add(global.item_sprite_map, "Ghost Costume", spr_ghostcostume_sheet); // Ensure this sprite exists
+        ds_map_add(global.item_sprite_map, "Black Sun Glasses", spr_blkglasses_sheet);
+        ds_map_add(global.item_sprite_map, "Black Hoodie", spr_blkhoodie_sheet);
+        ds_map_add(global.item_sprite_map, "Miners Hard Hat", spr_minerhat_sheet);
+        ds_map_add(global.item_sprite_map, "Tour Hat", spr_tourhat_sheet);
+        show_debug_message("Initialized global.item_sprite_map.");
     }
-    if (!variable_global_exists("equipped_items") || !ds_exists(global.equipped_items, ds_type_map)) {
-        global.equipped_items = ds_map_create();
-        ds_map_add(global.equipped_items, "head", -1);
-        ds_map_add(global.equipped_items, "face", -1);
-        ds_map_add(global.equipped_items, "neck", -1);
-        ds_map_add(global.equipped_items, "body", -1);
-        ds_map_add(global.equipped_items, "hand", -1);
-        ds_map_add(global.equipped_items, "feet", -1);
-        show_debug_message("Initialized global.equipped_items as ds_map.");
-    }
-    
+
     show_debug_message("Global variables initialized via init_globals.");
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_init_sprites
