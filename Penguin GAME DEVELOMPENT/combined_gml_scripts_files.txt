@@ -811,6 +811,7 @@ function unequip_item(slot) {
     if (ds_map_exists(global.equipped_items, slot)) {
         global.equipped_items[? slot] = -1;
         show_debug_message("Unequipped item from " + slot);
+        apply_equipped_items(); // Apply immediately
     } else {
         show_debug_message("Invalid slot: " + slot);
     }
