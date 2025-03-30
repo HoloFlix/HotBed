@@ -2126,16 +2126,6 @@ if (instance_exists(id)) {
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
-File: Mouse_4.gml
-/// Mouse Left Pressed Event for obj_inventory
-var item_index = inventory_get_item_index_at_mouse();
-if (item_index != -1) {
-    show_debug_message("Mouse clicked on inventory item at index: " + string(item_index));
-    inventory_click_handler(item_index);
-} else {
-    show_debug_message("No item found at clicked inventory slot.");
-}
-Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory
 File: Step_0.gml
 // obj_inventory: Step Event
 if (global.chat_active) exit;
@@ -2327,6 +2317,35 @@ character_face = DOWN; // Default direction
 character_action = "none"; // Default no action
 character_image_index = 0; // Default animation frame
 
+// Inventory grid specifications
+var grid_start = [3, 6];
+var grid_size = [7, 6];
+var slot_width = 20;
+var slot_height = 20;
+
+// Create a 2D array to hold the inventory slots
+inventory_slots = array_create(grid_size[1], array_create(grid_size[0], -1));
+
+// Populate the inventory_slots with coordinates and slot indices
+for (var row = 0; row < grid_size[1]; row++) {
+    for (var col = 0; col < grid_size[0]; col++) {
+        var slot_index = row * grid_size[0] + col + 1; // Slot indices start from 1
+        var x1 = grid_start[0] + col * slot_width;
+        var y1 = grid_start[1] + row * slot_height;
+        var x2 = x1 + slot_width;
+        var y2 = y1 + slot_height;
+        
+        inventory_slots[row][col] = {
+            index: slot_index,
+            x1: x1,
+            y1: y1,
+            x2: x2,
+            y2: y2
+        };
+        
+        show_debug_message("Slot " + string(slot_index) + ": (" + string(x1) + ", " + string(y1) + ") to (" + string(x2) + ", " + string(y2) + ")");
+    }
+}
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
 File: Destroy_0.gml
 // obj_inventory_expanded: Destroy Event
@@ -2480,12 +2499,10 @@ if (global.inventory_visible) {
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
 File: Mouse_4.gml
 /// Mouse Left Pressed Event for obj_inventory_expanded
-var item_index = inventory_get_item_index_at_mouse();
+/// @function Mouse Left Pressed Event for obj_inventory
+var item_index = get_item_index_from_mouse_position(mouse_x, mouse_y);
 if (item_index != -1) {
-    show_debug_message("Mouse clicked on expanded inventory item at index: " + string(item_index));
     inventory_click_handler(item_index);
-} else {
-    show_debug_message("No item found at clicked expanded inventory slot.");
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\objects\obj_inventory_expanded
 File: Step_0.gml
@@ -2556,18 +2573,17 @@ if (global.inventory_visible) {
     if (global.inventory_open_state == "open") {
     if (mouse_check_button_pressed(mb_left)) {
             show_debug_message("Mouse clicked at (" + string(gui_mouse_x) + ", " + string(gui_mouse_y) + ")");
-            var grid_start = [3, 6];
-            var grid_size = [7, 6];
-            for (var row = 0; row < grid_size[1]; row++) {
-                for (var col = 0; col < grid_size[0]; col++) {
-                    var slot_x = open_x + (grid_start[0] + col * 20) * ui_scale;
-                    var slot_y = open_y + (grid_start[1] + row * 20) * ui_scale;
-                    var slot_width = 18 * ui_scale;
-                    var slot_height = 18 * ui_scale;
-                    if (gui_mouse_x >= slot_x && gui_mouse_x < slot_x + slot_width &&
-                        gui_mouse_y >= slot_y && gui_mouse_y < slot_y + slot_height) {
-                        show_debug_message("Clicked slot (" + string(col) + ", " + string(row) + ") at (" + string(slot_x) + ", " + string(slot_y) + ")");
-                        var slot_index = row * grid_size[0] + col;
+            for (var row = 0; row < array_length(inventory_slots); row++) {
+                for (var col = 0; col < array_length(inventory_slots[row]); col++) {
+                    var slot = inventory_slots[row][col];
+                    var slot_x1 = open_x + slot.x1 * ui_scale;
+                    var slot_y1 = open_y + slot.y1 * ui_scale;
+                    var slot_x2 = open_x + slot.x2 * ui_scale;
+                    var slot_y2 = open_y + slot.y2 * ui_scale;
+                    if (gui_mouse_x >= slot_x1 && gui_mouse_x < slot_x2 &&
+                        gui_mouse_y >= slot_y1 && gui_mouse_y < slot_y2) {
+                        show_debug_message("Clicked slot (" + string(col) + ", " + string(row) + ") at (" + string(slot_x1) + ", " + string(slot_y1) + ")");
+                        var slot_index = slot.index - 1; // Adjust for 0-based index in the handler
                         if (slot_index < 42) {
                             var item_index = obj_inventory.inventory[slot_index];
                             show_debug_message("Slot " + string(slot_index) + " contains item index: " + string(item_index));
@@ -2582,7 +2598,7 @@ if (global.inventory_visible) {
                                 }
                                 if (item_name != "") {
                                     show_debug_message("Item name found: " + item_name);
-                                    var item_type = ds_map_find_value(global.item_type_map, item_index);
+                                    var item_type = ds_map_find_value(global.item_type_map, item_name);
                                     show_debug_message("Item type: " + string(item_type));
                                     if (!is_undefined(item_type) && ds_map_exists(global.equipped_items, item_type)) {
                                         show_debug_message("Equipping " + item_name + " to " + item_type);
