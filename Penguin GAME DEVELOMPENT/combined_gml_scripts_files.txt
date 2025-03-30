@@ -64,14 +64,36 @@ function draw_item_card(item, card_x, card_y) {
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\equip_item
 File: equip_item.gml
 /// @function equip_item(slot, item_name)
-/// @param {string} slot The name of the slot to equip the item to (e.g., "head", "body")
-/// @param {string} item_name The name of the item to equip
+/// @param {string} slot The name of the slot to equip the item to (e.g., "head", "body").
+/// @param {string} item_name The name of the item to equip.
 function equip_item(slot, item_name) {
     if (ds_map_exists(global.equipped_items, slot)) {
         global.equipped_items[? slot] = item_name;
         show_debug_message("Equipped " + item_name + " to " + slot);
     } else {
         show_debug_message("Invalid slot: " + slot);
+    }
+}
+Folder: D:\PenguinIsleProject\Penguin Isles\scripts\inventory_click_handle
+File: inventory_click_handle.gml
+/// @function inventory_click_handler(item_index)
+/// @param {real} item_index The index of the item in the inventory array.
+function inventory_click_handler(item_index) {
+    var item_name = global.inventory[item_index];
+    if (item_name != -1) {
+        // Determine the slot based on item type
+        var item_type = ds_map_find_value(global.item_type_map, item_name);
+        if (item_type != undefined) {
+            // Equip the item
+            equip_item(item_type, item_name);
+            // Remove the item from the inventory
+            remove_from_inventory(item_name);
+            show_debug_message("Equipped " + item_name + " to " + item_type + " slot.");
+        } else {
+            show_debug_message("Error: Item type for " + item_name + " is undefined.");
+        }
+    } else {
+        show_debug_message("Error: No item found in inventory slot " + string(item_index) + ".");
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\remove_from_inventory
@@ -107,7 +129,6 @@ function apply_equipped_items() {
 
     // Repeat for other item slots as needed...
 }
-
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\scr_camera_easing
 File: scr_camera_easing.gml
 /// Easing function for smooth camera transitions
