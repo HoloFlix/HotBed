@@ -20,64 +20,17 @@ function apply_equipped_items() {
         return;
     }
 
-    var head_item = ds_map_find_value(global.equipped_items, "head");
-    show_debug_message("Applying equipped items. Head item: " + string(head_item));
-    if (head_item != -1 && head_item != undefined) {
-        skeleton_attachment_set("head_slot", ds_map_find_value(global.item_index_map, head_item));
-        show_debug_message("Equipped head item: " + string(head_item));
-    } else {
-        skeleton_attachment_set("head_slot", -1); // Remove head item
-        show_debug_message("No head item equipped.");
-    }
-
-    var face_item = ds_map_find_value(global.equipped_items, "face");
-    show_debug_message("Applying equipped items. Face item: " + string(face_item));
-    if (face_item != -1 && face_item != undefined) {
-        skeleton_attachment_set("face_slot", ds_map_find_value(global.item_index_map, face_item));
-        show_debug_message("Equipped face item: " + string(face_item));
-    } else {
-        skeleton_attachment_set("face_slot", -1); // Remove face item
-        show_debug_message("No face item equipped.");
-    }
-
-    var neck_item = ds_map_find_value(global.equipped_items, "neck");
-    show_debug_message("Applying equipped items. Neck item: " + string(neck_item));
-    if (neck_item != -1 && neck_item != undefined) {
-        skeleton_attachment_set("neck_slot", ds_map_find_value(global.item_index_map, neck_item));
-        show_debug_message("Equipped neck item: " + string(neck_item));
-    } else {
-        skeleton_attachment_set("neck_slot", -1); // Remove neck item
-        show_debug_message("No neck item equipped.");
-    }
-
-    var body_item = ds_map_find_value(global.equipped_items, "body");
-    show_debug_message("Applying equipped items. Body item: " + string(body_item));
-    if (body_item != -1 && body_item != undefined) {
-        skeleton_attachment_set("body_slot", ds_map_find_value(global.item_index_map, body_item));
-        show_debug_message("Equipped body item: " + string(body_item));
-    } else {
-        skeleton_attachment_set("body_slot", -1); // Remove body item
-        show_debug_message("No body item equipped.");
-    }
-
-    var hand_item = ds_map_find_value(global.equipped_items, "hand");
-    show_debug_message("Applying equipped items. Hand item: " + string(hand_item));
-    if (hand_item != -1 && hand_item != undefined) {
-        skeleton_attachment_set("hand_slot", ds_map_find_value(global.item_index_map, hand_item));
-        show_debug_message("Equipped hand item: " + string(hand_item));
-    } else {
-        skeleton_attachment_set("hand_slot", -1); // Remove hand item
-        show_debug_message("No hand item equipped.");
-    }
-
-    var feet_item = ds_map_find_value(global.equipped_items, "feet");
-    show_debug_message("Applying equipped items. Feet item: " + string(feet_item));
-    if (feet_item != -1 && feet_item != undefined) {
-        skeleton_attachment_set("feet_slot", ds_map_find_value(global.item_index_map, feet_item));
-        show_debug_message("Equipped feet item: " + string(feet_item));
-    } else {
-        skeleton_attachment_set("feet_slot", -1); // Remove feet item
-        show_debug_message("No feet item equipped.");
+    var slots = ["head", "face", "neck", "body", "hand", "feet"];
+    for (var i = 0; i < array_length(slots); i++) {
+        var slot = slots[i];
+        var item = ds_map_find_value(global.equipped_items, slot);
+        if (item != -1 && item != undefined) {
+            skeleton_attachment_set(slot + "_slot", ds_map_find_value(global.item_index_map, item));
+            show_debug_message("Equipped " + slot + " item: " + string(item));
+        } else {
+            skeleton_attachment_set(slot + "_slot", -1); // Remove item
+            show_debug_message("No " + slot + " item equipped.");
+        }
     }
 }
 Folder: D:\PenguinIsleProject\Penguin Isles\scripts\draw_equipped_items
